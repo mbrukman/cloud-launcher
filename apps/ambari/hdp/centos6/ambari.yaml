@@ -1,0 +1,55 @@
+- name: ambari-server
+  numReplicas: 1
+  machineType: n1-standard-1
+  zone: us-central1-a
+  disks:
+    - autoDelete: true
+      boot: true
+      type: PERSISTENT
+      mode: READ_WRITE
+      initializeParams:
+        sourceImage: centos-6-v20140415
+  metadata:
+    items:
+      - key: startup-script
+        value: '%file:scripts/init/ambari-server-init.gen.sh'
+  networkInterfaces:
+    - network: default
+      accessConfigs:
+        - type: ONE_TO_ONE_NAT
+          name: 'External NAT'
+  serviceAccounts:
+    - email: default
+      scopes: ['https://www.googleapis.com/auth/devstorage.full_control',
+               'https://www.googleapis.com/auth/compute']
+
+- name: ambari-agent
+  numReplicas: 5
+  machineType: n1-standard-4
+  zone: us-central1-a
+  disks:
+    - autoDelete: true
+      boot: true
+      type: PERSISTENT
+      mode: READ_WRITE
+      initializeParams:
+        sourceImage: centos-6-v20140415
+        # Cannot use the full disk until we repartition and reboot:
+        # https://access.redhat.com/site/solutions/57542
+        # Until then, we're limited to the OS image size, which is 10GB.
+        diskSizeGb: 500
+  metadata:
+    items:
+      - key: ambari-server
+        value: ambari-server-0
+      - key: startup-script
+        value: '%file:scripts/init/ambari-agent-init.gen.sh'
+  networkInterfaces:
+    - network: default
+      accessConfigs:
+      - type: ONE_TO_ONE_NAT
+        name: 'External NAT'
+  serviceAccounts:
+    - email: default
+      scopes: ['https://www.googleapis.com/auth/devstorage.full_control',
+               'https://www.googleapis.com/auth/compute']

@@ -1,0 +1,48 @@
+Cloud Launcher
+==============
+
+Simplifying the process of launching applications on Google Cloud Platform.
+
+Initial setup
+-------------
+
+This is a one-time setup for each Google Cloud Platform project you want to use
+with Cloud Launcher.
+
+* Modify `settings.sh` to specify a Google Cloud Platform project you
+  have access to that has GCE enabled
+
+* Create a directory to store your credentials and set appropriate permissions:
+
+  ```bash
+  mkdir -m 700 -p "$HOME/cloud/projects/$PROJECT"
+  ```
+
+* Open [Google Cloud developer console](https://cloud.google.com/console)
+
+* Go to your Google Cloud Platform project
+
+  * Click on your project name
+  * Click on _"APIs & Auth"_
+  * Click on _"Credentials"_
+  * Under _"OAuth"_, click on _"Create a new Client ID"_
+    * Choose _"Installed application"_
+    * Application type is _"other"_
+    * Click on _"Create Client ID"_
+  * Under the new section _"Clind ID for native application"_, click on
+    _"Download JSON"_
+  * Save this file as `$HOME/cloud/projects/$PROJECT/client_secrets.json`
+
+* Now you can use `run.sh` to launch applications!
+
+License
+-------
+
+Apache 2.0; see the LICENSE.txt for details.
+
+Disclaimer
+----------
+
+This project is not an official Google project. It is not supported by Google
+and Google specifically disclaims all warranties as to its quality,
+merchantability, or fitness for a particular purpose.

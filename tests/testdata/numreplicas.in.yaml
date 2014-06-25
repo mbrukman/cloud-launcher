@@ -1,0 +1,5 @@
+- name: foo
+  numReplicas: 3
+
+- name: bar
+  numReplicas: 2
