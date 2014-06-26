@@ -1,5 +1,5 @@
 AMBARI_AGENT_INPUTS = \
-  fdisk.sh \
+  ../../../../../common/fdisk.sh \
   ambari-repo-init.sh \
   ambari-agent-install.sh \
   ambari-agent-setup.sh \
