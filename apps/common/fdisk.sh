@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -u
 #
 # Copyright 2014 Google Inc.
 #
@@ -28,28 +28,71 @@
 #
 ################################################################################
 
-# Commands
-# c: disable DOS compatibility mode (must do for CentOS, according to docs)
-# u: change display mode to sectors
-# d: delete partition (automatically selects the first one)
-# n: new partition
-# p: primary
-# 1: partition number
-# <2 blank lines>: accept the defaults for start and end sectors
-# w: write partition table
+# The ratio between the entire disk and the first partition in blocks or space
+# that needs to be exceeded for us to repartition the disk or resize the
+# filesystem.
+#
+# We are giving it some slack in case not all blocks or sectors are in use, and
+# we would like to avoid both an infinite loop with reboot, or running resize2fs
+# on every reboot.
+declare -r THRESHOLD="1.1"
 
-# This gets us the size, in blocks, of the whole disk and the first partition.
-declare -i -r DEV_SDA="$(fdisk -s /dev/sda)"
-declare -i -r DEV_SDA1="$(fdisk -s /dev/sda1)"
+# Args:
+#   $1: numerator
+#   $2: denominator
+#   $3: threshold (optional; defaults to $THRESHOLD)
+#
+# Returns:
+#   1 if (numerator / denominator > threshold)
+#   0 otherwise
+function ratio_over_threshold() {
+  local numer="${1}"
+  local denom="${2}"
+  local threshold="${3:-${THRESHOLD}}"
 
-# If the ratio between the entire disk and the first partition is over 10, then
-# we haven't yet repartitioned the disk. Technically, the ratio between the two
-# of them will be exactly 50 in the case where we're requesting a 500GB disk
-# because OS images on GCE are 10GB.
-if [ $(echo "${DEV_SDA} / ${DEV_SDA1}" | bc) -gt 10 ]; then
-  cat <<EOF | fdisk /dev/sda
-c
-u
+  if `which python > /dev/null 2>&1`; then
+    python -c "print(1 if (1. * ${numer} / ${denom} > ${threshold}) else 0)"
+  elif `which bc > /dev/null 2>&1`; then
+    echo "${numer} / ${denom} > ${threshold}" | bc -l
+  else
+    echo "Neither python nor bc were found; calculation infeasible." >&2
+    exit 1
+  fi
+}
+
+# Repartitions the disk or resizes the file system, depending on the current
+# state of the partition table.
+function main() {
+  # This gets us the size, in blocks, of the whole disk and the first partition.
+  local dev_sda="$(fdisk -s /dev/sda)"
+  local dev_sda1="$(fdisk -s /dev/sda1)"
+
+  # If the ratio between the entire disk and the first partition is over
+  # ${THRESHOLD}, then we haven't yet repartitioned the disk.
+  #
+  # Of interest is that fdisk(1) has opposite behavior on CentOS vs. Debian.
+  # While the 'c' and 'u' commands can be used to toggle DOS compatibility mode
+  # and cylinder (vs. sector) display, respectively, it turns out that fdisk(1)
+  # starts in opposite modes on CentOS (both enabled) vs. Debian (both
+  # disabled), so unconditionally using those commands has the opposite effect
+  # on those two distributions.
+  #
+  # However, using the -c and -u flags disables them (as we want) on both
+  # distributions, so we use them as flags instead of commands.
+  #
+  # fdisk(1) flags:
+  # -c: disable DOS compatibility mode
+  # -u: change display mode to sectors (from cylinders)
+  #
+  # fdisk(1) commands:
+  # d: delete partition (automatically selects the first one)
+  # n: new partition
+  # p: primary
+  # 1: partition number
+  # <2 blank lines>: accept the defaults for start and end sectors
+  # w: write partition table
+  if [ $(ratio_over_threshold "${dev_sda}" "${dev_sda1}") -eq 1 ]; then
+    cat <<EOF | fdisk -c -u /dev/sda
 d
 n
 p
@@ -58,35 +101,54 @@ p
 
 w
 EOF
-  # We've made the changes to the partition table, but they just haven't taken
-  # effect, so we need to reboot. On the next reboot, the if statement will be
-  # false and we'll fall into the else case which will reread the partition
-  # table and automatically resize the partition for us.
-  reboot
-else
-  # After the repartitioning and reboot, we have the following:
-  #
-  #   fdisk -s /dev/sda  => 524288000
-  #   fdisk -s /dev/sda1 => 524286976
-  #
-  # so the ratio no longer tells us anything. However, now we can examine the
-  # actual usable space on disk to see the difference:
-  #
-  # Before:
-  # % df -B 1K | grep /dev/sda1
-  # Filesystem           1K-blocks      Used Available Use% Mounted on
-  # /dev/sda1             10319160   1020760   8774216  11% /
-  # [...]
-  #
-  # After:
-  # % df -B 1K | grep /dev/sda1
-  # Filesystem           1K-blocks      Used Available Use% Mounted on
-  # /dev/sda1            516060600   1041548 488811080   1% /
-  # [...]
-  #
-  # so we can still use the ratio-of-10 metric to see if we need to fix this.
-  declare -i -r DEV_SDA1_DF="$(df -B 1K | grep /dev/sda1 | awk '{ print $2 }')"
-  if [ $(echo "${DEV_SDA} / ${DEV_SDA1_DF}" | bc) -gt 10 ]; then
-    resize2fs /dev/sda1
+    # We've made the changes to the partition table, but they just haven't taken
+    # effect, so we need to reboot. On the next reboot, the if statement will be
+    # false and we'll fall into the else case which will reread the partition
+    # table and automatically resize the partition for us.
+    reboot
+  else
+    # After the repartitioning and reboot, we have the following:
+    #
+    #   fdisk -s /dev/sda  => 524288000
+    #   fdisk -s /dev/sda1 => 524286976
+    #
+    # so the ratio no longer tells us anything. However, now we can examine the
+    # actual usable space on disk to see the difference:
+    #
+    # Before (on CentOS):
+    # % df -B 1K /dev/sda1
+    # Filesystem           1K-blocks      Used Available Use% Mounted on
+    # /dev/sda1             10319160   1020760   8774216  11% /
+    #
+    # After (on CentOS):
+    # % df -B 1K /dev/sda1
+    # Filesystem           1K-blocks      Used Available Use% Mounted on
+    # /dev/sda1            516060600   1041548 488811080   1% /
+    #
+    # On Debian, the device behind the root filesystem is not /dev/sda1 but a
+    # disk with random UUID, e.g.,
+    #
+    # % df -B 1K /
+    # Filesystem              1K-blocks   Used Available Use% Mounted on
+    # /dev/disk/by-uuid/{...}  10320184 680336   9115612   7% /
+    #
+    # % df -B 1K /dev/sda1
+    # Filesystem     1K-blocks  Used Available Use% Mounted on
+    # udev               10240     0     10240   0% /dev
+    #
+    # so we read the size of the root partition to work on both.
+    local dev_sda1_df="$(df -B 1K / | grep ' /$' | awk '{ print $2 }')"
+    if [ $(ratio_over_threshold "${dev_sda}" "${dev_sda1_df}") -eq 1 ]; then
+      resize2fs /dev/sda1
+    fi
   fi
+}
+
+# Emulate Python's way of only executing the code if this file were invoked as
+# the main one:
+#
+# if __name__ == '__main__':
+#   ...
+if [[ "$(basename $0)" != "fdisk_test.sh" ]]; then
+  main
 fi
