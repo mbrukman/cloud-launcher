@@ -18,7 +18,7 @@ ifeq (VERBOSE,1)
 	VERB =
 endif
 
-DEBUG = @ /bin/true
+DEBUG = @ true
 ifeq (DEBUGGING,1)
 	DEBUG = @
 endif
@@ -33,7 +33,7 @@ ambari-agent: $(AMBARI_AGENT_OUTPUT)
 $(AMBARI_AGENT_OUTPUT): $(AMBARI_AGENT_INPUTS) Makefile
 	$(DEBUG) echo "***************************"
 	$(DEBUG) echo "Agent input scripts: $(AMBARI_AGENT_INPUTS)"
-	$(VERB) cat $(AMBARI_AGENT_INPUTS) | sed '/^\s*#/d' > $@
+	$(VERB) cat $(AMBARI_AGENT_INPUTS) | sed '/^[[:space:]]*#/d' > $@
 	$(DEBUG) echo "Agent output script:"
 	$(DEBUG) cat $@
 
@@ -42,6 +42,6 @@ ambari-server: $(AMBARI_SERVER_OUTPUT)
 $(AMBARI_SERVER_OUTPUT): $(AMBARI_SERVER_INPUTS) Makefile
 	$(DEBUG) echo "***************************"
 	$(DEBUG) echo "Server input scripts: $(AMBARI_SERVER_INPUTS)"
-	$(VERB) cat $(AMBARI_SERVER_INPUTS) | sed -r '/^\s*#/d' > $@
+	$(VERB) cat $(AMBARI_SERVER_INPUTS) | sed '/^[[:space:]]*#/d' > $@
 	$(DEBUG) echo "Server output script:"
 	$(DEBUG) cat $@
