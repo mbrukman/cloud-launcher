@@ -34,7 +34,7 @@ with Cloud Launcher.
     * Choose _"Installed application"_
     * Application type is _"other"_
     * Click on _"Create Client ID"_
-  * Under the new section _"Clind ID for native application"_, click on
+  * Under the new section _"Client ID for native application"_, click on
     _"Download JSON"_
   * Save this file as `$HOME/cloud/projects/$PROJECT/client_secrets.json`
 
