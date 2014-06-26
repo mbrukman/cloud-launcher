@@ -1,8 +1,6 @@
 Deploy
 ======
 
-Install the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/).
-
 Build the startup scripts for the instances:
 
 ```bash

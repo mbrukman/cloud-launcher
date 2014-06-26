@@ -3,8 +3,13 @@ Cloud Launcher
 
 Simplifying the process of launching applications on Google Cloud Platform.
 
-Initial setup
--------------
+Global setup
+------------
+
+Install the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/).
+
+Per-project setup
+-----------------
 
 This is a one-time setup for each Google Cloud Platform project you want to use
 with Cloud Launcher.
