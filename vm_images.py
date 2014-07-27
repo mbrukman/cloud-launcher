@@ -37,6 +37,9 @@ PROJECT_IMAGES = (
             'centos-6-v20140619',
             'centos-6-v20140718',
         ),
+        'pseudo': {
+            'centos-6-latest': 'centos-6-v20140718',
+        },
     },
     {
         # http://coreos.com/docs/running-coreos/cloud-providers/google-compute-engine/
@@ -71,6 +74,11 @@ PROJECT_IMAGES = (
             'coreos-beta-367-1-0-v20140715',
             'coreos-stable-367-1-0-v20140724',
         ),
+        'pseudo': {
+            'coreos-alpha-latest': 'coreos-alpha-386-1-0-v20140723',
+            'coreos-beta-latest': 'coreos-beta-367-1-0-v20140715',
+            'coreos-stable-latest': 'coreos-stable-367-1-0-v20140724',
+        },
     },
     {
         'project': 'debian-cloud',
@@ -93,6 +101,10 @@ PROJECT_IMAGES = (
             'debian-7-wheezy-v20140619',
             'debian-7-wheezy-v20140718',
         ),
+        'pseudo': {
+            'backports-debian-7-wheezy-latest': 'backports-debian-7-wheezy-v20140718',
+            'debian-7-wheezy-latest': 'debian-7-wheezy-v20140718',
+        },
     },
     {
         # https://developers.google.com/compute/docs/containers
@@ -102,6 +114,9 @@ PROJECT_IMAGES = (
             'container-vm-v20140624',
             'container-vm-v20140710',
         ),
+        'pseudo': {
+            'container-vm-latest': 'container-vm-v20140710',
+        },
     },
     {
         'project': 'opensuse-cloud',
@@ -110,6 +125,9 @@ PROJECT_IMAGES = (
             'opensuse-13-1-v20140627',
             'opensuse-13-1-v20140711',
         ),
+        'pseudo': {
+            'opensuse-13-1-latest': 'opensuse-13-1-v20140711',
+        },
     },
     {
         'project': 'rhel-cloud',
@@ -124,6 +142,9 @@ PROJECT_IMAGES = (
             'rhel-6-v20140619',
             'rhel-6-v20140718',
         ),
+        'pseudo': {
+            'rhel-6-latest': 'rhel-6-v20140718',
+        },
     },
     {
         'project': 'suse-cloud',
@@ -132,6 +153,9 @@ PROJECT_IMAGES = (
             'sles-11-sp3-v20140609',
             'sles-11-sp3-v20140712',
         ),
+        'pseudo': {
+            'sles-11-sp3-latest': 'sles-11-sp3-v20140712',
+        },
     },
 )
 
@@ -143,6 +167,11 @@ def ImageShortNameToUrl(image):
       return image_url_fmt % {
           'project': pi['project'],
           'image': image,
+      }
+    elif ('pseudo' in pi) and (image in pi['pseudo']):
+      return image_url_fmt % {
+          'project': pi['project'],
+          'image': pi['pseudo'][image],
       }
 
   raise InvalidImageShortName('Unknown short image name: %s' % image)
