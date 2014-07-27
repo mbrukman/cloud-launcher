@@ -29,28 +29,31 @@ import vm_images
 
 class ImageShortNameToUrlTest(unittest.TestCase):
 
-  def testDirectReferenceImages(self):
+  def projectImageToUrl(self, project, image):
     url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
+    return url_fmt % {
+        'project': project,
+        'image': image,
+    }
+
+  def testDirectReferenceImages(self):
     for project_images in vm_images.PROJECT_IMAGES:
       for image in project_images['images']:
         self.assertEqual(
-            url_fmt % {
-              'project': project_images['project'],
-              'image': image,
-            },
+            self.projectImageToUrl(
+                project_images['project'],
+                image),
             vm_images.ImageShortNameToUrl(image))
 
   def testPseudoImages(self):
-    url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
     for project_images in vm_images.PROJECT_IMAGES:
       if not 'pseudo' in project_images:
         continue
       for pseudo in project_images['pseudo']:
         self.assertEqual(
-            url_fmt % {
-              'project': project_images['project'],
-              'image': project_images['pseudo'][pseudo],
-            },
+            self.projectImageToUrl(
+                project_images['project'],
+                project_images['pseudo'][pseudo]),
             vm_images.ImageShortNameToUrl(pseudo))
 
   def testInvalid(self):
