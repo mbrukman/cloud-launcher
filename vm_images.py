@@ -24,7 +24,7 @@ class InvalidImageShortName(Exception):
     return repr(self.__value)
 
 
-_PROJECT_IMAGES = (
+PROJECT_IMAGES = (
     {
         'project': 'centos-cloud',
         'images': (
@@ -138,7 +138,7 @@ _PROJECT_IMAGES = (
 def ImageShortNameToUrl(image):
   image_url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
 
-  for pi in _PROJECT_IMAGES:
+  for pi in PROJECT_IMAGES:
     if image in pi['images']:
       return image_url_fmt % {
           'project': pi['project'],

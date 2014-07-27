@@ -29,22 +29,22 @@ import vm_images
 
 class ImageShortNameToUrlTest(unittest.TestCase):
 
-  def testCentOS(self):
-    for image in ('centos-6-v20131120', 'centos-6-v20140318',
-                  'centos-6-v20140408', 'centos-6-v20140415'):
-      self.assertEqual(
-          'https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/%s' % image,
-          vm_images.ImageShortNameToUrl(image))
-
-  def testDebian(self):
-    for image in ('debian-7-wheezy-v20131120', 'debian-7-wheezy-v20140318',
-                  'debian-7-wheezy-v20140408', 'debian-7-wheezy-v20140415'):
-      self.assertEqual(
-          'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/%s' % image,
-          vm_images.ImageShortNameToUrl(image))
+  def testDirectReferenceImages(self):
+    url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
+    for project_images in vm_images.PROJECT_IMAGES:
+      for image in project_images['images']:
+        self.assertEqual(
+            url_fmt % {
+              'project': project_images['project'],
+              'image': image,
+            },
+            vm_images.ImageShortNameToUrl(image))
 
   def testInvalid(self):
-    self.assertRaises(vm_images.InvalidImageShortName, vm_images.ImageShortNameToUrl, 'some-unknown-image')
+    self.assertRaises(
+        vm_images.InvalidImageShortName,
+        vm_images.ImageShortNameToUrl,
+        'some-unknown-image')
 
 
 class ConfigExpanderTest(unittest.TestCase):

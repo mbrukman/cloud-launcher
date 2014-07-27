@@ -5,7 +5,7 @@
         "deviceName": "disk-0",
         "initializeParams": {
           "diskName": "centos1-0-disk-0",
-          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20131120"
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140718"
         }
       }
     ],
@@ -18,7 +18,7 @@
         "deviceName": "disk-0",
         "initializeParams": {
           "diskName": "coreos1-0-disk-0",
-          "sourceImage": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-324-1-0-v20140522"
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-386-1-0-v20140723"
         }
       }
     ],
@@ -31,7 +31,7 @@
         "deviceName": "disk-0",
         "initializeParams": {
           "diskName": "debian1-0-disk-0",
-          "sourceImage": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20140415"
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20140718"
         }
       }
     ],
@@ -44,7 +44,7 @@
         "deviceName": "disk-0",
         "initializeParams": {
           "diskName": "google-containers1-0-disk-0",
-          "sourceImage": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20140522"
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20140710"
         }
       }
     ],

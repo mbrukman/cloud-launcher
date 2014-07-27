@@ -1,19 +1,19 @@
 - name: centos1
   disks:
     - initializeParams:
-        sourceImage: centos-6-v20131120
+        sourceImage: centos-6-v20140718
 
 - name: coreos1
   disks:
     - initializeParams:
-        sourceImage: coreos-alpha-324-1-0-v20140522
+        sourceImage: coreos-alpha-386-1-0-v20140723
 
 - name: debian1
   disks:
     - initializeParams:
-        sourceImage: debian-7-wheezy-v20140415
+        sourceImage: debian-7-wheezy-v20140718
 
 - name: google-containers1
   disks:
     - initializeParams:
-        sourceImage: container-vm-v20140522
+        sourceImage: container-vm-v20140710
