@@ -50,11 +50,11 @@ _PROJECT_IMAGES = (
         ),
     },
     {
-      # https://developers.google.com/compute/docs/containers
-      'project': 'google-containers',
-      'images': (
-          'container-vm-v20140522',
-      ),
+        # https://developers.google.com/compute/docs/containers
+        'project': 'google-containers',
+        'images': (
+            'container-vm-v20140522',
+        ),
     },
     {
         'project': 'rhel-cloud',
