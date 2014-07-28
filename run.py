@@ -37,7 +37,7 @@ from oauth2client import tools
 from oauth2client.tools import run_flow
 
 # Local imports
-import config
+import config_yaml
 
 
 API_VERSION = 'v1'
@@ -98,8 +98,8 @@ class GceHandler(object):
     return []
 
   def _ListFromConfig(self):
-    expander = config.ConfigExpander(project=self.__flags.project,
-                                     zone=self.__flags.zone)
+    expander = config_yaml.ConfigExpander(project=self.__flags.project,
+                                          zone=self.__flags.zone)
     return expander.ExpandFile(self.__flags.config)
 
   def _InstanceInSelection(self, instance):
@@ -210,8 +210,8 @@ class GceHandler(object):
       sys.stderr.write('--config must be specified pointing to a valid config file\n')
       sys.exit(1)
 
-    expander = config.ConfigExpander(project=self.__flags.project,
-                                     zone=self.__flags.zone)
+    expander = config_yaml.ConfigExpander(project=self.__flags.project,
+                                          zone=self.__flags.zone)
     instances = expander.ExpandFile(self.__flags.config)
     for instance in instances:
       instance_name = instance['name']

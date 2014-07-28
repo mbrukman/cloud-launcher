@@ -38,7 +38,7 @@ test_golden:
 		out_json_base="`basename $$out_json`"; \
 	  $(ECHO) -n "Testing $$in_yaml -> $$out_json ... "; \
 	  tempfile=`mktemp "/tmp/$$out_json_base.XXXXXX"`; \
-		../config.py ./$$in_yaml > $$tempfile 2>&1; \
+		../config_yaml.py ./$$in_yaml > $$tempfile 2>&1; \
 		if [[ $$? -eq 0 ]] && [ ! `diff $$out_json $$tempfile > /dev/null 2>&1` ]; then \
 			$(ECHO) "PASSED"; \
 	    rm -f "$$tempfile"; \
