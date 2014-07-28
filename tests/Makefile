@@ -25,9 +25,35 @@ endif
 
 ECHO = /bin/echo
 
-test:
+default: test
+
+test: test_scripts test_golden
+
+test_golden:
+	$(VERB) echo "---------------------------------"
+	$(VERB) echo "Running golden input/output tests"
+	$(VERB) echo "---------------------------------"
+	$(VERB) for in_yaml in testdata/*.in.yaml; do \
+		out_json="`echo $$in_yaml | sed 's/.in.yaml/.out.json/'`"; \
+		out_json_base="`basename $$out_json`"; \
+	  $(ECHO) -n "Testing $$in_yaml -> $$out_json ... "; \
+	  tempfile=`mktemp "/tmp/$$out_json_base.XXXXXX"`; \
+		../config.py ./$$in_yaml > $$tempfile 2>&1; \
+		if [[ $$? -eq 0 ]] && [ ! `diff $$out_json $$tempfile > /dev/null 2>&1` ]; then \
+			$(ECHO) "PASSED"; \
+	    rm -f "$$tempfile"; \
+	  else \
+	    $(ECHO) "FAILED (output and log in $$tempfile)"; \
+	    cat $$tempfile; \
+	  fi; \
+	done
+
+test_scripts:
+	$(VERB) echo "--------------------"
+	$(VERB) echo "Running script tests"
+	$(VERB) echo "--------------------"
 	$(VERB) for test in *_test.*; do \
-	  $(ECHO) -n "Running $$test ... "; \
+	  $(ECHO) -n "Testing $$test ... "; \
 	  tempfile=`mktemp "/tmp/$$test.XXXXXX"`; \
 	  env PYTHONPATH=$(PYTHONPATH) ./$$test > $$tempfile 2>&1; \
 	  if [[ $$? -eq 0 ]]; then \
