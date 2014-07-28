@@ -1,0 +1,3 @@
+- name: netwrk
+  networkInterfaces:
+    - network: default

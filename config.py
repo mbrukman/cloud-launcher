@@ -25,25 +25,9 @@ import sys
 import yaml
 
 # Local imports
+import common
 import vm_images
 
-
-def ProjectUrl(project):
-  return 'https://www.googleapis.com/compute/%(api_version)s/projects/%(project)s' % {
-      'api_version': 'v1',
-      'project': project,
-  }
-
-def ProjectZoneUrl(project, zone):
-  return '%(project_url)s/zones/%(zone)s' % {
-      'project_url': ProjectUrl(project),
-      'zone': zone,
-  }
-
-def ProjectGlobalUrl(project):
-  return '%(project_url)s/global' % {
-      'project_url': ProjectUrl(project),
-  }
 
 class ConfigExpander(object):
 
@@ -53,23 +37,18 @@ class ConfigExpander(object):
       self.__kwargs[key] = value
 
   def __ZoneUrl(self):
-    return ProjectZoneUrl(self.__kwargs['project'], self.__kwargs['zone'])
+    return common.ProjectZoneUrl(self.__kwargs['project'], self.__kwargs['zone'])
 
-  def __MachineTypeToUrl(self, instance_name):
-    return '%(zone_url)s/machineTypes/%(instance_name)s' % {
-        'zone_url': self.__ZoneUrl(),
-        'instance_name': instance_name,
-    }
+  def __MachineTypeToUrl(self, machineType):
+    return common.MachineTypeToUrl(
+        self.__kwargs['project'], self.__kwargs['zone'], machineType)
 
   def __NetworkToUrl(self, network):
     # TODO(mbrukman): make this an auto-generated globally-unique name?
-    return '%(project_url)s/networks/%(network)s' % {
-        'project_url': ProjectGlobalUrl(self.__kwargs['project']),
-        'network': network,
-    }
+    return common.NetworkToUrl(self.__kwargs['project'], network)
 
   def __ZoneToUrl(self, zone):
-    return ProjectZoneUrl(self.__kwargs['project'], zone)
+    return common.ProjectZoneUrl(self.__kwargs['project'], zone)
 
   def ExpandFile(self, file_name):
     with open(file_name) as input_yaml:

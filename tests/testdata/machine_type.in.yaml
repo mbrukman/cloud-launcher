@@ -1,0 +1,2 @@
+- name: machine
+  machineType: n1-standard-1
