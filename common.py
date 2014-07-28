@@ -38,6 +38,19 @@ def ProjectGlobalUrl(project):
       'project_url': ProjectUrl(project),
   }
 
+def DiskTypeToUrl(project, zone, diskType):
+  assert diskType in ('pd-standard', 'pd-ssd')
+  return '%(zone_url)/diskTypes/%(diskType)s' % {
+      'zone_url': ProjectZoneUrl(project, zone),
+      'diskType': diskType,
+  }
+
+def ImageToUrl(project, image):
+  return '%(project_url)s/images/%(image)s' % {
+      'project': ProjectGlobalUrl,
+      'image': image,
+  }
+
 def MachineTypeToUrl(project, zone, machineType):
   return '%(zone_url)s/machineTypes/%(machineType)s' % {
       'zone_url': ProjectZoneUrl(project, zone),
