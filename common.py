@@ -18,6 +18,8 @@
 #
 # Common functionality to be shared across various types of config handlers.
 
+import os
+
 
 def ProjectUrl(project):
   return 'https://www.googleapis.com/compute/%(api_version)s/projects/%(project)s' % {
@@ -47,3 +49,37 @@ def NetworkToUrl(project, network):
       'project_url': ProjectGlobalUrl(project),
       'network': network,
   }
+
+def ReadReferencedFileToString(base_file, referenced_file):
+  """Given a string '%file:<path>'; returns the contents of file at <path>.
+
+  Args:
+    base_file (string): the file doing the referencing
+    referenced_file (string): target file being referenced; must start with
+        '%file:<...>'
+
+  Returns:
+    string (contents of the referenced file)
+  """
+  # Find the sourced file relative to the config file.
+  file_path = os.path.join(os.path.dirname(base_file), referenced_file[6:])
+  if not os.path.exists(file_path):
+    sys.stderr.write('Error: startup script "%s" not found.\n' %
+                     file_path)
+    sys.exit(1)
+
+  with open(file_path) as file_input:
+    file_contents = file_input.read()
+    # The limit for startup scripts sent via metadata is 35000 chars:
+    #
+    #   "If your startup script is less than 35000 bytes, you could choose
+    #   to pass in your startup script as pure metadata, [...]"
+    #
+    # https://developers.google.com/compute/docs/howtos/startupscript#example
+    if len(file_contents) >= 35000:
+      # TODO(mbrukman): write an automatic push-to-CloudStore to make
+      # this easy for the user.
+      sys.stderr.write('Startup script too large (%d); must be < 35000 chars; '
+                       'please use "startup-script-url" instead.')
+      sys.exit(1)
+    return file_contents

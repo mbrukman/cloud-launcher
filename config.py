@@ -76,28 +76,8 @@ class ConfigExpander(object):
           items = metadata['items']
           for item in items:
             if item['value'].startswith('%file'):
-              # Find the sourced file relative to the config file.
-              file_path = os.path.join(os.path.dirname(file_name), item['value'][6:])
-              if not os.path.exists(file_path):
-                sys.stderr.write('Error: startup script "%s" not found.\n' %
-                                 file_path)
-                sys.exit(1)
-
-              with open(file_path) as file_input:
-                file_contents = file_input.read()
-                # The limit for startup scripts sent via metadata is 35000 chars:
-                #
-                #   "If your startup script is less than 35000 bytes, you could choose
-                #   to pass in your startup script as pure metadata, [...]"
-                #
-                # https://developers.google.com/compute/docs/howtos/startupscript#example
-                if len(file_contents) >= 35000:
-                  # TODO(mbrukman): write an automatic push-to-CloudStore to make
-                  # this easy for the user.
-                  sys.stderr.write('Startup script too large (%d); must be < 35000 chars; '
-                                   'please use "startup-script-url" instead.')
-                  sys.exit(1)
-                item['value'] = file_contents
+              item['value'] = common.ReadReferencedFileToString(
+                  file_name, item['value'])
 
       if 'networkInterfaces' in instance:
         networkInterfaces = instance['networkInterfaces']

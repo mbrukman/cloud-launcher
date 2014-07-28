@@ -1,0 +1,5 @@
+- name: startup
+  metadata:
+    items:
+      - key: startup-script
+        value: '%file:startup-script.sh'
