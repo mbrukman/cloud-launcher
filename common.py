@@ -50,6 +50,10 @@ def NetworkToUrl(project, network):
       'network': network,
   }
 
+def IsUrl(string):
+  return (string.startswith('http://') or
+          string.startswith('https://'))
+
 def ReadReferencedFileToString(base_file, referenced_file):
   """Given a string '%file:<path>'; returns the contents of file at <path>.
 

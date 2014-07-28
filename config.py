@@ -66,8 +66,7 @@ class ConfigExpander(object):
     for instance in config:
       if 'machineType' in instance:
         machineType = instance['machineType']
-        if not (machineType.startswith('http://') or
-                machineType.startswith('https://')):
+        if not common.IsUrl(machineType):
           instance['machineType'] = self.__MachineTypeToUrl(machineType)
 
       if 'metadata' in instance:
@@ -83,14 +82,12 @@ class ConfigExpander(object):
         networkInterfaces = instance['networkInterfaces']
         for networkIntf in networkInterfaces:
           network_name = networkIntf['network']
-        if not (network_name.startswith('http://') or
-                network_name.startswith('https://')):
+        if not common.IsUrl(network_name):
           networkIntf['network'] = self.__NetworkToUrl(network_name)
 
       if 'zone' in instance:
         zone = instance['zone']
-        if not (zone.startswith('http://') or
-                zone.startswith('https://')):
+        if not common.IsUrl(zone):
           instance['zone'] = self.__ZoneToUrl(zone)
       else:
         instance['zone'] = self.__ZoneUrl()
@@ -103,8 +100,7 @@ class ConfigExpander(object):
             # Translate sourceImage base name -> URL, if not already a URL.
             if 'sourceImage' in initializeParams:
               sourceImage = initializeParams['sourceImage']
-              if not (sourceImage.startswith('http://') or
-                      sourceImage.startswith('https://')):
+              if not common.IsUrl(sourceImage):
                 disk['initializeParams']['sourceImage'] = vm_images.ImageShortNameToUrl(sourceImage)
 
     # convert numReplicas > 1 into multiple specs, updating the config
@@ -135,8 +131,7 @@ class ConfigExpander(object):
 
             if 'source' in disk:
               source = disk['source']
-              if not (source.startswith('http://') or
-                      source.startswith('https://')):
+              if not common.IsUrl(source):
                 # Find the right zone for the disk, with fallbacks in the following order:
                 # * specified for the disk explicitly
                 # * specified for the instance explicitly
@@ -150,8 +145,7 @@ class ConfigExpander(object):
                   zone = self.__kwargs['zone']
 
                 # Convert zone name to URL, if necessary.
-                if (zone.startswith('http://') or
-                    zone.startswith('https://')):
+                if common.IsUrl(zone):
                   zone_url = zone
                 else:
                   zone_url = self.__ZoneToUrl(zone)
