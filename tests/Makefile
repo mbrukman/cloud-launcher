@@ -23,16 +23,18 @@ ifeq (VERBOSE,1)
 	VERB =
 endif
 
+ECHO = /bin/echo
+
 test:
 	$(VERB) for test in *_test.*; do \
-	  echo -n "Running $$test ... "; \
+	  $(ECHO) -n "Running $$test ... "; \
 	  tempfile=`mktemp "/tmp/$$test.XXXXXX"`; \
 	  env PYTHONPATH=$(PYTHONPATH) ./$$test > $$tempfile 2>&1; \
 	  if [[ $$? -eq 0 ]]; then \
-	    echo "PASSED"; \
+	    $(ECHO) "PASSED"; \
 	    rm -f "$$tempfile"; \
 	  else \
-	    echo "FAILED (log in $$tempfile)"; \
+	    $(ECHO) "FAILED (log in $$tempfile)"; \
 	    cat $$tempfile; \
 	  fi; \
 	done
