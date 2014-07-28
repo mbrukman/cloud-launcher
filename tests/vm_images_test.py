@@ -23,7 +23,6 @@ import os
 import unittest
 
 # Local imports
-import config
 import vm_images
 
 
@@ -61,35 +60,6 @@ class ImageShortNameToUrlTest(unittest.TestCase):
         vm_images.InvalidImageShortName,
         vm_images.ImageShortNameToUrl,
         'some-unknown-image')
-
-
-class ConfigExpanderTest(unittest.TestCase):
-
-  def _FileBasename(self, filename):
-    base1 = os.path.splitext(filename)[0]
-    return os.path.splitext(base1)[0]
-
-  def testFileBasename(self):
-    before_after = (
-        ('abc.in.yaml', 'abc'),
-        ('foo.out.json', 'foo'),
-    )
-    for before, after in before_after:
-      self.assertEqual(after, self._FileBasename(before))
-
-  def testAllFiles(self):
-    all_files = os.listdir(os.path.join(os.path.dirname(__file__), 'testdata'))
-    unique_files = sorted(set(map(lambda x: self._FileBasename(x), all_files)))
-    for filename in unique_files:
-      expected = 'testdata/%s.out.json' % filename
-      with open(expected) as expected_in:
-        expected_json = json.loads(expected_in.read(), encoding='utf-8')
-
-      input_file = 'testdata/%s.in.yaml' % filename
-      expander = config.ConfigExpander(project='dummy-project', zone='dummy-zone')
-      actual_json = expander.ExpandFile(input_file)
-
-      self.assertEqual(expected_json, actual_json)
 
 
 if __name__ == '__main__':
