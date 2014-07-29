@@ -1,0 +1,131 @@
+[
+  {
+    "disksToCreate": [
+      {
+        "autoDelete": true,
+        "boot": true,
+        "initializeParams": {
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140415"
+        },
+        "kind": "compute#attachedDisk",
+        "mode": "READ_WRITE",
+        "type": "PERSISTENT"
+      }
+    ],
+    "kind": "compute#instance",
+    "metadata": {
+      "items": [
+        {
+          "key": "startup-script",
+          "value": "#!/bin/bash\n\necho 42\n"
+        }
+      ],
+      "kind": "compute#metadata"
+    },
+    "name": "vm-0",
+    "networkInterfaces": {
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "network": "default"
+    },
+    "serviceAccounts": [
+      {
+        "email": "default",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.full_control",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ]
+  },
+  {
+    "disksToCreate": [
+      {
+        "autoDelete": true,
+        "boot": true,
+        "initializeParams": {
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140415"
+        },
+        "kind": "compute#attachedDisk",
+        "mode": "READ_WRITE",
+        "type": "PERSISTENT"
+      }
+    ],
+    "kind": "compute#instance",
+    "metadata": {
+      "items": [
+        {
+          "key": "startup-script",
+          "value": "#!/bin/bash\n\necho 42\n"
+        }
+      ],
+      "kind": "compute#metadata"
+    },
+    "name": "vm-1",
+    "networkInterfaces": {
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "network": "default"
+    },
+    "serviceAccounts": [
+      {
+        "email": "default",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.full_control",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ]
+  },
+  {
+    "disksToCreate": [
+      {
+        "autoDelete": true,
+        "boot": true,
+        "initializeParams": {
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140415"
+        },
+        "kind": "compute#attachedDisk",
+        "mode": "READ_WRITE",
+        "type": "PERSISTENT"
+      }
+    ],
+    "kind": "compute#instance",
+    "metadata": {
+      "items": [
+        {
+          "key": "startup-script",
+          "value": "#!/bin/bash\n\necho 42\n"
+        }
+      ],
+      "kind": "compute#metadata"
+    },
+    "name": "vm-2",
+    "networkInterfaces": {
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "network": "default"
+    },
+    "serviceAccounts": [
+      {
+        "email": "default",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.full_control",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ]
+  }
+]

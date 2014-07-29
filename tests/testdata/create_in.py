@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#
 # Copyright 2014 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,22 +16,25 @@
 #
 ################################################################################
 #
-# Automatically runs all the tests in this directory.
+# Sample use case of the constructors in resources.py to use as an alternative
+# to YAML.
 
-PYTHONPATH = ..
+GCE.setDefaults(
+    project='curious-lemming-42',
+    zone='us-central1-a',
+)
 
-VERB = @
-ifeq (VERBOSE,1)
-	VERB =
-endif
-
-ECHO = /bin/echo
-
-default: test
-
-test:
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./test_scripts.sh
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./test_yaml_to_json.sh
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./test_py_to_json.sh
-	$(VERB) $(ECHO)
-	$(VERB) $(ECHO) "Done."
+resources = [
+  Compute.instance(
+    name='vm-%d' % i,
+    disksToCreate=[
+      Disk.boot(
+        autoDelete=true,
+        initializeParams=Disk.initializeParams(
+          sourceImage='centos-6-v20140415',
+        ),
+      ),
+    ],
+    metadata=Metadata.startupScript('startup-script.sh')
+  ) for i in range(0, 3)
+]
