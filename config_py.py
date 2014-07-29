@@ -23,21 +23,24 @@ import sys
 
 
 def ImportModule(module):
-  config = __import__(module, globals=globals(), locals=locals(), fromlist=['*'])
+  config = __import__(module, globals={}, locals={}, fromlist=['*'])
   return config.resources
 
 
 def CompileAndEvalFile(path):
   with open(path, 'r') as file_in:
+    module_globals = {}
+    module_locals = {}
+
     # We shouldn't use "from gce import *" here due to:
     #   SyntaxWarning: import * only allowed at module level
-    # so we emulate it instead by adding all top-level symbols to locals.
+    # so we emulate it instead by adding all top-level symbols to globals.
     import gce
     for key, val in gce.__dict__.iteritems():
-      locals()[key] = val
+      module_globals[key] = val
 
-    eval(compile(file_in.read(), path, 'exec'))
-    return locals()['resources']
+    eval(compile(file_in.read(), path, 'exec'), module_globals, module_locals)
+    return module_locals['resources']
 
 
 def main(argv):
