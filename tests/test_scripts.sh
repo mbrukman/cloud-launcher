@@ -1,6 +1,6 @@
-# Copyright 2014 Google Inc.
+#!/bin/bash
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Apache License, Version 2.0 (the "License")
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -14,25 +14,21 @@
 #
 ################################################################################
 #
-# Automatically runs all the tests in this directory.
+# Runs all *_test.* scripts.
 
-PYTHONPATH = ..
-
-VERB = @
-ifeq (VERBOSE,1)
-	VERB =
-endif
-
-ECHO = /bin/echo
-
-default: test
-
-test: test_scripts test_yaml
-	$(VERB) $(ECHO)
-	$(VERB) $(ECHO) "Done."
-
-test_yaml:
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./test_yaml_to_json.sh
-
-test_scripts:
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./test_scripts.sh
+echo
+echo "--------------------"
+echo "Running script tests"
+echo "--------------------"
+for test in *_test.*; do
+  echo -n "Testing ${test} ... "
+	tempfile="$(mktemp "/tmp/$test.XXXXXX")"
+  env PYTHONPATH="${PYTHONPATH}" "./${test}" > "${tempfile}" 2>&1
+  if [[ $? -eq 0 ]]; then
+    echo "PASSED"
+    rm -f "${tempfile}"
+  else
+    echo "FAILED (log in ${tempfile})"
+    cat "${tempfile}"
+  fi
+done
