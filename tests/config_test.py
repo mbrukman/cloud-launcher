@@ -24,7 +24,7 @@ import os
 import unittest
 
 # Local imports
-import config
+import config_yaml
 
 
 class ConfigExpanderTest(unittest.TestCase):
@@ -36,7 +36,7 @@ class ConfigExpanderTest(unittest.TestCase):
       with open(expected) as expected_in:
         expected_json = json.loads(expected_in.read(), encoding='utf-8')
 
-      expander = config.ConfigExpander(project='dummy-project', zone='dummy-zone')
+      expander = config_yaml.ConfigExpander(project='dummy-project', zone='dummy-zone')
       actual_json = expander.ExpandFile(input_file)
 
       self.assertEqual(expected_json, actual_json)
