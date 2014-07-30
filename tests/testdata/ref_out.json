@@ -1,0 +1,77 @@
+[
+  {
+    "disksToCreate": [
+      {
+        "autoDelete": true,
+        "boot": true,
+        "initializeParams": {
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140415"
+        },
+        "kind": "compute#attachedDisk",
+        "mode": "READ_WRITE",
+        "type": "PERSISTENT"
+      }
+    ],
+    "kind": "compute#instance",
+    "name": "vm-master",
+    "networkInterfaces": {
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "network": "default"
+    },
+    "serviceAccounts": [
+      {
+        "email": "default",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.full_control",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ]
+  },
+  {
+    "disksToCreate": [
+      {
+        "autoDelete": true,
+        "boot": true,
+        "initializeParams": {
+          "sourceImage": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20140415"
+        },
+        "kind": "compute#attachedDisk",
+        "mode": "READ_WRITE",
+        "type": "PERSISTENT"
+      }
+    ],
+    "kind": "compute#instance",
+    "metadata": {
+      "items": {
+        "key": "master",
+        "value": "vm-master"
+      },
+      "kind": "compute#metadata"
+    },
+    "name": "vm-worker-0",
+    "networkInterfaces": {
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ],
+      "network": "default"
+    },
+    "serviceAccounts": [
+      {
+        "email": "default",
+        "scopes": [
+          "https://www.googleapis.com/auth/devstorage.full_control",
+          "https://www.googleapis.com/auth/compute"
+        ]
+      }
+    ]
+  }
+]

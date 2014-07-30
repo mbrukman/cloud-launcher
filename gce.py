@@ -26,6 +26,38 @@ import vm_images
 # as output.
 true = True
 
+class Dict(dict):
+  """A dict-like class to allow referencing via x.y and x['y'].
+
+  This class subclasses from `dict` to be easily serializable to JSON for the
+  purposes of calling REST APIs with the data contained within.
+  """
+
+  def __init__(self, **kwargs):
+    super(Dict, self).__init__()
+    for name, value in kwargs.iteritems():
+      self.__setattr__(name, value)
+
+  def __setattr__(self, name, value):
+    self.__setitem__(name, value)
+    super(Dict, self).__setattr__(name, value)
+
+  def __filterKey(self, key):
+    return not key.startswith('_')
+
+  def keys(self):
+    return [key for key in super(Dict, self).keys() if self.__filterKey(key)]
+
+  def items(self):
+    return [(key, value) for key, value in super(Dict, self).items()
+            if self.__filterKey(key)]
+
+  def iteritems(self):
+    for key, value in super(Dict, self).iteritems():
+      if self.__filterKey(key):
+        yield (key, value)
+
+
 class GCE(object):
   class Settings(object):
     project = None
@@ -46,6 +78,7 @@ class Util(object):
 
   @classmethod
   def updateResourceWithParams(cls, resource, params):
+    resource = Dict(**resource)
     for key, val in params.iteritems():
       if val is not None:
         resource[key] = val
