@@ -28,19 +28,18 @@ def ImportModule(module):
 
 
 def CompileAndEvalFile(path):
-  with open(path, 'r') as file_in:
-    module_globals = {}
-    module_locals = {}
+  module_globals = {}
+  module_locals = {}
 
-    # We shouldn't use "from gce import *" here due to:
-    #   SyntaxWarning: import * only allowed at module level
-    # so we emulate it instead by adding all top-level symbols to globals.
-    import gce
-    for key, val in gce.__dict__.iteritems():
-      module_globals[key] = val
+  # We shouldn't use "from gce import *" here due to:
+  #   SyntaxWarning: import * only allowed at module level
+  # so we emulate it instead by adding all top-level symbols to globals.
+  import gce
+  for key, val in gce.__dict__.iteritems():
+    module_globals[key] = val
 
-    eval(compile(file_in.read(), path, 'exec'), module_globals, module_locals)
-    return module_locals['resources']
+  execfile(path, module_globals, module_locals)
+  return module_locals['resources']
 
 
 def main(argv):
