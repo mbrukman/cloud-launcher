@@ -22,7 +22,7 @@ echo "Running script tests"
 echo "--------------------"
 for test in *_test.*; do
   echo -n "Testing ${test} ... "
-	tempfile="$(mktemp "/tmp/$test.XXXXXX")"
+  tempfile="$(mktemp "/tmp/$test.XXXXXX")"
   env PYTHONPATH="${PYTHONPATH}" "./${test}" > "${tempfile}" 2>&1
   if [[ $? -eq 0 ]]; then
     echo "PASSED"

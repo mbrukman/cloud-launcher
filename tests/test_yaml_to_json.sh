@@ -21,13 +21,13 @@ echo "--------------------------"
 echo "Running YAML -> JSON tests"
 echo "--------------------------"
 for in_yaml in testdata/*.in.yaml; do
-	out_json="$(echo $in_yaml | sed 's/.in.yaml/.out.json/')"
-	out_json_base="$(basename "${out_json}")"
+  out_json="$(echo $in_yaml | sed 's/.in.yaml/.out.json/')"
+  out_json_base="$(basename "${out_json}")"
   echo -n "Testing ${in_yaml} -> ${out_json} ... "
-	tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
-	${PYTHONPATH}/config_yaml.py "${in_yaml}" > "${tempfile}" 2>&1
-	if [[ $? -eq 0 ]] && [ ! `diff "${out_json}" "${tempfile}"` ]; then
-		echo "PASSED"
+  tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
+  ${PYTHONPATH}/config_yaml.py "${in_yaml}" > "${tempfile}" 2>&1
+  if [[ $? -eq 0 ]] && [ ! `diff "${out_json}" "${tempfile}"` ]; then
+    echo "PASSED"
     rm -f "${tempfile}"
   else
     echo "FAILED (output and log in $tempfile)"
