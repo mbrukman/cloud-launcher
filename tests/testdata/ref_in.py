@@ -46,9 +46,9 @@ workers = [Compute.instance(
       ),
     ],
     metadata=Metadata.create(
-			# Note the symbolic reference to `master.name`, defined above.
-			items=Metadata.item('master', master.name)
-		)
+      # Note the symbolic reference to `master.name`, defined above.
+      items=Metadata.item('master', master.name)
+    )
   ) for i in range(0, 1)]
 
 resources = [master] + workers
