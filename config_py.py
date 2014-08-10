@@ -21,6 +21,9 @@
 import json
 import sys
 
+# Local imports
+import gce
+
 
 def ImportModule(module):
   config = __import__(module, globals={}, locals={}, fromlist=['*'])
@@ -34,12 +37,30 @@ def CompileAndEvalFile(path):
   # We shouldn't use "from gce import *" here due to:
   #   SyntaxWarning: import * only allowed at module level
   # so we emulate it instead by adding all top-level symbols to globals.
-  import gce
   for key, val in gce.__dict__.iteritems():
     module_globals[key] = val
 
   execfile(path, module_globals, module_locals)
   return module_locals['resources']
+
+
+class ConfigExpander(object):
+  def __init__(self, **kwargs):
+    self.__kwargs = {}
+    for key, value in kwargs.iteritems():
+      self.__kwargs[key] = value
+
+    project = None
+    if 'project' in self.__kwargs:
+      project = self.__kwargs['project']
+    zone = None
+    if 'zone' in self.__kwargs:
+      zone = self.__kwargs['zone']
+
+    gce.GCE.setCurrent(project=project, zone=zone)
+
+  def ExpandFile(self, file_name):
+    return CompileAndEvalFile(file_name)
 
 
 def main(argv):
