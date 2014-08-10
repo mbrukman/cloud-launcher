@@ -64,14 +64,42 @@ class GCE(object):
     zone = None
 
   default = Settings()
+  current = Settings()
 
   @classmethod
   def setDefaults(cls, project=None, zone=None):
     if project is not None:
-      GCE.default.project = project
+      cls.default.project = project
 
     if zone is not None:
-      GCE.default.zone = zone
+      cls.default.zone = zone
+
+  @classmethod
+  def setCurrent(cls, project=None, zone=None):
+    if project is not None:
+      cls.current.project = project
+
+    if zone is not None:
+      cls.current.zone = zone
+
+  @classmethod
+  def clearCurrent(cls):
+    cls.current.project = None
+    cls.current.zone = None
+
+  @classmethod
+  def project(cls):
+    if cls.current.project is not None:
+      return cls.current.project
+    else:
+      return cls.default.project
+
+  @classmethod
+  def zone(cls):
+    if cls.current.zone is not None:
+      return cls.current.zone
+    else:
+      return cls.default.zone
 
 
 class Util(object):
