@@ -228,7 +228,7 @@ class Metadata(object):
     stack = traceback.extract_stack()
     current = None
     previous = None
-    for (filename, line, function, text) in stack:
+    for (filename, line, function, text) in reversed(stack):
       if current is None:
         current = filename
         continue
