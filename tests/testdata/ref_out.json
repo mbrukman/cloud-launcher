@@ -1,6 +1,6 @@
 [
   {
-    "disksToCreate": [
+    "disks": [
       {
         "autoDelete": true,
         "boot": true,
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "disksToCreate": [
+    "disks": [
       {
         "autoDelete": true,
         "boot": true,

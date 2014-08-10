@@ -243,7 +243,7 @@ class Compute(object):
 
   @classmethod
   def instance(
-    cls, name, disksToCreate=None, machineType=None, metadata=None,
+    cls, name, disks=None, machineType=None, metadata=None,
     networkInterfaces=None, tags=None, zone=None):
     """
     Args:
@@ -270,7 +270,7 @@ class Compute(object):
     }
 
     params = {
-        'disksToCreate': disksToCreate,
+        'disks': disks,
         'machineType': machineType,
         'metadata': metadata,
         'networkInterfaces': networkInterfaces,

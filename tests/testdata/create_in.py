@@ -27,7 +27,7 @@ GCE.setDefaults(
 resources = [
   Compute.instance(
     name='vm-%d' % i,
-    disksToCreate=[
+    disks=[
       Disk.boot(
         autoDelete=true,
         initializeParams=Disk.initializeParams(

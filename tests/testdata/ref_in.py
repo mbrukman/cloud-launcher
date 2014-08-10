@@ -25,7 +25,7 @@ GCE.setDefaults(
 
 master = Compute.instance(
     name='vm-master',
-    disksToCreate=[
+    disks=[
       Disk.boot(
         autoDelete=true,
         initializeParams=Disk.initializeParams(
@@ -37,7 +37,7 @@ master = Compute.instance(
 
 workers = [Compute.instance(
     name='vm-worker-%d' % i,
-    disksToCreate=[
+    disks=[
       Disk.boot(
         autoDelete=true,
         initializeParams=Disk.initializeParams(
