@@ -173,7 +173,7 @@ class Network(object):
   @classmethod
   def externalNat(cls, name=None):
     resource = {
-        'network': 'default',
+        'network': common.NetworkToUrl(GCE.default.project, 'default'),
         'accessConfigs': [
           {
             'type': 'ONE_TO_ONE_NAT',
@@ -181,6 +181,10 @@ class Network(object):
           },
         ],
     }
+
+    if name is not None and not common.IsUrl(name):
+      name = common.NetworkToUrl(GCE.default.project, name)
+
     params = {
         'network': name,
     }
@@ -268,6 +272,10 @@ class Compute(object):
           },
         ],
     }
+
+    if machineType is not None and not common.IsUrl(machineType):
+      machineType = common.MachineTypeToUrl(
+          GCE.default.project, GCE.default.zone, machineType)
 
     params = {
         'disks': disks,

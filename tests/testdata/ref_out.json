@@ -22,7 +22,7 @@
             "type": "ONE_TO_ONE_NAT"
           }
         ],
-        "network": "default"
+        "network": "https://www.googleapis.com/compute/v1/projects/curious-lemming-42/global/networks/default"
       }
     ],
     "serviceAccounts": [
@@ -65,7 +65,7 @@
             "type": "ONE_TO_ONE_NAT"
           }
         ],
-        "network": "default"
+        "network": "https://www.googleapis.com/compute/v1/projects/curious-lemming-42/global/networks/default"
       }
     ],
     "serviceAccounts": [
