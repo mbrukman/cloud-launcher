@@ -150,7 +150,7 @@ class Disk(object):
     # Ensure that the user specified this parameter correctly.
     if (diskType is not None) and (not common.IsUrl(diskType)):
       diskType = common.DiskTypeToUrl(
-          GCE.default.project, GCE.default.zone, diskType)
+          GCE.project(), GCE.zone(), diskType)
 
     params = {
         'diskSizeGb':  diskSizeGb,
@@ -201,7 +201,7 @@ class Network(object):
   @classmethod
   def externalNat(cls, name=None):
     resource = {
-        'network': common.NetworkToUrl(GCE.default.project, 'default'),
+        'network': common.NetworkToUrl(GCE.project(), 'default'),
         'accessConfigs': [
           {
             'type': 'ONE_TO_ONE_NAT',
@@ -211,7 +211,7 @@ class Network(object):
     }
 
     if name is not None and not common.IsUrl(name):
-      name = common.NetworkToUrl(GCE.default.project, name)
+      name = common.NetworkToUrl(GCE.project(), name)
 
     params = {
         'network': name,
@@ -303,7 +303,7 @@ class Compute(object):
 
     if machineType is not None and not common.IsUrl(machineType):
       machineType = common.MachineTypeToUrl(
-          GCE.default.project, GCE.default.zone, machineType)
+          GCE.project(), GCE.zone(), machineType)
 
     params = {
         'disks': disks,
