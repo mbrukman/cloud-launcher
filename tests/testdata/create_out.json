@@ -23,15 +23,17 @@
       "kind": "compute#metadata"
     },
     "name": "vm-0",
-    "networkInterfaces": {
-      "accessConfigs": [
-        {
-          "name": "External NAT",
-          "type": "ONE_TO_ONE_NAT"
-        }
-      ],
-      "network": "default"
-    },
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "name": "External NAT",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "network": "default"
+      }
+    ],
     "serviceAccounts": [
       {
         "email": "default",
@@ -66,15 +68,17 @@
       "kind": "compute#metadata"
     },
     "name": "vm-1",
-    "networkInterfaces": {
-      "accessConfigs": [
-        {
-          "name": "External NAT",
-          "type": "ONE_TO_ONE_NAT"
-        }
-      ],
-      "network": "default"
-    },
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "name": "External NAT",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "network": "default"
+      }
+    ],
     "serviceAccounts": [
       {
         "email": "default",
@@ -109,15 +113,17 @@
       "kind": "compute#metadata"
     },
     "name": "vm-2",
-    "networkInterfaces": {
-      "accessConfigs": [
-        {
-          "name": "External NAT",
-          "type": "ONE_TO_ONE_NAT"
-        }
-      ],
-      "network": "default"
-    },
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "name": "External NAT",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "network": "default"
+      }
+    ],
     "serviceAccounts": [
       {
         "email": "default",

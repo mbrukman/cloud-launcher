@@ -257,7 +257,7 @@ class Compute(object):
     resource = {
         'kind': 'compute#instance',
         'name': name,
-        'networkInterfaces': Network.externalNat(),
+        'networkInterfaces': [Network.externalNat()],
         'serviceAccounts': [
           {
             'email': 'default',

@@ -14,15 +14,17 @@
     ],
     "kind": "compute#instance",
     "name": "vm-master",
-    "networkInterfaces": {
-      "accessConfigs": [
-        {
-          "name": "External NAT",
-          "type": "ONE_TO_ONE_NAT"
-        }
-      ],
-      "network": "default"
-    },
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "name": "External NAT",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "network": "default"
+      }
+    ],
     "serviceAccounts": [
       {
         "email": "default",
@@ -55,15 +57,17 @@
       "kind": "compute#metadata"
     },
     "name": "vm-worker-0",
-    "networkInterfaces": {
-      "accessConfigs": [
-        {
-          "name": "External NAT",
-          "type": "ONE_TO_ONE_NAT"
-        }
-      ],
-      "network": "default"
-    },
+    "networkInterfaces": [
+      {
+        "accessConfigs": [
+          {
+            "name": "External NAT",
+            "type": "ONE_TO_ONE_NAT"
+          }
+        ],
+        "network": "default"
+      }
+    ],
     "serviceAccounts": [
       {
         "email": "default",
