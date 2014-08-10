@@ -236,11 +236,7 @@ class Metadata(object):
 
   @classmethod
   def startupScript(cls, path):
-    return Metadata.create(
-      items=[
-        Metadata.item('startup-script', Metadata.fileToString(path)),
-      ],
-    )
+    return Metadata.item('startup-script', Metadata.fileToString(path))
 
 
 class Compute(object):

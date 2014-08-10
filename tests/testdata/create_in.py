@@ -35,6 +35,8 @@ resources = [
         ),
       ),
     ],
-    metadata=Metadata.startupScript('startup-script.sh')
+    metadata=Metadata.create(
+      items=[Metadata.startupScript('startup-script.sh')],
+    ),
   ) for i in range(0, 3)
 ]
