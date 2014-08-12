@@ -22,7 +22,7 @@
 declare -r SETTINGS="${SETTINGS:-settings.sh}"
 
 # The deployment configuration.
-declare -r CONFIG="${CONFIG:-apps/ambari/hdp/centos6/ambari.yaml}"
+declare -r CONFIG="${CONFIG:-apps/hortonworks/hdp2/centos6/ambari.yaml}"
 
 source "${SETTINGS}" || exit 1
 
