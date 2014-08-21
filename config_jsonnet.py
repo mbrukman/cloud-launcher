@@ -18,31 +18,36 @@
 #
 # Config processing and expansion.
 
+import json
+import sys
+
+# Jsonnet interpreter
+import _jsonnet
+
 # Local imports
-import config_jsonnet
-import config_py
-import config_yaml
+import common
 
 
-class InvalidArgumentError(Exception):
-  pass
+class ConfigExpander(object):
+
+  def __init__(self, **kwargs):
+    self.__kwargs = {}
+    for key, value in kwargs.iteritems():
+      self.__kwargs[key] = value
+
+  def ExpandFile(self, file_name):
+    json_str = _jsonnet.evaluate_file(file_name)
+    return json.loads(json_str)
+
+def main(argv):
+  if len(argv) < 2:
+    sys.stderr.write('Missing jsonnet file as argument\n')
+    sys.exit(1)
+
+  expander = ConfigExpander()
+  config = expander.ExpandFile(argv[1])
+  print json.dumps(config, indent=2, separators=(',', ': '))
 
 
-class InvalidConfigFilename(Exception):
-  pass
-
-
-def ProcessConfig(**kwargs):
-  if 'file' not in kwargs:
-    raise InvalidArgumentError('"file" parameter not found among kwargs')
-
-  filename = kwargs['file']
-  if filename.endswith('.py'):
-    expander = config_py.ConfigExpander(**kwargs)
-  elif filename.endswith('.yaml'):
-    expander = config_yaml.ConfigExpander(**kwargs)
-  elif filename.endswith('.jsonnet'):
-    expander = config_jsonnet.ConfigExpander(**kwargs)
-  else:
-    raise InvalidConfigFilename('Unrecognized extension in file: %s' % filename)
-  return expander.ExpandFile(filename)
+if __name__ == '__main__':
+  main(sys.argv)
