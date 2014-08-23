@@ -37,15 +37,16 @@ def ProcessConfig(**kwargs):
   if 'file' not in kwargs:
     raise InvalidArgumentError('"file" parameter not found among kwargs')
 
+  ext_to_config = {
+      '.json': config_json.ConfigExpander,
+      '.jsonnet': config_jsonnet.ConfigExpander,
+      '.py': config_py.ConfigExpander,
+      '.yaml': config_yaml.ConfigExpander,
+  }
+
   filename = kwargs['file']
-  if filename.endswith('.py'):
-    expander = config_py.ConfigExpander(**kwargs)
-  elif filename.endswith('.yaml'):
-    expander = config_yaml.ConfigExpander(**kwargs)
-  elif filename.endswith('.json'):
-    expander = config_json.ConfigExpander(**kwargs)
-  elif filename.endswith('.jsonnet'):
-    expander = config_jsonnet.ConfigExpander(**kwargs)
-  else:
-    raise InvalidConfigFilename('Unrecognized extension in file: %s' % filename)
-  return expander.ExpandFile(filename)
+  for ext, config in ext_to_config.iteritems():
+    if filename.endswith(ext):
+      return config(**kwargs).ExpandFile(filename)
+
+  raise InvalidConfigFilename('Unrecognized extension in file: %s' % filename)
