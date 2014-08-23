@@ -22,10 +22,21 @@ import json
 import sys
 
 # Jsonnet interpreter
-import _jsonnet
+try:
+  import _jsonnet
+except:
+  _jsonnet = None
 
 # Local imports
 import common
+
+
+class Error(Exception):
+  pass
+
+
+class JsonnetNotFoundError(Error):
+  pass
 
 
 class ConfigExpander(object):
@@ -36,6 +47,8 @@ class ConfigExpander(object):
       self.__kwargs[key] = value
 
   def ExpandFile(self, file_name):
+    if _jsonnet is None:
+      raise JsonnetNotFoundError('Module "_jsonnet" missing; Jsonnet support unavailable.')
     json_str = _jsonnet.evaluate_file(file_name)
     return json.loads(json_str)
 
