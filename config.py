@@ -19,6 +19,7 @@
 # Config processing and expansion.
 
 # Local imports
+import config_json
 import config_jsonnet
 import config_py
 import config_yaml
@@ -41,6 +42,8 @@ def ProcessConfig(**kwargs):
     expander = config_py.ConfigExpander(**kwargs)
   elif filename.endswith('.yaml'):
     expander = config_yaml.ConfigExpander(**kwargs)
+  elif filename.endswith('.json'):
+    expander = config_json.ConfigExpander(**kwargs)
   elif filename.endswith('.jsonnet'):
     expander = config_jsonnet.ConfigExpander(**kwargs)
   else:
