@@ -1,6 +1,6 @@
-# Copyright 2014 Google Inc.
+#!/bin/bash -u
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Apache License, Version 2.0 (the "License")
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -14,18 +14,24 @@
 #
 ################################################################################
 #
-# Automatically runs all the tests in this directory.
+# Runs all tests.
 
-PYTHONPATH = ..
+declare -i STATUS=0
 
-VERB = @
-ifeq (VERBOSE,1)
-	VERB =
-endif
+# env PYTHONPATH="${PYTHONPATH}"
+for script in test_*.sh; do
+  ./${script}
+  if [ $? -ne 0 ]; then
+    STATUS=1
+  fi
+done
 
-ECHO = /bin/echo
+echo
 
-default: test
+if [ ${STATUS} -eq 0 ]; then
+  echo "PASSED"
+else
+  echo "FAILED"
+fi
 
-test:
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./run_all_tests.sh
+exit ${STATUS}
