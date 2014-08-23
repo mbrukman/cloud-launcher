@@ -19,11 +19,11 @@
 # Simplifies using run.py by automatically providing its required flags.
 
 # The file containing settings such as project name, region, zone, etc.
-declare -r SETTINGS="${SETTINGS:-settings.sh}"
+declare -r SETTINGS="${SETTINGS:-$(dirname $0)/settings.sh}"
 
 # The deployment configuration.
 declare -r CONFIG="${CONFIG:-apps/hortonworks/hdp2/centos6/ambari.yaml}"
 
 source "${SETTINGS}" || exit 1
 
-./run.py --project="${PROJECT}" --zone="${ZONE}" --config="${CONFIG}" "$@"
+$(dirname $0)/run.py --project="${PROJECT}" --zone="${ZONE}" --config="${CONFIG}" "$@"
