@@ -97,9 +97,7 @@ def UpdateVmImages(gce, flags):
     return (vm_image_latest_src, vm_image_latest_dst)
 
   for project in vm_images:
-    if not 'images' in vm_images[project]:
-      continue
-    images = vm_images[project]['images']
+    images = vm_images[project].get('images', [])
     if len(images) == 0:
       continue
 
