@@ -90,31 +90,33 @@ def UpdateVmImages(gce, flags):
       vm_images[project]['images'].append(shortname)
 
   def LatestImage(images, date_pattern='-v[0-9]{8}$'):
-    if 'pseudo' not in vm_images[project]:
-      vm_images[project]['pseudo'] = {}
     vm_image_latest_dst = images[-1]
     vm_image_latest_src = re.sub(date_pattern, '-latest', vm_image_latest_dst)
     return (vm_image_latest_src, vm_image_latest_dst)
 
   for project in vm_images:
     images = vm_images[project].get('images', [])
-    if len(images) == 0:
+    if not images:
       continue
+
+    if 'pseudo' not in vm_images[project]:
+      vm_images[project]['pseudo'] = {}
+    pseudo = vm_images[project]['pseudo']
 
     if project == 'coreos-cloud':
       for substr in ('alpha', 'beta', 'stable'):
         image_sublist = filter(lambda image: substr in image, images)
         src, dst = LatestImage(image_sublist, '-[0-9]*-[0-9]-[0-9]-v[0-9]{8}$')
-        vm_images[project]['pseudo'][src] = dst
+        pseudo[src] = dst
     elif project == 'debian-cloud':
       backports = filter(lambda image: 'backports' in image, images)
       not_backports = filter(lambda image: 'backports' not in image, images)
       for image_sublist in (backports, not_backports):
         src, dst = LatestImage(image_sublist)
-        vm_images[project]['pseudo'][src] = dst
+        pseudo[src] = dst
     else:
       src, dst = LatestImage(images)
-      vm_images[project]['pseudo'][src] = dst
+      pseudo[src] = dst
 
   WriteJsonToFile(vm_images, 'vm_images.json')
 
@@ -154,7 +156,7 @@ def main(argv):
 
   gce = GceService(flags)
   UpdateVmImages(gce, flags)
-	# TODO(mbrukman): enable zone list caching once we define concise format.
+  # TODO(mbrukman): enable zone list caching once we define concise format.
   # UpdateZones(gce, flags)
   print 'Done.'
 
