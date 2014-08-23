@@ -38,7 +38,8 @@ with Cloud Launcher.
     _"Download JSON"_
   * Save this file as `$HOME/cloud/projects/$PROJECT/client_secrets.json`
 
-* Now you can use `run.sh` to launch applications!
+* Now you can use `run.sh` to launch applications! Try one of the
+  [examples](examples/README.md) or look at the [app catalog](apps/README.md).
 
 License
 -------
