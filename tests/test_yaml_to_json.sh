@@ -16,6 +16,8 @@
 #
 # Runs all YAML -> JSON tests.
 
+declare -i STATUS=0
+
 echo
 echo "--------------------------"
 echo "Running YAML -> JSON tests"
@@ -26,11 +28,14 @@ for in_yaml in testdata/*.in.yaml; do
   echo -n "Testing ${in_yaml} -> ${out_json} ... "
   tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
   ${PYTHONPATH}/config_yaml.py "${in_yaml}" > "${tempfile}" 2>&1
-  if [[ $? -eq 0 ]] && [ ! `diff "${out_json}" "${tempfile}"` ]; then
+  if [ $? -eq 0 ] && [ ! `diff "${out_json}" "${tempfile}"` ]; then
     echo "PASSED"
     rm -f "${tempfile}"
   else
+    STATUS=1
     echo "FAILED (output and log in $tempfile)"
     cat "${tempfile}"
   fi
 done
+
+exit ${STATUS}

@@ -16,6 +16,8 @@
 #
 # Runs all Python -> JSON tests.
 
+declare -i STATUS=0
+
 echo
 echo "------------------------"
 echo "Running PY -> JSON tests"
@@ -28,15 +30,19 @@ for in_py in testdata/*_in.py; do
   tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
   env PYTHONPATH="${PYTHONPATH}" "${PYTHONPATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
 
-  if [[ $? -ne 0 ]]; then
+  if [ $? -ne 0 ]; then
+    STATUS=1
     echo "FAILED (error log in ${tempfile})"
     cat "${tempfile}"
   elif diff "${out_json}" "${tempfile}" > /dev/null 2>&1 ; then
     echo "PASSED"
     rm -f "${tempfile}"
   else
+    STATUS=1
     echo "FAILED (output in ${tempfile})"
     echo "Diff:"
     diff -u "${out_json}" "${tempfile}"
   fi
 done
+
+exit ${STATUS}

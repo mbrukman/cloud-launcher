@@ -16,6 +16,8 @@
 #
 # Runs all *_test.* scripts.
 
+declare -i STATUS=0
+
 echo
 echo "--------------------"
 echo "Running script tests"
@@ -24,11 +26,14 @@ for test in *_test.*; do
   echo -n "Testing ${test} ... "
   tempfile="$(mktemp "/tmp/$test.XXXXXX")"
   env PYTHONPATH="${PYTHONPATH}" "./${test}" > "${tempfile}" 2>&1
-  if [[ $? -eq 0 ]]; then
+  if [ $? -eq 0 ]; then
     echo "PASSED"
     rm -f "${tempfile}"
   else
+    STATUS=1
     echo "FAILED (log in ${tempfile})"
     cat "${tempfile}"
   fi
 done
+
+exit ${STATUS}
