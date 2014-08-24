@@ -25,7 +25,7 @@ local gce = import "../../../../gce.jsonnet";
     numAgents:: 5,
 
     server:: gce.Instance { 
-        name: "ambari-server-0",
+        name: "ambari-server",
         machineTypeName:: $.serverMachineTypeName,
         zoneName:: $.zone,
         metadataMap:: {
@@ -50,7 +50,7 @@ local gce = import "../../../../gce.jsonnet";
         machineTypeName:: $.agentMachineTypeName,
         zoneName:: $.zone,
         metadataMap:: {
-            "ambari-server": "ambari-server-0",
+            "ambari-server": "ambari-server",
             "startup-script": gce.StripComments(std.join("\n",[
                 importstr "../../../common/fdisk.sh",
                 importstr "scripts/init/ambari-repo-init.sh",
