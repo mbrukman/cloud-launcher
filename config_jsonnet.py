@@ -21,12 +21,6 @@
 import json
 import sys
 
-# Jsonnet interpreter
-try:
-  import _jsonnet
-except:
-  _jsonnet = None
-
 # Local imports
 import common
 
@@ -47,10 +41,15 @@ class ConfigExpander(object):
       self.__kwargs[key] = value
 
   def ExpandFile(self, file_name):
-    if _jsonnet is None:
-      raise JsonnetNotFoundError('Module "_jsonnet" missing; Jsonnet support unavailable.')
-    json_str = _jsonnet.evaluate_file(file_name)
-    return json.loads(json_str)
+    # Jsonnet interpreter, import only if needed to avoid dependency.
+    try:
+      import _jsonnet
+    except:
+      raise JsonnetNotFoundError('Module "_jsonnet" missing;  Is _jsonnet.so in your $PYTHONPATH?')
+    project = self.__kwargs['project']
+    json_str = _jsonnet.evaluate_file(file_name, env={'GCP_PROJECT': project})
+    json_data = json.loads(json_str)
+    return json_data['resources']
 
 def main(argv):
   if len(argv) < 2:
