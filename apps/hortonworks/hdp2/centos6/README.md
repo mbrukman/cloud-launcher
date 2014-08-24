@@ -1,16 +1,17 @@
 Deploy
 ======
 
-Build the startup scripts for the instances:
+First, build the startup scripts for the instances by running the following
+command from this directory:
 
 ```bash
 make -s -C scripts/init
 ```
 
-From the top-level project directory, run:
+To deploy Ambari, run the following command from the top-level directory:
 
 ```bash
-./run.sh insert
+./run.sh --config apps/hortonworks/hdp2/centos6/ambari.py insert
 ```
 
 To see other flags, run:
@@ -26,7 +27,7 @@ Forward the port from localhost over SSH to the Ambari instance. From the
 top-level project directory, run:
 
 ```bash
-env SERVER=ambari-server-0 ./scripts/util/forward-port.sh
+env SERVER=ambari-server ./scripts/util/forward-port.sh
 ```
 
 See the script for how to change local or remote ports.
