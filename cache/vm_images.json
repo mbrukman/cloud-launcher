@@ -43,16 +43,18 @@
       "coreos-alpha-399-0-0-v20140806",
       "coreos-alpha-402-2-0-v20140807",
       "coreos-alpha-410-0-0-v20140818",
+      "coreos-alpha-423-0-0-v20140828",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
       "coreos-beta-353-0-0-v20140625",
       "coreos-beta-367-1-0-v20140715",
+      "coreos-beta-410-0-0-v20140825",
       "coreos-stable-367-1-0-v20140724"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-410-0-0-v20140818",
-      "coreos-beta-latest": "coreos-beta-367-1-0-v20140715",
+      "coreos-alpha-latest": "coreos-alpha-423-0-0-v20140828",
+      "coreos-beta-latest": "coreos-beta-410-0-0-v20140825",
       "coreos-stable-latest": "coreos-stable-367-1-0-v20140724"
     }
   },
@@ -93,10 +95,11 @@
       "container-vm-v20140522",
       "container-vm-v20140624",
       "container-vm-v20140710",
-      "container-vm-v20140731"
+      "container-vm-v20140731",
+      "container-vm-v20140826"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20140731"
+      "container-vm-latest": "container-vm-v20140826"
     }
   },
   "opensuse-cloud": {
@@ -128,10 +131,11 @@
     "images": [
       "sles-11-sp3-v20140306",
       "sles-11-sp3-v20140609",
-      "sles-11-sp3-v20140712"
+      "sles-11-sp3-v20140712",
+      "sles-11-sp3-v20140826"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20140712"
+      "sles-11-sp3-latest": "sles-11-sp3-v20140826"
     }
   }
 }
