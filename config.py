@@ -22,7 +22,6 @@
 import config_json
 import config_jsonnet
 import config_py
-import config_yaml
 
 
 class InvalidArgumentError(Exception):
@@ -41,7 +40,6 @@ def ProcessConfig(**kwargs):
       '.json': config_json.ConfigExpander,
       '.jsonnet': config_jsonnet.ConfigExpander,
       '.py': config_py.ConfigExpander,
-      '.yaml': config_yaml.ConfigExpander,
   }
 
   filename = kwargs['file']

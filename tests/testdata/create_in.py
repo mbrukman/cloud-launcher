@@ -16,8 +16,7 @@
 #
 ################################################################################
 #
-# Sample use case of the constructors in resources.py to use as an alternative
-# to YAML.
+# Sample use case of the constructors in resources.py .
 
 GCE.setDefaults(
     project='curious-lemming-42',

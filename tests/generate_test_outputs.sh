@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-# Regenerates outputs for PY->JSON and YAML->JSON tests.
+# Regenerates outputs for PY->JSON tests.
 
 declare -i EXIT_CODE=0
 declare -r PYTHONPATH=..
@@ -24,19 +24,6 @@ for in_py in testdata/*_in.py; do
   out_json_base="$(basename "${out_json}")"
   tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
   env PYTHONPATH="${PYTHONPATH}" "${PYTHONPATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
-  if [ $? -eq 0 ]; then
-    mv "${tempfile}" "${out_json}"
-  else
-    echo "FAILED to generate ${out_json_base}, log in ${tempfile}" >&2
-    EXIT_CODE=1
-  fi
-done
-
-for in_yaml in testdata/*.in.yaml; do
-  out_json="$(echo $in_yaml | sed 's/.in.yaml/.out.json/')"
-  out_json_base="$(basename "${out_json}")"
-  tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
-  ${PYTHONPATH}/config_yaml.py "${in_yaml}" > "${tempfile}" 2>&1
   if [ $? -eq 0 ]; then
     mv "${tempfile}" "${out_json}"
   else

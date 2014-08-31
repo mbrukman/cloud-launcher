@@ -1,7 +1,0 @@
-[
-  {
-    "machineType": "https://www.googleapis.com/compute/v1/projects/dummy-project/zones/dummy-zone/machineTypes/n1-standard-1",
-    "name": "machine-0",
-    "zone": "https://www.googleapis.com/compute/v1/projects/dummy-project/zones/dummy-zone"
-  }
-]

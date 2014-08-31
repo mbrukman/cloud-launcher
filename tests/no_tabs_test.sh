@@ -16,7 +16,7 @@
 #
 # Tests that there are no tabs in our source code or test data files.
 
-if grep '\t' *.{py,sh} testdata/*.{json,py,yaml} ../*.py; then
+if grep '\t' *.{py,sh} testdata/*.{json,py} ../*.py; then
   echo "ERROR: tabs found." >&2
   exit 1
 fi
