@@ -11,13 +11,13 @@ make -s -C scripts/init
 To deploy Ambari, run the following command from the top-level directory:
 
 ```bash
-./run.sh --config apps/hortonworks/hdp2/centos6/ambari.py insert
+src/run.sh --config apps/hortonworks/hdp2/centos6/ambari.py insert
 ```
 
 To see other flags, run:
 
 ```bash
-./run.sh --help
+src/run.sh --help
 ```
 
 Accessing Ambari

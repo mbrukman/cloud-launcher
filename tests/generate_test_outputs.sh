@@ -17,7 +17,7 @@
 # Regenerates outputs for PY->JSON tests.
 
 declare -i EXIT_CODE=0
-declare -r PYTHONPATH=..
+declare -r PYTHONPATH=../src
 
 for in_py in testdata/*_in.py; do
   out_json="$(echo "${in_py}" | sed 's/_in.py/_out.json/')"

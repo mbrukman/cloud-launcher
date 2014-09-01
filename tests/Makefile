@@ -16,7 +16,7 @@
 #
 # Automatically runs all the tests in this directory.
 
-PYTHONPATH = ..
+PYTHONPATH = ../src
 
 VERB = @
 ifeq (VERBOSE,1)

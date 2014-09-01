@@ -10,13 +10,13 @@ How to run
 Once you have properly set up your environment, from this directory, run:
 
 ```bash
-../run.sh --config hello_world.py list
+../src/run.sh --config hello_world.py list
 ```
 
 to see what instances will be created. Then, launch them with:
 
 ```bash
-../run.sh --config hello_world.py insert
+../src/run.sh --config hello_world.py insert
 ```
 
 You can go to the [Google Developer Console](https://cloud.google.com/console)
@@ -26,7 +26,7 @@ etc.
 Finally, clean up your deployment:
 
 ```bash
-../run.sh --config hello_world.py delete
+../src/run.sh --config hello_world.py delete
 ```
 
 That's it! Now you can try running one of the

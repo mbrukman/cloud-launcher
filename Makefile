@@ -26,7 +26,7 @@ default:
 	$(VERB) $(ECHO) "Valid targets: clean, test."
 
 clean:
-	$(VERB) rm -f *.pyc
+	$(VERB) rm -f src/*.pyc
 
 test:
 	$(VERB) make -C tests test
