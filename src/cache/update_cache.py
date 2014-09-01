@@ -149,7 +149,7 @@ def main(argv):
   LOGGING = {
     '': None,
     'info': logging.INFO,
-    'WARNING': logging.WARNING,
+    'warning': logging.WARNING,
     'error': logging.ERROR,
   }
   logging.basicConfig(level=LOGGING[flags.logging])
