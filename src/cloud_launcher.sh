@@ -16,10 +16,11 @@
 #
 ################################################################################
 #
-# Simplifies using run.py by automatically providing its required flags.
+# Simplifies using cloud_launcher.py by automatically providing its required
+# flags.
 
 # The file containing settings such as project name, region, zone, etc.
 declare -r SETTINGS="${SETTINGS:-$(dirname $0)/settings.sh}"
 source "${SETTINGS}" || exit 1
 
-$(dirname $0)/run.py --project="${PROJECT}" --zone="${ZONE}" "$@"
+$(dirname $0)/cloud_launcher.py --project="${PROJECT}" --zone="${ZONE}" "$@"
