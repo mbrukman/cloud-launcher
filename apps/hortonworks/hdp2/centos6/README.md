@@ -11,7 +11,7 @@ make -s -C scripts/init
 To deploy Ambari, run the following command from the top-level directory:
 
 ```bash
-src/cloud_launcher.sh --config apps/hortonworks/hdp2/centos6/ambari.py insert
+src/cloud_launcher.sh --config apps/hortonworks/hdp2/centos6/vm/ambari.py insert
 ```
 
 To see other flags, run:
