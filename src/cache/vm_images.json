@@ -9,10 +9,11 @@
       "centos-6-v20140605",
       "centos-6-v20140606",
       "centos-6-v20140619",
-      "centos-6-v20140718"
+      "centos-6-v20140718",
+      "centos-7-v20140903"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20140718"
+      "centos-7-latest": "centos-7-v20140903"
     }
   },
   "coreos-cloud": {
@@ -50,12 +51,13 @@
       "coreos-beta-353-0-0-v20140625",
       "coreos-beta-367-1-0-v20140715",
       "coreos-beta-410-0-0-v20140825",
-      "coreos-stable-367-1-0-v20140724"
+      "coreos-stable-367-1-0-v20140724",
+      "coreos-stable-410-0-0-v20140902"
     ],
     "pseudo": {
       "coreos-alpha-latest": "coreos-alpha-423-0-0-v20140828",
       "coreos-beta-latest": "coreos-beta-410-0-0-v20140825",
-      "coreos-stable-latest": "coreos-stable-367-1-0-v20140724"
+      "coreos-stable-latest": "coreos-stable-410-0-0-v20140902"
     }
   },
   "debian-cloud": {
@@ -72,6 +74,8 @@
       "backports-debian-7-wheezy-v20140718",
       "backports-debian-7-wheezy-v20140807",
       "backports-debian-7-wheezy-v20140814",
+      "backports-debian-7-wheezy-v20140828",
+      "backports-debian-7-wheezy-v20140904",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -83,11 +87,12 @@
       "debian-7-wheezy-v20140619",
       "debian-7-wheezy-v20140718",
       "debian-7-wheezy-v20140807",
-      "debian-7-wheezy-v20140814"
+      "debian-7-wheezy-v20140814",
+      "debian-7-wheezy-v20140828"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20140814",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20140814"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20140904",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20140828"
     }
   },
   "google-containers": {
