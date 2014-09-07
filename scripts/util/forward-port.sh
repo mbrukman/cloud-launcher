@@ -26,8 +26,9 @@ declare -r SERVER="${SERVER:-ambari-server-0}"
 declare -i -r REMOTE_PORT="${REMOTE_PORT:-8080}"
 declare -i -r LOCAL_PORT="${LOCAL_PORT:-8080}"
 
-gcutil ssh \
-  --project "${PROJECT}" \
-  --ssh_arg -L \
-  --ssh_arg "${LOCAL_PORT}:${SERVER}:${REMOTE_PORT}" \
+gcloud compute ssh \
+  --project="${PROJECT}" \
+  --zone="${ZONE}" \
+  --ssh-flag="-L" \
+  --ssh-flag="${LOCAL_PORT}:${SERVER}:${REMOTE_PORT}" \
   "${SERVER}"
