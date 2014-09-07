@@ -30,5 +30,5 @@ gcloud compute ssh \
   --project="${PROJECT}" \
   --zone="${ZONE}" \
   --ssh-flag="-L" \
-  --ssh-flag="${LOCAL_PORT}:${SERVER}:${REMOTE_PORT}" \
+  --ssh-flag="${LOCAL_PORT}:localhost:${REMOTE_PORT}" \
   "${SERVER}"
