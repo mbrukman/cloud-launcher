@@ -18,7 +18,7 @@
 #
 # Forwards a port from the local host to a remote host via `gcutil'.
 
-declare -r SETTINGS="${SETTINGS:-settings.sh}"
+declare -r SETTINGS="${SETTINGS:-$(dirname $0)/../../src/settings.sh}"
 
 source "${SETTINGS}" || exit 1
 
