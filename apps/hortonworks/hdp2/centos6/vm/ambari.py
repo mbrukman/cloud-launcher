@@ -34,7 +34,7 @@ server = Compute.instance(
     ],
     metadata=Metadata.create(
       items=[
-        Metadata.startupScript('scripts/init/ambari-server-init.gen.sh'),
+        Metadata.startupScript('../scripts/init/ambari-server-init.gen.sh'),
       ],
     ),
   )
@@ -54,7 +54,7 @@ agents = [Compute.instance(
     metadata=Metadata.create(
       items=[
         Metadata.item('ambari-server', server.name),
-        Metadata.startupScript('scripts/init/ambari-agent-init.gen.sh'),
+        Metadata.startupScript('../scripts/init/ambari-agent-init.gen.sh'),
       ],
     ),
   ) for i in range(0, 5)

@@ -16,7 +16,7 @@
 //
 // Ambari server + agent deployment.
 
-local gce = import "../../../../gce.jsonnet";
+local gce = import "../../../../../src/gce.jsonnet";
 
 {
     zone:: "us-central1-b",
@@ -30,10 +30,10 @@ local gce = import "../../../../gce.jsonnet";
         zoneName:: $.zone,
         metadataMap:: {
             "startup-script": gce.StripComments(std.join("\n", [
-                importstr "scripts/init/ambari-repo-init.sh",
-                importstr "scripts/init/ambari-server-install.sh",
-                importstr "scripts/init/ambari-server-setup.sh",
-                importstr "scripts/init/ambari-server-start.sh",
+                importstr "../scripts/init/ambari-repo-init.sh",
+                importstr "../scripts/init/ambari-server-install.sh",
+                importstr "../scripts/init/ambari-server-setup.sh",
+                importstr "../scripts/init/ambari-server-start.sh",
             ])), 
         },
         disks: [
@@ -52,11 +52,11 @@ local gce = import "../../../../gce.jsonnet";
         metadataMap:: {
             "ambari-server": "ambari-server",
             "startup-script": gce.StripComments(std.join("\n",[
-                importstr "../../../common/fdisk.sh",
-                importstr "scripts/init/ambari-repo-init.sh",
-                importstr "scripts/init/ambari-agent-install.sh",
-                importstr "scripts/init/ambari-agent-setup.sh",
-                importstr "scripts/init/ambari-agent-start.sh",
+                importstr "../../../../common/fdisk.sh",
+                importstr "../scripts/init/ambari-repo-init.sh",
+                importstr "../scripts/init/ambari-agent-install.sh",
+                importstr "../scripts/init/ambari-agent-setup.sh",
+                importstr "../scripts/init/ambari-agent-start.sh",
             ])),
         },
         disks: [ $.server.disks[0] + { owner:: agent, sizeGb:: 500, } ],
