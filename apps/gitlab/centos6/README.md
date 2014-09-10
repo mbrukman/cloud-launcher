@@ -8,7 +8,7 @@ command from this directory:
 make -s -C scripts/init
 ```
 
-To deploy Gitlab, run the following command from the top-level directory:
+To deploy GitLab, run the following command from the top-level directory:
 
 ```bash
 src/cloud_launcher.sh --config apps/gitlab/centos6/vm/gitlab.py insert
@@ -30,7 +30,7 @@ top-level project directory, run:
 env REMOTE_PORT=80 LOCAL_PORT=8080 SERVER=gitlab ./scripts/util/forward-port.sh
 ```
 
-Access Gitlab via [http://localhost:8080/](http://localhost:8080) to continue
+Access GitLab via [http://localhost:8080/](http://localhost:8080) to continue
 the installation.
 
 
@@ -52,4 +52,4 @@ You can edit `scripts/init/install-gitlab.sh` and change the following line:
 external_url 'http://gitlab.example.com'
 ```
 
-to specify the hostname you will deploy Gitlab under.
+to specify the hostname you will deploy GitLab under.

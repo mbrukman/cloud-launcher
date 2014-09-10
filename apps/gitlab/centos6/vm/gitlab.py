@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-# Gitlab server installation + startup.
+# GitLab server installation + startup.
 
 GCE.setDefaults(
     project='curious-lemming-42',
