@@ -13,6 +13,7 @@
       "centos-7-v20140903"
     ],
     "pseudo": {
+      "centos-6-latest": "centos-6-v20140718",
       "centos-7-latest": "centos-7-v20140903"
     }
   },
@@ -45,6 +46,7 @@
       "coreos-alpha-402-2-0-v20140807",
       "coreos-alpha-410-0-0-v20140818",
       "coreos-alpha-423-0-0-v20140828",
+      "coreos-alpha-431-0-0-v20140905",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -55,7 +57,7 @@
       "coreos-stable-410-0-0-v20140902"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-423-0-0-v20140828",
+      "coreos-alpha-latest": "coreos-alpha-431-0-0-v20140905",
       "coreos-beta-latest": "coreos-beta-410-0-0-v20140825",
       "coreos-stable-latest": "coreos-stable-410-0-0-v20140902"
     }

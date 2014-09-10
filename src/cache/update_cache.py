@@ -103,7 +103,12 @@ def UpdateVmImages(gce, flags):
       vm_images[project]['pseudo'] = {}
     pseudo = vm_images[project]['pseudo']
 
-    if project == 'coreos-cloud':
+    if project == 'centos-cloud':
+      for centos in ('centos-6', 'centos-7'):
+        image_sublist = filter(lambda image: image.startswith(centos), images)
+        src, dst = LatestImage(image_sublist)
+        pseudo[src] = dst
+    elif project == 'coreos-cloud':
       for substr in ('alpha', 'beta', 'stable'):
         image_sublist = filter(lambda image: substr in image, images)
         src, dst = LatestImage(image_sublist, '-[0-9]*-[0-9]-[0-9]-v[0-9]{8}$')
