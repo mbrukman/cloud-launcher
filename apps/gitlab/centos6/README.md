@@ -1,6 +1,9 @@
 Quick start
 ===========
 
+In the commands below, `$CLOUD_LAUNCHER` refers to the root directory of this
+project.
+
 Then, build the startup scripts for the instances by running the following
 command from this directory:
 
@@ -8,26 +11,25 @@ command from this directory:
 make -s -C scripts/init
 ```
 
-To deploy GitLab, run the following command from the top-level directory:
+To deploy GitLab, run:
 
 ```bash
-src/cloud_launcher.sh --config apps/gitlab/centos6/vm/gitlab.py insert
+$CLOUD_LAUNCHER/src/cloud_launcher.sh --config vm/gitlab.py insert
 ```
 
 To see other flags, run:
 
 ```bash
-src/cloud_launcher.sh --help
+$CLOUD_LAUNCHER/src/cloud_launcher.sh --help
 ```
 
 Accessing
 ---------
 
-Forward the port from localhost over SSH to the Ambari instance. From the
-top-level project directory, run:
+Forward the port from localhost over SSH to the Ambari instance:
 
 ```bash
-env REMOTE_PORT=80 LOCAL_PORT=8080 SERVER=gitlab ./scripts/util/forward-port.sh
+env REMOTE_PORT=80 LOCAL_PORT=8080 SERVER=gitlab $CLOUD_LAUNCHER/scripts/util/forward-port.sh
 ```
 
 Access GitLab via [http://localhost:8080/](http://localhost:8080) to continue
