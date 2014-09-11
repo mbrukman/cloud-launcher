@@ -3,8 +3,7 @@
 # as the first list of the scripts in `SCRIPTS_IN`.
 
 SCRIPTS_IN = \
-  install-ssh.sh \
-	install-postfix.sh \
+  install-postfix.sh \
   install-gitlab.sh
 SCRIPT_OUT = install-gitlab.gen.sh
 

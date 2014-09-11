@@ -32,4 +32,3 @@ external_url 'http://gitlab.example.com'
 EOF
 
 gitlab-ctl reconfigure
-lokkit -s http -s ssh
