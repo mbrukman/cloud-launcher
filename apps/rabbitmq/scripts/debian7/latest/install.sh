@@ -16,18 +16,23 @@
 #
 ################################################################################
 
+apt-get -q -y update
+
 if ! `which curl > /dev/null 2>&1` ; then
-  apt-get -q -y update
   apt-get -q -y install curl
+fi
+
+if ! [ -e /usr/lib/apt/methods/https ]; then
+  apt-get -q -y install apt-transport-https
 fi
 
 # Add the RabbitMQ APT repo to get newer packages.
 cat <<EOF > /etc/apt/sources.list.d/rabbitmq.list
-deb http://www.rabbitmq.com/debian/ testing main
+deb https://www.rabbitmq.com/debian/ testing main
 EOF
 
 # Add the RabbitMQ signing key.
-declare -r RABBITMQ_KEY_URL="http://www.rabbitmq.com/rabbitmq-signing-key-public.asc"
+declare -r RABBITMQ_KEY_URL="https://www.rabbitmq.com/rabbitmq-signing-key-public.asc"
 declare -r RABBITMQ_KEY="/tmp/$(basename "${RABBITMQ_KEY_URL}")"
 curl -s "${RABBITMQ_KEY_URL}" -o "${RABBITMQ_KEY}"
 apt-key add "${RABBITMQ_KEY}"
