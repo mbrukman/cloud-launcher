@@ -18,7 +18,6 @@
 
 declare -i STATUS=0
 
-# env PYTHONPATH="${PYTHONPATH}"
 for script in test_*.sh; do
   ./${script}
   if [ $? -ne 0 ]; then
