@@ -16,6 +16,8 @@
 #
 # Ambari server + agent deployment.
 
+from gce import *
+
 GCE.setDefaults(
     project='curious-lemming-42',
     zone='us-central1-a',
