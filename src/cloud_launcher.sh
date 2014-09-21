@@ -23,4 +23,5 @@
 declare -r SETTINGS="${SETTINGS:-$(dirname $0)/settings.sh}"
 source "${SETTINGS}" || exit 1
 
-$(dirname $0)/cloud_launcher.py --project="${PROJECT}" --zone="${ZONE}" "$@"
+env PYTHONPATH="$(dirname $0):$(dirname $0)/../third_party/bunch" \
+  $(dirname $0)/cloud_launcher.py --project="${PROJECT}" --zone="${ZONE}" "$@"

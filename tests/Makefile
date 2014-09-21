@@ -16,7 +16,8 @@
 #
 # Automatically runs all the tests in this directory.
 
-PYTHONPATH = ../src
+SOURCE_PATH = ../src
+PYTHONPATH = $(SOURCE_PATH):../third_party/bunch
 
 VERB = @
 ifeq (VERBOSE,1)
@@ -28,4 +29,4 @@ ECHO = /bin/echo
 default: test
 
 test:
-	$(VERB) env PYTHONPATH=$(PYTHONPATH) ./run_all_tests.sh
+	$(VERB) env SOURCE_PATH=$(SOURCE_PATH) PYTHONPATH=$(PYTHONPATH) ./run_all_tests.sh
