@@ -25,6 +25,7 @@ import gce
 
 GCE = gce.GCE
 
+
 class GceDefaultsTest(unittest.TestCase):
 
   def setUp(self):
