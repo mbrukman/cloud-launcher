@@ -18,7 +18,9 @@
 #
 # Config processing and expansion.
 
+import imp
 import json
+import os
 import sys
 
 # Local imports
@@ -31,17 +33,14 @@ def ImportModule(module):
 
 
 def CompileAndEvalFile(path):
-  module_globals = {}
-  module_locals = {}
+  orig_sys_path = sys.path
+  sys.path.insert(0, os.path.dirname(path))
+  module = imp.load_source(os.path.splitext(path)[0], path)
 
-  # We shouldn't use "from gce import *" here due to:
-  #   SyntaxWarning: import * only allowed at module level
-  # so we emulate it instead by adding all top-level symbols to globals.
-  for key, val in gce.__dict__.iteritems():
-    module_globals[key] = val
+  # Restore sys.path prior to returning.
+  sys.path = orig_sys_path
 
-  execfile(path, module_globals, module_locals)
-  return module_locals['resources']
+  return module.resources
 
 
 class ConfigExpander(object):
