@@ -44,17 +44,22 @@ case "${RABBITMQ_ROLE}" in
     ;;
 esac
 
-# Stop the current instance before making any changes.
-rabbitmqctl stop_app
-
 # Find other servers in the group via metadata and join them.
-declare -r RABBITMQ_SERVERS="$(read_metadata 'rabbitmq-servers')"
+declare -r RABBITMQ_SERVER="$(read_metadata 'rabbitmq-server')"
 declare -r RABBITMQ_USER="rabbit"
 
-for server in ${RABBITMQ_SERVERS}; do
-  rabbitmqctl join_cluster "${RABBITMQ_FLAGS}" "${RABBITMQ_USER}@${server}"
-done
+if [ "$(hostname -s)" != "${RABBITMQ_SERVER}" ] &&
+   [ "$(hostname -f)" != "${RABBITMQ_SERVER}" ]; then
+  # Stop the server before making any changes.
+  rabbitmqctl stop_app
 
-# Apply changes and display current status.
-rabbitmqctl start_app
+  while ! rabbitmqctl join_cluster "${RABBITMQ_FLAGS}" "${RABBITMQ_USER}@${RABBITMQ_SERVER}" ; do
+    echo "Unable to join cluster; will try again in a few seconds." >&2
+    sleep 7
+  done
+
+  # Apply changes made above and start the server.
+  rabbitmqctl start_app
+fi
+
 rabbitmqctl cluster_status
