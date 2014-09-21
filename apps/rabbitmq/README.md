@@ -11,7 +11,7 @@ make -s -C ../scripts/debian7/latest
 ```
 
 Optionally, modify parameters in [`vm/debian7.py`](vm/debian7.py); see
-[`vm/rabbitmq_base.py`](vm/rabbitmq.py) for available parameters.
+[`vm/rabbitmq_base.py`](vm/rabbitmq_base.py) for available parameters.
 
 Then, deploy the RabbitMQ cluster:
 
