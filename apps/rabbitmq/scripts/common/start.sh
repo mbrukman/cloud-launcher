@@ -44,6 +44,9 @@ case "${RABBITMQ_ROLE}" in
     ;;
 esac
 
+# Enable the HTTP-based API and web UI for administration.
+rabbitmq-plugins enable rabbitmq_management
+
 # Find other servers in the group via metadata and join them.
 declare -r RABBITMQ_SERVER="$(read_metadata 'rabbitmq-server')"
 declare -r RABBITMQ_USER="rabbit"
