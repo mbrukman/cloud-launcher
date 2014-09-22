@@ -7,7 +7,7 @@ Debian 7
 First, build the startup script:
 
 ```bash
-make -s -C ../scripts/debian7/latest
+make -s -C scripts/debian7/latest
 ```
 
 Optionally, modify parameters in [`vm/debian7.py`](vm/debian7.py); see
