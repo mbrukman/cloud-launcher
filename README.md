@@ -14,8 +14,8 @@ Per-project setup
 This is a one-time setup for each Google Cloud Platform project you want to use
 with Cloud Launcher.
 
-* Modify `src/settings.sh` to specify a Google Cloud Platform project you
-  have access to that has GCE enabled
+* Modify [`src/settings.sh`](src/settings.sh) to specify a Google Cloud Platform
+  project you have access to that has GCE enabled.
 
 * Create a directory to store your credentials and set appropriate permissions:
 
