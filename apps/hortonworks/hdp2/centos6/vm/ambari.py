@@ -30,7 +30,7 @@ server = Compute.instance(
       Disk.boot(
         autoDelete=true,
         initializeParams=Disk.initializeParams(
-          sourceImage='centos-6-v20140415',
+          sourceImage='centos-6-latest',
         ),
       ),
     ],
