@@ -10,11 +10,13 @@
       "centos-6-v20140606",
       "centos-6-v20140619",
       "centos-6-v20140718",
-      "centos-7-v20140903"
+      "centos-6-v20140924",
+      "centos-7-v20140903",
+      "centos-7-v20140924"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20140718",
-      "centos-7-latest": "centos-7-v20140903"
+      "centos-6-latest": "centos-6-v20140924",
+      "centos-7-latest": "centos-7-v20140924"
     }
   },
   "coreos-cloud": {
@@ -47,19 +49,26 @@
       "coreos-alpha-410-0-0-v20140818",
       "coreos-alpha-423-0-0-v20140828",
       "coreos-alpha-431-0-0-v20140905",
+      "coreos-alpha-435-0-0-v20140910",
+      "coreos-alpha-438-0-0-v20140913",
+      "coreos-alpha-440-0-0-v20140915",
+      "coreos-alpha-444-0-0-v20140919",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
       "coreos-beta-353-0-0-v20140625",
       "coreos-beta-367-1-0-v20140715",
       "coreos-beta-410-0-0-v20140825",
+      "coreos-beta-440-0-0-v20140918",
+      "coreos-beta-444-2-0-v20140926",
       "coreos-stable-367-1-0-v20140724",
-      "coreos-stable-410-0-0-v20140902"
+      "coreos-stable-410-0-0-v20140902",
+      "coreos-stable-410-1-0-v20140926"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-431-0-0-v20140905",
-      "coreos-beta-latest": "coreos-beta-410-0-0-v20140825",
-      "coreos-stable-latest": "coreos-stable-410-0-0-v20140902"
+      "coreos-alpha-latest": "coreos-alpha-444-0-0-v20140919",
+      "coreos-beta-latest": "coreos-beta-444-2-0-v20140926",
+      "coreos-stable-latest": "coreos-stable-410-1-0-v20140926"
     }
   },
   "debian-cloud": {
@@ -78,6 +87,7 @@
       "backports-debian-7-wheezy-v20140814",
       "backports-debian-7-wheezy-v20140828",
       "backports-debian-7-wheezy-v20140904",
+      "backports-debian-7-wheezy-v20140924",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -90,11 +100,12 @@
       "debian-7-wheezy-v20140718",
       "debian-7-wheezy-v20140807",
       "debian-7-wheezy-v20140814",
-      "debian-7-wheezy-v20140828"
+      "debian-7-wheezy-v20140828",
+      "debian-7-wheezy-v20140924"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20140904",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20140828"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20140924",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20140924"
     }
   },
   "google-containers": {
@@ -103,10 +114,11 @@
       "container-vm-v20140624",
       "container-vm-v20140710",
       "container-vm-v20140731",
-      "container-vm-v20140826"
+      "container-vm-v20140826",
+      "container-vm-v20140925"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20140826"
+      "container-vm-latest": "container-vm-v20140925"
     }
   },
   "opensuse-cloud": {
@@ -128,10 +140,11 @@
       "rhel-6-v20140605",
       "rhel-6-v20140606",
       "rhel-6-v20140619",
-      "rhel-6-v20140718"
+      "rhel-6-v20140718",
+      "rhel-6-v20140924"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20140718"
+      "rhel-6-latest": "rhel-6-v20140924"
     }
   },
   "suse-cloud": {
