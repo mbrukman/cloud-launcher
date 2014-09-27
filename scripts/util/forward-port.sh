@@ -16,7 +16,7 @@
 #
 ################################################################################
 #
-# Forwards a port from the local host to a remote host via `gcutil'.
+# Forwards a port from the local host to a remote host via `gcloud'.
 
 declare -r SETTINGS="${SETTINGS:-$(dirname $0)/../../src/settings.sh}"
 
