@@ -59,3 +59,5 @@ ambari-agent-[0-4].c.${PROJECT}.internal
 
 adjust this pattern as needed, e.g., change the '4' to N-1 where N is the number
 of agent instances in your deployment.
+
+Select "Perform manual registration on hosts and do not use SSH" and continue.
