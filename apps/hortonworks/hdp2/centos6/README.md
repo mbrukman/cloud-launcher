@@ -23,17 +23,14 @@ src/cloud_launcher.sh --help
 Accessing Ambari
 ----------------
 
-Forward the port from localhost over SSH to the Ambari instance. From the
-top-level project directory, run:
+* run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md) and configure
+  your browser to use it
 
-```bash
-env SERVER=ambari-server ./scripts/util/forward-port.sh
-```
+* open [http://ambari-server:8080/](http://ambari-server:8080) to continue the
+  installation and monitor the cluster once installed
 
-See the script for how to change local or remote ports.
-
-Access Ambari via [http://localhost:8080/](http://localhost:8080) to continue
-the installation.
+You will be able to access any of the hosts in your deployment via your browser
+directly while you are using the SOCKS proxy as described in the instructions.
 
 Installation
 ------------
