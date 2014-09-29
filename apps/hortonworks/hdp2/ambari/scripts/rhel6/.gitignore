@@ -1,0 +1,4 @@
+repo-init.sh
+agent-install.sh
+server-install.sh
+*.gen.sh
