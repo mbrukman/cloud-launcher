@@ -8,23 +8,32 @@ command from this directory:
 make -s -C scripts/init
 ```
 
-To deploy Ambari, run the following command from the top-level directory:
+To deploy Ambari, run the following command:
 
 ```bash
-src/cloud_launcher.sh --config apps/hortonworks/hdp2/centos6/vm/ambari.py insert
+${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/ambari.py insert
 ```
 
 To see other flags, run:
 
 ```bash
-src/cloud_launcher.sh --help
+${CLOUD_LAUNCHER}/src/cloud_launcher.sh --help
 ```
+
+where `${CLOUD_LAUNCHER}` points to the root of this repo.
 
 Accessing Ambari
 ----------------
 
 * run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md) and configure
-  your browser to use it
+  your browser to use it, e.g.,
+
+  ```bash
+  ${CLOUD_LAUNCHER}/scripts/util/socks-proxy.sh --server ambari-server
+  ```
+
+  to use the default port and the project and zone as configured in
+  `${CLOUD_LAUNCHER}/src/settings.sh`
 
 * open [http://ambari-server:8080/](http://ambari-server:8080) to continue the
   installation and monitor the cluster once installed
