@@ -31,8 +31,7 @@ where `${CLOUD_LAUNCHER}` points to the root of this repo.
 Accessing Ambari
 ----------------
 
-* run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md) and configure
-  your browser to use it, e.g.,
+* run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md), e.g.,
 
   ```bash
   ${CLOUD_LAUNCHER}/scripts/util/socks-proxy.sh --server ambari-server
@@ -40,6 +39,11 @@ Accessing Ambari
 
   to use the default port and the project and zone as configured in
   `${CLOUD_LAUNCHER}/src/settings.sh`
+
+* configure your browser to use the proxy;
+  see instructions for
+  [Chrome](../../../../scripts/util/socks-proxy.md#chrome) and
+  [Firefox](../../../../scripts/util/socks-proxy.md#firefox)
 
 * open [http://ambari-server:8080/](http://ambari-server:8080) to continue the
   installation and monitor the cluster once installed
