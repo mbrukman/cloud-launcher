@@ -18,6 +18,8 @@
 #
 # Sample use case of references in a Python-style config.
 
+from gce import *
+
 GCE.setDefaults(
     project='curious-lemming-42',
     zone='us-central1-a',

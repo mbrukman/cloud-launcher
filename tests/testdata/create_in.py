@@ -18,6 +18,8 @@
 #
 # Sample use case of the constructors in resources.py .
 
+from gce import *
+
 GCE.setDefaults(
     project='curious-lemming-42',
     zone='us-central1-a',
