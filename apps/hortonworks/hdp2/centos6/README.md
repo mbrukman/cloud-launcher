@@ -14,6 +14,12 @@ To deploy Ambari, run the following command:
 ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/ambari.py insert
 ```
 
+To delete the deployment, run the following command:
+
+```bash
+${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/ambari.py delete
+```
+
 To see other flags, run:
 
 ```bash
