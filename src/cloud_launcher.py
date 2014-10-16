@@ -27,9 +27,9 @@ import os
 import sys
 
 # Google Cloud API imports
-from apiclient.discovery import build
-from apiclient import errors
-from apiclient import http
+from googleapiclient.discovery import build
+from googleapiclient import errors
+from googleapiclient import http
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client import gce
