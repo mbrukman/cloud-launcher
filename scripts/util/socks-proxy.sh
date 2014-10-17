@@ -27,8 +27,28 @@ source "${SETTINGS}" || exit 1
 declare SERVER="${SERVER:-ambari-server}"
 declare -i PORT="${PORT:-9000}"
 
+function usage() {
+  cat << EOF
+Usage: $(basename $0) [options]
+
+Options:
+  --help,            Display this help message and exit
+   -h
+  --project [name]   Google Cloud Platform project (default: ${PROJECT})
+  --port [number],   Port to listen on (default: ${PORT})
+   -p [number]
+  --server [name]    Server to connect to (default: ${SERVER})
+  --zone [name]      Zone of the server (default: ${ZONE})
+EOF
+  exit 1
+}
+
 while [ $# -gt 0 ]; do
   case "$1" in
+    --help|-h)
+      usage
+      ;;
+
     --project)
       PROJECT="$2"
       shift
