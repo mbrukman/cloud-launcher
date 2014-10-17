@@ -16,8 +16,8 @@ Deploy on CentOS 6
   ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/centos6.py insert
   ```
 
-Acessing Ambari
----------------
+Accessing Ambari
+----------------
 
 1. run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md), e.g.,
 
