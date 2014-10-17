@@ -1,10 +1,8 @@
 Ambari
 ======
 
-**NOTE:** this directory is a work-in-progress for a modular installation of Ambari for
-different OS distributions.
-
-To try it out on CentOS 6:
+Deploy on CentOS 6
+------------------
 
 1. build the init scripts
 
@@ -18,5 +16,63 @@ To try it out on CentOS 6:
   ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/centos6.py insert
   ```
 
+Acessing Ambari
+---------------
+
 1. continue with the [other instructions](../centos6/)
    to use a SOCKS proxy, configure Ambari, and install Hadoop cluster
+
+* run a [local SOCKS proxy](../../../../scripts/util/socks-proxy.md), e.g.,
+
+  ```bash
+  ${CLOUD_LAUNCHER}/scripts/util/socks-proxy.sh --server ambari-server
+  ```
+
+  to use the default port and the project and zone as configured in
+  `${CLOUD_LAUNCHER}/src/settings.sh`
+
+* configure your browser to use the proxy;
+  see instructions for
+  [Chrome](../../../../scripts/util/socks-proxy.md#chrome) and
+  [Firefox](../../../../scripts/util/socks-proxy.md#firefox)
+
+* open [http://ambari-server:8080/](http://ambari-server:8080) to continue the
+  installation and monitor the cluster once installed
+
+You will be able to access any of the hosts in your deployment via your browser
+directly while you are using the SOCKS proxy as described in the instructions.
+
+Installation
+------------
+
+The default login credentials are:
+
+* username: admin
+* password: admin
+
+These can be changed after you set up the cluster.
+
+The agent hostname pattern:
+
+```
+ambari-agent-[0-4].c.${PROJECT}.internal
+```
+
+adjust this pattern as needed, e.g., change the '4' to N-1 where N is the number
+of agent instances in your deployment.
+
+Select "Perform manual registration on hosts and do not use SSH" and continue.
+
+Deleting the deployment
+-----------------------
+
+Once you're done working with your cluster, you can remove it entirely with a
+single command:
+
+```bash
+${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/centos6.py insert
+```
+
+Note that this procedure is irreversible; please be sure to save any data
+produced to a durable storage medium, such as Google Cloud Storage, before
+destroying the cluster.
