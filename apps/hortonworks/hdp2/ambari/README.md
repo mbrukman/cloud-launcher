@@ -25,8 +25,14 @@ Accessing Ambari
    ${CLOUD_LAUNCHER}/scripts/util/socks-proxy.sh --server ambari-server
    ```
 
-   to use the default port and the project and zone as configured in
-   `${CLOUD_LAUNCHER}/src/settings.sh`
+   to use the default port (`9000`) and the project and zone as configured in
+   `${CLOUD_LAUNCHER}/src/settings.sh`. Run:
+
+   ```bash
+   ${CLOUD_LAUNCHER}/scripts/util/socks-proxy.sh --help
+   ```
+
+   to see the available flags that you can use to customize the proxy.
 
 1. configure your browser to use the proxy;
    see instructions for
