@@ -50,8 +50,8 @@ Installation
 
 The default login credentials are:
 
-* username: admin
-* password: admin
+* username: `admin`
+* password: `admin`
 
 These can be changed after you set up the cluster.
 
