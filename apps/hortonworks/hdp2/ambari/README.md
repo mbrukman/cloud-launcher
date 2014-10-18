@@ -61,8 +61,8 @@ The agent hostname pattern is:
 ambari-agent-[0-4].c.${PROJECT}.internal
 ```
 
-Adjust this pattern as needed, e.g., change the '4' to N-1 where N is the number
-of agent instances in your deployment.
+Adjust this pattern as needed, e.g., change the `4` to _N-1_ where _N_ is the
+number of agent instances in your deployment.
 
 Select "Perform manual registration on hosts and do not use SSH" and continue.
 
