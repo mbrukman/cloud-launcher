@@ -1,6 +1,6 @@
 COMMON = ../common
 
-include ../common/common.mk
+include $(COMMON)/common.mk
 
 # RHEL reuses the repo and install commands from CentOS 6.
 repo-init.sh: ../centos6/repo-init.sh
