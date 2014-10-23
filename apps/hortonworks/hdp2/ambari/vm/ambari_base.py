@@ -64,7 +64,7 @@ def AmbariCluster(
           Metadata.startupScript(agentInitScript),
         ],
       ),
-    ) for i in range(0, 5)
+    ) for i in range(0, numAgents)
   ]
 
   return [server] + agents
