@@ -48,7 +48,7 @@ def DiskTypeToUrl(project, zone, diskType):
 
 def ImageToUrl(project, image):
   return '%(project_url)s/images/%(image)s' % {
-      'project': ProjectGlobalUrl,
+      'project_url': ProjectGlobalUrl(project),
       'image': image,
   }
 
