@@ -20,6 +20,7 @@
 #
 ################################################################################
 
+ambari-agent stop
 ambari-agent start
 
 # Automatically start after a reboot.
