@@ -33,7 +33,8 @@ declare -r AMBARI_AGENT_INI="/etc/ambari-agent/conf/ambari-agent.ini"
 function get_instance_metadata() {
   local key="$1"
   local stderr="$2"
-  curl -f "http://metadata/computeMetadata/v1/instance/attributes/${key}" \
+  curl -f -s -S \
+    "http://metadata/computeMetadata/v1/instance/attributes/${key}" \
     -H "X-Google-Metadata-Request: True" \
     2> "${stderr}"
 }
