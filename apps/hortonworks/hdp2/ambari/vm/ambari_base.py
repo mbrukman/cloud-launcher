@@ -25,9 +25,16 @@ def AmbariCluster(
     agentMachineType='n1-standard-4',
     agentDiskSizeGb=500,
     agentInitScript=None,
+    agentSourceImage=None,
     serverMachineType='n1-standard-1',
     serverInitScript=None,
+    serverSourceImage=None,
     sourceImage=None):
+  if agentSourceImage is None:
+    agentSourceImage = sourceImage
+  if serverSourceImage is None:
+    serverSourceImage = sourceImage
+
   server = Compute.instance(
       name='ambari-server',
       machineType=serverMachineType,
@@ -35,7 +42,7 @@ def AmbariCluster(
         Disk.boot(
           autoDelete=true,
           initializeParams=Disk.initializeParams(
-            sourceImage=sourceImage,
+            sourceImage=serverSourceImage,
           ),
         ),
       ],
@@ -53,7 +60,7 @@ def AmbariCluster(
         Disk.boot(
           autoDelete=true,
           initializeParams=Disk.initializeParams(
-            sourceImage=sourceImage,
+            sourceImage=agentSourceImage,
             diskSizeGb=agentDiskSizeGb,
           ),
         ),
