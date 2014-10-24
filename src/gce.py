@@ -97,9 +97,16 @@ class Image(object):
       string (URL pointing to the VM image)
     """
     if project is None:
-      return vm_images.ImageShortNameToUrl(image)
+      project = GCE.project()
 
-    return common.ImageToUrl(project, image)
+    # TODO(mbrukman): custom images within the project should override default
+    # images. For now, we will depend on them having distinct names. This also
+    # allows us to select the image URL without a network call.
+    try:
+      return vm_images.ImageShortNameToUrl(image)
+    except:
+      return common.ImageToUrl(project, image)
+
 
 class Disk(object):
 
