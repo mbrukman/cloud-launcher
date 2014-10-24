@@ -23,15 +23,34 @@
 
 declare -r AMBARI_AGENT_INI="/etc/ambari-agent/conf/ambari-agent.ini"
 
+# Args:
+#   $1: key to look up in the instance metadata
+#   $2: file to send error logs to
+#
+# Returns:
+#   value on stdout, or empty on error
+#   errors will be logged to file $2
+function get_instance_metadata() {
+  local key="$1"
+  local stderr="$2"
+  curl -f "http://metadata/computeMetadata/v1/instance/attributes/${key}" \
+    -H "X-Google-Metadata-Request: True" \
+    2> "${stderr}"
+}
+
 # First, try to see if the metadata key "ambari-server-fqdn" is available.
 # If it is, use it. Otherwise, fall back to "ambari-server" key and construct
 # the FQDN by using the known pattern.
-AMBARI_SERVER_FQDN="$(curl -f "http://metadata/computeMetadata/v1/instance/attributes/ambari-server-fqdn" -H "X-Google-Metadata-Request: True" 2> /dev/null)"
-if [[ $? -ne 0 ]]; then
-  echo "Metadata key ambari-server-fqdn not defined; using fallback 'ambari-server'"
-  declare -r AMBARI_SERVER="$(curl -f "http://metadata/computeMetadata/v1/instance/attributes/ambari-server" -H "X-Google-Metadata-Request: True" 2> /dev/null)"
-  if [[ $? -ne 0 ]]; then
-    echo "Error retrieving Ambari server hostname."
+declare -r AMBARI_SERVER_METADATA_ERR="ambari-server-metadata.err"
+AMBARI_SERVER_FQDN="$(get_instance_metadata 'ambari-server-fqdn' "${AMBARI_SERVER_METADATA_ERR}")"
+if [ -z "${AMBARI_SERVER_FQDN}" ]; then
+  echo "Could not retrieve metadata key ambari-server-fqdn (likely not defined):"
+  cat "${AMBARI_SERVER_METADATA_ERR}"
+  echo "Using fallback metadata key 'ambari-server' ..."
+  declare -r AMBARI_SERVER="$(get_instance_metadata 'ambari-server' "${AMBARI_SERVER_METADATA_ERR}")"
+  if [ -z "${AMBARI_SERVER}" ]; then
+    echo "Error retrieving Ambari server hostname via 'ambari-server' metadata key:"
+    cat "${AMBARI_SERVER_METADATA_ERR}"
     AMBARI_SERVER_FQDN="error"
   else
     AMBARI_SERVER_FQDN="${AMBARI_SERVER}.$(hostname -d)"
