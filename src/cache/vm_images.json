@@ -11,12 +11,20 @@
       "centos-6-v20140619",
       "centos-6-v20140718",
       "centos-6-v20140924",
+      "centos-6-v20140926",
+      "centos-6-v20141007",
+      "centos-6-v20141016",
+      "centos-6-v20141021",
       "centos-7-v20140903",
-      "centos-7-v20140924"
+      "centos-7-v20140924",
+      "centos-7-v20140926",
+      "centos-7-v20141007",
+      "centos-7-v20141016",
+      "centos-7-v20141021"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20140924",
-      "centos-7-latest": "centos-7-v20140924"
+      "centos-6-latest": "centos-6-v20141021",
+      "centos-7-latest": "centos-7-v20141021"
     }
   },
   "coreos-cloud": {
@@ -53,6 +61,11 @@
       "coreos-alpha-438-0-0-v20140913",
       "coreos-alpha-440-0-0-v20140915",
       "coreos-alpha-444-0-0-v20140919",
+      "coreos-alpha-452-0-0-v20140926",
+      "coreos-alpha-457-0-0-v20141002",
+      "coreos-alpha-459-0-0-v20141003",
+      "coreos-alpha-471-1-0-v20141016",
+      "coreos-alpha-472-0-0-v20141017",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -61,14 +74,20 @@
       "coreos-beta-410-0-0-v20140825",
       "coreos-beta-440-0-0-v20140918",
       "coreos-beta-444-2-0-v20140926",
+      "coreos-beta-444-3-0-v20141002",
+      "coreos-beta-444-4-0-v20141007",
+      "coreos-beta-444-5-0-v20141016",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
-      "coreos-stable-410-1-0-v20140926"
+      "coreos-stable-410-1-0-v20140926",
+      "coreos-stable-410-2-0-v20141002",
+      "coreos-stable-444-4-0-v20141010",
+      "coreos-stable-444-5-0-v20141016"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-444-0-0-v20140919",
-      "coreos-beta-latest": "coreos-beta-444-2-0-v20140926",
-      "coreos-stable-latest": "coreos-stable-410-1-0-v20140926"
+      "coreos-alpha-latest": "coreos-alpha-472-0-0-v20141017",
+      "coreos-beta-latest": "coreos-beta-444-5-0-v20141016",
+      "coreos-stable-latest": "coreos-stable-444-5-0-v20141016"
     }
   },
   "debian-cloud": {
@@ -88,6 +107,10 @@
       "backports-debian-7-wheezy-v20140828",
       "backports-debian-7-wheezy-v20140904",
       "backports-debian-7-wheezy-v20140924",
+      "backports-debian-7-wheezy-v20140926",
+      "backports-debian-7-wheezy-v20141007",
+      "backports-debian-7-wheezy-v20141017",
+      "backports-debian-7-wheezy-v20141021",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -101,11 +124,15 @@
       "debian-7-wheezy-v20140807",
       "debian-7-wheezy-v20140814",
       "debian-7-wheezy-v20140828",
-      "debian-7-wheezy-v20140924"
+      "debian-7-wheezy-v20140924",
+      "debian-7-wheezy-v20140926",
+      "debian-7-wheezy-v20141007",
+      "debian-7-wheezy-v20141017",
+      "debian-7-wheezy-v20141021"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20140924",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20140924"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141021",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20141021"
     }
   },
   "google-containers": {
@@ -115,10 +142,12 @@
       "container-vm-v20140710",
       "container-vm-v20140731",
       "container-vm-v20140826",
-      "container-vm-v20140925"
+      "container-vm-v20140925",
+      "container-vm-v20140929",
+      "container-vm-v20141016"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20140925"
+      "container-vm-latest": "container-vm-v20141016"
     }
   },
   "opensuse-cloud": {
@@ -141,10 +170,18 @@
       "rhel-6-v20140606",
       "rhel-6-v20140619",
       "rhel-6-v20140718",
-      "rhel-6-v20140924"
+      "rhel-6-v20140924",
+      "rhel-6-v20140926",
+      "rhel-6-v20141007",
+      "rhel-6-v20141020",
+      "rhel-6-v20141021",
+      "rhel-7-v20141001",
+      "rhel-7-v20141007",
+      "rhel-7-v20141020",
+      "rhel-7-v20141021"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20140924"
+      "rhel-7-latest": "rhel-7-v20141021"
     }
   },
   "suse-cloud": {
@@ -152,10 +189,11 @@
       "sles-11-sp3-v20140306",
       "sles-11-sp3-v20140609",
       "sles-11-sp3-v20140712",
-      "sles-11-sp3-v20140826"
+      "sles-11-sp3-v20140826",
+      "sles-11-sp3-v20140930"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20140826"
+      "sles-11-sp3-latest": "sles-11-sp3-v20140930"
     }
   }
 }
