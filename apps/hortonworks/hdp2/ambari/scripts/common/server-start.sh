@@ -16,11 +16,12 @@
 #
 ################################################################################
 #
-# Set Ambari server to automatically start start on boot.
+# Restarts Ambari server and sets it to automatically start on boot.
 #
 ################################################################################
 
-# Start Ambari server, by default on port 8080.
+# Restart Ambari server, by default on port 8080.
+ambari-server stop
 ambari-server start
 
 # Automatically start after a reboot.

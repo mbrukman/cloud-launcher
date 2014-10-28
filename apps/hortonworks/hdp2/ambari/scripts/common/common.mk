@@ -50,24 +50,21 @@ SERVER_INPUTS = \
   $(COMMON)/server-start.sh
 SERVER_INIT = server-init.gen.sh
 
-PACKER_AGENT_BUILD_INPUTS = \
+PACKER_BUILD_INPUTS = \
   $(COMMON)/repo-init-fn.sh \
   $(REPO_INIT) \
-  $(AGENT_INSTALL)
-PACKER_AGENT_BUILD = packer-agent-build.gen.sh
+  $(AGENT_INSTALL) \
+  $(COMMON)/agent-stop.sh \
+  $(SERVER_INSTALL) \
+  $(COMMON)/server-setup.sh \
+  $(COMMON)/server-stop.sh
+PACKER_BUILD = packer-build.gen.sh
 
 PACKER_AGENT_INIT_INPUTS = \
   $(FDISK) \
   $(COMMON)/agent-setup.sh \
   $(COMMON)/agent-start.sh
 PACKER_AGENT_INIT = packer-agent-init.gen.sh
-
-PACKER_SERVER_BUILD_INPUTS = \
-  $(COMMON)/repo-init-fn.sh \
-  $(REPO_INIT) \
-  $(SERVER_INSTALL) \
-  $(COMMON)/server-setup.sh
-PACKER_SERVER_BUILD = packer-server-build.gen.sh
 
 PACKER_SERVER_INIT_INPUTS = \
   $(FDISK) \
@@ -88,7 +85,7 @@ all: vm packer
 
 vm: $(AGENT_INIT) $(SERVER_INIT)
 
-packer: $(PACKER_AGENT_BUILD) $(PACKER_AGENT_INIT) $(PACKER_SERVER_BUILD) $(PACKER_SERVER_INIT)
+packer: $(PACKER_BUILD) $(PACKER_AGENT_INIT) $(PACKER_SERVER_INIT)
 
 clean:
 	$(VERB) rm -f $(AGENT_INIT) $(SERVER_INIT)
@@ -109,11 +106,11 @@ $(SERVER_INIT): $(SERVER_INPUTS) Makefile
 	$(DEBUG) echo "Server output script:"
 	$(DEBUG) cat $@
 
-$(PACKER_AGENT_BUILD): $(PACKER_AGENT_BUILD_INPUTS) Makefile
+$(PACKER_BUILD): $(PACKER_BUILD_INPUTS) Makefile
 	$(DEBUG) echo "***************************"
-	$(DEBUG) echo "Agent (build) input scripts: $(PACKER_AGENT_BUILD_INPUTS)"
-	$(VERB) cat $(PACKER_AGENT_BUILD_INPUTS) | sed '/^[[:space:]]*#/d' > $@
-	$(DEBUG) echo "Agent (build) output script:"
+	$(DEBUG) echo "Packer build input scripts: $(PACKER_BUILD_INPUTS)"
+	$(VERB) cat $(PACKER_BUILD_INPUTS) | sed '/^[[:space:]]*#/d' > $@
+	$(DEBUG) echo "Packer build output script:"
 	$(DEBUG) cat $@
 
 $(PACKER_AGENT_INIT): $(PACKER_AGENT_INIT_INPUTS) Makefile
@@ -121,13 +118,6 @@ $(PACKER_AGENT_INIT): $(PACKER_AGENT_INIT_INPUTS) Makefile
 	$(DEBUG) echo "Agent (init) input scripts: $(PACKER_AGENT_INIT_INPUTS)"
 	$(VERB) cat $(PACKER_AGENT_INIT_INPUTS) | sed '/^[[:space:]]*#/d' > $@
 	$(DEBUG) echo "Agent (init) output script:"
-	$(DEBUG) cat $@
-
-$(PACKER_SERVER_BUILD): $(PACKER_SERVER_BUILD_INPUTS) Makefile
-	$(DEBUG) echo "***************************"
-	$(DEBUG) echo "Server (build) input scripts: $(PACKER_SERVER_BUILD_INPUTS)"
-	$(VERB) cat $(PACKER_SERVER_BUILD_INPUTS) | sed '/^[[:space:]]*#/d' > $@
-	$(DEBUG) echo "Server (build) output script:"
 	$(DEBUG) cat $@
 
 $(PACKER_SERVER_INIT): $(PACKER_SERVER_INIT_INPUTS) Makefile

@@ -16,13 +16,9 @@
 #
 ################################################################################
 #
-# Restarts Ambari agent and sets it to automatically start on boot.
+# Stops the Ambari agent and sets it to not automatically start on boot.
 #
 ################################################################################
 
-# Restart Ambari agent to pick up any configuration changes.
 ambari-agent stop
-ambari-agent start
-
-# Automatically start after a reboot.
-chkconfig ambari-agent on
+chkconfig ambari-agent off

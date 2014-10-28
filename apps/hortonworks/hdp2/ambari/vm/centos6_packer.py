@@ -8,8 +8,7 @@ GCE.setDefaults(
 
 resources = ambari_base.AmbariCluster(
     numAgents=5,
+    sourceImage='centos6-ambari',
     agentInitScript='../scripts/centos6/packer-agent-init.gen.sh',
-    agentSourceImage='centos6-ambari-agent',
     serverInitScript='../scripts/centos6/packer-server-init.gen.sh',
-    serverSourceImage='centos6-ambari-server',
 )

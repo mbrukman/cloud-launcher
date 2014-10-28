@@ -36,13 +36,9 @@ variables:
   # so you must own a bucket by this name or have write access to it.
   bucket_name: "{{user `project`}}"
 
-  ambari_agent_image: centos6-ambari-agent
-  ambari_agent_image_desc: "CentOS 6 with Ambari Agent"
-  ambari_agent_build_script: ../scripts/centos6/packer-agent-build.gen.sh
-
-  ambari_server_image: centos6-ambari-server
-  ambari_server_image_desc: "CentOS 6 with Ambari Server"
-  ambari_server_build_script: ../scripts/centos6/packer-server-build.gen.sh
+  ambari_image: centos6-ambari
+  ambari_image_desc: "CentOS 6 with Ambari"
+  ambari_build_script: ../scripts/centos6/packer-build.gen.sh
 
   # Installing crcmod makes gsutil upload large images to GCS much faster.
   # See
@@ -66,7 +62,7 @@ common:
 
 builders:
 
-  - name: ambari-agent
+  - name: ambari
     type: googlecompute
 
     # Input settings.
@@ -74,8 +70,8 @@ builders:
 
     # Output settings (Google Cloud Storage).
     bucket_name: "{{user `bucket_name`}}"
-    image_name: "{{user `ambari_agent_image`}}"
-    image_description: "{{user `ambari_agent_image_desc`}}"
+    image_name: "{{user `ambari_image`}}"
+    image_description: "{{user `ambari_image_desc`}}"
 
     # Security settings.
     client_secrets_file: *client_secrets_file
@@ -84,29 +80,7 @@ builders:
     # GCP settings.
     project_id: "{{user `project`}}"
     zone: "{{user `zone`}}"
-    instance_name: packer-ambari-agent
-    machine_type: n1-standard-2
-    ssh_username: "{{user `username`}}"
-
-  - name: ambari-server
-    type: googlecompute
-
-    # Input settings.
-    source_image: "{{user `source_image`}}"
-
-    # Output settings (Google Cloud Storage).
-    bucket_name: "{{user `bucket_name`}}"
-    image_name: "{{user `ambari_server_image`}}"
-    image_description: "{{user `ambari_server_image_desc`}}"
-
-    # Security settings.
-    client_secrets_file: *client_secrets_file
-    private_key_file: *private_key_file
-
-    # GCP settings.
-    project_id: "{{user `project`}}"
-    zone: "{{user `zone`}}"
-    instance_name: packer-ambari-server
+    instance_name: packer-ambari
     machine_type: n1-standard-2
     ssh_username: "{{user `username`}}"
 
@@ -116,16 +90,7 @@ provisioners:
     scripts: [
       # TODO(mbrukman): enable crcmod for faster gsutil uploads.
       # "{{user `install_crcmod_script`}}",
-      "{{user `ambari_agent_build_script`}}"
+      "{{user `ambari_build_script`}}"
     ]
-    only: [ambari-agent]
-    execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
-
-  - type: shell
-    scripts: [
-      # TODO(mbrukman): enable crcmod for faster gsutil uploads.
-      # "{{user `install_crcmod_script`}}",
-      "{{user `ambari_server_build_script`}}"
-    ]
-    only: [ambari-server]
+    only: [ambari]
     execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"

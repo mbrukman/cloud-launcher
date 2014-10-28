@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-# Use Packer to build GCE VM images with Ambari agent and server preinstalled.
+# Use Packer to build a GCE VM image with Ambari agent and server preinstalled.
 #
 ################################################################################
 
@@ -31,12 +31,10 @@ ZONE = us-central1-b
 
 # Google Cloud Storage settings.
 GS_BUCKET = centos6-packer-images
-AMBARI_AGENT_IMAGE = centos6-ambari-agent
-AMBARI_SERVER_IMAGE = centos6-ambari-server
+AMBARI_IMAGE = centos6-ambari
 
 VARS = \
-  -var "ambari_agent_image=$(AMBARI_AGENT_IMAGE)" \
-  -var "ambari_server_image=$(AMBARI_SERVER_IMAGE)" \
+  -var "ambari_image=$(AMBARI_IMAGE)" \
   -var "bucket_name=$(GS_BUCKET)" \
   -var "project=$(PROJECT)" \
   -var "zone=$(ZONE)"
@@ -62,7 +60,7 @@ validate: $(TEMPLATE_JSON)
 	$(VERB) packer validate $(VARS) $(TEMPLATE_JSON)
 
 clean-images:
-	$(VERB) for image in $(AMBARI_AGENT_IMAGE) $(AMBARI_SERVER_IMAGE); do \
+	$(VERB) for image in $(AMBARI_IMAGE); do \
 	  echo "Removing $${image} image ..."; \
 	  gsutil rm -f gs://$(GS_BUCKET)/$${image}.tar.gz; \
 	  gcutil --project=$(PROJECT) deleteimage -f $${image}; \
