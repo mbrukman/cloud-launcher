@@ -74,8 +74,8 @@ def WriteJsonToFile(json_obj, filename):
 def UpdateVmImages(gce, flags):
   vm_images = {}
   vm_image_projects = (
-      'centos-cloud', 'coreos-cloud', 'debian-cloud', 'google-containers',
-      'opensuse-cloud', 'rhel-cloud', 'suse-cloud'
+      'centos-cloud', 'coreos-cloud', 'debian-cloud', 'gce-nvme',
+      'google-containers', 'opensuse-cloud', 'rhel-cloud', 'suse-cloud'
   )
   for project in vm_image_projects:
     images = gce.compute.images().list(project=project).execute(http=gce.http)

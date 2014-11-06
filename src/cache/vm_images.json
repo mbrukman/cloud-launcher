@@ -136,6 +136,15 @@
       "debian-7-wheezy-latest": "debian-7-wheezy-v20141021"
     }
   },
+  "gce-nvme": {
+    "images": [
+      "nvme-backports-debian-7-wheezy-v20140904",
+      "nvme-backports-debian-7-wheezy-v20140926"
+    ],
+    "pseudo": {
+      "nvme-backports-debian-7-wheezy-latest": "nvme-backports-debian-7-wheezy-v20140926"
+    }
+  },
   "google-containers": {
     "images": [
       "container-vm-v20140522",
