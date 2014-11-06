@@ -30,10 +30,12 @@ local gce = import "../../../../../src/gce.jsonnet";
         zoneName:: $.zone,
         metadataMap:: {
             "startup-script": gce.StripComments(std.join("\n", [
-                importstr "../scripts/init/ambari-repo-init.sh",
-                importstr "../scripts/init/ambari-server-install.sh",
-                importstr "../scripts/init/ambari-server-setup.sh",
-                importstr "../scripts/init/ambari-server-start.sh",
+                importstr "../../../../common/fdisk.sh",
+                importstr "../scripts/common/repo-init-fn.sh",
+                importstr "../scripts/centos6/repo-init.sh",
+                importstr "../scripts/centos6/server-install.sh",
+                importstr "../scripts/common/server-setup.sh",
+                importstr "../scripts/common/server-start.sh",
             ])), 
         },
         disks: [
@@ -53,10 +55,11 @@ local gce = import "../../../../../src/gce.jsonnet";
             "ambari-server": "ambari-server",
             "startup-script": gce.StripComments(std.join("\n",[
                 importstr "../../../../common/fdisk.sh",
-                importstr "../scripts/init/ambari-repo-init.sh",
-                importstr "../scripts/init/ambari-agent-install.sh",
-                importstr "../scripts/init/ambari-agent-setup.sh",
-                importstr "../scripts/init/ambari-agent-start.sh",
+                importstr "../scripts/common/repo-init-fn.sh",
+                importstr "../scripts/centos6/repo-init.sh",
+                importstr "../scripts/centos6/agent-install.sh",
+                importstr "../scripts/common/agent-setup.sh",
+                importstr "../scripts/common/agent-start.sh",
             ])),
         },
         disks: [ $.server.disks[0] + { owner:: agent, sizeGb:: 500, } ],
