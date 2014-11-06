@@ -66,6 +66,7 @@
       "coreos-alpha-459-0-0-v20141003",
       "coreos-alpha-471-1-0-v20141016",
       "coreos-alpha-472-0-0-v20141017",
+      "coreos-alpha-490-0-0-v20141104",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -85,7 +86,7 @@
       "coreos-stable-444-5-0-v20141016"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-472-0-0-v20141017",
+      "coreos-alpha-latest": "coreos-alpha-490-0-0-v20141104",
       "coreos-beta-latest": "coreos-beta-444-5-0-v20141016",
       "coreos-stable-latest": "coreos-stable-444-5-0-v20141016"
     }
@@ -154,10 +155,11 @@
     "images": [
       "opensuse-13-1-v20140609",
       "opensuse-13-1-v20140627",
-      "opensuse-13-1-v20140711"
+      "opensuse-13-1-v20140711",
+      "opensuse-13-1-v20141102"
     ],
     "pseudo": {
-      "opensuse-13-1-latest": "opensuse-13-1-v20140711"
+      "opensuse-13-1-latest": "opensuse-13-1-v20141102"
     }
   },
   "rhel-cloud": {
@@ -190,10 +192,12 @@
       "sles-11-sp3-v20140609",
       "sles-11-sp3-v20140712",
       "sles-11-sp3-v20140826",
-      "sles-11-sp3-v20140930"
+      "sles-11-sp3-v20140930",
+      "sles-11-sp3-v20141105",
+      "sles-12-v20141023"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20140930"
+      "sles-12-latest": "sles-12-v20141023"
     }
   }
 }
