@@ -68,6 +68,7 @@
       "coreos-alpha-472-0-0-v20141017",
       "coreos-alpha-490-0-0-v20141104",
       "coreos-alpha-493-0-0-v20141107",
+      "coreos-alpha-494-0-0-v20141108",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -87,7 +88,7 @@
       "coreos-stable-444-5-0-v20141016"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-493-0-0-v20141107",
+      "coreos-alpha-latest": "coreos-alpha-494-0-0-v20141108",
       "coreos-beta-latest": "coreos-beta-444-5-0-v20141016",
       "coreos-stable-latest": "coreos-stable-444-5-0-v20141016"
     }
@@ -213,11 +214,16 @@
   "ubuntu-os-cloud": {
     "images": [
       "ubuntu-1204-precise-v20141028",
+      "ubuntu-1204-precise-v20141031",
       "ubuntu-1404-trusty-v20141028",
-      "ubuntu-1410-utopic-v20141029"
+      "ubuntu-1404-trusty-v20141031a",
+      "ubuntu-1410-utopic-v20141029",
+      "ubuntu-1410-utopic-v20141030a"
     ],
     "pseudo": {
-      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20141029"
+      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20141031",
+      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20141031a",
+      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20141030a"
     }
   }
 }
