@@ -145,10 +145,11 @@
   "gce-nvme": {
     "images": [
       "nvme-backports-debian-7-wheezy-v20140904",
-      "nvme-backports-debian-7-wheezy-v20140926"
+      "nvme-backports-debian-7-wheezy-v20140926",
+      "nvme-backports-debian-7-wheezy-v20141108"
     ],
     "pseudo": {
-      "nvme-backports-debian-7-wheezy-latest": "nvme-backports-debian-7-wheezy-v20140926"
+      "nvme-backports-debian-7-wheezy-latest": "nvme-backports-debian-7-wheezy-v20141108"
     }
   },
   "google-containers": {
@@ -215,6 +216,7 @@
       "sles-12-v20141023"
     ],
     "pseudo": {
+      "sles-11-sp3-latest": "sles-11-sp3-v20141105",
       "sles-12-latest": "sles-12-v20141023"
     }
   },

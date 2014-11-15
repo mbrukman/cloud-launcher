@@ -125,6 +125,11 @@ def UpdateVmImages(gce, flags):
         image_sublist = filter(lambda image: release in image, images)
         src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
         pseudo[src] = dst
+    elif project == 'suse-cloud':
+      for release in ('sles-11', 'sles-12'):
+        image_sublist = filter(lambda image: release in image, images)
+        src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
+        pseudo[src] = dst
     elif project == 'ubuntu-os-cloud':
       for release in ('precise', 'trusty', 'utopic'):
         image_sublist = filter(lambda image: release in image, images)
