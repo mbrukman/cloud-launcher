@@ -4,7 +4,9 @@ Ambari
 Deploy on CentOS 6
 ------------------
 
-### Using pre-built VM images (recommended)
+Choose one of the modes below for building and launching the cluster.
+
+### Mode A: via pre-built VM images (recommended)
 
 By pre-building the VM images, you do the intial work of downloading the Ambari
 agent and server packages once during VM image construction, which speeds up the
@@ -14,7 +16,7 @@ Thus, whether you're bringing up 5 or 500 instances, it will be much faster to
 start the cluster or add new nodes. To use this mode of installation, follow the
 instructions in the [`packer`](packer/) directory.
 
-### Using dynamically-built VM images
+### Mode B: via dynamically-built VM images
 
 In this mode of installation, the VM boots and executes a script to download and
 install Ambari agent and server packages, along with their prerequisites (such
