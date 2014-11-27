@@ -1,7 +1,7 @@
 Cloud Launcher
 ==============
 
-Simplifying the process of launching applications on Google Cloud Platform.
+Simplifying the process of launching applications on [Google Cloud Platform](https://cloud.google.com/).
 
 Global setup
 ------------
