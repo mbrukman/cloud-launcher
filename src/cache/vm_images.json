@@ -71,6 +71,11 @@
       "coreos-alpha-490-0-0-v20141104",
       "coreos-alpha-493-0-0-v20141107",
       "coreos-alpha-494-0-0-v20141108",
+      "coreos-alpha-505-1-0-v20141119",
+      "coreos-alpha-507-0-0-v20141121",
+      "coreos-alpha-509-0-0-v20141122",
+      "coreos-alpha-509-1-0-v20141124",
+      "coreos-alpha-522-0-0-v20141205",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -82,17 +87,22 @@
       "coreos-beta-444-3-0-v20141002",
       "coreos-beta-444-4-0-v20141007",
       "coreos-beta-444-5-0-v20141016",
+      "coreos-beta-494-0-0-v20141117",
+      "coreos-beta-494-1-0-v20141124",
+      "coreos-beta-494-4-0-v20141204",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
       "coreos-stable-410-2-0-v20141002",
       "coreos-stable-444-4-0-v20141010",
-      "coreos-stable-444-5-0-v20141016"
+      "coreos-stable-444-5-0-v20141016",
+      "coreos-stable-494-3-0-v20141203",
+      "coreos-stable-494-4-0-v20141204"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-494-0-0-v20141108",
-      "coreos-beta-latest": "coreos-beta-444-5-0-v20141016",
-      "coreos-stable-latest": "coreos-stable-444-5-0-v20141016"
+      "coreos-alpha-latest": "coreos-alpha-522-0-0-v20141205",
+      "coreos-beta-latest": "coreos-beta-494-4-0-v20141204",
+      "coreos-stable-latest": "coreos-stable-494-4-0-v20141204"
     }
   },
   "debian-cloud": {
