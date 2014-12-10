@@ -73,13 +73,21 @@ def WriteJsonToFile(json_obj, filename):
 
 def UpdateVmImages(gce, flags):
   vm_images = {}
-  vm_image_projects = (
+  vm_image_projects = sorted([
       'centos-cloud', 'coreos-cloud', 'debian-cloud', 'gce-nvme',
       'google-containers', 'opensuse-cloud', 'rhel-cloud', 'suse-cloud',
       'ubuntu-os-cloud'
-  )
+  ])
+
+  # TODO(mbrukman): add flag to avoid making remote calls, thereby only reading
+  # from the saved responses on disk.
   for project in vm_image_projects:
     images = gce.compute.images().list(project=project).execute(http=gce.http)
+    WriteJsonToFile(images, 'raw_data/%s.json' % project)
+
+  for project in vm_image_projects:
+    with open('raw_data/%s.json' % project, 'r') as json_file:
+      images = json.loads(json_file.read())
     for item in images['items']:
       if project not in vm_images:
         vm_images[project] = {}

@@ -1,0 +1,127 @@
+{
+  "id": "projects/ubuntu-os-cloud/global/images",
+  "items": [
+    {
+      "archiveSizeBytes": "378614228",
+      "creationTimestamp": "2014-10-29T09:51:42.018-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20141031",
+        "state": "DEPRECATED"
+      },
+      "diskSizeGb": "10",
+      "id": "15508054221909398824",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1204-precise"
+      ],
+      "name": "ubuntu-1204-precise-v20141028",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20141028",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1137275331",
+      "creationTimestamp": "2014-11-07T00:48:18.673-08:00",
+      "diskSizeGb": "10",
+      "id": "3216640293232429175",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1204-precise"
+      ],
+      "name": "ubuntu-1204-precise-v20141031",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20141031",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "375105326",
+      "creationTimestamp": "2014-10-29T09:51:42.072-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141031a",
+        "state": "DEPRECATED"
+      },
+      "diskSizeGb": "10",
+      "id": "17781692821175088041",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1404-trusty"
+      ],
+      "name": "ubuntu-1404-trusty-v20141028",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141028",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1015791618",
+      "creationTimestamp": "2014-11-07T00:48:04.471-08:00",
+      "diskSizeGb": "10",
+      "id": "6500942514398264968",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1404-trusty"
+      ],
+      "name": "ubuntu-1404-trusty-v20141031a",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141031a",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "348037877",
+      "creationTimestamp": "2014-10-29T09:51:39.609-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141030a",
+        "state": "DEPRECATED"
+      },
+      "diskSizeGb": "10",
+      "id": "13898107879086076373",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1410-utopic"
+      ],
+      "name": "ubuntu-1410-utopic-v20141029",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141029",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1044175299",
+      "creationTimestamp": "2014-11-07T00:47:53.082-08:00",
+      "diskSizeGb": "10",
+      "id": "2412636152371793564",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1410-utopic"
+      ],
+      "name": "ubuntu-1410-utopic-v20141030a",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141030a",
+      "sourceType": "RAW",
+      "status": "READY"
+    }
+  ],
+  "kind": "compute#imageList",
+  "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images"
+}
