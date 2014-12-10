@@ -16,17 +16,19 @@
       "centos-6-v20141016",
       "centos-6-v20141021",
       "centos-6-v20141108",
+      "centos-6-v20141205",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
       "centos-7-v20141007",
       "centos-7-v20141016",
       "centos-7-v20141021",
-      "centos-7-v20141108"
+      "centos-7-v20141108",
+      "centos-7-v20141205"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20141108",
-      "centos-7-latest": "centos-7-v20141108"
+      "centos-6-latest": "centos-6-v20141205",
+      "centos-7-latest": "centos-7-v20141205"
     }
   },
   "coreos-cloud": {
@@ -127,6 +129,7 @@
       "backports-debian-7-wheezy-v20141017",
       "backports-debian-7-wheezy-v20141021",
       "backports-debian-7-wheezy-v20141108",
+      "backports-debian-7-wheezy-v20141205",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -145,11 +148,12 @@
       "debian-7-wheezy-v20141007",
       "debian-7-wheezy-v20141017",
       "debian-7-wheezy-v20141021",
-      "debian-7-wheezy-v20141108"
+      "debian-7-wheezy-v20141108",
+      "debian-7-wheezy-v20141205"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141108",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20141108"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141205",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20141205"
     }
   },
   "gce-nvme": {
@@ -171,10 +175,11 @@
       "container-vm-v20140826",
       "container-vm-v20140925",
       "container-vm-v20140929",
-      "container-vm-v20141016"
+      "container-vm-v20141016",
+      "container-vm-v20141208"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20141016"
+      "container-vm-latest": "container-vm-v20141208"
     }
   },
   "opensuse-cloud": {
@@ -182,10 +187,12 @@
       "opensuse-13-1-v20140609",
       "opensuse-13-1-v20140627",
       "opensuse-13-1-v20140711",
-      "opensuse-13-1-v20141102"
+      "opensuse-13-1-v20141102",
+      "opensuse-13-2-v20141205"
     ],
     "pseudo": {
-      "opensuse-13-1-latest": "opensuse-13-1-v20141102"
+      "opensuse-13-1-latest": "opensuse-13-1-v20141102",
+      "opensuse-13-2-latest": "opensuse-13-2-v20141205"
     }
   },
   "rhel-cloud": {
@@ -204,15 +211,17 @@
       "rhel-6-v20141020",
       "rhel-6-v20141021",
       "rhel-6-v20141108",
+      "rhel-6-v20141205",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
       "rhel-7-v20141021",
-      "rhel-7-v20141108"
+      "rhel-7-v20141108",
+      "rhel-7-v20141205"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20141108",
-      "rhel-7-latest": "rhel-7-v20141108"
+      "rhel-6-latest": "rhel-6-v20141205",
+      "rhel-7-latest": "rhel-7-v20141205"
     }
   },
   "suse-cloud": {

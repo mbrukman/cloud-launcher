@@ -120,6 +120,11 @@ def UpdateVmImages(gce, flags):
       for image_sublist in (backports, not_backports):
         src, dst = LatestImage(image_sublist)
         pseudo[src] = dst
+    elif project == 'opensuse-cloud':
+      for release in ('opensuse-13-1', 'opensuse-13-2'):
+        image_sublist = filter(lambda image: release in image, images)
+        src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
+        pseudo[src] = dst
     elif project == 'rhel-cloud':
       for release in ('rhel-6', 'rhel-7'):
         image_sublist = filter(lambda image: release in image, images)
