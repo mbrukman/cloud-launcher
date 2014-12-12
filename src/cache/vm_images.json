@@ -78,6 +78,7 @@
       "coreos-alpha-509-0-0-v20141122",
       "coreos-alpha-509-1-0-v20141124",
       "coreos-alpha-522-0-0-v20141205",
+      "coreos-alpha-522-1-0-v20141211",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -92,6 +93,7 @@
       "coreos-beta-494-0-0-v20141117",
       "coreos-beta-494-1-0-v20141124",
       "coreos-beta-494-4-0-v20141204",
+      "coreos-beta-494-5-0-v20141211",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
@@ -102,8 +104,8 @@
       "coreos-stable-494-4-0-v20141204"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-522-0-0-v20141205",
-      "coreos-beta-latest": "coreos-beta-494-4-0-v20141204",
+      "coreos-alpha-latest": "coreos-alpha-522-1-0-v20141211",
+      "coreos-beta-latest": "coreos-beta-494-5-0-v20141211",
       "coreos-stable-latest": "coreos-stable-494-4-0-v20141204"
     }
   },
