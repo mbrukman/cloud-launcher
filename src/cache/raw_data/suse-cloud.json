@@ -2,26 +2,21 @@
   "id": "projects/suse-cloud/global/images",
   "items": [
     {
-      "archiveSizeBytes": "354497936",
-      "creationTimestamp": "2014-03-06T13:13:29.791-08:00",
-      "deprecated": {
-        "deprecated": "2014-06-09T00:00:00Z",
-        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20140609",
-        "state": "DEPRECATED"
-      },
-      "description": "",
+      "archiveSizeBytes": "1075958547",
+      "creationTimestamp": "2014-12-24T03:43:07.420-08:00",
+      "description": "SUSE Linux Enterprise Server 11 SP3 with all bug and security fixes up to 2014-12-24",
       "diskSizeGb": "8",
-      "id": "3727805086509383287",
+      "id": "6214571192093340183",
       "kind": "compute#image",
       "licenses": [
         "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
       ],
-      "name": "sles-11-sp3-v20140306",
+      "name": "sles-11-sp3-20141224",
       "rawDisk": {
         "containerType": "TAR",
         "source": ""
       },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20140306",
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-20141224",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -100,6 +95,11 @@
     {
       "archiveSizeBytes": "1102825953",
       "creationTimestamp": "2014-09-30T08:27:46.201-07:00",
+      "deprecated": {
+        "deprecated": "2014-11-05T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20141105",
+        "state": "DEPRECATED"
+      },
       "description": "SUSE Linux Enterprise Server 11 SP3",
       "diskSizeGb": "8",
       "id": "3132872945991231828",
@@ -119,6 +119,11 @@
     {
       "archiveSizeBytes": "1075782309",
       "creationTimestamp": "2014-11-05T16:11:49.996-08:00",
+      "deprecated": {
+        "deprecated": "2014-12-24T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-20141224",
+        "state": "DEPRECATED"
+      },
       "description": "SUSE Linux Enterprise Server 11 SP3 built on 2014-11-05",
       "diskSizeGb": "8",
       "id": "14793554030256860036",
