@@ -304,6 +304,10 @@
     {
       "archiveSizeBytes": "1056393081",
       "creationTimestamp": "2014-12-08T16:14:54.943-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20141218",
+        "state": "DEPRECATED"
+      },
       "description": "CentOS 6.6 x86_64 built on 2014-12-05",
       "diskSizeGb": "10",
       "id": "17207937043950962086",
@@ -314,6 +318,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20141205",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1059378636",
+      "creationTimestamp": "2015-01-05T14:58:22.893-08:00",
+      "description": "CentOS 6.6 x86_64 built on 2014-12-18",
+      "diskSizeGb": "10",
+      "id": "907962088156683116",
+      "kind": "compute#image",
+      "name": "centos-6-v20141218",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20141218",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -460,6 +480,10 @@
     {
       "archiveSizeBytes": "1196735889",
       "creationTimestamp": "2014-12-08T16:35:02.271-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20141218",
+        "state": "DEPRECATED"
+      },
       "description": "CentOS 7 x86_64 built on 2014-12-05",
       "diskSizeGb": "10",
       "id": "9955643093605856709",
@@ -470,6 +494,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20141205",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1201145025",
+      "creationTimestamp": "2015-01-05T14:54:47.349-08:00",
+      "description": "CentOS 7 x86_64 built on 2014-12-18",
+      "diskSizeGb": "10",
+      "id": "4809836014772868503",
+      "kind": "compute#image",
+      "name": "centos-7-v20141218",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20141218",
       "sourceType": "RAW",
       "status": "READY"
     }

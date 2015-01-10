@@ -17,6 +17,7 @@
       "centos-6-v20141021",
       "centos-6-v20141108",
       "centos-6-v20141205",
+      "centos-6-v20141218",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
@@ -24,11 +25,12 @@
       "centos-7-v20141016",
       "centos-7-v20141021",
       "centos-7-v20141108",
-      "centos-7-v20141205"
+      "centos-7-v20141205",
+      "centos-7-v20141218"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20141205",
-      "centos-7-latest": "centos-7-v20141205"
+      "centos-6-latest": "centos-6-v20141218",
+      "centos-7-latest": "centos-7-v20141218"
     }
   },
   "coreos-cloud": {
@@ -67,6 +69,7 @@
       "coreos-alpha-444-0-0-v20140919",
       "coreos-alpha-452-0-0-v20140926",
       "coreos-alpha-457-0-0-v20141002",
+      "coreos-alpha-457-0-0-v20141231",
       "coreos-alpha-459-0-0-v20141003",
       "coreos-alpha-471-1-0-v20141016",
       "coreos-alpha-472-0-0-v20141017",
@@ -83,6 +86,11 @@
       "coreos-alpha-534-1-0-v20141219",
       "coreos-alpha-536-0-0-v20141220",
       "coreos-alpha-540-0-0-v20141223",
+      "coreos-alpha-547-0-0-v20141231",
+      "coreos-alpha-549-0-0-v20150102",
+      "coreos-alpha-550-0-0-v20150102",
+      "coreos-alpha-554-0-0-v20150107",
+      "coreos-alpha-557-0-0-v20150109",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -99,6 +107,8 @@
       "coreos-beta-494-4-0-v20141204",
       "coreos-beta-494-5-0-v20141211",
       "coreos-beta-522-2-0-v20141218",
+      "coreos-beta-522-3-0-v20141226",
+      "coreos-beta-522-4-0-v20150106",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
@@ -107,12 +117,13 @@
       "coreos-stable-444-5-0-v20141016",
       "coreos-stable-494-3-0-v20141203",
       "coreos-stable-494-4-0-v20141204",
-      "coreos-stable-494-5-0-v20141215"
+      "coreos-stable-494-5-0-v20141215",
+      "coreos-stable-522-4-0-v20150108"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-540-0-0-v20141223",
-      "coreos-beta-latest": "coreos-beta-522-2-0-v20141218",
-      "coreos-stable-latest": "coreos-stable-494-5-0-v20141215"
+      "coreos-alpha-latest": "coreos-alpha-557-0-0-v20150109",
+      "coreos-beta-latest": "coreos-beta-522-4-0-v20150106",
+      "coreos-stable-latest": "coreos-stable-522-4-0-v20150108"
     }
   },
   "debian-cloud": {
@@ -138,6 +149,7 @@
       "backports-debian-7-wheezy-v20141021",
       "backports-debian-7-wheezy-v20141108",
       "backports-debian-7-wheezy-v20141205",
+      "backports-debian-7-wheezy-v20141218",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -157,11 +169,12 @@
       "debian-7-wheezy-v20141017",
       "debian-7-wheezy-v20141021",
       "debian-7-wheezy-v20141108",
-      "debian-7-wheezy-v20141205"
+      "debian-7-wheezy-v20141205",
+      "debian-7-wheezy-v20141218"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141205",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20141205"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141218",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20141218"
     }
   },
   "gce-nvme": {
@@ -220,16 +233,18 @@
       "rhel-6-v20141021",
       "rhel-6-v20141108",
       "rhel-6-v20141205",
+      "rhel-6-v20141218",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
       "rhel-7-v20141021",
       "rhel-7-v20141108",
-      "rhel-7-v20141205"
+      "rhel-7-v20141205",
+      "rhel-7-v20141218"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20141205",
-      "rhel-7-latest": "rhel-7-v20141205"
+      "rhel-6-latest": "rhel-6-v20141218",
+      "rhel-7-latest": "rhel-7-v20141218"
     }
   },
   "suse-cloud": {
