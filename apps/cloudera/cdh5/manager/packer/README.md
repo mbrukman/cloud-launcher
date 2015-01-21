@@ -7,6 +7,10 @@ to enable automated Cloudera Manager Server installation.
 Instructions
 ------------
 
+Note: in the text below, `${CLOUD_LAUNCHER}` refers to the full path of the
+top-level directory of this project when you clone the repo; this would
+typically be `cloud-launcher`.
+
 1. Install [Packer](https://github.com/mitchellh/packer) from source
 
 1. Create the `account.json` file as described in the
