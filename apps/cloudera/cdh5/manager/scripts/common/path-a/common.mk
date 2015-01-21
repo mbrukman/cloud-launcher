@@ -49,8 +49,7 @@ PACKER.server.build.out = \
 PACKER.server.start.in = \
   $(FDISK) \
   $(COMMON)/sshd-enable-password-auth.sh \
-  $(COMMON)/path-a/manager-install.sh \
-  $(COMMON)/server-start.sh
+  $(COMMON)/path-a/manager-install.sh
 
 PACKER.server.start.out = packer-server-start.gen.sh
 
