@@ -17,6 +17,15 @@ Instructions
 
 1. Modify `settings.mk` with your choice of project and zone.
 
+1. Make sure you've also followed the directions in the
+   [top-level README.md](../../../../../README.md) of this project;
+   in particular:
+
+   * modify `${CLOUD_LAUNCHER}/src/settings.sh` similarly to how you
+     modified `settings.mk` with your choice of project and zone and
+   * add the credentials to enable creating and deleting Google Cloud Platform
+     resources.
+
 1. Build the images using Packer:
 
    ```bash
