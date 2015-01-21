@@ -1104,6 +1104,10 @@
     {
       "archiveSizeBytes": "152403421",
       "creationTimestamp": "2015-01-09T13:07:33.555-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-561-0-0-v20150114",
+        "state": "DEPRECATED"
+      },
       "description": "CoreOS alpha 557.0.0",
       "diskSizeGb": "9",
       "id": "11588132655261924242",
@@ -1114,6 +1118,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-557-0-0-v20150109",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "151900574",
+      "creationTimestamp": "2015-01-14T15:18:47.468-08:00",
+      "description": "CoreOS alpha 561.0.0",
+      "diskSizeGb": "9",
+      "id": "7240029095544217763",
+      "kind": "compute#image",
+      "name": "coreos-alpha-561-0-0-v20150114",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-561-0-0-v20150114",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1460,6 +1480,10 @@
     {
       "archiveSizeBytes": "216643278",
       "creationTimestamp": "2015-01-06T13:19:28.392-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-522-5-0-v20150112",
+        "state": "DEPRECATED"
+      },
       "description": "CoreOS beta 522.4.0",
       "diskSizeGb": "9",
       "id": "6344812500476454386",
@@ -1470,6 +1494,42 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-522-4-0-v20150106",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "220977972",
+      "creationTimestamp": "2015-01-12T14:02:17.665-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-557-0-0-v20150114",
+        "state": "DEPRECATED"
+      },
+      "description": "CoreOS beta 522.5.0",
+      "diskSizeGb": "9",
+      "id": "11628620635058455146",
+      "kind": "compute#image",
+      "name": "coreos-beta-522-5-0-v20150112",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-522-5-0-v20150112",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "152400994",
+      "creationTimestamp": "2015-01-14T12:41:01.118-08:00",
+      "description": "CoreOS beta 557.0.0",
+      "diskSizeGb": "9",
+      "id": "3494276552336113856",
+      "kind": "compute#image",
+      "name": "coreos-beta-557-0-0-v20150114",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-557-0-0-v20150114",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1656,6 +1716,10 @@
     {
       "archiveSizeBytes": "216599276",
       "creationTimestamp": "2015-01-08T14:29:37.247-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-stable-522-5-0-v20150114",
+        "state": "DEPRECATED"
+      },
       "description": "CoreOS stable 522.4.0",
       "diskSizeGb": "9",
       "id": "8598912170882689535",
@@ -1666,6 +1730,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-stable-522-4-0-v20150108",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "220922810",
+      "creationTimestamp": "2015-01-14T12:19:32.475-08:00",
+      "description": "CoreOS stable 522.5.0",
+      "diskSizeGb": "9",
+      "id": "6256570403977998200",
+      "kind": "compute#image",
+      "name": "coreos-stable-522-5-0-v20150114",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-stable-522-5-0-v20150114",
       "sourceType": "RAW",
       "status": "READY"
     }

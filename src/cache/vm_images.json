@@ -91,6 +91,7 @@
       "coreos-alpha-550-0-0-v20150102",
       "coreos-alpha-554-0-0-v20150107",
       "coreos-alpha-557-0-0-v20150109",
+      "coreos-alpha-561-0-0-v20150114",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -109,6 +110,8 @@
       "coreos-beta-522-2-0-v20141218",
       "coreos-beta-522-3-0-v20141226",
       "coreos-beta-522-4-0-v20150106",
+      "coreos-beta-522-5-0-v20150112",
+      "coreos-beta-557-0-0-v20150114",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
@@ -118,12 +121,13 @@
       "coreos-stable-494-3-0-v20141203",
       "coreos-stable-494-4-0-v20141204",
       "coreos-stable-494-5-0-v20141215",
-      "coreos-stable-522-4-0-v20150108"
+      "coreos-stable-522-4-0-v20150108",
+      "coreos-stable-522-5-0-v20150114"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-557-0-0-v20150109",
-      "coreos-beta-latest": "coreos-beta-522-4-0-v20150106",
-      "coreos-stable-latest": "coreos-stable-522-4-0-v20150108"
+      "coreos-alpha-latest": "coreos-alpha-561-0-0-v20150114",
+      "coreos-beta-latest": "coreos-beta-557-0-0-v20150114",
+      "coreos-stable-latest": "coreos-stable-522-5-0-v20150114"
     }
   },
   "debian-cloud": {
@@ -150,6 +154,7 @@
       "backports-debian-7-wheezy-v20141108",
       "backports-debian-7-wheezy-v20141205",
       "backports-debian-7-wheezy-v20141218",
+      "backports-debian-7-wheezy-v20150112",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -170,11 +175,12 @@
       "debian-7-wheezy-v20141021",
       "debian-7-wheezy-v20141108",
       "debian-7-wheezy-v20141205",
-      "debian-7-wheezy-v20141218"
+      "debian-7-wheezy-v20141218",
+      "debian-7-wheezy-v20150112"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20141218",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20141218"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150112",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20150112"
     }
   },
   "gce-nvme": {
@@ -197,10 +203,11 @@
       "container-vm-v20140925",
       "container-vm-v20140929",
       "container-vm-v20141016",
-      "container-vm-v20141208"
+      "container-vm-v20141208",
+      "container-vm-v20150112"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20141208"
+      "container-vm-latest": "container-vm-v20150112"
     }
   },
   "opensuse-cloud": {
