@@ -86,7 +86,7 @@ build-scripts:
 	$(VERB) $(MAKE) VERBOSE=$(VERBOSE) -s -C ../scripts/$(OS)/$(CDH_INSTALL)
 
 build: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
-	$(VERB) echo "Building image: $(MANAGER_IMAGE)"
+	$(VERB) echo "Building images for $(OS) via $(CDH_INSTALL)"
 	$(VERB) packer build -force $(VARS) $(TEMPLATE_JSON)
 
 inspect: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
