@@ -77,6 +77,15 @@ typically be `cloud-launcher`.
 
 1. Configure and install Cloudera CDH cluster.
 
+   Note that all VMs support the following credentials for SSH and passwordless
+   `sudo` access:
+
+   * username: `cloudera`
+   * password: `cloudera`
+
+   This is configured in
+   [`../scripts/common/cloudera-user.sh`](../scripts/common/cloudera-user.sh).
+
 1. To delete the VMs once you are done using them, replace the `vm-deploy`
    make target above with `delete`:
 
