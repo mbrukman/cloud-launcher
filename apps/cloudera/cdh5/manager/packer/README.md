@@ -78,7 +78,16 @@ typically be `cloud-launcher`.
 1. Configure and install Cloudera CDH cluster.
 
    The available hosts depend on the configuration file being used; by default,
-   you should specify `cdh-[0-5]`.
+   you should specify:
+
+   ```
+   cdh-[0-5].c.${PROJECT}.internal
+   ```
+
+   where `${PROJECT}` is the name of your Google Cloud Platform project, e.g.,
+   `curious-lemming-42`. You need to use the FQDN for hosts, not just
+   `cdh-[0-5]` because the Java code depends on this (you will get warnings or
+   errors later if you don't use FQDN).
 
    Note that all VMs support the following credentials for SSH and passwordless
    `sudo` access:
