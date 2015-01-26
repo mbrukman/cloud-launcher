@@ -77,6 +77,9 @@ typically be `cloud-launcher`.
 
 1. Configure and install Cloudera CDH cluster.
 
+   The available hosts depend on the configuration file being used; by default,
+   you should specify `cdh-[0-5]`.
+
    Note that all VMs support the following credentials for SSH and passwordless
    `sudo` access:
 
