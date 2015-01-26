@@ -31,8 +31,7 @@ GCE.setDefaults(
 
 resources = manager_base.ClouderaCluster(
     numAgents=5,
-    agentSourceImage='rhel-6-v20141218-cloudera-agent',
+    sourceImage='rhel-6-v20141218-cloudera',
     agentInitScript='../scripts/rhel-6/path-a/packer-agent-start.gen.sh',
-    serverSourceImage='rhel-6-v20141218-cloudera-server',
     serverInitScript='../scripts/rhel-6/path-a/packer-server-start.gen.sh',
 )

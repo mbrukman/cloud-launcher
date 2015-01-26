@@ -32,39 +32,28 @@ OS = centos-6
 CDH_INSTALL = path-a
 
 IMAGE.$(OS).in = $(OS)-$(VERSION.$(OS))
-IMAGE.$(OS).in.server = $(IMAGE.$(OS).in)
-IMAGE.$(OS).in.agent = $(IMAGE.$(OS).in)
 
-IMAGE.$(OS).out.base = $(OS)-$(VERSION.$(OS))-cloudera
-IMAGE.$(OS).out.server = $(IMAGE.$(OS).out.base)-server
-IMAGE.$(OS).out.agent = $(IMAGE.$(OS).out.base)-agent
-IMAGE.$(OS).out.all = $(IMAGE.$(OS).out.server) $(IMAGE.$(OS).out.agent)
+IMAGE.$(OS).out = $(OS)-$(VERSION.$(OS))-cloudera
 
 BASE_VARS = \
   -var "project=$(PROJECT)" \
   -var "zone=$(ZONE)" \
-  -var server_input_image="$(IMAGE.$(OS).in.server)" \
-	-var server_output_image="$(IMAGE.$(OS).out.server)" \
-  -var agent_input_image="$(IMAGE.$(OS).in.agent)" \
-	-var agent_output_image="$(IMAGE.$(OS).out.agent)"
+  -var input_image="$(IMAGE.$(OS).in)" \
+  -var output_image="$(IMAGE.$(OS).out)"
 
 VERSION.centos-6 = v20141218
 SCRIPTS.centos-6 = "../scripts/centos-6/$(CDH_INSTALL)"
 VARS.centos-6 = \
   $(BASE_VARS) \
-  -var server_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera Manager Server" \
-  -var server_build_script="$(SCRIPTS.centos-6)/packer-server-build.gen.sh" \
-  -var agent_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera Manager Agent" \
-  -var agent_build_script="$(SCRIPTS.centos-6)/packer-agent-build.gen.sh"
+  -var output_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera" \
+  -var build_script="$(SCRIPTS.centos-6)/packer-build.gen.sh"
 
 VERSION.rhel-6 = v20141218
 SCRIPTS.rhel-6 = "../scripts/rhel-6/$(CDH_INSTALL)"
 VARS.rhel-6 = \
   $(BASE_VARS) \
-  -var server_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera Manager Server" \
-  -var server_build_script="$(SCRIPTS.rhel-6)/packer-server-build.gen.sh" \
-  -var agent_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera Manager Agent" \
-  -var agent_build_script="$(SCRIPTS.rhel-6)/packer-agent-build.gen.sh"
+  -var output_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera" \
+  -var build_script="$(SCRIPTS.rhel-6)/packer-build.gen.sh"
 
 VARS = $(BASE_VARS) $(VARS.$(OS))
 
@@ -96,4 +85,4 @@ validate: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
 	$(VERB) packer validate $(VARS) $(TEMPLATE_JSON)
 
 clean:
-	$(VERB) gcloud compute images delete --quiet $(IMAGE.$(OS).out.all) --project=$(PROJECT)
+	$(VERB) gcloud compute images delete --quiet $(IMAGE.$(OS).out) --project=$(PROJECT)

@@ -14,32 +14,26 @@
 #
 ################################################################################
 #
-# Packer configuration to build GCE VM images with Ambari agent and server
-# preinstalled. This config is converted to JSON for Packer consumption via
-# yaml2json.py; the entire process is driven by the Makefile.
+# Packer configuration to build GCE VM images compatible with Cloudera CDH
+# installation.
+#
+# This config is converted to JSON for Packer consumption via yaml2json.py; the
+# entire process is driven by the Makefile.
 #
 ################################################################################
 
-description: "Cloudera Manager VM builder"
+description: "Cloudera CDH VM builder"
 
 variables:
   project: ""
   username: "{{env `USER`}}"
   zone: ""
 
-  # Specify this single parameter to set the input image for both server and
-  # agent images, or customize them by setting separate variables (below).
+  # Image input and output parameters.
   input_image: ""
-
-  server_input_image: "{{user `input_input`}}"
-  server_output_image: "{{user `server_input_image}}-cloudera-server"
-  server_image_desc: "{{user `server_input_image`}} + Cloudera Manager Server"
-  server_build_script: ""
-
-  agent_input_image: "{{user `input_input`}}"
-  agent_output_image: "{{user `agent_input_image}}-cloudera-agent"
-  agent_image_desc: "{{user `agent_input_image`}} + Cloudera Manager Agent"
-  agent_build_script: ""
+  output_image: "{{user `input_image}}-cloudera"
+  output_image_desc: "{{user `input_image`}} for Cloudera"
+  build_script: ""
 
   # Installing crcmod makes gsutil upload large images to GCS much faster. See
   # https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
@@ -48,39 +42,21 @@ variables:
 
 builders:
 
-  - name: server
+  - name: cloudera
     type: googlecompute
     account_file: account.json
 
     # Input settings.
-    source_image: "{{user `server_input_image`}}"
+    source_image: "{{user `input_image`}}"
 
     # Output settings.
-    image_name: "{{user `server_output_image`}}"
-    image_description: "{{user `server_image_desc`}}"
+    image_name: "{{user `output_image`}}"
+    image_description: "{{user `output_image_desc`}}"
 
     # GCP settings.
     project_id: "{{user `project`}}"
     zone: "{{user `zone`}}"
-    instance_name: packer-cloudera-server
-    machine_type: n1-standard-2
-    ssh_username: "{{user `username`}}"
-
-  - name: agent
-    type: googlecompute
-    account_file: account.json
-
-    # Input settings.
-    source_image: "{{user `agent_input_image`}}"
-
-    # Output settings.
-    image_name: "{{user `agent_output_image`}}"
-    image_description: "{{user `agent_image_desc`}}"
-
-    # GCP settings.
-    project_id: "{{user `project`}}"
-    zone: "{{user `zone`}}"
-    instance_name: packer-cloudera-agent
+    instance_name: packer-cloudera-builder
     machine_type: n1-standard-2
     ssh_username: "{{user `username`}}"
 
@@ -90,16 +66,6 @@ provisioners:
     scripts: [
       # TODO(mbrukman): enable crcmod for faster gsutil uploads.
       # "{{user `install_crcmod_script`}}",
-      "{{user `server_build_script`}}"
+      "{{user `build_script`}}"
     ]
     execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
-    only: ["server"]
-
-  - type: shell
-    scripts: [
-      # TODO(mbrukman): enable crcmod for faster gsutil uploads.
-      # "{{user `install_crcmod_script`}}",
-      "{{user `agent_build_script`}}"
-    ]
-    execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
-    only: ["agent"]

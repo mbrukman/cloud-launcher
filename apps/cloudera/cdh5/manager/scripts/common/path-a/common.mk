@@ -23,14 +23,16 @@ endif
 NOOP = /dev/null
 FDISK ?= $(NOOP)
 
-# Server
+# Common (build)
 
-PACKER.server.build.in = \
+PACKER.build.in = \
   $(COMMON)/cloudera-user.sh \
   $(COMMON)/sshd-enable-password-auth.sh \
   $(COMMON)/selinux-disable.sh
 
-PACKER.server.build.out = packer-server-build.gen.sh
+PACKER.build.out = packer-build.gen.sh
+
+# Server (start)
 
 PACKER.server.start.in = \
   $(FDISK) \
@@ -39,20 +41,18 @@ PACKER.server.start.in = \
 
 PACKER.server.start.out = packer-server-start.gen.sh
 
-# Agent
-
-PACKER.agent.build.in = \
-  $(COMMON)/cloudera-user.sh \
-  $(COMMON)/sshd-enable-password-auth.sh \
-  $(COMMON)/selinux-disable.sh
-
-PACKER.agent.build.out = packer-agent-build.gen.sh
+# Agent (start)
 
 PACKER.agent.start.in = \
   $(FDISK) \
   $(COMMON)/sshd-enable-password-auth.sh
 
 PACKER.agent.start.out = packer-agent-start.gen.sh
+
+ALL_OUTPUTS = \
+  $(PACKER.build.out) \
+  $(PACKER.server.start.out) \
+  $(PACKER.agent.start.out)
 
 MAKEFILE_DEPS = \
   Makefile \
@@ -63,26 +63,18 @@ ifeq ($(VERBOSE),1)
 	VERB =
 endif
 
-all: server agent
-
-server: $(PACKER.server.build.out) $(PACKER.server.start.out)
-
-agent: $(PACKER.agent.build.out) $(PACKER.agent.start.out)
+all: $(ALL_OUTPUTS)
 
 clean:
-	$(VERB) rm -f $(PACKER.server.build.out) $(PACKER.server.start.out)
-	$(VERB) rm -f $(PACKER.agent.build.out) $(PACKER.agent.start.out)
+	$(VERB) rm -f $(ALL_OUTPUTS)
 
 # TODO(mbrukman): simplify these repeated rules via templates.
 
-$(PACKER.server.build.out): $(PACKER.server.build.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.server.build.in) | sed '/^[[:space:]]*#/d' > $@
+$(PACKER.build.out): $(PACKER.build.in) $(MAKEFILE_DEPS)
+	$(VERB) cat $(PACKER.build.in) | sed '/^[[:space:]]*#/d' > $@
 
 $(PACKER.server.start.out): $(PACKER.server.start.in) $(MAKEFILE_DEPS)
 	$(VERB) cat $(PACKER.server.start.in) | sed '/^[[:space:]]*#/d' > $@
-
-$(PACKER.agent.build.out): $(PACKER.agent.build.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.agent.build.in) | sed '/^[[:space:]]*#/d' > $@
 
 $(PACKER.agent.start.out): $(PACKER.agent.start.in) $(MAKEFILE_DEPS)
 	$(VERB) cat $(PACKER.agent.start.in) | sed '/^[[:space:]]*#/d' > $@
