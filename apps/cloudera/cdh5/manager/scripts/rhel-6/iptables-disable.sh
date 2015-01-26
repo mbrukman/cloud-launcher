@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +16,20 @@
 #
 ################################################################################
 #
-# Build scripts for creating and running custom CentOS images.
+# Disable IPv4 and IPv6 firewall via iptables to enable all hosts in the cluster
+# to communicate with each other over all ports.
+#
+# The cluster is still protected from the outside by the GCE firewall, which
+# only allows SSH access on port 22 by default.
 #
 ################################################################################
 
-# CentOS 6 does not have automatic repartitioning on boot and hence needs to use
-# the fdisk(1) script to resize the boot disk to utilize its full capacity.
-ENABLE_FDISK = 1
+# IPv4
+service iptables save
+service iptables stop
+chkconfig iptables off
 
-DISABLE_FIREWALL = ../../rhel-6/iptables-disable.sh
-
-COMMON = ../../common
-
-include $(COMMON)/path-a/common.mk
+# IPv6
+service ip6tables save
+service ip6tables stop
+chkconfig ip6tables off

@@ -22,12 +22,14 @@ endif
 # waits for input from stdin.
 NOOP = /dev/null
 FDISK ?= $(NOOP)
+DISABLE_FIREWALL ?= $(NOOP)
 
 # Common (build)
 
 PACKER.build.in = \
   $(COMMON)/cloudera-user.sh \
   $(COMMON)/sshd-enable-password-auth.sh \
+  $(DISABLE_FIREWALL) \
   $(COMMON)/selinux-disable.sh
 
 PACKER.build.out = packer-build.gen.sh

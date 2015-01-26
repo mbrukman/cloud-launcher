@@ -22,6 +22,8 @@
 # the fdisk(1) script to resize the boot disk to utilize its full capacity.
 ENABLE_FDISK = 1
 
+DISABLE_FIREWALL = ../iptables-disable.sh
+
 COMMON = ../../common
 
 include $(COMMON)/path-a/common.mk
