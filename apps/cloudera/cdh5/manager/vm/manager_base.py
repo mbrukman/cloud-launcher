@@ -27,6 +27,7 @@ def ClouderaCluster(
     agentInitScript=None,
     agentSourceImage=None,
     serverMachineType='n1-standard-1',
+    serverDiskSizeGb=500,
     serverInitScript=None,
     serverSourceImage=None,
     sourceImage=None):
@@ -43,6 +44,7 @@ def ClouderaCluster(
           autoDelete=true,
           initializeParams=Disk.initializeParams(
             sourceImage=serverSourceImage,
+            diskSizeGb=serverDiskSizeGb,
           ),
         ),
       ],
