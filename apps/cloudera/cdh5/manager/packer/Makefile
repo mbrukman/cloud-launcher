@@ -47,7 +47,7 @@ VARS.centos-6 = \
   $(BASE_VARS) \
   -var output_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera" \
   -var build_script="$(SCRIPTS.centos-6)/packer-build.gen.sh"
-CONFIG.centos-6 = ../vm/centos6_packer.py
+CONFIG.centos-6 = centos6_packer.py
 
 VERSION.rhel-6 = v20141218
 SCRIPTS.rhel-6 = "../scripts/rhel-6/$(CDH_INSTALL)"
@@ -55,7 +55,7 @@ VARS.rhel-6 = \
   $(BASE_VARS) \
   -var output_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera" \
   -var build_script="$(SCRIPTS.rhel-6)/packer-build.gen.sh"
-CONFIG.rhel-6 = ../vm/rhel6_packer.py
+CONFIG.rhel-6 = rhel6_packer.py
 
 VARS = $(BASE_VARS) $(VARS.$(OS))
 
@@ -89,11 +89,12 @@ validate: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
 clean:
 	$(VERB) gcloud compute images delete --quiet $(IMAGE.$(OS).out) --project=$(PROJECT)
 
-ROOT = ../../../../..
+ROOT := $(shell readlink -f ../../../../..)
 CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
+VM_CONFIG_DIR = ../vm
 
 vm-deploy:
-	$(VERB) $(CLOUD_LAUNCHER) --config="$(CONFIG.$(OS))" insert
+	$(VERB) cd $(VM_CONFIG_DIR) && $(CLOUD_LAUNCHER) --config="$(CONFIG.$(OS))" insert
 
 vm-delete:
-	$(VERB) $(CLOUD_LAUNCHER) --config="$(CONFIG.$(OS))" delete
+	$(VERB) cd $(VM_CONFIG_DIR) && $(CLOUD_LAUNCHER) --config="$(CONFIG.$(OS))" delete
