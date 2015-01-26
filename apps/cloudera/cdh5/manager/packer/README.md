@@ -1,5 +1,5 @@
-Building Cloudera-compatible images with Packer
-===============================================
+Building Cloudera images with Packer
+====================================
 
 [Packer](http://packer.io) can be used to build custom GCE VM images
 to enable automated Cloudera Manager Server installation.
