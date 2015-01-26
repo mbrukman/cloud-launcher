@@ -52,13 +52,15 @@ typically be `cloud-launcher`.
   1. Then, deploy:
 
      ```bash
-     ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config ../vm/centos6_packer.py insert
+     # Uses ../vm/centos6_packer.py as the config file; change options there.
+     make OS=centos-6 vm-deploy
      ```
 
      or, alternatively:
 
      ```bash
-     ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config ../vm/rhel6_packer.py insert
+     # Uses ../vm/rhel6_packer.py as the config file; change options there.
+     make OS=rhel-6 vm-deploy
      ```
 
 1. Create a [SOCKS proxy](../../../../../scripts/util/socks-proxy.md) to connect
@@ -75,5 +77,15 @@ typically be `cloud-launcher`.
 
 1. Configure and install Cloudera CDH cluster.
 
-1. To delete the VMs once you are done using them, replace the `insert` command
-   above with `delete`.
+1. To delete the VMs once you are done using them, replace the `vm-deploy`
+   make target above with `delete`:
+
+   ```bash
+   make OS=centos-6 vm-delete
+   ```
+
+   or, alternatively:
+
+   ```bash
+   make OS=rhel-6 vm-delete
+   ```
