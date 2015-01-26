@@ -85,7 +85,7 @@ default:
 build-scripts:
 	$(VERB) $(MAKE) VERBOSE=$(VERBOSE) -s -C ../scripts/$(OS)/$(CDH_INSTALL)
 
-build: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
+build: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts validate
 	$(VERB) echo "Building images for $(OS) via $(CDH_INSTALL)"
 	$(VERB) packer build -force $(VARS) $(TEMPLATE_JSON)
 
