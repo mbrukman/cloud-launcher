@@ -68,7 +68,7 @@ typically be `cloud-launcher`.
    launched.
 
 1. Launch a browser as described in the SOCKS proxy doc and connect to the VM
-   which is running Cloudera Manager Server at port `7180`.
+   which is running Cloudera Manager Server on port `7180`.
 
 1. Log in with the following credentials:
 
