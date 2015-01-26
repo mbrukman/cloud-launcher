@@ -34,14 +34,12 @@ variables:
   server_input_image: "{{user `input_input`}}"
   server_output_image: "{{user `server_input_image}}-cloudera-server"
   server_image_desc: "{{user `server_input_image`}} + Cloudera Manager Server"
-  server_build_script_1: ""
-  server_build_script_2: ""
+  server_build_script: ""
 
   agent_input_image: "{{user `input_input`}}"
   agent_output_image: "{{user `agent_input_image}}-cloudera-agent"
   agent_image_desc: "{{user `agent_input_image`}} + Cloudera Manager Agent"
-  agent_build_script_1: ""
-  agent_build_script_2: ""
+  agent_build_script: ""
 
   # Installing crcmod makes gsutil upload large images to GCS much faster. See
   # https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
@@ -92,14 +90,7 @@ provisioners:
     scripts: [
       # TODO(mbrukman): enable crcmod for faster gsutil uploads.
       # "{{user `install_crcmod_script`}}",
-      "{{user `server_build_script_1`}}"
-    ]
-    execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
-    only: ["server"]
-
-  - type: shell
-    scripts: [
-      "{{user `server_build_script_2`}}"
+      "{{user `server_build_script`}}"
     ]
     execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
     only: ["server"]
@@ -108,14 +99,7 @@ provisioners:
     scripts: [
       # TODO(mbrukman): enable crcmod for faster gsutil uploads.
       # "{{user `install_crcmod_script`}}",
-      "{{user `agent_build_script_1`}}"
-    ]
-    execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
-    only: ["agent"]
-
-  - type: shell
-    scripts: [
-      "{{user `agent_build_script_2`}}"
+      "{{user `agent_build_script`}}"
     ]
     execute_command: "{{ .Vars }} sudo -E /bin/bash '{{ .Path }}'"
     only: ["agent"]

@@ -53,22 +53,18 @@ SCRIPTS.centos-6 = "../scripts/centos-6/$(CDH_INSTALL)"
 VARS.centos-6 = \
   $(BASE_VARS) \
   -var server_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera Manager Server" \
-  -var server_build_script_1="$(SCRIPTS.centos-6)/packer-server-build.1.gen.sh" \
-  -var server_build_script_2="$(SCRIPTS.centos-6)/packer-server-build.2.gen.sh" \
+  -var server_build_script="$(SCRIPTS.centos-6)/packer-server-build.gen.sh" \
   -var agent_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera Manager Agent" \
-  -var agent_build_script_1="$(SCRIPTS.centos-6)/packer-agent-build.1.gen.sh" \
-  -var agent_build_script_2="$(SCRIPTS.centos-6)/packer-agent-build.2.gen.sh"
+  -var agent_build_script="$(SCRIPTS.centos-6)/packer-agent-build.gen.sh"
 
 VERSION.rhel-6 = v20141218
 SCRIPTS.rhel-6 = "../scripts/rhel-6/$(CDH_INSTALL)"
 VARS.rhel-6 = \
   $(BASE_VARS) \
   -var server_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera Manager Server" \
-  -var server_build_script_1="$(SCRIPTS.rhel-6)/packer-server-build.1.gen.sh" \
-  -var server_build_script_2="$(SCRIPTS.rhel-6)/packer-server-build.2.gen.sh" \
+  -var server_build_script="$(SCRIPTS.rhel-6)/packer-server-build.gen.sh" \
   -var agent_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera Manager Agent" \
-  -var agent_build_script_1="$(SCRIPTS.rhel-6)/packer-agent-build.1.gen.sh" \
-  -var agent_build_script_2="$(SCRIPTS.rhel-6)/packer-agent-build.2.gen.sh"
+  -var agent_build_script="$(SCRIPTS.rhel-6)/packer-agent-build.gen.sh"
 
 VARS = $(BASE_VARS) $(VARS.$(OS))
 

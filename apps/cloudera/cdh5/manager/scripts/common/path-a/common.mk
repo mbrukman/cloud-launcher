@@ -22,29 +22,15 @@ endif
 # waits for input from stdin.
 NOOP = /dev/null
 FDISK ?= $(NOOP)
-SERVER_PRE_INSTALL ?= $(NOOP)
-SERVER_POST_INSTALL ?= $(NOOP)
-AGENT_PRE_INSTALL ?= $(NOOP)
-AGENT_POST_INSTALL ?= $(NOOP)
 
 # Server
 
-PACKER.server.build.1.in = \
-  $(SERVER_PRE_INSTALL) \
+PACKER.server.build.in = \
   $(COMMON)/cloudera-user.sh \
   $(COMMON)/sshd-enable-password-auth.sh \
   $(COMMON)/selinux-disable.sh
 
-PACKER.server.build.1.out = packer-server-build.1.gen.sh
-
-PACKER.server.build.2.in = \
-  $(SERVER_POST_INSTALL)
-
-PACKER.server.build.2.out = packer-server-build.2.gen.sh
-
-PACKER.server.build.out = \
-  $(PACKER.server.build.1.out) \
-  $(PACKER.server.build.2.out)
+PACKER.server.build.out = packer-server-build.gen.sh
 
 PACKER.server.start.in = \
   $(FDISK) \
@@ -55,22 +41,12 @@ PACKER.server.start.out = packer-server-start.gen.sh
 
 # Agent
 
-PACKER.agent.build.1.in = \
-  $(AGENT_PRE_INSTALL) \
+PACKER.agent.build.in = \
   $(COMMON)/cloudera-user.sh \
   $(COMMON)/sshd-enable-password-auth.sh \
   $(COMMON)/selinux-disable.sh
 
-PACKER.agent.build.1.out = packer-agent-build.1.gen.sh
-
-PACKER.agent.build.2.in = \
-  $(AGENT_POST_INSTALL)
-
-PACKER.agent.build.2.out = packer-agent-build.2.gen.sh
-
-PACKER.agent.build.out = \
-  $(PACKER.agent.build.1.out) \
-  $(PACKER.agent.build.2.out)
+PACKER.agent.build.out = packer-agent-build.gen.sh
 
 PACKER.agent.start.in = \
   $(FDISK) \
@@ -99,20 +75,14 @@ clean:
 
 # TODO(mbrukman): simplify these repeated rules via templates.
 
-$(PACKER.server.build.1.out): $(PACKER.server.build.1.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.server.build.1.in) | sed '/^[[:space:]]*#/d' > $@
-
-$(PACKER.server.build.2.out): $(PACKER.server.build.2.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.server.build.2.in) | sed '/^[[:space:]]*#/d' > $@
+$(PACKER.server.build.out): $(PACKER.server.build.in) $(MAKEFILE_DEPS)
+	$(VERB) cat $(PACKER.server.build.in) | sed '/^[[:space:]]*#/d' > $@
 
 $(PACKER.server.start.out): $(PACKER.server.start.in) $(MAKEFILE_DEPS)
 	$(VERB) cat $(PACKER.server.start.in) | sed '/^[[:space:]]*#/d' > $@
 
-$(PACKER.agent.build.1.out): $(PACKER.agent.build.1.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.agent.build.1.in) | sed '/^[[:space:]]*#/d' > $@
-
-$(PACKER.agent.build.2.out): $(PACKER.agent.build.2.in) $(MAKEFILE_DEPS)
-	$(VERB) cat $(PACKER.agent.build.2.in) | sed '/^[[:space:]]*#/d' > $@
+$(PACKER.agent.build.out): $(PACKER.agent.build.in) $(MAKEFILE_DEPS)
+	$(VERB) cat $(PACKER.agent.build.in) | sed '/^[[:space:]]*#/d' > $@
 
 $(PACKER.agent.start.out): $(PACKER.agent.start.in) $(MAKEFILE_DEPS)
 	$(VERB) cat $(PACKER.agent.start.in) | sed '/^[[:space:]]*#/d' > $@
