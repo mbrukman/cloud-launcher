@@ -18,7 +18,7 @@
 #
 ################################################################################
 
-# RHEL 6 does not have automatic repartitioning on boot and hence needs to use
+# CentOS 6 does not have automatic repartitioning on boot and hence needs to use
 # the fdisk(1) script to resize the boot disk to utilize its full capacity.
 ENABLE_FDISK = 1
 
