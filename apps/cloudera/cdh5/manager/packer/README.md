@@ -53,14 +53,14 @@ typically be `cloud-launcher`.
 
      ```bash
      # Uses ../vm/centos6_packer.py as the config file; change options there.
-     make OS=centos-6 vm-deploy
+     make OS=centos-6 vm-create
      ```
 
      or, alternatively:
 
      ```bash
      # Uses ../vm/rhel6_packer.py as the config file; change options there.
-     make OS=rhel-6 vm-deploy
+     make OS=rhel-6 vm-create
      ```
 
 1. Create a [SOCKS proxy](../../../../../scripts/util/socks-proxy.md) to connect
@@ -98,7 +98,7 @@ typically be `cloud-launcher`.
    This is configured in
    [`../scripts/common/cloudera-user.sh`](../scripts/common/cloudera-user.sh).
 
-1. To delete the VMs once you are done using them, replace the `vm-deploy`
+1. To delete the VMs once you are done using them, replace the `vm-create`
    make target above with `delete`:
 
    ```bash

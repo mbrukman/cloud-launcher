@@ -93,7 +93,7 @@ ROOT := $(shell readlink -f ../../../../..)
 CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
 VM_CONFIG_DIR = ../vm
 
-vm-deploy:
+vm-create:
 	$(VERB) cd $(VM_CONFIG_DIR) && $(CLOUD_LAUNCHER) --config="$(CONFIG.$(OS))" insert
 
 vm-delete:
