@@ -92,6 +92,7 @@
       "coreos-alpha-554-0-0-v20150107",
       "coreos-alpha-557-0-0-v20150109",
       "coreos-alpha-561-0-0-v20150114",
+      "coreos-alpha-571-0-0-v20150123",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -125,7 +126,7 @@
       "coreos-stable-522-5-0-v20150114"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-561-0-0-v20150114",
+      "coreos-alpha-latest": "coreos-alpha-571-0-0-v20150123",
       "coreos-beta-latest": "coreos-beta-557-0-0-v20150114",
       "coreos-stable-latest": "coreos-stable-522-5-0-v20150114"
     }

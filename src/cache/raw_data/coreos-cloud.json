@@ -1124,6 +1124,10 @@
     {
       "archiveSizeBytes": "151900574",
       "creationTimestamp": "2015-01-14T15:18:47.468-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-571-0-0-v20150123",
+        "state": "DEPRECATED"
+      },
       "description": "CoreOS alpha 561.0.0",
       "diskSizeGb": "9",
       "id": "7240029095544217763",
@@ -1134,6 +1138,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-561-0-0-v20150114",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "151982001",
+      "creationTimestamp": "2015-01-23T12:00:36.109-08:00",
+      "description": "CoreOS alpha 571.0.0",
+      "diskSizeGb": "9",
+      "id": "9623830545345482499",
+      "kind": "compute#image",
+      "name": "coreos-alpha-571-0-0-v20150123",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-571-0-0-v20150123",
       "sourceType": "RAW",
       "status": "READY"
     },
