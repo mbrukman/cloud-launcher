@@ -32,29 +32,27 @@ OS = centos-6
 CDH_INSTALL = path-a
 
 IMAGE.$(OS).in = $(OS)-$(VERSION.$(OS))
-
 IMAGE.$(OS).out = $(OS)-$(VERSION.$(OS))-cloudera
+
+SCRIPTS = ../scripts/$(OS)/$(CDH_INSTALL)
 
 BASE_VARS = \
   -var "project=$(PROJECT)" \
   -var "zone=$(ZONE)" \
   -var input_image="$(IMAGE.$(OS).in)" \
-  -var output_image="$(IMAGE.$(OS).out)"
+  -var output_image="$(IMAGE.$(OS).out)" \
+  -var build_script="$(SCRIPTS)/packer-build.gen.sh"
 
 VERSION.centos-6 = v20141218
-SCRIPTS.centos-6 = "../scripts/centos-6/$(CDH_INSTALL)"
 VARS.centos-6 = \
   $(BASE_VARS) \
-  -var output_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera" \
-  -var build_script="$(SCRIPTS.centos-6)/packer-build.gen.sh"
+  -var output_image_desc="CentOS 6 $(VERSION.centos-6) + Cloudera"
 CONFIG.centos-6 = centos6_packer.py
 
 VERSION.rhel-6 = v20141218
-SCRIPTS.rhel-6 = "../scripts/rhel-6/$(CDH_INSTALL)"
 VARS.rhel-6 = \
   $(BASE_VARS) \
-  -var output_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera" \
-  -var build_script="$(SCRIPTS.rhel-6)/packer-build.gen.sh"
+  -var output_image_desc="RHEL 6 $(VERSION.rhel-6) + Cloudera"
 CONFIG.rhel-6 = rhel6_packer.py
 
 VARS = $(BASE_VARS) $(VARS.$(OS))
@@ -74,7 +72,8 @@ default:
 
 # Automatically regenerate the build scripts prior to running Packer commands.
 build-scripts:
-	$(VERB) $(MAKE) VERBOSE=$(VERBOSE) -s -C ../scripts/$(OS)/$(CDH_INSTALL)
+	$(VERB) echo "Regenerating scripts in $(SCRIPTS)"
+	$(VERB) $(MAKE) VERBOSE=$(VERBOSE) -s -C $(SCRIPTS)
 
 build: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts validate
 	$(VERB) echo "Building images for $(OS) via $(CDH_INSTALL)"
