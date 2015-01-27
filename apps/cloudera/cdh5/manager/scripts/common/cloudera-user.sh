@@ -37,14 +37,40 @@
 declare -r CLOUDERA_USER="cloudera"
 declare -r CLOUDERA_PASSWD="cloudera"
 
-echo "Adding user: ${CLOUDERA_USER}..."
-adduser "${CLOUDERA_USER}"
-echo "${CLOUDERA_USER}:${CLOUDERA_PASSWD}" | chpasswd
+if ! `grep "${CLOUDERA_USER}" /etc/passwd > /dev/null 2>&1`; then
+  echo "Adding user: ${CLOUDERA_USER}..."
+  adduser "${CLOUDERA_USER}"
+  echo "${CLOUDERA_USER}:${CLOUDERA_PASSWD}" | chpasswd
+else
+  echo "User ${CLOUDERA_USER} already exists; skipping."
+fi
 
 # Enable password-less sudo
-echo "Enabling sudo access for ${CLOUDERA_USER}..."
 declare -r SUDOERS="/etc/sudoers"
-echo >> "${SUDOERS}"
-echo "# Added for automatic use by Cloudera Manager" >> "${SUDOERS}"
-echo "${CLOUDERA_USER} ALL=(ALL) NOPASSWD: ALL" >> "${SUDOERS}"
-echo >> "${SUDOERS}"
+declare -r CLOUDERA_SUDO="${CLOUDERA_USER} ALL=(ALL) NOPASSWD: ALL"
+
+if ! `egrep "^${CLOUDERA_SUDO}\$" "${SUDOERS}" > /dev/null 2>&1`; then
+  echo "Enabling sudo access for user ${CLOUDERA_USER}..."
+  echo >> "${SUDOERS}"
+  echo "# Added for automatic use by Cloudera Manager" >> "${SUDOERS}"
+  echo "${CLOUDERA_SUDO}" >> "${SUDOERS}"
+  echo >> "${SUDOERS}"
+else
+  echo "User ${CLOUDERA_USER} already has sudo access; skipping."
+fi
+
+# Make sure this user can only login via SSH from the private network as we are
+# otherwise exposing a known user/password account with sudo access directly to
+# the outside world.
+declare -r SSHD_CONFIG="/etc/ssh/sshd_config"
+
+if ! `egrep "^Match User ${CLODUERA_USER}" "${SSHD_CONFIG}" > /dev/null 2>&1`; then
+  echo "Adding limited SSH access for user ${CLOUDERA_USER}..."
+  cat <<EOF >> "${SSHD_CONFIG}"
+# Only allow the Cloudera user to connect with password via the private network.
+Match User ${CLOUDERA_USER} Address 10.*
+  PasswordAuthentication yes
+EOF
+else
+  echo "User ${CLOUDERA_USER} already has limited ssh access; skipping."
+fi

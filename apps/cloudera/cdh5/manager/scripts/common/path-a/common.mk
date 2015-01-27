@@ -28,7 +28,6 @@ DISABLE_FIREWALL ?= $(NOOP)
 
 PACKER.build.in = \
   $(COMMON)/cloudera-user.sh \
-  $(COMMON)/sshd-enable-password-auth.sh \
   $(DISABLE_FIREWALL) \
   $(COMMON)/selinux-disable.sh
 
@@ -38,7 +37,6 @@ PACKER.build.out = packer-build.gen.sh
 
 PACKER.server.start.in = \
   $(FDISK) \
-  $(COMMON)/sshd-enable-password-auth.sh \
   $(COMMON)/path-a/manager-install.sh
 
 PACKER.server.start.out = packer-server-start.gen.sh
@@ -46,8 +44,7 @@ PACKER.server.start.out = packer-server-start.gen.sh
 # Agent (start)
 
 PACKER.agent.start.in = \
-  $(FDISK) \
-  $(COMMON)/sshd-enable-password-auth.sh
+  $(FDISK)
 
 PACKER.agent.start.out = packer-agent-start.gen.sh
 
