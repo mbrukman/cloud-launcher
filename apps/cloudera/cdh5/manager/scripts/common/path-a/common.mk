@@ -37,6 +37,7 @@ PACKER.build.out = packer-build.gen.sh
 
 PACKER.server.start.in = \
   $(FDISK) \
+	$(COMMON)/hostname.sh \
   $(COMMON)/path-a/manager-install.sh
 
 PACKER.server.start.out = packer-server-start.gen.sh
@@ -44,7 +45,8 @@ PACKER.server.start.out = packer-server-start.gen.sh
 # Agent (start)
 
 PACKER.agent.start.in = \
-  $(FDISK)
+  $(FDISK) \
+	$(COMMON)/hostname.sh
 
 PACKER.agent.start.out = packer-agent-start.gen.sh
 
