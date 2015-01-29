@@ -31,16 +31,16 @@ OS = centos-6
 # Cloudera CDH installation manual.
 CDH_INSTALL = path-a
 
-IMAGE.$(OS).in = $(OS)-$(VERSION.$(OS))
-IMAGE.$(OS).out = $(OS)-$(VERSION.$(OS))-cloudera
+IMAGE_IN = $(OS)-$(VERSION.$(OS))
+IMAGE_OUT = $(OS)-$(VERSION.$(OS))-cloudera
 
 SCRIPTS = ../scripts/$(OS)/$(CDH_INSTALL)
 
 BASE_VARS = \
   -var "project=$(PROJECT)" \
   -var "zone=$(ZONE)" \
-  -var input_image="$(IMAGE.$(OS).in)" \
-  -var output_image="$(IMAGE.$(OS).out)" \
+  -var input_image="$(IMAGE_IN)" \
+  -var output_image="$(IMAGE_OUT)" \
   -var build_script="$(SCRIPTS)/packer-build.gen.sh"
 
 VERSION.centos-6 = v20141218
@@ -86,7 +86,7 @@ validate: $(TEMPLATE_JSON) $(MAKEFILE_DEPS) build-scripts
 	$(VERB) packer validate $(VARS) $(TEMPLATE_JSON)
 
 clean:
-	$(VERB) gcloud compute images delete --quiet $(IMAGE.$(OS).out) --project=$(PROJECT)
+	$(VERB) gcloud compute images delete --quiet $(IMAGE_OUT) --project=$(PROJECT)
 
 ROOT := $(shell readlink -f ../../../../..)
 CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
