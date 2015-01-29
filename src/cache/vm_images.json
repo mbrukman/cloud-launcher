@@ -93,6 +93,7 @@
       "coreos-alpha-557-0-0-v20150109",
       "coreos-alpha-561-0-0-v20150114",
       "coreos-alpha-571-0-0-v20150123",
+      "coreos-alpha-575-0-0-v20150128",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -113,6 +114,7 @@
       "coreos-beta-522-4-0-v20150106",
       "coreos-beta-522-5-0-v20150112",
       "coreos-beta-557-0-0-v20150114",
+      "coreos-beta-557-1-0-v20150128",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
@@ -123,12 +125,13 @@
       "coreos-stable-494-4-0-v20141204",
       "coreos-stable-494-5-0-v20141215",
       "coreos-stable-522-4-0-v20150108",
-      "coreos-stable-522-5-0-v20150114"
+      "coreos-stable-522-5-0-v20150114",
+      "coreos-stable-522-6-0-v20150128"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-571-0-0-v20150123",
-      "coreos-beta-latest": "coreos-beta-557-0-0-v20150114",
-      "coreos-stable-latest": "coreos-stable-522-5-0-v20150114"
+      "coreos-alpha-latest": "coreos-alpha-575-0-0-v20150128",
+      "coreos-beta-latest": "coreos-beta-557-1-0-v20150128",
+      "coreos-stable-latest": "coreos-stable-522-6-0-v20150128"
     }
   },
   "debian-cloud": {
@@ -263,10 +266,11 @@
       "sles-11-sp3-v20140826",
       "sles-11-sp3-v20140930",
       "sles-11-sp3-v20141105",
+      "sles-11-sp3-v20150127",
       "sles-12-v20141023"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20141105",
+      "sles-11-sp3-latest": "sles-11-sp3-v20150127",
       "sles-12-latest": "sles-12-v20141023"
     }
   },
@@ -275,16 +279,18 @@
       "ubuntu-1204-precise-v20141028",
       "ubuntu-1204-precise-v20141031",
       "ubuntu-1204-precise-v20141212",
+      "ubuntu-1204-precise-v20150127",
       "ubuntu-1404-trusty-v20141028",
       "ubuntu-1404-trusty-v20141031a",
       "ubuntu-1404-trusty-v20141212",
+      "ubuntu-1404-trusty-v20150127",
       "ubuntu-1410-utopic-v20141029",
       "ubuntu-1410-utopic-v20141030a",
       "ubuntu-1410-utopic-v20141217"
     ],
     "pseudo": {
-      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20141212",
-      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20141212",
+      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20150127",
+      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20150127",
       "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20141217"
     }
   }

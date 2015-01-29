@@ -5,7 +5,7 @@
       "archiveSizeBytes": "378614228",
       "creationTimestamp": "2014-10-29T09:51:42.018-07:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20141212",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20150127",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -27,7 +27,7 @@
       "archiveSizeBytes": "1137275331",
       "creationTimestamp": "2014-11-07T00:48:18.673-08:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20141212",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20150127",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -48,6 +48,10 @@
     {
       "archiveSizeBytes": "1140352383",
       "creationTimestamp": "2014-12-17T11:31:59.126-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20150127",
+        "state": "DEPRECATED"
+      },
       "description": "Canonical, Ubuntu, 12.04 LTS, amd64 precise image built on 2014-12-12",
       "diskSizeGb": "10",
       "id": "12756823774499736482",
@@ -65,10 +69,29 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "829909758",
+      "creationTimestamp": "2015-01-27T18:55:10.796-08:00",
+      "description": "Canonical, Ubuntu, 12.04 LTS, amd64 precise image built on 2015-01-27",
+      "diskSizeGb": "10",
+      "id": "14121032340541889299",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1204-precise"
+      ],
+      "name": "ubuntu-1204-precise-v20150127",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20150127",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "375105326",
       "creationTimestamp": "2014-10-29T09:51:42.072-07:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141212",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -90,7 +113,7 @@
       "archiveSizeBytes": "1015791618",
       "creationTimestamp": "2014-11-07T00:48:04.471-08:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141212",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -111,6 +134,10 @@
     {
       "archiveSizeBytes": "981936603",
       "creationTimestamp": "2014-12-17T11:31:37.868-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
+        "state": "DEPRECATED"
+      },
       "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2014-12-12",
       "diskSizeGb": "10",
       "id": "14921913565797044708",
@@ -124,6 +151,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20141212",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "676214322",
+      "creationTimestamp": "2015-01-28T06:04:17.376-08:00",
+      "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2015-01-27",
+      "diskSizeGb": "10",
+      "id": "475552643902376779",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1404-trusty"
+      ],
+      "name": "ubuntu-1404-trusty-v20150127",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
       "sourceType": "RAW",
       "status": "READY"
     },
