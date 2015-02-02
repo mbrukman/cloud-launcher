@@ -4,8 +4,8 @@ Building Cloudera images with Packer
 [Packer](http://packer.io) can be used to build custom GCE VM images
 to enable automated Cloudera Manager Server installation.
 
-Instructions
-------------
+Build VM images
+---------------
 
 Note: in the text below, `${CLOUD_LAUNCHER}` refers to the full path of the
 top-level directory of this project when you clone the repo; this would
@@ -44,6 +44,9 @@ typically be `cloud-launcher`.
 
    Support for other distributions is in-progress.
 
+Provision VMs
+-------------
+
 1. Deploy VM images with Cloudera Manager pre-installed via:
 
   1. First, update the agent and server image names if you've changed them in
@@ -62,6 +65,9 @@ typically be `cloud-launcher`.
      # Uses ../vm/rhel6_packer.py as the config file; change options there.
      make OS=rhel-6 vm-create
      ```
+
+Install CDH
+-----------
 
 1. Create a [SOCKS proxy](../../../../../scripts/util/socks-proxy.md) to connect
    to one of the VMs in your project, such as one of the VMs you've just
@@ -88,6 +94,9 @@ typically be `cloud-launcher`.
 
    This is configured in
    [`../scripts/common/cloudera-user.sh`](../scripts/common/cloudera-user.sh).
+
+Delete cluster
+--------------
 
 1. To delete the VMs once you are done using them, replace the `vm-create`
    make target above with `delete`:
