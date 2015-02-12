@@ -91,7 +91,7 @@
       "archiveSizeBytes": "375105326",
       "creationTimestamp": "2014-10-29T09:51:42.072-07:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150128",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -113,7 +113,7 @@
       "archiveSizeBytes": "1015791618",
       "creationTimestamp": "2014-11-07T00:48:04.471-08:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150128",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -135,7 +135,7 @@
       "archiveSizeBytes": "981936603",
       "creationTimestamp": "2014-12-17T11:31:37.868-08:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150127",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150128",
         "state": "DEPRECATED"
       },
       "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2014-12-12",
@@ -157,6 +157,10 @@
     {
       "archiveSizeBytes": "676214322",
       "creationTimestamp": "2015-01-28T06:04:17.376-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150128",
+        "state": "DEPRECATED"
+      },
       "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2015-01-27",
       "diskSizeGb": "10",
       "id": "475552643902376779",
@@ -174,10 +178,29 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "676453218",
+      "creationTimestamp": "2015-01-30T08:54:55.616-08:00",
+      "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2015-01-28",
+      "diskSizeGb": "10",
+      "id": "17933712206647486913",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1404-trusty"
+      ],
+      "name": "ubuntu-1404-trusty-v20150128",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150128",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "348037877",
       "creationTimestamp": "2014-10-29T09:51:39.609-07:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141217",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150202",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -199,7 +222,7 @@
       "archiveSizeBytes": "1044175299",
       "creationTimestamp": "2014-11-07T00:47:53.082-08:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141217",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150202",
         "state": "DEPRECATED"
       },
       "diskSizeGb": "10",
@@ -220,6 +243,10 @@
     {
       "archiveSizeBytes": "1048366941",
       "creationTimestamp": "2014-12-17T11:31:26.695-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150202",
+        "state": "DEPRECATED"
+      },
       "description": "Canonical, Ubuntu, 14.10, amd64 utopic image built on 2014-12-17",
       "diskSizeGb": "10",
       "id": "6363233028234584116",
@@ -233,6 +260,48 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20141217",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "862745640",
+      "creationTimestamp": "2015-01-30T08:49:40.994-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150202",
+        "state": "DEPRECATED"
+      },
+      "description": "Canonical, Ubuntu, 14.10, amd64 utopic image built on 2015-01-28",
+      "diskSizeGb": "10",
+      "id": "5128631072660596317",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1410-utopic"
+      ],
+      "name": "ubuntu-1410-utopic-v20150128",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150128",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "746885775",
+      "creationTimestamp": "2015-02-03T07:47:16.915-08:00",
+      "description": "Canonical, Ubuntu, 14.10, amd64 utopic image built on 2015-02-02",
+      "diskSizeGb": "10",
+      "id": "16618273330159868664",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1410-utopic"
+      ],
+      "name": "ubuntu-1410-utopic-v20150202",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150202",
       "sourceType": "RAW",
       "status": "READY"
     }

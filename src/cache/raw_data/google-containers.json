@@ -192,6 +192,22 @@
       "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150112",
       "sourceType": "RAW",
       "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "437743758",
+      "creationTimestamp": "2015-01-30T14:24:38.586-08:00",
+      "description": "Google container VM image, (Kubernetes version: 0.8.4 Docker version: 1.4.1)",
+      "diskSizeGb": "10",
+      "id": "5238146110831820327",
+      "kind": "compute#image",
+      "name": "container-vm-v20150129",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150129",
+      "sourceType": "RAW",
+      "status": "READY"
     }
   ],
   "kind": "compute#imageList",

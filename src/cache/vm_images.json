@@ -18,6 +18,7 @@
       "centos-6-v20141108",
       "centos-6-v20141205",
       "centos-6-v20141218",
+      "centos-6-v20150127",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
@@ -26,11 +27,12 @@
       "centos-7-v20141021",
       "centos-7-v20141108",
       "centos-7-v20141205",
-      "centos-7-v20141218"
+      "centos-7-v20141218",
+      "centos-7-v20150127"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20141218",
-      "centos-7-latest": "centos-7-v20141218"
+      "centos-6-latest": "centos-6-v20150127",
+      "centos-7-latest": "centos-7-v20150127"
     }
   },
   "coreos-cloud": {
@@ -94,6 +96,7 @@
       "coreos-alpha-561-0-0-v20150114",
       "coreos-alpha-571-0-0-v20150123",
       "coreos-alpha-575-0-0-v20150128",
+      "coreos-alpha-584-0-0-v20150205",
       "coreos-beta-310-1-0-v20140508",
       "coreos-beta-324-3-0-v20140602",
       "coreos-beta-324-5-0-v20140609",
@@ -115,6 +118,7 @@
       "coreos-beta-522-5-0-v20150112",
       "coreos-beta-557-0-0-v20150114",
       "coreos-beta-557-1-0-v20150128",
+      "coreos-beta-557-2-0-v20150204",
       "coreos-stable-367-1-0-v20140724",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
@@ -126,12 +130,13 @@
       "coreos-stable-494-5-0-v20141215",
       "coreos-stable-522-4-0-v20150108",
       "coreos-stable-522-5-0-v20150114",
-      "coreos-stable-522-6-0-v20150128"
+      "coreos-stable-522-6-0-v20150128",
+      "coreos-stable-557-2-0-v20150210"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-575-0-0-v20150128",
-      "coreos-beta-latest": "coreos-beta-557-1-0-v20150128",
-      "coreos-stable-latest": "coreos-stable-522-6-0-v20150128"
+      "coreos-alpha-latest": "coreos-alpha-584-0-0-v20150205",
+      "coreos-beta-latest": "coreos-beta-557-2-0-v20150204",
+      "coreos-stable-latest": "coreos-stable-557-2-0-v20150210"
     }
   },
   "debian-cloud": {
@@ -159,6 +164,7 @@
       "backports-debian-7-wheezy-v20141205",
       "backports-debian-7-wheezy-v20141218",
       "backports-debian-7-wheezy-v20150112",
+      "backports-debian-7-wheezy-v20150127",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -180,11 +186,12 @@
       "debian-7-wheezy-v20141108",
       "debian-7-wheezy-v20141205",
       "debian-7-wheezy-v20141218",
-      "debian-7-wheezy-v20150112"
+      "debian-7-wheezy-v20150112",
+      "debian-7-wheezy-v20150127"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150112",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20150112"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150127",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20150127"
     }
   },
   "gce-nvme": {
@@ -208,10 +215,11 @@
       "container-vm-v20140929",
       "container-vm-v20141016",
       "container-vm-v20141208",
-      "container-vm-v20150112"
+      "container-vm-v20150112",
+      "container-vm-v20150129"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20150112"
+      "container-vm-latest": "container-vm-v20150129"
     }
   },
   "opensuse-cloud": {
@@ -245,17 +253,19 @@
       "rhel-6-v20141108",
       "rhel-6-v20141205",
       "rhel-6-v20141218",
+      "rhel-6-v20150127",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
       "rhel-7-v20141021",
       "rhel-7-v20141108",
       "rhel-7-v20141205",
-      "rhel-7-v20141218"
+      "rhel-7-v20141218",
+      "rhel-7-v20150127"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20141218",
-      "rhel-7-latest": "rhel-7-v20141218"
+      "rhel-6-latest": "rhel-6-v20150127",
+      "rhel-7-latest": "rhel-7-v20150127"
     }
   },
   "suse-cloud": {
@@ -284,14 +294,17 @@
       "ubuntu-1404-trusty-v20141031a",
       "ubuntu-1404-trusty-v20141212",
       "ubuntu-1404-trusty-v20150127",
+      "ubuntu-1404-trusty-v20150128",
       "ubuntu-1410-utopic-v20141029",
       "ubuntu-1410-utopic-v20141030a",
-      "ubuntu-1410-utopic-v20141217"
+      "ubuntu-1410-utopic-v20141217",
+      "ubuntu-1410-utopic-v20150128",
+      "ubuntu-1410-utopic-v20150202"
     ],
     "pseudo": {
       "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20150127",
-      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20150127",
-      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20141217"
+      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20150128",
+      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20150202"
     }
   }
 }
