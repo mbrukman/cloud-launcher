@@ -164,6 +164,10 @@
     {
       "archiveSizeBytes": "413371239",
       "creationTimestamp": "2014-12-09T15:57:34.413-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20141208",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image",
       "diskSizeGb": "10",
       "id": "8037634834499556312",
@@ -180,6 +184,10 @@
     {
       "archiveSizeBytes": "413799053",
       "creationTimestamp": "2015-01-12T17:07:09.273-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150112",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image",
       "diskSizeGb": "10",
       "id": "6169659893143925594",
@@ -190,6 +198,86 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150112",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "437743758",
+      "creationTimestamp": "2015-01-30T14:24:38.586-08:00",
+      "description": "Google container VM image, (Kubernetes version: 0.8.4 Docker version: 1.4.1)",
+      "diskSizeGb": "10",
+      "id": "5238146110831820327",
+      "kind": "compute#image",
+      "name": "container-vm-v20150129",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150129",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "442112216",
+      "creationTimestamp": "2015-03-06T08:58:42.934-08:00",
+      "description": "Google container VM image, (Kubernetes version: 0.11.0 Docker version: 1.5.0)",
+      "diskSizeGb": "10",
+      "id": "1465139503060771373",
+      "kind": "compute#image",
+      "name": "container-vm-v20150305",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150305",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "460646051",
+      "creationTimestamp": "2015-03-17T11:12:09.818-07:00",
+      "description": "Google container VM image, Google container VM image, (Kubernetes version: 0.12.2 Docker version: 1.5.0",
+      "diskSizeGb": "10",
+      "id": "1179719865198825622",
+      "kind": "compute#image",
+      "name": "container-vm-v20150317",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150317",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "489045979",
+      "creationTimestamp": "2015-05-05T16:44:42.379-07:00",
+      "description": "Google container VM image, (Kubernetes version: 0.16.2, Docker version: 1.6.0)",
+      "diskSizeGb": "10",
+      "id": "6213014459114646277",
+      "kind": "compute#image",
+      "name": "container-vm-v20150505",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150505",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "519417660",
+      "creationTimestamp": "2015-06-11T15:58:09.537-07:00",
+      "description": "Google container VM image, (Kubernetes version: 0.19.0, Docker version: 1.6.2)",
+      "diskSizeGb": "10",
+      "id": "1036837023502543982",
+      "kind": "compute#image",
+      "name": "container-vm-v20150611",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
       "sourceType": "RAW",
       "status": "READY"
     }

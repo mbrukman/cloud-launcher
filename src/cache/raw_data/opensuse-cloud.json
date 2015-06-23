@@ -67,6 +67,10 @@
     {
       "archiveSizeBytes": "881210631",
       "creationTimestamp": "2014-11-02T04:34:26.263-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-1-v20150515",
+        "state": "DEPRECATED"
+      },
       "description": "openSUSE 13.1 (built on 2014-11-02)",
       "diskSizeGb": "8",
       "id": "4629398803823711760",
@@ -81,8 +85,28 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "897211761",
+      "creationTimestamp": "2015-05-14T13:30:50.868-07:00",
+      "description": "openSUSE, openSUSE, 13.1, x86_64 built on 2015-05-14",
+      "diskSizeGb": "8",
+      "id": "6580161560796773141",
+      "kind": "compute#image",
+      "name": "opensuse-13-1-v20150515",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-1-v20150515",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "1091494581",
       "creationTimestamp": "2014-12-09T05:36:16.085-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150315",
+        "state": "DEPRECATED"
+      },
       "description": "openSUSE 13.2 (built on 2014-12-05)",
       "diskSizeGb": "8",
       "id": "7015477126275748573",
@@ -93,6 +117,42 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20141205",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1252131249",
+      "creationTimestamp": "2015-03-15T09:13:10.778-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150511",
+        "state": "DEPRECATED"
+      },
+      "description": "openSUSE 13.2 with the latest security and bug fixes. Built on 2015-03-14",
+      "diskSizeGb": "8",
+      "id": "3296948784313405817",
+      "kind": "compute#image",
+      "name": "opensuse-13-2-v20150315",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150315",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1251706890",
+      "creationTimestamp": "2015-05-11T19:21:33.336-07:00",
+      "description": "openSUSE, openSUSE, 13.2, x86_64 built on 2015-05-11",
+      "diskSizeGb": "8",
+      "id": "4947255350370557250",
+      "kind": "compute#image",
+      "name": "opensuse-13-2-v20150511",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150511",
       "sourceType": "RAW",
       "status": "READY"
     }

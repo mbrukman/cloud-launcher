@@ -48,6 +48,22 @@
       "selfLink": "https://www.googleapis.com/compute/v1/projects/gce-nvme/global/images/nvme-backports-debian-7-wheezy-v20141108",
       "sourceType": "RAW",
       "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "170688850",
+      "creationTimestamp": "2015-05-19T16:35:37.299-07:00",
+      "description": "NVMe optimized Debian GNU/Linux, 7.8 (wheezy), amd64 with backports kernel and SSH packages built on 2015-04-23",
+      "diskSizeGb": "10",
+      "id": "634999531103483430",
+      "kind": "compute#image",
+      "name": "nvme-backports-debian-7-wheezy-v20150423",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/gce-nvme/global/images/nvme-backports-debian-7-wheezy-v20150423",
+      "sourceType": "RAW",
+      "status": "READY"
     }
   ],
   "kind": "compute#imageList",

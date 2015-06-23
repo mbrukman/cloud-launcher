@@ -18,6 +18,13 @@
       "centos-6-v20141108",
       "centos-6-v20141205",
       "centos-6-v20141218",
+      "centos-6-v20150127",
+      "centos-6-v20150226",
+      "centos-6-v20150309",
+      "centos-6-v20150325",
+      "centos-6-v20150423",
+      "centos-6-v20150526",
+      "centos-6-v20150603",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
@@ -26,41 +33,22 @@
       "centos-7-v20141021",
       "centos-7-v20141108",
       "centos-7-v20141205",
-      "centos-7-v20141218"
+      "centos-7-v20141218",
+      "centos-7-v20150127",
+      "centos-7-v20150226",
+      "centos-7-v20150309",
+      "centos-7-v20150325",
+      "centos-7-v20150423",
+      "centos-7-v20150526",
+      "centos-7-v20150603"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20141218",
-      "centos-7-latest": "centos-7-v20141218"
+      "centos-6-latest": "centos-6-v20150603",
+      "centos-7-latest": "centos-7-v20150603"
     }
   },
   "coreos-cloud": {
     "images": [
-      "coreos-alpha-282-0-0-v20140410",
-      "coreos-alpha-298-0-0-v20140425",
-      "coreos-alpha-310-1-0-v20140508",
-      "coreos-alpha-315-0-0-v20140512",
-      "coreos-alpha-317-0-0-v20140515",
-      "coreos-alpha-324-1-0-v20140522",
-      "coreos-alpha-324-2-0-v20140528",
-      "coreos-alpha-324-3-0-v20140530",
-      "coreos-alpha-324-4-0-v20140607",
-      "coreos-alpha-324-5-0-v20140607",
-      "coreos-alpha-338-0-0-v20140604",
-      "coreos-alpha-342-0-0-v20140608",
-      "coreos-alpha-342-1-0-v20140608",
-      "coreos-alpha-343-0-0-v20140609",
-      "coreos-alpha-349-0-0-v20140616",
-      "coreos-alpha-353-0-0-v20140621",
-      "coreos-alpha-361-0-0-v20140627",
-      "coreos-alpha-367-0-0-v20140703",
-      "coreos-alpha-367-1-0-v20140713",
-      "coreos-alpha-379-2-0-v20140715",
-      "coreos-alpha-379-3-0-v20140716",
-      "coreos-alpha-386-1-0-v20140723",
-      "coreos-alpha-394-0-0-v20140801",
-      "coreos-alpha-399-0-0-v20140806",
-      "coreos-alpha-402-2-0-v20140807",
-      "coreos-alpha-410-0-0-v20140818",
       "coreos-alpha-423-0-0-v20140828",
       "coreos-alpha-431-0-0-v20140905",
       "coreos-alpha-435-0-0-v20140910",
@@ -94,12 +82,28 @@
       "coreos-alpha-561-0-0-v20150114",
       "coreos-alpha-571-0-0-v20150123",
       "coreos-alpha-575-0-0-v20150128",
-      "coreos-beta-310-1-0-v20140508",
-      "coreos-beta-324-3-0-v20140602",
-      "coreos-beta-324-5-0-v20140609",
-      "coreos-beta-353-0-0-v20140625",
-      "coreos-beta-367-1-0-v20140715",
-      "coreos-beta-410-0-0-v20140825",
+      "coreos-alpha-584-0-0-v20150205",
+      "coreos-alpha-591-0-0-v20150212",
+      "coreos-alpha-592-0-0-v20150214",
+      "coreos-alpha-593-0-0-v20150214",
+      "coreos-alpha-598-0-0-v20150219",
+      "coreos-alpha-604-0-0-v20150226",
+      "coreos-alpha-607-0-0-v20150228",
+      "coreos-alpha-612-0-0-v20150305",
+      "coreos-alpha-612-1-0-v20150306",
+      "coreos-alpha-618-0-0-v20150312",
+      "coreos-alpha-626-0-0-v20150319",
+      "coreos-alpha-633-1-0-v20150326",
+      "coreos-alpha-640-0-0-v20150402",
+      "coreos-alpha-647-0-0-v20150409",
+      "coreos-alpha-653-0-0-v20150416",
+      "coreos-alpha-660-0-0-v20150423",
+      "coreos-alpha-668-2-0-v20150430",
+      "coreos-alpha-675-0-0-v20150507",
+      "coreos-alpha-681-0-0-v20150514",
+      "coreos-alpha-695-0-0-v20150528",
+      "coreos-alpha-709-0-0-v20150611",
+      "coreos-alpha-717-0-0-v20150618",
       "coreos-beta-440-0-0-v20140918",
       "coreos-beta-444-2-0-v20140926",
       "coreos-beta-444-3-0-v20141002",
@@ -115,7 +119,16 @@
       "coreos-beta-522-5-0-v20150112",
       "coreos-beta-557-0-0-v20150114",
       "coreos-beta-557-1-0-v20150128",
-      "coreos-stable-367-1-0-v20140724",
+      "coreos-beta-557-2-0-v20150204",
+      "coreos-beta-584-0-0-v20150218",
+      "coreos-beta-607-0-0-v20150304",
+      "coreos-beta-612-1-0-v20150318",
+      "coreos-beta-633-1-0-v20150401",
+      "coreos-beta-647-0-0-v20150415",
+      "coreos-beta-668-3-0-v20150513",
+      "coreos-beta-681-0-0-v20150527",
+      "coreos-beta-695-0-0-v20150610",
+      "coreos-beta-695-2-0-v20150615",
       "coreos-stable-410-0-0-v20140902",
       "coreos-stable-410-1-0-v20140926",
       "coreos-stable-410-2-0-v20141002",
@@ -126,12 +139,20 @@
       "coreos-stable-494-5-0-v20141215",
       "coreos-stable-522-4-0-v20150108",
       "coreos-stable-522-5-0-v20150114",
-      "coreos-stable-522-6-0-v20150128"
+      "coreos-stable-522-6-0-v20150128",
+      "coreos-stable-557-2-0-v20150210",
+      "coreos-stable-607-0-0-v20150317",
+      "coreos-stable-633-1-0-v20150414",
+      "coreos-stable-647-0-0-v20150512",
+      "coreos-stable-647-2-0-v20150528",
+      "coreos-stable-681-0-0-v20150609",
+      "coreos-stable-681-1-0-v20150617",
+      "coreos-stable-681-2-0-v20150618"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-575-0-0-v20150128",
-      "coreos-beta-latest": "coreos-beta-557-1-0-v20150128",
-      "coreos-stable-latest": "coreos-stable-522-6-0-v20150128"
+      "coreos-alpha-latest": "coreos-alpha-717-0-0-v20150618",
+      "coreos-beta-latest": "coreos-beta-695-2-0-v20150615",
+      "coreos-stable-latest": "coreos-stable-681-2-0-v20150618"
     }
   },
   "debian-cloud": {
@@ -159,6 +180,14 @@
       "backports-debian-7-wheezy-v20141205",
       "backports-debian-7-wheezy-v20141218",
       "backports-debian-7-wheezy-v20150112",
+      "backports-debian-7-wheezy-v20150127",
+      "backports-debian-7-wheezy-v20150226",
+      "backports-debian-7-wheezy-v20150309",
+      "backports-debian-7-wheezy-v20150320",
+      "backports-debian-7-wheezy-v20150325",
+      "backports-debian-7-wheezy-v20150423",
+      "backports-debian-7-wheezy-v20150526",
+      "backports-debian-7-wheezy-v20150603",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -180,21 +209,30 @@
       "debian-7-wheezy-v20141108",
       "debian-7-wheezy-v20141205",
       "debian-7-wheezy-v20141218",
-      "debian-7-wheezy-v20150112"
+      "debian-7-wheezy-v20150112",
+      "debian-7-wheezy-v20150127",
+      "debian-7-wheezy-v20150226",
+      "debian-7-wheezy-v20150309",
+      "debian-7-wheezy-v20150320",
+      "debian-7-wheezy-v20150325",
+      "debian-7-wheezy-v20150423",
+      "debian-7-wheezy-v20150526",
+      "debian-7-wheezy-v20150603"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150112",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20150112"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150603",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20150603"
     }
   },
   "gce-nvme": {
     "images": [
       "nvme-backports-debian-7-wheezy-v20140904",
       "nvme-backports-debian-7-wheezy-v20140926",
-      "nvme-backports-debian-7-wheezy-v20141108"
+      "nvme-backports-debian-7-wheezy-v20141108",
+      "nvme-backports-debian-7-wheezy-v20150423"
     ],
     "pseudo": {
-      "nvme-backports-debian-7-wheezy-latest": "nvme-backports-debian-7-wheezy-v20141108"
+      "nvme-backports-debian-7-wheezy-latest": "nvme-backports-debian-7-wheezy-v20150423"
     }
   },
   "google-containers": {
@@ -208,10 +246,15 @@
       "container-vm-v20140929",
       "container-vm-v20141016",
       "container-vm-v20141208",
-      "container-vm-v20150112"
+      "container-vm-v20150112",
+      "container-vm-v20150129",
+      "container-vm-v20150305",
+      "container-vm-v20150317",
+      "container-vm-v20150505",
+      "container-vm-v20150611"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20150112"
+      "container-vm-latest": "container-vm-v20150611"
     }
   },
   "opensuse-cloud": {
@@ -220,11 +263,14 @@
       "opensuse-13-1-v20140627",
       "opensuse-13-1-v20140711",
       "opensuse-13-1-v20141102",
-      "opensuse-13-2-v20141205"
+      "opensuse-13-1-v20150515",
+      "opensuse-13-2-v20141205",
+      "opensuse-13-2-v20150315",
+      "opensuse-13-2-v20150511"
     ],
     "pseudo": {
-      "opensuse-13-1-latest": "opensuse-13-1-v20141102",
-      "opensuse-13-2-latest": "opensuse-13-2-v20141205"
+      "opensuse-13-1-latest": "opensuse-13-1-v20150515",
+      "opensuse-13-2-latest": "opensuse-13-2-v20150511"
     }
   },
   "rhel-cloud": {
@@ -245,33 +291,48 @@
       "rhel-6-v20141108",
       "rhel-6-v20141205",
       "rhel-6-v20141218",
+      "rhel-6-v20150127",
+      "rhel-6-v20150226",
+      "rhel-6-v20150309",
+      "rhel-6-v20150325",
+      "rhel-6-v20150423",
+      "rhel-6-v20150526",
+      "rhel-6-v20150603",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
       "rhel-7-v20141021",
       "rhel-7-v20141108",
       "rhel-7-v20141205",
-      "rhel-7-v20141218"
+      "rhel-7-v20141218",
+      "rhel-7-v20150127",
+      "rhel-7-v20150226",
+      "rhel-7-v20150309",
+      "rhel-7-v20150311",
+      "rhel-7-v20150325",
+      "rhel-7-v20150423",
+      "rhel-7-v20150526",
+      "rhel-7-v20150603"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20141218",
-      "rhel-7-latest": "rhel-7-v20141218"
+      "rhel-6-latest": "rhel-6-v20150603",
+      "rhel-7-latest": "rhel-7-v20150603"
     }
   },
   "suse-cloud": {
     "images": [
       "sles-11-sp3-20141224",
-      "sles-11-sp3-v20140609",
-      "sles-11-sp3-v20140712",
-      "sles-11-sp3-v20140826",
-      "sles-11-sp3-v20140930",
       "sles-11-sp3-v20141105",
       "sles-11-sp3-v20150127",
-      "sles-12-v20141023"
+      "sles-11-sp3-v20150310",
+      "sles-11-sp3-v20150511",
+      "sles-12-v20141023",
+      "sles-12-v20150310",
+      "sles-12-v20150511"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20150127",
-      "sles-12-latest": "sles-12-v20141023"
+      "sles-11-sp3-latest": "sles-11-sp3-v20150511",
+      "sles-12-latest": "sles-12-v20150511"
     }
   },
   "ubuntu-os-cloud": {
@@ -280,18 +341,29 @@
       "ubuntu-1204-precise-v20141031",
       "ubuntu-1204-precise-v20141212",
       "ubuntu-1204-precise-v20150127",
+      "ubuntu-1204-precise-v20150316",
+      "ubuntu-1204-precise-v20150616",
       "ubuntu-1404-trusty-v20141028",
       "ubuntu-1404-trusty-v20141031a",
       "ubuntu-1404-trusty-v20141212",
       "ubuntu-1404-trusty-v20150127",
+      "ubuntu-1404-trusty-v20150128",
+      "ubuntu-1404-trusty-v20150316",
       "ubuntu-1410-utopic-v20141029",
       "ubuntu-1410-utopic-v20141030a",
-      "ubuntu-1410-utopic-v20141217"
+      "ubuntu-1410-utopic-v20141217",
+      "ubuntu-1410-utopic-v20150128",
+      "ubuntu-1410-utopic-v20150202",
+      "ubuntu-1410-utopic-v20150318c",
+      "ubuntu-1410-utopic-v20150509",
+      "ubuntu-1410-utopic-v20150616a",
+      "ubuntu-1504-vivid-v20150422",
+      "ubuntu-1504-vivid-v20150616a"
     ],
     "pseudo": {
-      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20150127",
-      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20150127",
-      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20141217"
+      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20150616",
+      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20150316",
+      "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20150616a"
     }
   }
 }
