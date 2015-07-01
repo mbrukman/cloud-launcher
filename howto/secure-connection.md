@@ -19,7 +19,7 @@ laptop and a VM running on Google Compute Engine:
 * [HTTPS and SSL](#https-and-ssl)
 * [VPN](#vpn)
 
-HTTPS/SSL and VPN are both advanced topics; users are encouraged to first
+HTTPS/SSL and VPN are both advanced topics; users are encouraged to
 explore port forwarding or SOCKS proxy approaches first as they are easier and
 require little to no setup or configuration.
 
