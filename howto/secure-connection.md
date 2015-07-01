@@ -19,9 +19,9 @@ laptop and a VM running on Google Compute Engine:
 * [HTTPS and SSL](#https-and-ssl)
 * [VPN](#vpn)
 
-HTTPS/SSL and VPN are both advanced topics; users are encouraged to first
-explore port forwarding or SOCKS proxy approaches first as they are easier and
-require little to no setup or configuration.
+HTTPS/SSL and VPN are both advanced topics; users are encouraged to explore port
+forwarding or SOCKS proxy approaches first as they are easier and require little
+to no setup or configuration.
 
 ## Port forwarding over SSH
 
@@ -116,10 +116,10 @@ where:
 * `${VM}` is the name of the instance you would like to connect to
 
 Note that in this case, you don't need to specify a remote port, because a SOCKS
-proxy does not bind to any specific remote port: any connectino you will make
-via the SOCKS proxy will be resolved relative to the host you connect to.
+proxy does not bind to any specific remote port: any connection you make via the
+SOCKS proxy will be resolved relative to the host you connect to.
 
-This means that you will be able to connect to any other VM on the sae network
+This means that you will be able to connect to any other VM on the same network
 as the `${VM}` you connected to just by using its short name, and you will be
 able to connect to any port on those VMs.
 
