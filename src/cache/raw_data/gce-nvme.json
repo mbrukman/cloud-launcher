@@ -4,6 +4,10 @@
     {
       "archiveSizeBytes": "158683343",
       "creationTimestamp": "2014-11-05T20:09:29.302-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/gce-nvme/global/images/nvme-backports-debian-7-wheezy-v20150423",
+        "state": "DEPRECATED"
+      },
       "description": "NVMe optimized Debian GNU/Linux 7.6 (wheezy) amd64 with backports kernel and SSH packages built on 2014-09-04",
       "diskSizeGb": "10",
       "id": "11933993573261788709",
@@ -20,6 +24,10 @@
     {
       "archiveSizeBytes": "221456136",
       "creationTimestamp": "2014-10-20T22:01:24.039-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/gce-nvme/global/images/nvme-backports-debian-7-wheezy-v20150423",
+        "state": "DEPRECATED"
+      },
       "description": "NVMe optimized Debian GNU/Linux 7.6 (wheezy) amd64 with backports kernel and SSH packages built on 2014-09-26",
       "diskSizeGb": "10",
       "id": "16689990597272015714",
@@ -36,6 +44,10 @@
     {
       "archiveSizeBytes": "162245079",
       "creationTimestamp": "2014-11-14T10:55:03.809-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/gce-nvme/global/images/nvme-backports-debian-7-wheezy-v20150423",
+        "state": "DEPRECATED"
+      },
       "description": "NVMe optimized Debian GNU/Linux 7.6 (wheezy) amd64 with backports kernel and SSH packages built on 2014-11-08",
       "diskSizeGb": "10",
       "id": "9219956677399420856",

@@ -134,6 +134,25 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "834906141",
+      "creationTimestamp": "2015-07-09T10:46:10.080-07:00",
+      "description": "Canonical, Ubuntu, 12.04 LTS, amd64 precise image built on 2015-06-25",
+      "diskSizeGb": "10",
+      "id": "6310562151466732941",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1204-precise"
+      ],
+      "name": "ubuntu-1204-precise-v20150625",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1204-precise-v20150625",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "375105326",
       "creationTimestamp": "2014-10-29T09:51:42.072-07:00",
       "deprecated": {
@@ -262,6 +281,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150316",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1274067336",
+      "creationTimestamp": "2015-07-09T10:46:10.231-07:00",
+      "description": "Canonical, Ubuntu, 14.04 LTS, amd64 trusty image built on 2015-06-25",
+      "diskSizeGb": "10",
+      "id": "6306536757793066381",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1404-trusty"
+      ],
+      "name": "ubuntu-1404-trusty-v20150625",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1404-trusty-v20150625",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -440,6 +478,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150616a",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "752874399",
+      "creationTimestamp": "2015-07-09T10:46:10.424-07:00",
+      "description": "Canonical, Ubuntu, 14.10, amd64 utopic image built on 2015-06-25",
+      "diskSizeGb": "10",
+      "id": "7075003915689987469",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/licenses/ubuntu-1410-utopic"
+      ],
+      "name": "ubuntu-1410-utopic-v20150625",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1410-utopic-v20150625",
       "sourceType": "RAW",
       "status": "READY"
     },

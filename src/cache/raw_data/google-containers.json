@@ -204,6 +204,10 @@
     {
       "archiveSizeBytes": "437743758",
       "creationTimestamp": "2015-01-30T14:24:38.586-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image, (Kubernetes version: 0.8.4 Docker version: 1.4.1)",
       "diskSizeGb": "10",
       "id": "5238146110831820327",
@@ -220,6 +224,10 @@
     {
       "archiveSizeBytes": "442112216",
       "creationTimestamp": "2015-03-06T08:58:42.934-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image, (Kubernetes version: 0.11.0 Docker version: 1.5.0)",
       "diskSizeGb": "10",
       "id": "1465139503060771373",
@@ -236,6 +244,10 @@
     {
       "archiveSizeBytes": "460646051",
       "creationTimestamp": "2015-03-17T11:12:09.818-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image, Google container VM image, (Kubernetes version: 0.12.2 Docker version: 1.5.0",
       "diskSizeGb": "10",
       "id": "1179719865198825622",
@@ -252,6 +264,10 @@
     {
       "archiveSizeBytes": "489045979",
       "creationTimestamp": "2015-05-05T16:44:42.379-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image, (Kubernetes version: 0.16.2, Docker version: 1.6.0)",
       "diskSizeGb": "10",
       "id": "6213014459114646277",
