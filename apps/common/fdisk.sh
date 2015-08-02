@@ -139,7 +139,17 @@ EOF
     # so we read the size of the root partition to work on both.
     local dev_sda1_df="$(df -B 1K / | grep ' /$' | awk '{ print $2 }')"
     if [ $(ratio_over_threshold "${dev_sda}" "${dev_sda1_df}") -eq 1 ]; then
-      resize2fs /dev/sda1
+      # For CentOS 7, we need to run a different command since it uses XFS, not
+      # ext4 by default. See
+      # https://cloud.google.com/compute/docs/disks/persistent-disks#manualrepartition
+      # for more info.
+      if [[ -e /etc/centos-release ]] &&
+         [[ $(cat /etc/centos-release) =~ CentOS.Linux.release.7\..* ]]; then
+        xfs_growfs /
+      else
+        # For earlier versions of CentOS and other distributions, we run resize2fs.
+        resize2fs /dev/sda1
+      fi
     fi
   fi
 }
