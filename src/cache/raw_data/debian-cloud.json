@@ -607,6 +607,10 @@
     {
       "archiveSizeBytes": "1360539363",
       "creationTimestamp": "2015-06-09T10:32:14.969-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150710",
+        "state": "DEPRECATED"
+      },
       "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 with backports kernel and SSH packages built on 2015-06-03",
       "diskSizeGb": "10",
       "id": "6006574657008475633",
@@ -617,6 +621,42 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150603",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1261754100",
+      "creationTimestamp": "2015-07-13T13:31:38.182-07:00",
+      "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 with backports kernel and SSH packages built on 2015-07-10",
+      "diskSizeGb": "10",
+      "id": "1197078422191972037",
+      "kind": "compute#image",
+      "name": "backports-debian-7-wheezy-v20150710",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150710",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1502722716",
+      "creationTimestamp": "2015-07-15T14:55:33.331-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20150710",
+        "state": "DEPRECATED"
+      },
+      "description": "Debian, Debian GNU/Linux, 8.1 (jessie), amd64 built on 2015-07-10",
+      "diskSizeGb": "10",
+      "id": "4144404110215178298",
+      "kind": "compute#image",
+      "name": "beta-debian-8-jessie-v20150710",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/beta-debian-8-jessie-v20150710",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1204,6 +1244,10 @@
     {
       "archiveSizeBytes": "1238875842",
       "creationTimestamp": "2015-06-09T10:36:13.612-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20150710",
+        "state": "DEPRECATED"
+      },
       "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 built on 2015-06-03",
       "diskSizeGb": "10",
       "id": "5077873882889362146",
@@ -1214,6 +1258,38 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20150603",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1135124274",
+      "creationTimestamp": "2015-07-13T13:34:26.357-07:00",
+      "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 built on 2015-07-10",
+      "diskSizeGb": "10",
+      "id": "862380021770722877",
+      "kind": "compute#image",
+      "name": "debian-7-wheezy-v20150710",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20150710",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1502723088",
+      "creationTimestamp": "2015-07-28T09:31:21.176-07:00",
+      "description": "Debian, Debian GNU/Linux, 8.1 (jessie), amd64 built on 2015-07-10",
+      "diskSizeGb": "10",
+      "id": "8012983927995764918",
+      "kind": "compute#image",
+      "name": "debian-8-jessie-v20150710",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20150710",
       "sourceType": "RAW",
       "status": "READY"
     }

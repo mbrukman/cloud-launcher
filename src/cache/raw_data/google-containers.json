@@ -284,6 +284,10 @@
     {
       "archiveSizeBytes": "519417660",
       "creationTimestamp": "2015-06-11T15:58:09.537-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150715",
+        "state": "DEPRECATED"
+      },
       "description": "Google container VM image, (Kubernetes version: 0.19.0, Docker version: 1.6.2)",
       "diskSizeGb": "10",
       "id": "1036837023502543982",
@@ -294,6 +298,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150611",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "581984009",
+      "creationTimestamp": "2015-07-16T09:25:34.958-07:00",
+      "description": "Google container VM image, (Kubernetes version: 1.0.0, Docker version: 1.6.2)",
+      "diskSizeGb": "10",
+      "id": "2444006981267776529",
+      "kind": "compute#image",
+      "name": "container-vm-v20150715",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/google-containers/global/images/container-vm-v20150715",
       "sourceType": "RAW",
       "status": "READY"
     }

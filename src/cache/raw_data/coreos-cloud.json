@@ -2,26 +2,6 @@
   "id": "projects/coreos-cloud/global/images",
   "items": [
     {
-      "archiveSizeBytes": "210601371",
-      "creationTimestamp": "2014-09-19T13:43:08.003-07:00",
-      "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-534-1-0-v20141219",
-        "state": "DEPRECATED"
-      },
-      "description": "CoreOS alpha 444.0.0",
-      "diskSizeGb": "9",
-      "id": "13961453531244096097",
-      "kind": "compute#image",
-      "name": "coreos-alpha-444-0-0-v20140919",
-      "rawDisk": {
-        "containerType": "TAR",
-        "source": ""
-      },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-444-0-0-v20140919",
-      "sourceType": "RAW",
-      "status": "READY"
-    },
-    {
       "archiveSizeBytes": "211112758",
       "creationTimestamp": "2014-09-26T13:13:30.539-07:00",
       "deprecated": {
@@ -1064,6 +1044,10 @@
     {
       "archiveSizeBytes": "212116328",
       "creationTimestamp": "2015-07-09T14:20:22.324-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-745-1-0-v20150716",
+        "state": "DEPRECATED"
+      },
       "description": "CoreOS, CoreOS alpha, 738.1.0, amd64-usr published on 2015-07-09",
       "diskSizeGb": "9",
       "id": "3540735818131004281",
@@ -1078,22 +1062,58 @@
       "status": "READY"
     },
     {
-      "archiveSizeBytes": "210521891",
-      "creationTimestamp": "2014-09-26T08:59:23.897-07:00",
+      "archiveSizeBytes": "212375907",
+      "creationTimestamp": "2015-07-16T16:48:37.738-07:00",
       "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-494-5-0-v20141211",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-752-1-0-v20150723",
         "state": "DEPRECATED"
       },
-      "description": "CoreOS beta 444.2.0",
+      "description": "CoreOS, CoreOS alpha, 745.1.0, amd64-usr published on 2015-07-16",
       "diskSizeGb": "9",
-      "id": "12871847181887001345",
+      "id": "8066708509963975738",
       "kind": "compute#image",
-      "name": "coreos-beta-444-2-0-v20140926",
+      "name": "coreos-alpha-745-1-0-v20150716",
       "rawDisk": {
         "containerType": "TAR",
         "source": ""
       },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-beta-444-2-0-v20140926",
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-745-1-0-v20150716",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "216918366",
+      "creationTimestamp": "2015-07-23T16:09:16.424-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-758-1-0-v20150730",
+        "state": "DEPRECATED"
+      },
+      "description": "CoreOS, CoreOS alpha, 752.1.0, amd64-usr published on 2015-07-23",
+      "diskSizeGb": "9",
+      "id": "7298761734601100019",
+      "kind": "compute#image",
+      "name": "coreos-alpha-752-1-0-v20150723",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-752-1-0-v20150723",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "216961370",
+      "creationTimestamp": "2015-07-30T10:01:54.120-07:00",
+      "description": "CoreOS, CoreOS alpha, 758.1.0, amd64-usr published on 2015-07-30",
+      "diskSizeGb": "9",
+      "id": "3970980116851844717",
+      "kind": "compute#image",
+      "name": "coreos-alpha-758-1-0-v20150730",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/coreos-cloud/global/images/coreos-alpha-758-1-0-v20150730",
       "sourceType": "RAW",
       "status": "READY"
     },

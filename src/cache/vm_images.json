@@ -25,6 +25,7 @@
       "centos-6-v20150423",
       "centos-6-v20150526",
       "centos-6-v20150603",
+      "centos-6-v20150710",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
@@ -40,16 +41,16 @@
       "centos-7-v20150325",
       "centos-7-v20150423",
       "centos-7-v20150526",
-      "centos-7-v20150603"
+      "centos-7-v20150603",
+      "centos-7-v20150710"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20150603",
-      "centos-7-latest": "centos-7-v20150603"
+      "centos-6-latest": "centos-6-v20150710",
+      "centos-7-latest": "centos-7-v20150710"
     }
   },
   "coreos-cloud": {
     "images": [
-      "coreos-alpha-444-0-0-v20140919",
       "coreos-alpha-452-0-0-v20140926",
       "coreos-alpha-457-0-0-v20141002",
       "coreos-alpha-457-0-0-v20141231",
@@ -103,7 +104,9 @@
       "coreos-alpha-723-1-0-v20150627",
       "coreos-alpha-735-0-0-v20150707",
       "coreos-alpha-738-1-0-v20150709",
-      "coreos-beta-444-2-0-v20140926",
+      "coreos-alpha-745-1-0-v20150716",
+      "coreos-alpha-752-1-0-v20150723",
+      "coreos-alpha-758-1-0-v20150730",
       "coreos-beta-444-3-0-v20141002",
       "coreos-beta-444-4-0-v20141007",
       "coreos-beta-444-5-0-v20141016",
@@ -150,7 +153,7 @@
       "coreos-stable-717-3-0-v20150710"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-738-1-0-v20150709",
+      "coreos-alpha-latest": "coreos-alpha-758-1-0-v20150730",
       "coreos-beta-latest": "coreos-beta-723-3-0-v20150710",
       "coreos-stable-latest": "coreos-stable-717-3-0-v20150710"
     }
@@ -188,6 +191,8 @@
       "backports-debian-7-wheezy-v20150423",
       "backports-debian-7-wheezy-v20150526",
       "backports-debian-7-wheezy-v20150603",
+      "backports-debian-7-wheezy-v20150710",
+      "beta-debian-8-jessie-v20150710",
       "debian-7-wheezy-v20131014",
       "debian-7-wheezy-v20131120",
       "debian-7-wheezy-v20140318",
@@ -217,11 +222,13 @@
       "debian-7-wheezy-v20150325",
       "debian-7-wheezy-v20150423",
       "debian-7-wheezy-v20150526",
-      "debian-7-wheezy-v20150603"
+      "debian-7-wheezy-v20150603",
+      "debian-7-wheezy-v20150710",
+      "debian-8-jessie-v20150710"
     ],
     "pseudo": {
-      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150603",
-      "debian-7-wheezy-latest": "debian-7-wheezy-v20150603"
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20150710",
+      "debian-8-jessie-latest": "debian-8-jessie-v20150710"
     }
   },
   "gce-nvme": {
@@ -251,10 +258,11 @@
       "container-vm-v20150305",
       "container-vm-v20150317",
       "container-vm-v20150505",
-      "container-vm-v20150611"
+      "container-vm-v20150611",
+      "container-vm-v20150715"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20150611"
+      "container-vm-latest": "container-vm-v20150715"
     }
   },
   "opensuse-cloud": {
@@ -298,6 +306,7 @@
       "rhel-6-v20150423",
       "rhel-6-v20150526",
       "rhel-6-v20150603",
+      "rhel-6-v20150710",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
@@ -312,11 +321,12 @@
       "rhel-7-v20150325",
       "rhel-7-v20150423",
       "rhel-7-v20150526",
-      "rhel-7-v20150603"
+      "rhel-7-v20150603",
+      "rhel-7-v20150710"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20150603",
-      "rhel-7-latest": "rhel-7-v20150603"
+      "rhel-6-latest": "rhel-6-v20150710",
+      "rhel-7-latest": "rhel-7-v20150710"
     }
   },
   "suse-cloud": {
@@ -326,12 +336,13 @@
       "sles-11-sp3-v20150127",
       "sles-11-sp3-v20150310",
       "sles-11-sp3-v20150511",
+      "sles-11-sp4-v20150714",
       "sles-12-v20141023",
       "sles-12-v20150310",
       "sles-12-v20150511"
     ],
     "pseudo": {
-      "sles-11-sp3-latest": "sles-11-sp3-v20150511",
+      "sles-11-sp4-latest": "sles-11-sp4-v20150714",
       "sles-12-latest": "sles-12-v20150511"
     }
   },
