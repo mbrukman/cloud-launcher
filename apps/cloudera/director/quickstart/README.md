@@ -1,0 +1,54 @@
+Cloudera Director quickstart on Google Cloud Platform
+=====================================================
+
+1. First, create a Google Compute Engine VM instance and install Cloudera
+   Director in a single step:
+
+  ```bash
+  gcloud compute instances create {{VM}} \
+      --project {{PROJECT}} \
+      --zone {{ZONE}} \
+      --machine-type n1-standard-1 \
+      --image centos-6 \
+      --metadata startup-script-url=https://raw.githubusercontent.com/mbrukman/cloud-launcher/cloudera-director/apps/cloudera/director/quickstart/director.sh
+  ```
+
+  where:
+
+  * `{{VM}}` is the name of the VM instance to create, e.g., `cloudera-director`
+  * `{{PROJECT}}` is your project name, e.g., `curious-lemming-42`
+  * `{{ZONE}}` is a Google Compute Engine zone, e.g., `us-central1-f`
+
+  You can see the contents of the [`director.sh`](director.sh) script before
+  deploying the VM instance.
+
+  You can monitor the console of your VM to see when the Cloudera Director is
+  ready to accept requests either via the [Developers
+  Console](https://cloud.google.com/console) at the following URL:
+
+  ```
+  https://console.developers.google.com/project/{{PROJECT}}/compute/instancesDetail/zones/{{ZONE}}/instances/{{VM}}/console#end
+  ```
+
+  or via the command-line:
+
+  ```bash
+  gcloud compute instances get-serial-port-output {{VM}} \
+      --project {{PROJECT}} \
+      --zone {{ZONE}}
+  ```
+
+2. Once you see the following line in the serial output:
+
+   ```
+   Cloudera Director is now ready.
+   ```
+
+   you can create a [SOCKS proxy](https://github.com/mbrukman/cloud-launcher/blob/master/howto/secure-connection.md#socks-proxy-over-ssh)
+   to establish a secure connection to Cloudera Director on Google Compute
+   Engine.
+
+   Then, follow the directions in that howto to configure your web browser to
+   use that secure connection to access Cloudera Director and other software
+   that will be deployed alongside, such as Cloudera Manager and the Hadoop
+   stack.
