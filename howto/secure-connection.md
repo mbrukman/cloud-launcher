@@ -101,26 +101,27 @@ when necessary.
 ### Start the SOCKS proxy
 
 ```bash
-gcloud compute ssh ${VM} \
-    --project ${PROJECT} \
-    --zone ${ZONE} \
-    --ssh-flag="-D ${PORT}" \
+gcloud compute ssh {{VM}} \
+    --project {{PROJECT}} \
+    --zone {{ZONE}} \
+    --ssh-flag="-D" \
+    --ssh-flag="{{PORT}}" \
     --ssh-flag="-N"
 ```
 
 where:
 
-* `${PROJECT}` is your Google Cloud Platform project
-* `${ZONE}` is the zone your VM is running in
-* `${PORT}` is the port you would like to listen on locally on `localhost`
-* `${VM}` is the name of the instance you would like to connect to
+* `{{VM}}` is the name of the instance you would like to connect to
+* `{{PROJECT}}` is your Google Cloud Platform project
+* `{{ZONE}}` is the zone your VM is running in
+* `{{PORT}}` is the port you would like to listen on locally on `localhost`
 
 Note that in this case, you don't need to specify a remote port, because a SOCKS
 proxy does not bind to any specific remote port: any connection you make via the
 SOCKS proxy will be resolved relative to the host you connect to.
 
 This means that you will be able to connect to any other VM on the same network
-as the `${VM}` you connected to just by using its short name, and you will be
+as the `{{VM}}` you connected to just by using its short name, and you will be
 able to connect to any port on those VMs.
 
 This approach is much more flexible than the simple port-forwarding method, but
@@ -137,20 +138,15 @@ instance of an already-running profile, so to enable us to run multiple copies
 of Chrome simultaneously, one which is using the proxy and others which are not,
 we need a new profile.
 
-First, create a directory to hold the profile, e.g.:
-
-```bash
-mkdir -p $HOME/chrome-proxy-profile
-```
-
-Then, launch Chrome using this directory as the profile:
+Here's how to launch Chrome using a new directory as the profile (Chrome will
+create the directory if it doesn't already exist):
 
 * Linux
 
   ```bash
   /usr/bin/google-chrome \
       --user-data-dir="$HOME/chrome-proxy-profile" \
-      --proxy-server="socks5://localhost:${PORT}"
+      --proxy-server="socks5://localhost:{{PORT}}"
   ```
 
 * Mac OS X:
@@ -158,10 +154,18 @@ Then, launch Chrome using this directory as the profile:
   ```bash
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
       --user-data-dir="$HOME/chrome-proxy-profile" \
-      --proxy-server="socks5://localhost:${PORT}"
+      --proxy-server="socks5://localhost:{{PORT}}"
   ```
 
-Be sure to set the `${PORT}` to the same value that you used in the `gcloud`
+* Windows:
+
+  ```
+  "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" \
+      --user-data-dir="%USERPROFILE%\chrome-proxy-profile" \
+      --proxy-server="socks5://localhost:{{PORT}}"
+  ```
+
+Be sure to set `{{PORT}}` to the same value that you used in the `gcloud`
 command earlier.
 
 ### Firefox setup for SOCKS proxy
