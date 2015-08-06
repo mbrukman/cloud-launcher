@@ -33,24 +33,25 @@ To use this, first ensure that you know what VM instance and port are providing
 the service you would like to connect to securely. Then, run the command:
 
 ```bash
-gcloud compute ssh ${VM} \
-    --project ${PROJECT} \
-    --zone ${ZONE} \
-    --ssh-flag="-L ${LOCAL_PORT}:localhost:${REMOTE_PORT}"
+gcloud compute ssh {{VM}} \
+    --project {{PROJECT}} \
+    --zone {{ZONE}} \
+    --ssh-flag="-L" \
+    --ssh-flag="{{LOCAL_PORT}}:localhost:{{REMOTE_PORT}}"
 ```
 
 where:
 
-* `${VM}` is the name of the instance you would like to connect to
-* `${PROJECT}` is your Google Cloud Platform project
-* `${ZONE}` is the zone your VM is running in
-* `${LOCAL_PORT}` is the port you would like to listen on locally
-* `${REMOTE_PORT}` is the port on the server you would like to connect to
+* `{{VM}}` is the name of the instance you would like to connect to
+* `{{PROJECT}}` is your Google Cloud Platform project
+* `{{ZONE}}` is the zone your VM is running in
+* `{{LOCAL_PORT}}` is the port you would like to listen on locally
+* `{{REMOTE_PORT}}` is the port on the server you would like to connect to
 
-For example, let's assume that `${LOCAL_PORT}` is 2222 and `${REMOTE_PORT}` is
+For example, let's assume that `{{LOCAL_PORT}}` is 2222 and `{{REMOTE_PORT}}` is
 8888. That means that if you open http://localhost:2222/ in your browser, the
 HTTP connection will go over the SSH tunnel you have just created over to your
-remote host and connect to the host identified as `${VM}` via SSH and then
+remote host and connect to the host identified as `{{VM}}` via SSH and then
 connect to port 8888 on the same machine, but over an encrypted, secure SSH
 connection.
 
@@ -62,11 +63,13 @@ If you want to create more than one port forwarding rule, you can either specify
 them on a single command line by repeating the flags, e.g.,
 
 ```bash
-gcloud compute ssh ${VM} \
-    --project ${PROJECT} \
-    --zone ${ZONE} \
-    --ssh-flag="-L ${LOCAL_PORT_1}:localhost:${REMOTE_PORT_1}" \
-    --ssh-flag="-L ${LOCAL_PORT_2}:localhost:${REMOTE_PORT_2}"
+gcloud compute ssh {{VM}} \
+    --project {{PROJECT}} \
+    --zone {{ZONE}} \
+    --ssh-flag="-L" \
+    --ssh-flag="{{LOCAL_PORT_1}}:localhost:{{REMOTE_PORT_1}}" \
+    --ssh-flag="-L" \
+    --ssh-flag="{{LOCAL_PORT_2}}:localhost:{{REMOTE_PORT_2}}"
 ```
 
 or run a new `gcloud` command each time to create a separate tunnel. Note that
