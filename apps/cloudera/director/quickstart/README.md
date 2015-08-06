@@ -10,7 +10,7 @@ Cloudera Director quickstart on Google Cloud Platform
       --zone {{ZONE}} \
       --machine-type n1-standard-1 \
       --image centos-6 \
-      --metadata startup-script-url=https://raw.githubusercontent.com/mbrukman/cloud-launcher/cloudera-director/apps/cloudera/director/quickstart/director.sh
+      --metadata startup-script-url=https://git.io/cloudera-director-startup-script
   ```
 
   where:
@@ -18,9 +18,8 @@ Cloudera Director quickstart on Google Cloud Platform
   * `{{VM}}` is the name of the VM instance to create, e.g., `cloudera-director`
   * `{{PROJECT}}` is your project name, e.g., `curious-lemming-42`
   * `{{ZONE}}` is a Google Compute Engine zone, e.g., `us-central1-f`
-
-  You can see the contents of the [`director.sh`](director.sh) script before
-  deploying the VM instance.
+  * the [URL for the startup script](https://git.io/cloudera-director-startup-script)
+    points to the raw version of [`director.sh`](director.sh) in this directory
 
   You can monitor the console of your VM to see when the Cloudera Director is
   ready to accept requests either via the [Developers
