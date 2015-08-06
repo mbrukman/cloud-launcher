@@ -1,5 +1,5 @@
-Cloudera Director quickstart on Google Cloud Platform
-=====================================================
+Cloudera Director on Google Cloud Platform
+==========================================
 
 1. First, create a Google Compute Engine VM instance and install Cloudera
    Director in a single step:
