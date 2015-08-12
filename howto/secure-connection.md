@@ -43,7 +43,7 @@ gcloud compute ssh {{VM}} \
 where:
 
 * `{{VM}}` is the name of the instance you would like to connect to
-* `{{PROJECT}}` is your Google Cloud Platform project
+* `{{PROJECT}}` is your [Google Cloud Platform project id](https://cloud.google.com/storage/docs/projects?hl=en#projectid)
 * `{{ZONE}}` is the zone your VM is running in
 * `{{LOCAL_PORT}}` is the port you would like to listen on locally
 * `{{REMOTE_PORT}}` is the port on the server you would like to connect to
@@ -115,7 +115,7 @@ gcloud compute ssh {{VM}} \
 where:
 
 * `{{VM}}` is the name of the instance you would like to connect to
-* `{{PROJECT}}` is your Google Cloud Platform project
+* `{{PROJECT}}` is your [Google Cloud Platform project id](https://cloud.google.com/storage/docs/projects?hl=en#projectid)
 * `{{ZONE}}` is the zone your VM is running in
 * `{{PORT}}` is the port you would like to listen on locally on `localhost`
 
