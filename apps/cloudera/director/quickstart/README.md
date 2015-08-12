@@ -16,7 +16,9 @@ Cloudera Director on Google Cloud Platform
   where:
 
   * `{{VM}}` is the name of the VM instance to create, e.g., `cloudera-director`
-  * `{{PROJECT}}` is your project name, e.g., `curious-lemming-42`
+  * `{{PROJECT}}` is your
+    [project id](https://cloud.google.com/storage/docs/projects?hl=en#projectid),
+    e.g., `curious-lemming-42`
   * `{{ZONE}}` is a Google Compute Engine zone, e.g., `us-central1-f`
   * the [`director.sh`](director.sh) script is located in this directory
 
