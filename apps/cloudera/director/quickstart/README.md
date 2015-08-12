@@ -9,6 +9,7 @@ Cloudera Director on Google Cloud Platform
       --project {{PROJECT}} \
       --zone {{ZONE}} \
       --machine-type n1-standard-1 \
+      --scopes compute-rw \
       --image centos-6 \
       --metadata-from-file startup-script=director.sh
   ```
