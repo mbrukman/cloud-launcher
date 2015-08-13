@@ -1,6 +1,9 @@
 Cloudera Director on Google Cloud Platform
 ==========================================
 
+Installing Cloudera Director on Google Compute Engine VM
+--------------------------------------------------------
+
 1. First, create a Google Compute Engine VM instance and install Cloudera
    Director in a single step:
 
@@ -53,3 +56,30 @@ Cloudera Director on Google Cloud Platform
    use that secure connection to access Cloudera Director and other software
    that will be deployed alongside, such as Cloudera Manager and the Hadoop
    stack.
+
+Using Cloudera Director to deploy Hadoop clusters
+-------------------------------------------------
+
+If you are running Cloudera Director on a Google Compute Engine VM instance
+within the same Google Cloud Platform project that will contain your Cloudera
+clusters, you can have the plugin automatically retrieve credentials from the
+environment. You simply need to ensure that the instance was created with
+[Read-write access to Compute Engine methods](https://cloud.google.com/compute/docs/authentication)
+ enabled, which is done via `--scopes compute-rw` in the `gcloud` command
+above.
+
+If you are running Cloudera Director outside of Google Compute Engine, or in a
+different Google Cloud Platform project, you will need to obtain a JSON key:
+
+* Point your browser at your [Google Developers Console](https://console.developers.google.com/).
+* Navigate to: Projects -> {your-project-name} -> APIs & auth -> APIs
+* Enable the Google Compute Engine API.
+* Navigate to: Projects -> {your-project-name} -> APIs & auth -> Credentials.
+* Select Add credentials -> Service account
+* Ensure "JSON" option is enabled.
+* Click "Create" button.
+* Dismiss "New public/private key pair" popup with "OK" button.
+* Note the location of your newly-downloaded .json file.
+
+You will need to upload this JSON file to Director to enable it to authenticate
+with Google Compute Engine for that project.
