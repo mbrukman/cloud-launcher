@@ -57,6 +57,14 @@ Installing Cloudera Director on Google Compute Engine VM
    that will be deployed alongside, such as Cloudera Manager and the Hadoop
    stack.
 
+Manual installation
+-------------------
+
+To manually install Cloudera Director, you can follow the steps in the
+[director.sh](director.sh) script for a CentOS 6 base image, or see [these
+instructions](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-director/latest/topics/director_install_server.html)
+for other supported operating systems.
+
 Using Cloudera Director to deploy Hadoop clusters
 -------------------------------------------------
 
