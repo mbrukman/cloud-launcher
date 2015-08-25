@@ -1,0 +1,97 @@
+/*
+ * Copyright 2015 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+table.instances {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid #ebebeb;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+/* Hide the last line below the row. */
+tr:last-child {
+  border-bottom: none;
+}
+
+th, td {
+  padding: 12px 5px;
+}
+
+th {
+  text-align: left;
+}
+
+td.status {
+  padding: 12px 0px;
+  width: 1em;
+}
+
+div.status {
+  height: 12px;
+  width: 12px;
+  vertical-align: middle;
+}
+
+i.material-icons {
+  font-size: 10pt;
+}
+
+/*
+ * Color palette used below:
+ * https://www.google.com/design/spec/style/color.html#color-color-palette
+ */
+
+span.status-starting {
+  color: #388E3C; /* green 700 */
+}
+
+span.status-running {
+  color: #388E3C; /* green 700 */
+}
+
+span.status-stopping {
+  color: #D32F2F; /* red 700 */
+}
+
+span.status-terminated {
+  color: #616161; /* grey 700 */
+}
+
+td.footer {
+  text-color: #666;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+a, a:visited, a:active {
+  color: #15c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
