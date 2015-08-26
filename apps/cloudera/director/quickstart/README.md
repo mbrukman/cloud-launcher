@@ -14,7 +14,7 @@ Installing Cloudera Director on Google Compute Engine VM
       --machine-type n1-standard-1 \
       --scopes compute-rw \
       --image centos-6 \
-      --metadata-from-file startup-script=director.sh
+      --metadata startup-script-url=https://git.io/cloudera-director-startup-script
   ```
 
   where:
@@ -24,7 +24,8 @@ Installing Cloudera Director on Google Compute Engine VM
     [project id](https://cloud.google.com/storage/docs/projects?hl=en#projectid),
     e.g., `curious-lemming-42`
   * `{{ZONE}}` is a Google Compute Engine zone, e.g., `us-central1-f`
-  * the [`director.sh`](director.sh) script is located in this directory
+  * the [URL for the startup script](https://git.io/cloudera-director-startup-script)
+    points to the raw version of [`director.sh`](director.sh) in this directory
 
   You can monitor the console of your VM to see when the Cloudera Director is
   ready to accept requests either via the [Developers
