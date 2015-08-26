@@ -66,6 +66,19 @@ To manually install Cloudera Director, you can follow the steps in the
 instructions](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-director/latest/topics/director_install_server.html)
 for other supported operating systems.
 
+If you modify `director.sh` script locally, e.g., to adapt it to another OS, you
+can start a new VM instance with it as your startup script with:
+
+```bash
+gcloud compute instances create {{VM}} \
+    --project {{PROJECT}} \
+    --zone {{ZONE}} \
+    --machine-type n1-standard-1 \
+    --scopes compute-rw \
+    --image centos-6 \
+    --metadata-from-file startup-script=director.sh
+```
+
 Using Cloudera Director to deploy Hadoop clusters
 -------------------------------------------------
 
