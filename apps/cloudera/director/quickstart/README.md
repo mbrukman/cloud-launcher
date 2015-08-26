@@ -51,12 +51,16 @@ Installing Cloudera Director on Google Compute Engine VM
 
    you can create a [SOCKS proxy](https://github.com/mbrukman/cloud-launcher/blob/master/howto/secure-connection.md#socks-proxy-over-ssh)
    to establish a secure connection to Cloudera Director on Google Compute
-   Engine.
+   Engine. You can use `{{VM}}` as the target host, or any other VM in the same
+   project.
 
-   Then, follow the directions in that howto to configure your web browser to
+3. Follow the directions in the same howto to configure your web browser to
    use that secure connection to access Cloudera Director and other software
    that will be deployed alongside, such as Cloudera Manager and the Hadoop
    stack.
+
+4. From the browser which is configured to use the SOCKS proxy, open the URL
+   `http://{{VM}}:7189/` to connect to the Cloudera Director UI.
 
 Manual installation
 -------------------
