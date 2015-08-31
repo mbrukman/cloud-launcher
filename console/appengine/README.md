@@ -159,7 +159,7 @@ Below are the details for each of the steps.
   make local
   ```
 
-  You can access the app via http://localhost:8080/ .
+  You can access the app via [http://localhost:8080/](http://localhost:8080/).
 
 1. (optional) Deploy the app to Google App Engine:
 
