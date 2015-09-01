@@ -16,11 +16,23 @@ Currently-implemented features:
 Here is a high-level overview of how to run Cloud Console app either locally
 or via Google App Engine:
 
+1. Install `gcloud` and enable `gcloud preview app`
 1. Download credentials
 1. Install dependencies
 1. Run the app locally, or (optionally) publish it to Google App Engine
 
 Below are the details for each of the steps.
+
+## Install `gcloud`
+
+To get `gcloud`, install the [Google Cloud SDK](https://cloud.google.com/sdk).
+
+Then, to use the [`gcloud preview app` component](https://cloud.google.com/sdk/gcloud-app)
+to manage Google App Engine applications, run:
+
+```bash
+gcloud components update app
+```
 
 ## Download API credentials
 
