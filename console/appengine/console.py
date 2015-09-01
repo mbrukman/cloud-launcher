@@ -38,7 +38,7 @@ import jinja2
 import webapp2
 
 # Timeout is in seconds.
-MEMCACHE_TIMEOUT = 3600
+MEMCACHE_TIMEOUT = 30
 
 CLIENT_SECRETS = 'client_secrets.json'
 
