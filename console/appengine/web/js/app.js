@@ -14,4 +14,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-var consoleApp = angular.module('consoleApp', []);
+var consoleApp = angular.module('consoleApp', [
+  'ngRoute',
+  'consoleControllers',
+]);
+
+consoleApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: '/partials/index.html',
+        controller: 'ProjectSelectCtrl',
+      }).
+      when('/project/:project/compute/instances', {
+        templateUrl: '/partials/gce_instances.html',
+        controller: 'GceInstancesCtrl',
+      }).
+      otherwise({
+        templateUrl: 'partials/404.html',
+        title: 'not found',
+        controller: 'NotFoundCtrl',
+      });
+  }]);

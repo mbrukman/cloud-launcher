@@ -14,11 +14,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-consoleApp.controller('ProjectCtrl', ['$scope', '$http',
-    function($scope, $http) {
+var consoleControllers = angular.module('consoleControllers', []);
+
+consoleControllers.controller('GceInstancesCtrl',
+    ['$scope', '$http', '$route', '$routeParams',
+    function($scope, $http, $route, $routeParams) {
   $scope.DEBUG = true;
 
-  $scope.project = null;
+  $scope.project = $routeParams.project;
   $scope.allInstances = [];
   $scope.instancesByZone = {};
 
@@ -192,7 +195,7 @@ consoleApp.controller('ProjectCtrl', ['$scope', '$http',
   $scope.updateInstances = function() {
     $http({
       method: 'GET',
-      url: '/compute/v1/projects/' + $scope.projectName + '/instances/aggregated',
+      url: '/compute/v1/projects/' + $scope.project + '/instances/aggregated',
     })
       .success(function(data, status, headers, config) {
         if ($scope.DEBUG) {
@@ -215,16 +218,20 @@ consoleApp.controller('ProjectCtrl', ['$scope', '$http',
   $scope.updateInstances();
 }]);
 
-consoleApp.controller('ProjectSelectCtrl', ['$scope', '$location',
+consoleControllers.controller(
+    'ProjectSelectCtrl',
+    ['$scope', '$location',
     function($scope, $location) {
-	$scope.project = null;
+  $scope.project = null;
 
   $scope.visitProject = function() {
-		var newPath = '/project/' + $scope.project + '/compute/instances';
-		// Note: this updates the path in the Angular-route sense, i.e.,
-		// <protocol>://host/#/<path>, rather than <protocol>://<host>/<path>
-		//
-    // $location.path(newPath).replace();
-		window.location.pathname = newPath;
+    var newPath = '/project/' + $scope.project + '/compute/instances';
+    $location.path(newPath).replace();
   };
+}]);
+
+consoleControllers.controller(
+    'NotFoundCtrl',
+    ['$scope', '$http', '$route', '$routeParams', '$location',
+    function($scope, $http, $route, $routeParams, $location) {
 }]);

@@ -1,25 +1,21 @@
 <!doctype html>
 <html ng-app="consoleApp">
   <head>
-    <title>Cloud Console: select project</title>
+    <title>Cloud Console</title>
     <link rel="stylesheet" type="text/css" href="/css/console.css" />
+
+    <!-- Via https://www.google.com/design/icons/ -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
   </head>
   <body>
 
-    {% raw %}
-      Lookup project info:
-      <form ng-controller="ProjectSelectCtrl" ng-submit="visitProject()">
-        <input type="text" ng-model="project">
-        <input type="submit" value="Go">
-      </form>
-    {% endraw %}
-    <!--
-    <p>
-      You can <a href="https://www.google.com/accounts/b/0/IssuedAuthSubTokens">revoke</a> permission at any time.
-    </p>
-    -->
+  <div ng-view></div>
+
   </body>
 </html>

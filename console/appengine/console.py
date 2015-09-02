@@ -78,19 +78,11 @@ class IndexHandler(webapp2.RequestHandler):
     self.response.write(template.render(variables))
 
 
-class GceInstancesHandler(webapp2.RequestHandler):
+class RedirectHandler(webapp2.RequestHandler):
 
   @decorator.oauth_aware
   def get(self, project):
-    if not decorator.has_credentials():
-      self.redirect(decorator.authorize_url())
-      return
-
-    variables = {
-      'project_name': project,
-    }
-    template = JINJA_ENVIRONMENT.get_template('web/gce_instances.html')
-    self.response.write(template.render(variables))
+    self.redirect('/#%s' % self.request.path)
 
 
 class ComputeV1Base(webapp2.RequestHandler):
@@ -144,10 +136,13 @@ app = webapp2.WSGIApplication(
         ('/',
          IndexHandler),
 
+      # Legacy URL handlers for compatibility with Developers Console;
+      # redirect to new AngularJS URL with routes.
       webapp2.Route(
         '/project/<project>/compute/instances',
-        GceInstancesHandler),
+        RedirectHandler),
 
+      # API handlers.
       webapp2.Route(
         '/compute/v1/projects/<project>/instances/aggregated',
         ComputeV1ProjectInstancesAggregatedHandler),

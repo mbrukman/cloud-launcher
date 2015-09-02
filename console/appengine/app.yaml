@@ -9,6 +9,9 @@ handlers:
 - url: /css
   static_dir: web/css
 
+- url: /partials
+  static_dir: web/partials
+
 - url: /.*
   script: console.app
   secure: always
