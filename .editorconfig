@@ -3,9 +3,25 @@
 # This is the root-level config file.
 root = true
 
+[*.css]
+indent_style = space
+indent_size = 2
+
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.md]
+indent_style = space
+indent_size = 2
+
 [*.py]
 indent_style = space
 indent_size = 4
+
+[*.sh]
+indent_style = space
+indent_size = 2
 
 [Makefile]
 indent_style = tab
