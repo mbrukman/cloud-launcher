@@ -33,6 +33,10 @@ test:
 
 # Requires having installed autopep8 first:
 # https://github.com/hhatto/autopep8
+#
+# Note: we filter out several directories because we don't want to auto-format
+# external (but version-controlled) source code (third_party/*) or
+# auto-downloaded third-party source code (console/appengine/lib/*).
 autopep8:
 	$(VERB) find . -name \*\.py \
 		| egrep -v '^./third_party/' \
