@@ -30,3 +30,11 @@ clean:
 
 test:
 	$(VERB) make -C tests test
+
+# Requires having installed autopep8 first:
+# https://github.com/hhatto/autopep8
+autopep8:
+	$(VERB) find . -name \*\.py \
+		| egrep -v '^./third_party/' \
+		| egrep -v '^./console/appengine/lib' \
+		| xargs -I {} autopep8 --in-place {}
