@@ -14,11 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Deployment for Cloudera Director using a CentOS 6 image.
 #
-################################################################################
+##########################################################################
 
 import director_base
 from gce import *

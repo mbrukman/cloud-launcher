@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Config processing for JSON files.
 
@@ -25,26 +25,27 @@ import sys
 
 class ConfigExpander(object):
 
-  def __init__(self, **kwargs):
-    self.__kwargs = {}
-    for key, value in kwargs.iteritems():
-      self.__kwargs[key] = value
+    def __init__(self, **kwargs):
+        self.__kwargs = {}
+        for key, value in kwargs.iteritems():
+            self.__kwargs[key] = value
 
-  def ExpandFile(self, file_name):
-    with open(file_name, 'r') as file_input:
-      json_obj = json.loads(file_input.read())
-      return json_obj['resources']
+    def ExpandFile(self, file_name):
+        with open(file_name, 'r') as file_input:
+            json_obj = json.loads(file_input.read())
+            return json_obj['resources']
 
 
 def main(argv):
-  if len(argv) < 2:
-    sys.stderr.write('Syntax: %s [JSON file]\n' % os.path.basename(argv[0]))
-    sys.exit(1)
+    if len(argv) < 2:
+        sys.stderr.write('Syntax: %s [JSON file]\n' %
+                         os.path.basename(argv[0]))
+        sys.exit(1)
 
-  expander = ConfigExpander()
-  config = expander.ExpandFile(argv[1])
-  print json.dumps(config, indent=2, separators=(',', ': '))
+    expander = ConfigExpander()
+    config = expander.ExpandFile(argv[1])
+    print json.dumps(config, indent=2, separators=(',', ': '))
 
 
 if __name__ == '__main__':
-  main(sys.argv)
+    main(sys.argv)

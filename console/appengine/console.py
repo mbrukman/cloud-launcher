@@ -67,86 +67,88 @@ decorator = appengine.OAuth2DecoratorFromClientSecrets(
 
 class IndexHandler(webapp2.RequestHandler):
 
-  @decorator.oauth_aware
-  def get(self):
-    if not decorator.has_credentials():
-      self.redirect(decorator.authorize_url())
-      return
+    @decorator.oauth_aware
+    def get(self):
+        if not decorator.has_credentials():
+            self.redirect(decorator.authorize_url())
+            return
 
-    variables = {}
-    template = JINJA_ENVIRONMENT.get_template('web/index.html')
-    self.response.write(template.render(variables))
+        variables = {}
+        template = JINJA_ENVIRONMENT.get_template('web/index.html')
+        self.response.write(template.render(variables))
 
 
 class RedirectHandler(webapp2.RequestHandler):
 
-  @decorator.oauth_aware
-  def get(self, project):
-    self.redirect('/#%s' % self.request.path)
+    @decorator.oauth_aware
+    def get(self, project):
+        self.redirect('/#%s' % self.request.path)
 
 
 class ComputeV1Base(webapp2.RequestHandler):
 
-  def _get(self, obj, method, args):
-    status_int = 200
-    response = {}
+    def _get(self, obj, method, args):
+        status_int = 200
+        response = {}
 
-    memcache_key = self.request.path
-    memcache_value = memcache.get(memcache_key)
-    if memcache_value:
-      output = memcache_value
-    else:
-      http = decorator.credentials.authorize(httplib2.Http(memcache))
-      service = discovery.build('compute', 'v1', http=http)
-      try:
-        response = service.__dict__[obj]().__dict__[method](**args).execute()
-        output = json.dumps(response, indent=2)
-        try:
-          memcache.set(key=memcache_key, value=output, time=MEMCACHE_TIMEOUT)
-        except:
-          # One error we can ignore is exceeding the max value size (1e6 bytes),
-          # which we should handle more gracefully in the future, such as by
-          # splitting up the data into several chunks and storing each one
-          # separately.
-          pass
-      except errors.HttpError, e:
-        response = {
-          "error": repr(e),
-          "response": response,
-        }
-        output = json.dumps(response, indent=2)
-        status_int = 403
+        memcache_key = self.request.path
+        memcache_value = memcache.get(memcache_key)
+        if memcache_value:
+            output = memcache_value
+        else:
+            http = decorator.credentials.authorize(httplib2.Http(memcache))
+            service = discovery.build('compute', 'v1', http=http)
+            try:
+                response = service.__dict__[obj]().__dict__[
+                    method](**args).execute()
+                output = json.dumps(response, indent=2)
+                try:
+                    memcache.set(key=memcache_key, value=output,
+                                 time=MEMCACHE_TIMEOUT)
+                except:
+                    # One error we can ignore is exceeding the max value size (1e6 bytes),
+                    # which we should handle more gracefully in the future, such as by
+                    # splitting up the data into several chunks and storing each one
+                    # separately.
+                    pass
+            except errors.HttpError, e:
+                response = {
+                    "error": repr(e),
+                    "response": response,
+                }
+                output = json.dumps(response, indent=2)
+                status_int = 403
 
-    self.response.headers['Content-Type'] = "application/json"
-    self.response.status_int = status_int
-    self.response.write(output)
+        self.response.headers['Content-Type'] = "application/json"
+        self.response.status_int = status_int
+        self.response.write(output)
 
 
 class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
 
-  @decorator.oauth_required
-  def get(self, project):
-    return self._get(
-        obj='instances', method='aggregatedList', args={"project": project})
+    @decorator.oauth_required
+    def get(self, project):
+        return self._get(
+            obj='instances', method='aggregatedList', args={"project": project})
 
 
 app = webapp2.WSGIApplication(
     [
-      webapp2.Route
+        webapp2.Route
         ('/',
          IndexHandler),
 
-      # Legacy URL handlers for compatibility with Developers Console;
-      # redirect to new AngularJS URL with routes.
-      webapp2.Route(
-        '/project/<project>/compute/instances',
-        RedirectHandler),
+        # Legacy URL handlers for compatibility with Developers Console;
+        # redirect to new AngularJS URL with routes.
+        webapp2.Route(
+            '/project/<project>/compute/instances',
+            RedirectHandler),
 
-      # API handlers.
-      webapp2.Route(
-        '/compute/v1/projects/<project>/instances/aggregated',
-        ComputeV1ProjectInstancesAggregatedHandler),
+        # API handlers.
+        webapp2.Route(
+            '/compute/v1/projects/<project>/instances/aggregated',
+            ComputeV1ProjectInstancesAggregatedHandler),
 
-      (decorator.callback_path, decorator.callback_handler()),
+        (decorator.callback_path, decorator.callback_handler()),
     ],
     debug=True)

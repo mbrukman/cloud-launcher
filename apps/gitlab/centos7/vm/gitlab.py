@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # GitLab server installation + startup.
 
@@ -27,18 +27,18 @@ gitlab = Compute.instance(
     name='gitlab',
     machineType='n1-standard-1',
     disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='centos-7-latest',
+        Disk.boot(
+            autoDelete=true,
+            initializeParams=Disk.initializeParams(
+                sourceImage='centos-7-latest',
+            ),
         ),
-      ),
     ],
     metadata=Metadata.create(
-      items=[
-        Metadata.startupScript('../scripts/init/install-gitlab.gen.sh'),
-      ],
+        items=[
+            Metadata.startupScript('../scripts/init/install-gitlab.gen.sh'),
+        ],
     ),
-  )
+)
 
 resources = [gitlab]

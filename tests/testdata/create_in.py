@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Sample use case of the constructors in resources.py .
 
@@ -26,18 +26,18 @@ GCE.setDefaults(
 )
 
 resources = [
-  Compute.instance(
-    name='vm-%d' % i,
-    disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='centos-6-v20140415',
+    Compute.instance(
+        name='vm-%d' % i,
+        disks=[
+            Disk.boot(
+                autoDelete=true,
+                initializeParams=Disk.initializeParams(
+                    sourceImage='centos-6-v20140415',
+                ),
+            ),
+        ],
+        metadata=Metadata.create(
+            items=[Metadata.startupScript('startup-script.sh')],
         ),
-      ),
-    ],
-    metadata=Metadata.create(
-      items=[Metadata.startupScript('startup-script.sh')],
-    ),
-  ) for i in range(0, 3)
+    ) for i in range(0, 3)
 ]

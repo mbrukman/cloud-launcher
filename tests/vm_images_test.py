@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Tests handling of VM images (e.g., shortnames).
 
@@ -28,35 +28,35 @@ import vm_images
 
 class ImageShortNameToUrlTest(unittest.TestCase):
 
-  def projectImageToUrl(self, project, image):
-    url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
-    return url_fmt % {
-        'project': project,
-        'image': image,
-    }
+    def projectImageToUrl(self, project, image):
+        url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
+        return url_fmt % {
+            'project': project,
+            'image': image,
+        }
 
-  def testDirectReferenceImages(self):
-    for project, data in vm_images.PROJECT_IMAGES.iteritems():
-      for image in data['images']:
-        self.assertEqual(
-            self.projectImageToUrl(project, image),
-            vm_images.ImageShortNameToUrl(image))
+    def testDirectReferenceImages(self):
+        for project, data in vm_images.PROJECT_IMAGES.iteritems():
+            for image in data['images']:
+                self.assertEqual(
+                    self.projectImageToUrl(project, image),
+                    vm_images.ImageShortNameToUrl(image))
 
-  def testPseudoImages(self):
-    for project, data in vm_images.PROJECT_IMAGES.iteritems():
-      if not 'pseudo' in data:
-        continue
-      for pseudo in data['pseudo']:
-        self.assertEqual(
-            self.projectImageToUrl(project, data['pseudo'][pseudo]),
-            vm_images.ImageShortNameToUrl(pseudo))
+    def testPseudoImages(self):
+        for project, data in vm_images.PROJECT_IMAGES.iteritems():
+            if not 'pseudo' in data:
+                continue
+            for pseudo in data['pseudo']:
+                self.assertEqual(
+                    self.projectImageToUrl(project, data['pseudo'][pseudo]),
+                    vm_images.ImageShortNameToUrl(pseudo))
 
-  def testInvalid(self):
-    self.assertRaises(
-        vm_images.InvalidImageShortName,
-        vm_images.ImageShortNameToUrl,
-        'some-unknown-image')
+    def testInvalid(self):
+        self.assertRaises(
+            vm_images.InvalidImageShortName,
+            vm_images.ImageShortNameToUrl,
+            'some-unknown-image')
 
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()

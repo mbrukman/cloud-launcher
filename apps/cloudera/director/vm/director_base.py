@@ -14,38 +14,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Deployment for Cloudera Director using a CentOS 6 image.
 #
-################################################################################
+##########################################################################
 
 from gce import *
+
 
 def DirectorServer(
     sourceImage,
     startupScript,
     name='cloudera-director',
     machineType='n1-standard-1',
-		diskSizeGb=50):
+    diskSizeGb=50):
 
     server = Compute.instance(
         name=name,
         machineType=machineType,
         disks=[
-          Disk.boot(
-            autoDelete=true,
-            initializeParams=Disk.initializeParams(
-              sourceImage=sourceImage,
-              diskSizeGb=diskSizeGb,
+            Disk.boot(
+                autoDelete=true,
+                initializeParams=Disk.initializeParams(
+                    sourceImage=sourceImage,
+                    diskSizeGb=diskSizeGb,
+                ),
             ),
-          ),
         ],
         metadata=Metadata.create(
-          items=[
-            Metadata.startupScript(startupScript),
-          ],
+            items=[
+                Metadata.startupScript(startupScript),
+            ],
         ),
-      )
-    
+    )
+
     return [server]

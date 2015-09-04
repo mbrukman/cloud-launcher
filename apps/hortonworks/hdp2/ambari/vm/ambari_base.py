@@ -12,66 +12,67 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Ambari server + agent deployment.
 #
-################################################################################
+##########################################################################
 
 from gce import *
 
-def AmbariCluster(
-    numAgents=4,
-    agentMachineType='n1-standard-4',
-    agentDiskSizeGb=500,
-    agentInitScript=None,
-    agentSourceImage=None,
-    serverMachineType='n1-standard-1',
-    serverInitScript=None,
-    serverSourceImage=None,
-    sourceImage=None):
-  if agentSourceImage is None:
-    agentSourceImage = sourceImage
-  if serverSourceImage is None:
-    serverSourceImage = sourceImage
 
-  server = Compute.instance(
-      name='ambari-server',
-      machineType=serverMachineType,
-      disks=[
-        Disk.boot(
-          autoDelete=true,
-          initializeParams=Disk.initializeParams(
-            sourceImage=serverSourceImage,
-          ),
-        ),
-      ],
-      metadata=Metadata.create(
-        items=[
-          Metadata.startupScript(serverInitScript),
+def AmbariCluster(
+        numAgents=4,
+        agentMachineType='n1-standard-4',
+        agentDiskSizeGb=500,
+        agentInitScript=None,
+        agentSourceImage=None,
+        serverMachineType='n1-standard-1',
+        serverInitScript=None,
+        serverSourceImage=None,
+        sourceImage=None):
+    if agentSourceImage is None:
+        agentSourceImage = sourceImage
+    if serverSourceImage is None:
+        serverSourceImage = sourceImage
+
+    server = Compute.instance(
+        name='ambari-server',
+        machineType=serverMachineType,
+        disks=[
+            Disk.boot(
+                autoDelete=true,
+                initializeParams=Disk.initializeParams(
+                    sourceImage=serverSourceImage,
+                ),
+            ),
         ],
-      ),
+        metadata=Metadata.create(
+            items=[
+                Metadata.startupScript(serverInitScript),
+            ],
+        ),
     )
 
-  agents = [Compute.instance(
-      name='ambari-agent-%d' % i,
-      machineType=agentMachineType,
-      disks=[
-        Disk.boot(
-          autoDelete=true,
-          initializeParams=Disk.initializeParams(
-            sourceImage=agentSourceImage,
-            diskSizeGb=agentDiskSizeGb,
-          ),
-        ),
-      ],
-      metadata=Metadata.create(
-        items=[
-          Metadata.item('ambari-server', server.name),
-          Metadata.startupScript(agentInitScript),
+    agents = [Compute.instance(
+        name='ambari-agent-%d' % i,
+        machineType=agentMachineType,
+        disks=[
+            Disk.boot(
+                autoDelete=true,
+                initializeParams=Disk.initializeParams(
+                    sourceImage=agentSourceImage,
+                    diskSizeGb=agentDiskSizeGb,
+                ),
+            ),
         ],
-      ),
+        metadata=Metadata.create(
+            items=[
+                Metadata.item('ambari-server', server.name),
+                Metadata.startupScript(agentInitScript),
+            ],
+        ),
     ) for i in range(0, numAgents)
-  ]
+    ]
 
-  return [server] + agents
+    return [server] + agents

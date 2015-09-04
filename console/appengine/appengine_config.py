@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # For more info on why we need this file, see:
 # https://cloud.google.com/appengine/docs/python/tools/libraries27#vendoring
 #
-################################################################################
+##########################################################################
 
 from google.appengine.ext import vendor
 

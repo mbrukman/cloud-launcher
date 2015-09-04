@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 
 from gce import *
 
@@ -22,18 +22,18 @@ coopr = Compute.instance(
     name='coopr',
     machineType='n1-standard-2',
     disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='ubuntu-1204-precise-latest',
-          diskSizeGb=20,
+        Disk.boot(
+            autoDelete=true,
+            initializeParams=Disk.initializeParams(
+                sourceImage='ubuntu-1204-precise-latest',
+                diskSizeGb=20,
+            ),
         ),
-      ),
     ],
     metadata=Metadata.create(
-      items=[
-        Metadata.startupScript('../scripts/ubuntu/precise/coopr.gen.sh'),
-      ],
+        items=[
+            Metadata.startupScript('../scripts/ubuntu/precise/coopr.gen.sh'),
+        ],
     ))
 
 resources = [coopr]

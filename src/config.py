@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Config processing and expansion.
 
@@ -25,26 +25,27 @@ import config_py
 
 
 class InvalidArgumentError(Exception):
-  pass
+    pass
 
 
 class InvalidConfigFilename(Exception):
-  pass
+    pass
 
 
 def ProcessConfig(**kwargs):
-  if 'file' not in kwargs:
-    raise InvalidArgumentError('"file" parameter not found among kwargs')
+    if 'file' not in kwargs:
+        raise InvalidArgumentError('"file" parameter not found among kwargs')
 
-  ext_to_config = {
-      '.json': config_json.ConfigExpander,
-      '.jsonnet': config_jsonnet.ConfigExpander,
-      '.py': config_py.ConfigExpander,
-  }
+    ext_to_config = {
+        '.json': config_json.ConfigExpander,
+        '.jsonnet': config_jsonnet.ConfigExpander,
+        '.py': config_py.ConfigExpander,
+    }
 
-  filename = kwargs['file']
-  for ext, config in ext_to_config.iteritems():
-    if filename.endswith(ext):
-      return config(**kwargs).ExpandFile(filename)
+    filename = kwargs['file']
+    for ext, config in ext_to_config.iteritems():
+        if filename.endswith(ext):
+            return config(**kwargs).ExpandFile(filename)
 
-  raise InvalidConfigFilename('Unrecognized extension in file: %s' % filename)
+    raise InvalidConfigFilename(
+        'Unrecognized extension in file: %s' % filename)

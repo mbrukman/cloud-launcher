@@ -14,11 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Deployment for Cloudera Manager Server + Agent cluster using RHEL 6 images.
 #
-################################################################################
+##########################################################################
 
 import manager_base
 from gce import *

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # An example deployment.
 
@@ -20,18 +20,18 @@ hello = Compute.instance(
     name='hello-world',
     machineType='f1-micro',
     disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='centos-6-latest',
+        Disk.boot(
+            autoDelete=true,
+            initializeParams=Disk.initializeParams(
+                sourceImage='centos-6-latest',
+            ),
         ),
-      ),
     ],
     metadata=Metadata.create(
-      items=[
-        Metadata.item('greeting', 'hello'),
-      ],
+        items=[
+            Metadata.item('greeting', 'hello'),
+        ],
     ),
-  )
+)
 
 resources = [hello]

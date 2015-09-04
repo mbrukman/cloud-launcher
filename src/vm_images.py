@@ -12,41 +12,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Handles VM images (e.g., shortnames) for simplifying config specification.
 
 import json
 import os
 
-class InvalidImageShortName(Exception):
-  def __init__(self, value):
-    self.__value = value
 
-  def __str__(self):
-    return repr(self.__value)
+class InvalidImageShortName(Exception):
+
+    def __init__(self, value):
+        self.__value = value
+
+    def __str__(self):
+        return repr(self.__value)
 
 
 PROJECT_IMAGES = None
 if PROJECT_IMAGES is None:
-  vm_images_path = os.path.join(os.path.dirname(__file__), 'cache', 'vm_images.json')
-  with open(vm_images_path, 'r') as vm_images_fd:
-    PROJECT_IMAGES = json.loads(vm_images_fd.read())
+    vm_images_path = os.path.join(os.path.dirname(
+        __file__), 'cache', 'vm_images.json')
+    with open(vm_images_path, 'r') as vm_images_fd:
+        PROJECT_IMAGES = json.loads(vm_images_fd.read())
 
 
 def ImageShortNameToUrl(image):
-  image_url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
+    image_url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
 
-  for project, data in PROJECT_IMAGES.iteritems():
-    if image in data['images']:
-      return image_url_fmt % {
-          'project': project,
-          'image': image,
-      }
-    elif ('pseudo' in data) and (image in data['pseudo']):
-      return image_url_fmt % {
-          'project': project,
-          'image': data['pseudo'][image],
-      }
+    for project, data in PROJECT_IMAGES.iteritems():
+        if image in data['images']:
+            return image_url_fmt % {
+                'project': project,
+                'image': image,
+            }
+        elif ('pseudo' in data) and (image in data['pseudo']):
+            return image_url_fmt % {
+                'project': project,
+                'image': data['pseudo'][image],
+            }
 
-  raise InvalidImageShortName('Unknown short image name: %s' % image)
+    raise InvalidImageShortName('Unknown short image name: %s' % image)

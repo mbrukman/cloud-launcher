@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Sample use case of references in a Python-style config.
 
@@ -28,29 +28,29 @@ GCE.setDefaults(
 master = Compute.instance(
     name='vm-master',
     disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='centos-6-v20140415',
+        Disk.boot(
+            autoDelete=true,
+            initializeParams=Disk.initializeParams(
+                sourceImage='centos-6-v20140415',
+            ),
         ),
-      ),
     ],
-  )
+)
 
 workers = [Compute.instance(
     name='vm-worker-%d' % i,
     disks=[
-      Disk.boot(
-        autoDelete=true,
-        initializeParams=Disk.initializeParams(
-          sourceImage='centos-6-v20140415',
+        Disk.boot(
+            autoDelete=true,
+            initializeParams=Disk.initializeParams(
+                sourceImage='centos-6-v20140415',
+            ),
         ),
-      ),
     ],
     metadata=Metadata.create(
-      # Note the symbolic reference to `master.name`, defined above.
-      items=Metadata.item('master', master.name)
+        # Note the symbolic reference to `master.name`, defined above.
+        items=Metadata.item('master', master.name)
     )
-  ) for i in range(0, 1)]
+) for i in range(0, 1)]
 
 resources = [master] + workers

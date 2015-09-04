@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Config processing and expansion.
 
@@ -28,43 +28,44 @@ import gce
 
 
 def ImportModule(module):
-  config = __import__(module, globals={}, locals={}, fromlist=['*'])
-  return config.resources
+    config = __import__(module, globals={}, locals={}, fromlist=['*'])
+    return config.resources
 
 
 def CompileAndEvalFile(path):
-  orig_sys_path = sys.path
-  sys.path.insert(0, os.path.dirname(path))
-  module = imp.load_source(os.path.splitext(path)[0], path)
+    orig_sys_path = sys.path
+    sys.path.insert(0, os.path.dirname(path))
+    module = imp.load_source(os.path.splitext(path)[0], path)
 
-  # Restore sys.path prior to returning.
-  sys.path = orig_sys_path
+    # Restore sys.path prior to returning.
+    sys.path = orig_sys_path
 
-  return module.resources
+    return module.resources
 
 
 class ConfigExpander(object):
-  def __init__(self, **kwargs):
-    self.__kwargs = {}
-    for key, value in kwargs.iteritems():
-      self.__kwargs[key] = value
 
-    project = None
-    if 'project' in self.__kwargs:
-      project = self.__kwargs['project']
-    zone = None
-    if 'zone' in self.__kwargs:
-      zone = self.__kwargs['zone']
+    def __init__(self, **kwargs):
+        self.__kwargs = {}
+        for key, value in kwargs.iteritems():
+            self.__kwargs[key] = value
 
-    gce.GCE.setCurrent(project=project, zone=zone)
+        project = None
+        if 'project' in self.__kwargs:
+            project = self.__kwargs['project']
+        zone = None
+        if 'zone' in self.__kwargs:
+            zone = self.__kwargs['zone']
 
-  def ExpandFile(self, file_name):
-    return CompileAndEvalFile(file_name)
+        gce.GCE.setCurrent(project=project, zone=zone)
+
+    def ExpandFile(self, file_name):
+        return CompileAndEvalFile(file_name)
 
 
 def main(argv):
-  if len(argv) < 2:
-    sys.stderr.write('''\
+    if len(argv) < 2:
+        sys.stderr.write('''\
 Syntax: %s [python module or file]
 
 Note: using .py suffix simplifies your code and allows skipping the boilerplate
@@ -74,15 +75,16 @@ Skipping the .py suffix causes the file to be treated as a Python modile which
 requires adding the import line manually and will use __import__() as the
 mechanism.
 ''' % argv[0])
-    sys.exit(1)
+        sys.exit(1)
 
-  path = argv[1]
-  if path.endswith('.py'):
-    resources = CompileAndEvalFile(path)
-  else:
-    resources = ImportModule(path)
-  print('%s' % json.dumps(resources, indent=2, separators=(',', ': '), sort_keys=True))
+    path = argv[1]
+    if path.endswith('.py'):
+        resources = CompileAndEvalFile(path)
+    else:
+        resources = ImportModule(path)
+    print('%s' % json.dumps(resources, indent=2,
+                            separators=(',', ': '), sort_keys=True))
 
 
 if __name__ == '__main__':
-  main(sys.argv)
+    main(sys.argv)

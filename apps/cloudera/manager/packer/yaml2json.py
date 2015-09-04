@@ -14,11 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-################################################################################
+##########################################################################
 #
 # Converts a YAML file to a JSON format, to be consumed by Packer.
 #
-################################################################################
+##########################################################################
 
 import json
 import yaml
@@ -26,14 +26,14 @@ import sys
 
 
 def main(argv):
-  if len(argv) < 2:
-    sys.stderr.write('Syntax: %s [yaml-file]\n' % argv[0])
-    sys.exit(1)
+    if len(argv) < 2:
+        sys.stderr.write('Syntax: %s [yaml-file]\n' % argv[0])
+        sys.exit(1)
 
-  with open(argv[1]) as yaml_input:
-    data = yaml.safe_load(yaml_input)
-    print json.dumps(data, indent=2)
+    with open(argv[1]) as yaml_input:
+        data = yaml.safe_load(yaml_input)
+        print json.dumps(data, indent=2)
 
 
 if __name__ == '__main__':
-  main(sys.argv)
+    main(sys.argv)
