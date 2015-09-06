@@ -627,6 +627,10 @@
     {
       "archiveSizeBytes": "1261754100",
       "creationTimestamp": "2015-07-13T13:31:38.182-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150818",
+        "state": "DEPRECATED"
+      },
       "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 with backports kernel and SSH packages built on 2015-07-10",
       "diskSizeGb": "10",
       "id": "1197078422191972037",
@@ -637,6 +641,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150710",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1442143461",
+      "creationTimestamp": "2015-08-24T14:22:14.171-07:00",
+      "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 with backports kernel and SSH packages built on 2015-08-18",
+      "diskSizeGb": "10",
+      "id": "7535910746152383977",
+      "kind": "compute#image",
+      "name": "backports-debian-7-wheezy-v20150818",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/backports-debian-7-wheezy-v20150818",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1264,6 +1284,10 @@
     {
       "archiveSizeBytes": "1135124274",
       "creationTimestamp": "2015-07-13T13:34:26.357-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20150818",
+        "state": "DEPRECATED"
+      },
       "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 built on 2015-07-10",
       "diskSizeGb": "10",
       "id": "862380021770722877",
@@ -1278,8 +1302,28 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "1204589121",
+      "creationTimestamp": "2015-08-24T14:19:41.538-07:00",
+      "description": "Debian, Debian GNU/Linux, 7.8 (wheezy), amd64 built on 2015-08-18",
+      "diskSizeGb": "10",
+      "id": "1977251577885766786",
+      "kind": "compute#image",
+      "name": "debian-7-wheezy-v20150818",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20150818",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "1502723088",
       "creationTimestamp": "2015-07-28T09:31:21.176-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20150818",
+        "state": "DEPRECATED"
+      },
       "description": "Debian, Debian GNU/Linux, 8.1 (jessie), amd64 built on 2015-07-10",
       "diskSizeGb": "10",
       "id": "8012983927995764918",
@@ -1290,6 +1334,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20150710",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1502287290",
+      "creationTimestamp": "2015-08-24T14:20:52.620-07:00",
+      "description": "Debian, Debian GNU/Linux, 8.1 (jessie), amd64 built on 2015-08-18",
+      "diskSizeGb": "10",
+      "id": "4803780043693503579",
+      "kind": "compute#image",
+      "name": "debian-8-jessie-v20150818",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20150818",
       "sourceType": "RAW",
       "status": "READY"
     }

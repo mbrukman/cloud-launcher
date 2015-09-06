@@ -2,54 +2,6 @@
   "id": "projects/suse-cloud/global/images",
   "items": [
     {
-      "archiveSizeBytes": "1075958547",
-      "creationTimestamp": "2014-12-24T03:43:07.420-08:00",
-      "deprecated": {
-        "deleted": "2015-07-28T15:00:00-05:00",
-        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20150127",
-        "state": "DEPRECATED"
-      },
-      "description": "SUSE Linux Enterprise Server 11 SP3 with all bug and security fixes up to 2014-12-24",
-      "diskSizeGb": "8",
-      "id": "6214571192093340183",
-      "kind": "compute#image",
-      "licenses": [
-        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
-      ],
-      "name": "sles-11-sp3-20141224",
-      "rawDisk": {
-        "containerType": "TAR",
-        "source": ""
-      },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-20141224",
-      "sourceType": "RAW",
-      "status": "READY"
-    },
-    {
-      "archiveSizeBytes": "1075782309",
-      "creationTimestamp": "2014-11-05T16:11:49.996-08:00",
-      "deprecated": {
-        "deprecated": "2014-12-24T00:00:00Z",
-        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-20141224",
-        "state": "DEPRECATED"
-      },
-      "description": "SUSE Linux Enterprise Server 11 SP3 built on 2014-11-05",
-      "diskSizeGb": "8",
-      "id": "14793554030256860036",
-      "kind": "compute#image",
-      "licenses": [
-        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
-      ],
-      "name": "sles-11-sp3-v20141105",
-      "rawDisk": {
-        "containerType": "TAR",
-        "source": ""
-      },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20141105",
-      "sourceType": "RAW",
-      "status": "READY"
-    },
-    {
       "archiveSizeBytes": "1090824009",
       "creationTimestamp": "2015-01-27T14:07:07.326-08:00",
       "deprecated": {

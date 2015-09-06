@@ -87,6 +87,10 @@
     {
       "archiveSizeBytes": "897211761",
       "creationTimestamp": "2015-05-14T13:30:50.868-07:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-1-v20150822",
+        "state": "DEPRECATED"
+      },
       "description": "openSUSE, openSUSE, 13.1, x86_64 built on 2015-05-14",
       "diskSizeGb": "8",
       "id": "6580161560796773141",
@@ -97,6 +101,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-1-v20150515",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "900909558",
+      "creationTimestamp": "2015-08-22T04:05:07.122-07:00",
+      "description": "x86_64 built on 2015-08-22",
+      "diskSizeGb": "8",
+      "id": "3909471709823363468",
+      "kind": "compute#image",
+      "name": "opensuse-13-1-v20150822",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-1-v20150822",
       "sourceType": "RAW",
       "status": "READY"
     },
