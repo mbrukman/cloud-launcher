@@ -150,7 +150,7 @@ def UpdateVmImages(gce, flags):
                 src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'ubuntu-os-cloud':
-            for release in ('precise', 'trusty', 'utopic'):
+            for release in ('precise', 'trusty', 'utopic', 'vivid'):
                 image_sublist = filter(lambda image: release in image, images)
                 src, dst = LatestImage(image_sublist, '-v[0-9]{8}.*$')
                 pseudo[src] = dst
