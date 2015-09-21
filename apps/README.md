@@ -6,6 +6,7 @@ Applications
 * [Cloudera Director](cloudera/director/)
 * [Cloudera Manager](cloudera/manager/)
 * [Cask Coopr](cask/coopr/)
+* [Docker](docker/)
 * [GitLab](gitlab/)
 * [Hortonworks Data Platform (HDP)](hortonworks/hdp2/)
 * [RabbitMQ](rabbitmq/)
