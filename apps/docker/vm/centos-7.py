@@ -21,7 +21,7 @@
 from gce import *
 
 resources = [Compute.instance(
-    name='docker-vm',
+    name='docker-centos7',
     machineType='n1-standard-1',
     disks=[
         Disk.boot(
