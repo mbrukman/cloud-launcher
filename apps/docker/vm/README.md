@@ -14,4 +14,4 @@ command with `delete` to delete the VM.
 
 ## CentOS 7
 
-    make CONFIG=centos-7 insert
+    make OS=centos-7 insert

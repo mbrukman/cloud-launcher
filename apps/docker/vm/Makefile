@@ -16,7 +16,9 @@
 
 ROOT = ../../..
 CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
-CONFIG = centos-7.py
+
+OS = centos-7
+CONFIG = $(OS).py
 
 VERB = @
 ifeq ($(VERBOSE),1)
