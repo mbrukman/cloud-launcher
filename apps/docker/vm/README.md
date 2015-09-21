@@ -15,3 +15,7 @@ command with `delete` to delete the VM.
 ## CentOS 7
 
     make OS=centos-7 insert
+
+## Ubuntu 14.04
+
+    make OS=ubuntu-1404 insert

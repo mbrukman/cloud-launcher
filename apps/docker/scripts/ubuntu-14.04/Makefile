@@ -14,28 +14,22 @@
 #
 ################################################################################
 
-ROOT = ../../..
-CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
+ROOT = ../../../..
 
-OS = centos-7
-CONFIG = $(OS).py
+INPUTS = \
+  startup.sh
+
+OUTPUT = startup.gen.sh
 
 VERB = @
 ifeq ($(VERBOSE),1)
 	VERB =
 endif
 
-.PHONY default:
-	$(VERB) echo "Valid targets: startup-script, insert, delete."
+all: $(OUTPUT)
 
-startup-script:
-	$(VERB) make -s -C ../scripts/centos-7
-	$(VERB) make -s -C ../scripts/ubuntu-14.04
+$(OUTPUT): $(INPUTS) Makefile
+	$(VERB) cat $(INPUTS) | sed '/^[[:space:]]*#/d' > $@
 
-insert: startup-script
-	$(VERB) $(CLOUD_LAUNCHER) --config=$(CONFIG) insert
-
-# The config must be valid even for delete, so we have to make sure that the
-# startup-script exists.
-delete: startup-script
-	$(VERB) $(CLOUD_LAUNCHER) --config=$(CONFIG) delete
+clean:
+	$(VERB) rm -f $(OUTPUT)
