@@ -9,11 +9,9 @@ ssh`](https://cloud.google.com/sdk/gcloud/reference/compute/ssh).
 The name of the VM instance is specified in a configuration file in this
 directory, whose name is `<name-of-config>.py`.
 
+For any given VM configuration, to delete the instance, replace the `insert`
+command with `delete` to delete the VM.
+
 ## CentOS 7
 
     make CONFIG=centos-7 insert
-
-## Delete a VM
-
-For any given VM configuration, replace the `insert` command with `delete` to
-delete the VM.
