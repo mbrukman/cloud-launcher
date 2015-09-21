@@ -16,7 +16,7 @@
 #
 ################################################################################
 #
-# Installs Docker. For more info, see https://get.docker.com/ubuntu/
+# Installs Docker. For more info, see https://get.docker.com/
 #
 ################################################################################
 
@@ -36,19 +36,19 @@ if ! [ -d "$(dirname "${DOCKER_REPO_LIST}")" ]; then
 fi
 
 if ! [ -e "${DOCKER_REPO_LIST}" ]; then
-  echo "deb https://get.docker.com/ubuntu docker main" > "${DOCKER_REPO_LIST}"
+  echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > "${DOCKER_REPO_LIST}"
   apt-get -q update
 fi
 
 if ! which docker > /dev/null 2>&1 ; then
   echo "Adding GPG key..."
   apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 \
-      --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+      --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
   apt-get update
   echo "Done adding GPG key."
 
   echo "Installing Docker..."
-  apt-get install -y lxc-docker
+  apt-get install -y docker-engine
   echo "Done installing Docker."
 fi
 
