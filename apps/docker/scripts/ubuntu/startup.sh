@@ -52,5 +52,5 @@ if ! which docker > /dev/null 2>&1 ; then
   echo "Done installing Docker."
 fi
 
-# Automatically start Docker on boot.
-update-rc.d docker defaults
+# Start the Docker service immediately.
+service docker start

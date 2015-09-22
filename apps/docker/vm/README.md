@@ -19,3 +19,7 @@ command with `delete`.
 ## Ubuntu 14.04
 
     make OS=ubuntu-1404 insert
+
+## Ubuntu 15.04
+
+    make OS=ubuntu-1504 insert
