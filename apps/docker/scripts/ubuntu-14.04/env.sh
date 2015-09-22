@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,27 +16,4 @@
 #
 ################################################################################
 
-ROOT = ../../..
-CLOUD_LAUNCHER = $(ROOT)/src/cloud_launcher.sh
-
-OS = centos-7
-CONFIG = $(OS).py
-
-VERB = @
-ifeq ($(VERBOSE),1)
-	VERB =
-endif
-
-.PHONY default:
-	$(VERB) echo "Valid targets: startup-script, insert, delete."
-
-startup-script:
-	$(VERB) make -s -C ../scripts/$(OS)
-
-insert: startup-script
-	$(VERB) $(CLOUD_LAUNCHER) --config=$(CONFIG) insert
-
-# The config must be valid even for delete, so we have to make sure that the
-# startup-script exists.
-delete: startup-script
-	$(VERB) $(CLOUD_LAUNCHER) --config=$(CONFIG) delete
+declare -r UBUNTU_RELEASE="trusty"

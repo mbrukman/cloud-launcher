@@ -36,7 +36,7 @@ if ! [ -d "$(dirname "${DOCKER_REPO_LIST}")" ]; then
 fi
 
 if ! [ -e "${DOCKER_REPO_LIST}" ]; then
-  echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" > "${DOCKER_REPO_LIST}"
+  echo "deb https://apt.dockerproject.org/repo ubuntu-${UBUNTU_RELEASE} main" > "${DOCKER_REPO_LIST}"
   apt-get -q update
 fi
 

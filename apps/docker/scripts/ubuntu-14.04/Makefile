@@ -14,22 +14,10 @@
 #
 ################################################################################
 
-ROOT = ../../../..
-
 INPUTS = \
-  startup.sh
+  env.sh \
+  ../ubuntu/startup.sh
 
 OUTPUT = startup.gen.sh
 
-VERB = @
-ifeq ($(VERBOSE),1)
-	VERB =
-endif
-
-all: $(OUTPUT)
-
-$(OUTPUT): $(INPUTS) Makefile
-	$(VERB) cat $(INPUTS) | sed '/^[[:space:]]*#/d' > $@
-
-clean:
-	$(VERB) rm -f $(OUTPUT)
+include ../ubuntu/Makefile.common
