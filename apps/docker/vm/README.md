@@ -10,7 +10,7 @@ The name of the VM instance is specified in a configuration file in this
 directory, whose name is `<name-of-config>.py`.
 
 For any given VM configuration, to delete the instance, replace the `insert`
-command with `delete` to delete the VM.
+command with `delete`.
 
 ## CentOS 7
 
