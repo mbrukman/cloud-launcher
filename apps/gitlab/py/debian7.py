@@ -30,13 +30,13 @@ gitlab = Compute.instance(
         Disk.boot(
             autoDelete=true,
             initializeParams=Disk.initializeParams(
-                sourceImage='centos-7-latest',
+                sourceImage='backports-debian-7-wheezy-latest',
             ),
         ),
     ],
     metadata=Metadata.create(
         items=[
-            Metadata.startupScript('../scripts/init/install-gitlab.gen.sh'),
+            Metadata.startupScript('../scripts/debian-7/install-gitlab.gen.sh'),
         ],
     ),
 )
