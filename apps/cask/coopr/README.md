@@ -7,7 +7,7 @@ Deployment
 To deploy Coopr, run:
 
 ```sh
-$ cd vm
+$ cd py
 $ make insert
 ```
 
@@ -21,7 +21,7 @@ Connect to Coopr UI
 In a separate terminal, run:
 
 ```sh
-$ cd vm
+$ cd py
 $ make socks-proxy
 ```
 
@@ -44,6 +44,6 @@ Delete
 ------
 
 ```sh
-$ cd vm
+$ cd py
 $ make delete
 ```

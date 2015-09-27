@@ -16,5 +16,5 @@ Optionally, modify parameters in [`vm/debian7.py`](vm/debian7.py); see
 Then, deploy the RabbitMQ cluster:
 
 ```bash
-$CLOUD_LAUNCHER/src/cloud_launcher.sh --config vm/debian7.py insert
+$CLOUD_LAUNCHER/src/cloud_launcher.sh --config py/debian7.py insert
 ```

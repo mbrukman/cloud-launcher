@@ -32,7 +32,7 @@ cluster is longer than in the prebuilt VM image approach above.
 1. launch the cluster
 
   ```bash
-  ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/centos6.py insert
+  ${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config py/centos6.py insert
   ```
 
 Accessing Ambari
@@ -92,7 +92,7 @@ Once you're done working with your cluster, you can remove it entirely with a
 single command:
 
 ```bash
-${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config vm/centos6.py delete
+${CLOUD_LAUNCHER}/src/cloud_launcher.sh --config py/centos6.py delete
 ```
 
 Note that this procedure is irreversible; please be sure to save any data

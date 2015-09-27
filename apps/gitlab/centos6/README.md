@@ -14,7 +14,7 @@ make -s -C scripts/init
 To deploy GitLab, run:
 
 ```bash
-$CLOUD_LAUNCHER/src/cloud_launcher.sh --config vm/gitlab.py insert
+$CLOUD_LAUNCHER/src/cloud_launcher.sh --config py/gitlab.py insert
 ```
 
 To see other flags, run:
