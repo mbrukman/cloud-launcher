@@ -30,6 +30,10 @@ consoleApp.config(['$routeProvider',
         templateUrl: '/partials/gce_instances.html',
         controller: 'GceInstancesCtrl',
       }).
+      when('/project/:project/compute/instancesDetail/zones/:zone/instances/:instance/console', {
+        templateUrl: '/partials/gce_instance_console.html',
+        controller: 'GceInstanceConsoleCtrl',
+      }).
       otherwise({
         templateUrl: 'partials/404.html',
         title: 'not found',

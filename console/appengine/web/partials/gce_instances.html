@@ -7,6 +7,7 @@
       <th>NETWORK</th>
       <th>EXTERNAL IP</th>
       <!-- TODO: CONNECT -->
+      <th>CONSOLE</th>
     </tr>
     <tr ng-repeat="instance in allInstances track by $index">
       <!-- https://www.google.com/design/icons/ -->
@@ -42,7 +43,14 @@
       </td>
       <td>{{ externalIpFromInstance(instance) }}</td>
       <!-- TODO: SSH button -->
-      <td></td>
+      <!-- Link to console output -->
+      <td>
+        <a class="console"
+           href="/#/project/{{project}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}/console"
+           ng-if="instanceStatusIsRunning(instance)">
+          <i class="material-icons">subject</i>
+        </a>
+      </td>
     </tr>
   </table>
 </div>

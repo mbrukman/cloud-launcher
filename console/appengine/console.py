@@ -127,6 +127,15 @@ class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
             obj='instances', method='aggregatedList', args={'project': project})
 
 
+class ComputeV1ProjectZoneInstanceSerialPortHandler(ComputeV1Base):
+
+    @decorator.oauth_required
+    def get(self, project, zone, instance):
+        return self._get(
+            obj='instances', method='getSerialPortOutput',
+            args={'project': project, 'zone': zone, 'instance': instance})
+
+
 app = webapp2.WSGIApplication(
     [
         webapp2.Route(
@@ -143,6 +152,9 @@ app = webapp2.WSGIApplication(
         webapp2.Route(
             '/compute/v1/projects/<project>/instances/aggregated',
             ComputeV1ProjectInstancesAggregatedHandler),
+        webapp2.Route(
+            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/serialPort',
+            ComputeV1ProjectZoneInstanceSerialPortHandler),
 
         (decorator.callback_path, decorator.callback_handler()),
     ],

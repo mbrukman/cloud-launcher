@@ -27,7 +27,7 @@ consoleControllers.controller('GceInstancesCtrl',
 
   $scope.instanceStatusIsOneOf = function(instance, statuses) {
     if (!('status' in instance)) {
-      console.log('[error] instance has no "status" field'); 
+      console.log('[error] instance has no "status" field');
       return false;
     }
     // For more info on statuses, see the docs:
@@ -216,6 +216,41 @@ consoleControllers.controller('GceInstancesCtrl',
   };
 
   $scope.updateInstances();
+}]);
+
+consoleControllers.controller('GceInstanceConsoleCtrl',
+    ['$scope', '$http', '$route', '$routeParams',
+    function($scope, $http, $route, $routeParams) {
+
+  $scope.project = $routeParams.project;
+  $scope.zone = $routeParams.zone;
+  $scope.instance = $routeParams.instance;
+
+  $scope.consoleOutput = '';
+
+  $scope.updateConsoleOutput = function() {
+    $http({
+      method: 'GET',
+      url: '/compute/v1/projects/' + $scope.project + '/zones/' + $scope.zone +
+          '/instances/' + $scope.instance + '/serialPort',
+    })
+      .success(function(data, status, headers, config) {
+        if ('kind' in data &&
+            data.kind == 'compute#serialPortOutput' &&
+            'contents' in data) {
+          $scope.consoleOutput = data.contents;
+        } else {
+          $scope.consoleOutput = 'Received unexpected response from server.';
+        }
+      })
+      .error(function(data, status, headers, config) {
+        if ($scope.DEBUG) {
+          console.log('[consoleOutput] error: ' + data);
+        }
+      });
+  };
+
+  $scope.updateConsoleOutput();
 }]);
 
 consoleControllers.controller(
