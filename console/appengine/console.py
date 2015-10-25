@@ -113,13 +113,13 @@ class ComputeV1Base(webapp2.RequestHandler):
                     pass
             except errors.HttpError, e:
                 response = {
-                    "error": repr(e),
-                    "response": response,
+                    'error': repr(e),
+                    'response': response,
                 }
                 output = json.dumps(response, indent=2)
                 status_int = 403
 
-        self.response.headers['Content-Type'] = "application/json"
+        self.response.headers['Content-Type'] = 'application/json'
         self.response.status_int = status_int
         self.response.write(output)
 
@@ -129,7 +129,7 @@ class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
     @decorator.oauth_required
     def get(self, project):
         return self._get(
-            obj='instances', method='aggregatedList', args={"project": project})
+            obj='instances', method='aggregatedList', args={'project': project})
 
 
 app = webapp2.WSGIApplication(
