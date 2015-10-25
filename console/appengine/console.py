@@ -134,9 +134,9 @@ class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
 
 app = webapp2.WSGIApplication(
     [
-        webapp2.Route
-        ('/',
-         IndexHandler),
+        webapp2.Route(
+            '/',
+            IndexHandler),
 
         # Legacy URL handlers for compatibility with Developers Console;
         # redirect to new AngularJS URL with routes.
