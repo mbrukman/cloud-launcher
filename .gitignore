@@ -1,2 +1,6 @@
 *.pyc
 *~
+
+# We automatically download the Puppet module for GCE; ignore it in any app's
+# subdirectory automatically.
+/**/puppet/gce_compute
