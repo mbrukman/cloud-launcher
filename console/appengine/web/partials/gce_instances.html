@@ -25,20 +25,20 @@
         </span>
       </td>
       <td>
-        <a href="https://console.developers.google.com/project/{{projectName}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}">{{ instance.name }}</a>
+        <a href="https://console.developers.google.com/project/{{project}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}">{{ instance.name }}</a>
       </td>
       <td>{{ zoneFromUri(instance.zone) }}</td>
       <td ng-show="instance.disks.length == 0">
         -
       </td>
       <td ng-show="instance.disks.length == 1">
-        <a href="https://console.developers.google.com/project/{{projectName}}/compute/disksDetail/zones/{{zoneFromUri(instance.zone)}}/disks/{{diskFromUri(instance.disks[0].source)}}">{{ diskFromUri(instance.disks[0].source) }}</a>
+        <a href="https://console.developers.google.com/project/{{project}}/compute/disksDetail/zones/{{zoneFromUri(instance.zone)}}/disks/{{diskFromUri(instance.disks[0].source)}}">{{ diskFromUri(instance.disks[0].source) }}</a>
       </td>
       <td ng-show="instance.disks.length > 1">
         {{ instance.disks.length }} disks
       </td>
       <td>
-        <a href="https://console.developers.google.com/project/{{projectName}}/networks/details/global/networks/{{networkNameFromInstance(instance)}}">{{ networkNameFromInstance(instance) }}</a>
+        <a href="https://console.developers.google.com/project/{{project}}/networks/details/global/networks/{{networkNameFromInstance(instance)}}">{{ networkNameFromInstance(instance) }}</a>
       </td>
       <td>{{ externalIpFromInstance(instance) }}</td>
       <!-- TODO: SSH button -->
