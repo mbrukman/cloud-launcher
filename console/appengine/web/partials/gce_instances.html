@@ -6,7 +6,7 @@
       <th>DISK</th>
       <th>NETWORK</th>
       <th>EXTERNAL IP</th>
-      <!-- TODO: CONNECT -->
+      <th>SSH</th>
       <th>CONSOLE</th>
     </tr>
     <tr ng-repeat="instance in allInstances track by $index">
@@ -42,12 +42,21 @@
         <a href="https://console.developers.google.com/project/{{project}}/networks/details/global/networks/{{networkNameFromInstance(instance)}}">{{ networkNameFromInstance(instance) }}</a>
       </td>
       <td>{{ externalIpFromInstance(instance) }}</td>
-      <!-- TODO: SSH button -->
-      <!-- Link to console output -->
+      <!-- SSH -->
+      <td>
+        <a class="ssh"
+           href="https://cloudssh.developers.google.com/projects/{{project}}/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}?authuser=0"
+           ng-if="instanceStatusIsRunning(instance)"
+           target="_blank">
+          <i class="material-icons">tv</a>
+        </a>
+      </td>
+      <!-- CONSOLE -->
       <td>
         <a class="console"
            href="/#/project/{{project}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}/console"
-           ng-if="instanceStatusIsRunning(instance)">
+           ng-if="instanceStatusIsRunning(instance)"
+           target="_blank">
           <i class="material-icons">subject</i>
         </a>
       </td>
