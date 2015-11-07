@@ -92,6 +92,7 @@ class ComputeV1Base(webapp2.RequestHandler):
     def _get(self, obj, method, args):
         status_int = 200
         response = {}
+        write_to_cache = False
 
         memcache_key = self.request.path
         memcache_value = memcache.get(memcache_key)
@@ -104,8 +105,7 @@ class ComputeV1Base(webapp2.RequestHandler):
                 response = service.__dict__[obj]().__dict__[
                     method](**args).execute()
                 output = json.dumps(response, indent=2)
-                memcache.set(key=memcache_key, value=output,
-                             time=MEMCACHE_TIMEOUT)
+                write_to_cache = True
             except errors.HttpError, e:
                 response = {
                     'error': repr(e),
@@ -117,6 +117,9 @@ class ComputeV1Base(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'application/json'
         self.response.status_int = status_int
         self.response.write(output)
+
+        if write_to_cache:
+            memcache.set(key=memcache_key, value=output, time=MEMCACHE_TIMEOUT)
 
 
 class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
