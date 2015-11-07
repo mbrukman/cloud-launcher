@@ -33,9 +33,11 @@ from oauth2client import appengine
 import httplib2
 
 # Libraries provided by App Engine.
-from google.appengine.api import memcache
 import jinja2
 import webapp2
+
+# Local imports.
+import safe_memcache as memcache
 
 # Timeout is in seconds.
 MEMCACHE_TIMEOUT = 30
@@ -102,15 +104,8 @@ class ComputeV1Base(webapp2.RequestHandler):
                 response = service.__dict__[obj]().__dict__[
                     method](**args).execute()
                 output = json.dumps(response, indent=2)
-                try:
-                    memcache.set(key=memcache_key, value=output,
-                                 time=MEMCACHE_TIMEOUT)
-                except:
-                    # One error we can ignore is exceeding the max value size (1e6 bytes),
-                    # which we should handle more gracefully in the future, such as by
-                    # splitting up the data into several chunks and storing each one
-                    # separately.
-                    pass
+                memcache.set(key=memcache_key, value=output,
+                             time=MEMCACHE_TIMEOUT)
             except errors.HttpError, e:
                 response = {
                     'error': repr(e),
