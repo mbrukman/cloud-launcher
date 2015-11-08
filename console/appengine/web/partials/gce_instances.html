@@ -1,13 +1,13 @@
 <div>
   <table class="instances">
     <tr>
-      <th colspan="2">NAME</th>
-      <th>ZONE</th>
-      <th>DISK</th>
-      <th>NETWORK</th>
-      <th>EXTERNAL IP</th>
+      <th colspan="2">Name</th>
+      <th>Zone</th>
+      <th>Disk</th>
+      <th>Network</th>
+      <th>External IP</th>
       <th>SSH</th>
-      <th>CONSOLE</th>
+      <th>Console</th>
     </tr>
     <tr ng-repeat="instance in allInstances track by $index">
       <!-- https://www.google.com/design/icons/ -->
@@ -51,7 +51,7 @@
           <i class="material-icons">tv</a>
         </a>
       </td>
-      <!-- CONSOLE -->
+      <!-- Console -->
       <td>
         <a class="console"
            href="/#/project/{{project}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}/console"
