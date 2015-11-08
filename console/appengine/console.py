@@ -49,22 +49,16 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True,
     extensions=['jinja2.ext.autoescape'])
 
-SCOPE_READONLY = [
-    'https://www.googleapis.com/auth/compute.readonly',
-    'https://www.googleapis.com/auth/devstorage.read_only',
-]
-
-SCOPE_READWRITE = [
+SCOPE = [
     'https://www.googleapis.com/auth/compute',
-    'https://www.googleapis.com/auth/devstorage.full_control',
+    'https://www.googleapis.com/auth/devstorage.read_only',
 ]
 
 decorator = appengine.OAuth2DecoratorFromClientSecrets(
     filename=os.path.join(os.path.dirname(__file__), CLIENT_SECRETS),
-    # TODO(mbrukman): optional upgrade to read-write mode?
-    scope=SCOPE_READONLY,
+    scope=SCOPE,
     message='Missing %s file' % CLIENT_SECRETS,
-    cache=memcache)
+    cache=None)
 
 
 class IndexHandler(webapp2.RequestHandler):
@@ -122,12 +116,61 @@ class ComputeV1Base(webapp2.RequestHandler):
             memcache.set(key=memcache_key, value=output, time=MEMCACHE_TIMEOUT)
 
 
+    def _post(self, obj, method, args):
+        status_int = 200
+        response = {}
+        http = decorator.credentials.authorize(httplib2.Http(memcache))
+        service = discovery.build('compute', 'v1', http=http)
+        try:
+            response = service.__dict__[obj]().__dict__[
+                method](**args).execute()
+            output = json.dumps(response, indent=2)
+        except errors.HttpError, e:
+            response = {
+                'error': repr(e),
+                'response': response,
+            }
+            output = json.dumps(response, indent=2)
+            status_int = 403
+
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.status_int = status_int
+        self.response.write(output)
+
+
 class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
 
     @decorator.oauth_required
     def get(self, project):
         return self._get(
             obj='instances', method='aggregatedList', args={'project': project})
+
+
+class ComputeV1ProjectZoneInstanceStartHandler(ComputeV1Base):
+
+    @decorator.oauth_required
+    def post(self, project, zone, instance):
+        return self._post(
+            obj='instances', method='start',
+            args={'project': project, 'zone': zone, 'instance': instance})
+
+
+class ComputeV1ProjectZoneInstanceStopHandler(ComputeV1Base):
+
+    @decorator.oauth_required
+    def post(self, project, zone, instance):
+        return self._post(
+            obj='instances', method='stop',
+            args={'project': project, 'zone': zone, 'instance': instance})
+
+
+class ComputeV1ProjectZoneInstanceDeleteHandler(ComputeV1Base):
+
+    @decorator.oauth_required
+    def post(self, project, zone, instance):
+        return self._post(
+            obj='instances', method='delete',
+            args={'project': project, 'zone': zone, 'instance': instance})
 
 
 class ComputeV1ProjectZoneInstanceSerialPortHandler(ComputeV1Base):
@@ -155,6 +198,15 @@ app = webapp2.WSGIApplication(
         webapp2.Route(
             '/compute/v1/projects/<project>/instances/aggregated',
             ComputeV1ProjectInstancesAggregatedHandler),
+        webapp2.Route(
+            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/start',
+            ComputeV1ProjectZoneInstanceStartHandler),
+        webapp2.Route(
+            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/stop',
+            ComputeV1ProjectZoneInstanceStopHandler),
+        webapp2.Route(
+            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/delete',
+            ComputeV1ProjectZoneInstanceDeleteHandler),
         webapp2.Route(
             '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/serialPort',
             ComputeV1ProjectZoneInstanceSerialPortHandler),

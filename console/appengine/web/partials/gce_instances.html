@@ -1,7 +1,11 @@
 <div>
   <button ng-click="updateInstances()">Refresh</button>
+  <button ng-click="startInstances()">Start</button>
+  <button ng-click="stopInstances()">Stop</button>
+  <button ng-click="deleteInstances()">Delete</button>
   <table class="instances">
     <tr>
+      <th width="2em"></th>
       <th colspan="2">Name</th>
       <th>Zone</th>
       <th>Disk</th>
@@ -10,6 +14,10 @@
       <th>Connect</th>
     </tr>
     <tr ng-repeat="instance in allInstances track by $index">
+      <!-- Checkbox -->
+      <td>
+        <input type="checkbox" ng-model="instance.selected">
+      </td>
       <!-- https://www.google.com/design/icons/ -->
       <td class="status">
         <span class="status-starting" ng-if="instance.isStarting()">

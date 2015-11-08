@@ -76,6 +76,11 @@ function VMInstance(json) {
    * @private
    */
   this.json_ = json;
+
+  /**
+   * @type {boolean}
+   */
+  this.selected = false;
 }
 
 /**
@@ -279,6 +284,9 @@ consoleControllers.controller('GceInstancesCtrl',
     }
 
     allInstances.sort(compareByName);
+    for (var instance in allInstances) {
+      instance.selected = false;
+    }
     $scope.allInstances = allInstances;
     $scope.instancesByZone = instancesByZone;
   };
@@ -307,6 +315,41 @@ consoleControllers.controller('GceInstancesCtrl',
   };
 
   $scope.updateInstances();
+
+  $scope.applyToInstances = function(action) {
+    for (var i = 0; i < $scope.allInstances.length; ++i) {
+      var instance = $scope.allInstances[i];
+      if (!instance.selected) {
+        continue;
+      }
+
+      $http({
+        method: 'POST',
+        url: '/compute/v1/projects/' + $scope.project + '/zones/' + instance.zone() + '/instances/' + instance.name() + '/' + action,
+      })
+        .success(function(data, status, headers, config) {
+          setTimeout($scope.updateInstances, 500);
+        })
+        .error(function(data, status, headers, config) {
+          if ($scope.DEBUG) {
+            console.log('[' + action + 'Instances()] error')
+            console.log(data);
+          }
+        });
+    }
+  };
+
+  $scope.startInstances = function() {
+    $scope.applyToInstances('start');
+  };
+
+  $scope.stopInstances = function() {
+    $scope.applyToInstances('stop');
+  };
+
+  $scope.deleteInstances = function() {
+    $scope.applyToInstances('delete');
+  };
 }]);
 
 consoleControllers.controller('GceInstanceConsoleCtrl',
