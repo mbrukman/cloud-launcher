@@ -6,8 +6,7 @@
       <th>Disk</th>
       <th>Network</th>
       <th>External IP</th>
-      <th>SSH</th>
-      <th>Console</th>
+      <th>Connect</th>
     </tr>
     <tr ng-repeat="instance in allInstances track by $index">
       <!-- https://www.google.com/design/icons/ -->
@@ -42,22 +41,19 @@
         <a href="https://console.developers.google.com/project/{{project}}/networks/details/global/networks/{{networkNameFromInstance(instance)}}">{{ networkNameFromInstance(instance) }}</a>
       </td>
       <td>{{ externalIpFromInstance(instance) }}</td>
-      <!-- SSH -->
+      <!-- Connect -->
       <td>
         <a class="ssh"
            href="https://cloudssh.developers.google.com/projects/{{project}}/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}?authuser=0"
            ng-if="instanceStatusIsRunning(instance)"
            target="_blank">
-          <i class="material-icons">tv</a>
+          <button>SSH</button>
         </a>
-      </td>
-      <!-- Console -->
-      <td>
         <a class="console"
            href="/#/project/{{project}}/compute/instancesDetail/zones/{{zoneFromUri(instance.zone)}}/instances/{{instance.name}}/console"
            ng-if="instanceStatusIsRunning(instance)"
            target="_blank">
-          <i class="material-icons">subject</i>
+          <button>Console</button>
         </a>
       </td>
     </tr>
