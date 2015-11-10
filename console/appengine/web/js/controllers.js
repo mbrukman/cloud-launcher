@@ -16,6 +16,238 @@
 
 var consoleControllers = angular.module('consoleControllers', []);
 
+/**
+ * @param {string} ui
+ * @return {string}
+ */
+function lastComponentOfUri(uri) {
+  var uriParts = uri.split('/');
+  return uriParts[uriParts.length - 1];
+}
+
+/**
+ * @param {Object} a
+ * @param {Object} b
+ * @return {number} -1 if a < b, 0 if a == b, 1 if a > b
+ */
+function compareByName(a, b) {
+  var compareValues = function(s1, s2) {
+    return s1 > s2 ? 1 : (s1 < s2 ? -1 : 0);
+  };
+  var aMatch = a.name().match(/^(.*)-([0-9]+)$/);
+  var bMatch = b.name().match(/^(.*)-([0-9]+)$/);
+  if (aMatch && bMatch) {
+    var first = compareValues(aMatch[1], bMatch[1]);
+    if (first != 0) {
+      return first;
+    }
+
+    return compareValues(parseInt(aMatch[2]), parseInt(bMatch[2]));
+  }
+  return compareValues(a.name(), b.name());
+};
+
+/**
+ * @param {Object} json
+ * @constructor
+ */
+function VMDisk(json) {
+  /**
+   * @type {Object}
+   * @private
+   */
+  this.json_ = json;
+}
+
+/**
+ * @return {string}
+ */
+VMDisk.prototype.name = function() {
+  return lastComponentOfUri(this.json_.source);
+};
+
+/**
+ * @param {Object} json
+ * @constructor
+ */
+function VMInstance(json) {
+  /**
+   * @type {Object}
+   * @private
+   */
+  this.json_ = json;
+}
+
+/**
+ * @return {string}
+ */
+VMInstance.prototype.name = function() {
+  return this.json_.name;
+};
+
+/**
+ * @return {string}
+ */
+VMInstance.prototype.zone = function() {
+  return lastComponentOfUri(this.json_.zone);
+};
+
+/**
+ * return {Object}
+ */
+VMInstance.prototype.networkInterface = function() {
+  if (!('networkInterfaces' in this.json_)) {
+    return null;
+  }
+  var networkInterfaces = this.json_.networkInterfaces;
+  switch (networkInterfaces.length) {
+    case 0: return null;
+    case 1: return networkInterfaces[0];
+    default: {
+      throw (networkInterfaces.length + ' network interfaces');
+    }
+  }
+};
+
+/**
+ * @return {Object}
+ */
+VMInstance.prototype.networkAccessConfig = function() {
+  var networkInterface = null;
+  try {
+    networkInterface = this.networkInterface();
+    if (networkInterface == null) {
+      return null;
+    }
+  } catch (e) {
+    if (typeof e == 'string') {
+      return e;
+    }
+  }
+
+  if (!('accessConfigs' in networkInterface)) {
+    return null;
+  }
+  var accessConfigs = networkInterface.accessConfigs;
+  switch (accessConfigs.length) {
+    case 0: return null;
+    case 1: return accessConfigs[0];
+    default: throw (accessConfigs.length + ' networks');
+  }
+};
+
+/**
+ * TODO(mbrukman): consider returning a higher-level status/error code here and
+ * let the caller decide how to render that to a string.
+ *
+ * @return {string}
+ */
+VMInstance.prototype.externalIP = function() {
+  var accessConfig = null;
+  try {
+    accessConfig = this.networkAccessConfig();
+    if (accessConfig == null) {
+      console.log('VMInstance#externalIP(): accessConfig is null');
+      return '<error>';
+    }
+  } catch (e) {
+    console.log('VMInstance#externalIP(): exception: ' + e);
+    return '<error>';
+  }
+
+  if ((typeof accessConfig == 'object') &&
+      ('type' in accessConfig) &&
+      (accessConfig.type == 'ONE_TO_ONE_NAT') &&
+      ('natIP' in accessConfig)) {
+    return accessConfig.natIP;
+  }
+
+  return '-';
+};
+
+/**
+ * @return {string}
+ */
+VMInstance.prototype.networkName = function() {
+  var networkInterface = null;
+  try {
+    networkInterface = this.networkInterface();
+    if (networkInterface == null) {
+      return '';
+    }
+  } catch (e) {
+    if (typeof e == 'string') {
+      return e;
+    }
+  }
+
+  if ((typeof networkInterface == 'object') &&
+      ('network' in networkInterface)) {
+    return lastComponentOfUri(networkInterface.network);
+  }
+
+  return '';
+};
+
+/**
+ * @return {string}
+ */
+VMInstance.prototype.numDisks = function() {
+  return this.json_.disks.length;
+};
+
+/**
+ * @return {VMDisk}
+ */
+VMInstance.prototype.disk = function(index) {
+  return new VMDisk(this.json_.disks[index]);
+};
+
+// The various status strings and transitions can be found here:
+// https://cloud.google.com/compute/docs/instances/#checkmachinestatus
+VMInstance.prototype.isStatusOneOf = function(statuses) {
+  if (!('status' in this.json_)) {
+    console.log('[error] instance has no "status" field');
+    return false;
+  }
+  // For more info on statuses, see the docs:
+  // https://developers.google.com/compute/docs/reference/latest/instances#resource
+  for (var i = 0; i < statuses.length; ++i) {
+    if (this.json_.status == statuses[i]) {
+      return true;
+    }
+  }
+  return false;
+};
+
+/**
+ * @return {bolean}
+ */
+VMInstance.prototype.isStarting = function() {
+  return this.isStatusOneOf(['PROVISIONING', 'STAGING']);
+};
+
+/**
+ * @return {bolean}
+ */
+VMInstance.prototype.isRunning = function() {
+  return this.isStatusOneOf(['RUNNING']);
+};
+
+/**
+ * @return {bolean}
+ */
+VMInstance.prototype.isStopping = function() {
+  return this.isStatusOneOf(['STOPPING']);
+};
+
+/**
+ * @return {bolean}
+ */
+VMInstance.prototype.isTerminated = function() {
+  return this.isStatusOneOf(['TERMINATED']);
+};
+
 consoleControllers.controller('GceInstancesCtrl',
     ['$scope', '$http', '$route', '$routeParams',
     function($scope, $http, $route, $routeParams) {
@@ -24,134 +256,6 @@ consoleControllers.controller('GceInstancesCtrl',
   $scope.project = $routeParams.project;
   $scope.allInstances = [];
   $scope.instancesByZone = {};
-
-  $scope.instanceStatusIsOneOf = function(instance, statuses) {
-    if (!('status' in instance)) {
-      console.log('[error] instance has no "status" field');
-      return false;
-    }
-    // For more info on statuses, see the docs:
-    // https://developers.google.com/compute/docs/reference/latest/instances#resource
-    for (var i = 0; i < statuses.length; ++i) {
-      if (instance.status == statuses[i]) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  // The various status strings and transitions can be found here:
-  // https://cloud.google.com/compute/docs/instances/#checkmachinestatus
-
-  $scope.instanceStatusIsStarting = function(instance) {
-    return $scope.instanceStatusIsOneOf(
-        instance, ['PROVISIONING', 'STAGING']);
-  };
-
-  $scope.instanceStatusIsRunning = function(instance) {
-    return $scope.instanceStatusIsOneOf(
-        instance, ['RUNNING']);
-  };
-
-  $scope.instanceStatusIsStopping = function(instance) {
-    return $scope.instanceStatusIsOneOf(
-        instance, ['STOPPING']);
-  };
-
-  $scope.instanceStatusIsTerminated = function(instance) {
-    return $scope.instanceStatusIsOneOf(
-        instance, ['TERMINATED']);
-  };
-
-  function lastComponentOfUri(uri) {
-    var uriParts = uri.split('/');
-    return uriParts[uriParts.length - 1];
-  }
-
-  $scope.zoneFromUri = lastComponentOfUri;
-  $scope.diskFromUri = lastComponentOfUri;
-
-  function networkInterfaceFromInstance(instance) {
-    if (!('networkInterfaces' in instance)) {
-      return null;
-    }
-    var networkInterfaces = instance.networkInterfaces;
-    switch (networkInterfaces.length) {
-      case 0: return null;
-      case 1: return networkInterfaces[0];
-      default: {
-        throw (networkInterfaces.length + ' network interfaces');
-      }
-    }
-  }
-
-  function networkAccessConfigFromInstance(instance) {
-    var networkInterface = null;
-    try {
-      networkInterface = networkInterfaceFromInstance(instance);
-      if (networkInterface == null) {
-        return null;
-      }
-    } catch (e) {
-      if (typeof e == 'string') {
-        return e;
-      }
-    }
-
-    if (!('accessConfigs' in networkInterface)) {
-      return null;
-    }
-    var accessConfigs = networkInterface.accessConfigs;
-    switch (accessConfigs.length) {
-      case 0: return null;
-      case 1: return accessConfigs[0];
-      default: throw (accessConfigs.length + ' networks');
-    }
-  }
-
-  $scope.externalIpFromInstance = function(instance) {
-    var accessConfig = null;
-    try {
-      accessConfig = networkAccessConfigFromInstance(instance);
-      if (accessConfig == null) {
-        console.log('externalIpFromInstance(): accessConfig is null');
-        return '<error>';
-      }
-    } catch (e) {
-      console.log('externalIpFromInstance(): exception: ' + e);
-      return '<error>';
-    }
-
-    if ((typeof accessConfig == 'object') &&
-        ('type' in accessConfig) &&
-        (accessConfig.type == 'ONE_TO_ONE_NAT') &&
-        ('natIP' in accessConfig)) {
-      return accessConfig.natIP;
-    }
-
-    return '-';
-  };
-
-  $scope.networkNameFromInstance = function(instance) {
-    var networkInterface = null;
-    try {
-      networkInterface = networkInterfaceFromInstance(instance);
-      if (networkInterface == null) {
-        return '';
-      }
-    } catch (e) {
-      if (typeof e == 'string') {
-        return e;
-      }
-    }
-
-    if ((typeof networkInterface == 'object') &&
-        ('network' in networkInterface)) {
-      return lastComponentOfUri(networkInterface.network);
-    }
-
-    return '';
-  };
 
   $scope.loadInstances = function(data) {
     var allInstances = [];
@@ -165,28 +269,15 @@ consoleControllers.controller('GceInstancesCtrl',
           if (!(zone in instancesByZone)) {
             instancesByZone[zone] = [];
           }
-          allInstances.push.apply(allInstances, value.instances);
-          instancesByZone[zone].push.apply(instancesByZone[zone], value.instances);
+          for (var i in value.instances) {
+            var instance = new VMInstance(value.instances[i]);
+            allInstances.push(instance);
+            instancesByZone[zone].push(instance);
+          }
         }
       }
     }
 
-    var compareByName = function(a, b) {
-      var compareValues = function(s1, s2) {
-        return s1 > s2 ? 1 : (s1 < s2 ? -1 : 0);
-      };
-      var aMatch = a.name.match(/^(.*)-([0-9]+)$/);
-      var bMatch = b.name.match(/^(.*)-([0-9]+)$/);
-      if (aMatch && bMatch) {
-        var first = compareValues(aMatch[1], bMatch[1]);
-        if (first != 0) {
-          return first;
-        }
-
-        return compareValues(parseInt(aMatch[2]), parseInt(bMatch[2]));
-      }
-      return compareValues(a.name, b.name);
-    };
     allInstances.sort(compareByName);
     $scope.allInstances = allInstances;
     $scope.instancesByZone = instancesByZone;
