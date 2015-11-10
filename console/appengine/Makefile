@@ -27,8 +27,10 @@ endif
 	$(VERB) echo "Valid actions: pip-install, local, deploy."
 
 # Via https://cloud.google.com/appengine/docs/python/tools/libraries27#vendoring
+THIRD_PARTY_PYTHON = third_party/python
 pip-install:
-	$(VERB) pip install -t lib -r requirements.txt
+	$(VERB) mkdir -p $(THIRD_PARTY_PYTHON)
+	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements.txt
 
 # See https://cloud.google.com/sdk/gcloud-app for more info.
 local:

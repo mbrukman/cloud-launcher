@@ -21,5 +21,5 @@
 
 from google.appengine.ext import vendor
 
-# Add any libraries installed in the "lib" folder.
-vendor.add('lib')
+# Add any libraries installed in the 'third_party/python' folder.
+vendor.add('third_party/python')

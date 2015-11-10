@@ -160,8 +160,8 @@ gcloud components update app
   make pip-install
   ```
 
-  These libraries will be installed in `lib` and are visible to the app via
-  [`appengine_config.py`](appengine_config.py).
+  These libraries will be installed in `third_party/python` and are visible to
+  the app via [`appengine_config.py`](appengine_config.py).
 
 ## Run the app locally or publish to Google App Engine
 
