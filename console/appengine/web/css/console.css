@@ -113,3 +113,11 @@ a.console, a.console:visited, a.console:active {
   color: black;
   text-decoration: none;
 }
+
+button:enabled {
+  /* TODO(mbrukman): Figure out a good style. */
+}
+
+button:disabled {
+  /* TODO(mbrukman): Figure out a good style. */
+}

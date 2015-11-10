@@ -1,8 +1,14 @@
 <div>
   <button ng-click="updateInstances()">Refresh</button>
-  <button ng-click="startInstances()">Start</button>
-  <button ng-click="stopInstances()">Stop</button>
-  <button ng-click="deleteInstances()">Delete</button>
+  <button ng-click="startInstances()" ng-disabled="emptyInstanceSelection()">
+    Start
+  </button>
+  <button ng-click="stopInstances()" ng-disabled="emptyInstanceSelection()">
+    Stop
+  </button>
+  <button ng-click="deleteInstances()" ng-disabled="emptyInstanceSelection()">
+    Delete
+  </button>
   <table class="instances">
     <tr>
       <th width="2em"></th>
@@ -18,7 +24,7 @@
       <td>
         <input type="checkbox" ng-model="instance.selected">
       </td>
-      <!-- https://www.google.com/design/icons/ -->
+      <!-- Status icons via https://www.google.com/design/icons/ -->
       <td class="status">
         <span class="status-starting" ng-if="instance.isStarting()">
           <i class="material-icons" alt="Starting">trending_up</i>

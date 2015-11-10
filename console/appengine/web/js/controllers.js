@@ -316,6 +316,19 @@ consoleControllers.controller('GceInstancesCtrl',
 
   $scope.updateInstances();
 
+  /**
+   * @return {boolean}
+   */
+  $scope.emptyInstanceSelection = function() {
+    for (var i = 0; i < $scope.allInstances.length; ++i) {
+      var instance = $scope.allInstances[i];
+      if (instance.selected) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   $scope.applyToInstances = function(action) {
     for (var i = 0; i < $scope.allInstances.length; ++i) {
       var instance = $scope.allInstances[i];
