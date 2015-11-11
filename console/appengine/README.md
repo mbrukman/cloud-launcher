@@ -9,7 +9,11 @@ does not provide a full replacement for Google Developers Console.
 
 Currently-implemented features:
 
-* list of GCE VM instances
+**Google Compute Engine**
+
+* list of VM instances
+* SSH to a given instance
+* view serial port output of a given instance
 
 # How to run
 
