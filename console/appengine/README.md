@@ -14,6 +14,7 @@ Currently-implemented features:
 * list of VM instances
 * SSH to a given instance
 * view serial port output of a given instance
+* start / stop / delete of a single instance or selection of instances
 
 For detailed instructions for how to run the Console locally or on Google App
 Engine, see [docs/setup.md](docs/setup.md).
