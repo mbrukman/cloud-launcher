@@ -330,11 +330,26 @@ consoleControllers.controller('GceInstancesCtrl',
   };
 
   $scope.applyToInstances = function(action) {
+    var instances = [];
     for (var i = 0; i < $scope.allInstances.length; ++i) {
       var instance = $scope.allInstances[i];
-      if (!instance.selected) {
-        continue;
+      if (instance.selected) {
+        instances.push(instance);
       }
+    }
+
+    if (instances.length == 0) {
+      return;
+    }
+
+    var message = "Are you sure you would like to " + action + " "
+        + instances.length + " instance" + (instances.length == 1 ? "" : "s") + "?";
+    if (!confirm(message)) {
+      return;
+    }
+
+    for (var i = 0; i < instances.length; ++i) {
+      var instance = instances[i];
 
       $http({
         method: 'POST',
