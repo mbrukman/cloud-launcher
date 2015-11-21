@@ -39,3 +39,11 @@ local:
 # See https://cloud.google.com/sdk/gcloud-app for more info.
 deploy:
 	$(VERB) gcloud --project=$(PROJECT) preview app deploy --version=$(VERSION) app.yaml
+
+# Provide libraries for testing.
+pip-install-test:
+	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements-test.txt
+
+# Run tests.
+test:
+	$(VERB) python console_test.py

@@ -27,8 +27,9 @@ import logging
 import os
 
 # Libraries we added to `lib` via `requirements.txt`.
-from apiclient import discovery
-from apiclient import errors
+from apiclient import discovery as apiclient_discovery
+from apiclient import errors as apiclient_errors
+from apiclient import http as apiclient_http
 from oauth2client import appengine
 import httplib2
 
@@ -59,6 +60,17 @@ decorator = appengine.OAuth2DecoratorFromClientSecrets(
     scope=SCOPE,
     message='Missing %s file' % CLIENT_SECRETS,
     cache=None)
+
+APP_NAME = 'Cloud Console'
+APP_VERSION = '0.1'
+USER_AGENT = '%s/%s (github.com/mbrukman/cloud-launcher/tree/master/console)' % (
+    APP_NAME, APP_VERSION)
+
+
+def Http():
+    """Returns an instance of `httplib2.Http` with User-agent set."""
+    http = httplib2.Http(memcache)
+    return apiclient_http.set_user_agent(http, USER_AGENT)
 
 
 class IndexHandler(webapp2.RequestHandler):
@@ -93,14 +105,14 @@ class ComputeV1Base(webapp2.RequestHandler):
         if memcache_value:
             output = memcache_value
         else:
-            http = decorator.credentials.authorize(httplib2.Http(memcache))
-            service = discovery.build('compute', 'v1', http=http)
+            http = decorator.credentials.authorize(Http())
+            service = apiclient_discovery.build('compute', 'v1', http=http)
             try:
                 response = service.__dict__[obj]().__dict__[
                     method](**args).execute()
                 output = json.dumps(response, indent=2)
                 write_to_cache = True
-            except errors.HttpError, e:
+            except apiclient_errors.HttpError, e:
                 response = {
                     'error': repr(e),
                     'response': response,
@@ -119,13 +131,13 @@ class ComputeV1Base(webapp2.RequestHandler):
     def _post(self, obj, method, args):
         status_int = 200
         response = {}
-        http = decorator.credentials.authorize(httplib2.Http(memcache))
-        service = discovery.build('compute', 'v1', http=http)
+        http = decorator.credentials.authorize(Http())
+        service = apiclient_discovery.build('compute', 'v1', http=http)
         try:
             response = service.__dict__[obj]().__dict__[
                 method](**args).execute()
             output = json.dumps(response, indent=2)
-        except errors.HttpError, e:
+        except apiclient_errors.HttpError, e:
             response = {
                 'error': repr(e),
                 'response': response,
