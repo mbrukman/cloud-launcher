@@ -150,6 +150,20 @@ gcloud components update app
   These libraries will be installed in `third_party/python` and are visible to
   the app via [`appengine_config.py`](appengine_config.py).
 
+1. Running tests
+
+  First, install the testing dependencies:
+
+  ```bash
+  make pip-install-test
+  ```
+
+  Then, run the tests via:
+
+  ```bash
+  make test
+  ```
+
 ## Run the app locally or publish to Google App Engine
 
 1. Run the app with a local development server:
