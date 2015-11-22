@@ -48,14 +48,13 @@ import appengine_config
 from google.appengine.ext import testbed
 
 # Local imports
-import console
+import compute_api_base
 import httpretty
 
 
 class RequestHandlersTest(unittest.TestCase):
     def setUp(self):
         super(RequestHandlersTest, self).setUp()
-        self.app = webtest.TestApp(console.app)
         # For more info, see:
         # https://cloud.google.com/appengine/docs/python/tools/localunittesting
         self.testbed = testbed.Testbed()
@@ -73,10 +72,10 @@ class RequestHandlersTest(unittest.TestCase):
         mockContent = 'This is some content'
         httpretty.register_uri(httpretty.GET, 'http://localhost:9000/',
                                body=mockContent)
-        http = console.Http()
+        http = compute_api_base.Http()
         (resp_headers, content) = http.request("http://localhost:9000", "GET")
         self.assertEqual(httpretty.last_request().headers['user-agent'],
-                         console.USER_AGENT)
+                         compute_api_base.USER_AGENT)
         self.assertEqual(content, mockContent)
 
 

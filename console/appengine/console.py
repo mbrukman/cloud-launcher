@@ -22,14 +22,10 @@ in this directory. See README.md for details.
 """
 
 # Standard Python libraries.
-import json
 import logging
 import os
 
-# Libraries we added to `lib` via `requirements.txt`.
-from apiclient import discovery as apiclient_discovery
-from apiclient import errors as apiclient_errors
-from apiclient import http as apiclient_http
+# Libraries we added to `third_party/python` via `requirements.txt`.
 from oauth2client import appengine
 import httplib2
 
@@ -38,39 +34,14 @@ import jinja2
 import webapp2
 
 # Local imports.
+import compute_api_gen
+from oauth2helper import decorator
 import safe_memcache as memcache
-
-# Timeout is in seconds.
-MEMCACHE_TIMEOUT = 30
-
-CLIENT_SECRETS = 'client_secrets.json'
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     autoescape=True,
     extensions=['jinja2.ext.autoescape'])
-
-SCOPE = [
-    'https://www.googleapis.com/auth/compute',
-    'https://www.googleapis.com/auth/devstorage.read_only',
-]
-
-decorator = appengine.OAuth2DecoratorFromClientSecrets(
-    filename=os.path.join(os.path.dirname(__file__), CLIENT_SECRETS),
-    scope=SCOPE,
-    message='Missing %s file' % CLIENT_SECRETS,
-    cache=None)
-
-APP_NAME = 'Cloud Console'
-APP_VERSION = '0.1'
-USER_AGENT = '%s/%s (github.com/mbrukman/cloud-launcher/tree/master/console)' % (
-    APP_NAME, APP_VERSION)
-
-
-def Http():
-    """Returns an instance of `httplib2.Http` with User-agent set."""
-    http = httplib2.Http(memcache)
-    return apiclient_http.set_user_agent(http, USER_AGENT)
 
 
 class IndexHandler(webapp2.RequestHandler):
@@ -93,105 +64,6 @@ class RedirectHandler(webapp2.RequestHandler):
         self.redirect('/#%s' % self.request.path)
 
 
-class ComputeV1Base(webapp2.RequestHandler):
-
-    def _get(self, obj, method, args):
-        status_int = 200
-        response = {}
-        write_to_cache = False
-
-        memcache_key = self.request.path
-        memcache_value = memcache.get(memcache_key)
-        if memcache_value:
-            output = memcache_value
-        else:
-            http = decorator.credentials.authorize(Http())
-            service = apiclient_discovery.build('compute', 'v1', http=http)
-            try:
-                response = service.__dict__[obj]().__dict__[
-                    method](**args).execute()
-                output = json.dumps(response, indent=2)
-                write_to_cache = True
-            except apiclient_errors.HttpError, e:
-                response = {
-                    'error': repr(e),
-                    'response': response,
-                }
-                output = json.dumps(response, indent=2)
-                status_int = 403
-
-        self.response.headers['Content-Type'] = 'application/json'
-        self.response.status_int = status_int
-        self.response.write(output)
-
-        if write_to_cache:
-            memcache.set(key=memcache_key, value=output, time=MEMCACHE_TIMEOUT)
-
-
-    def _post(self, obj, method, args):
-        status_int = 200
-        response = {}
-        http = decorator.credentials.authorize(Http())
-        service = apiclient_discovery.build('compute', 'v1', http=http)
-        try:
-            response = service.__dict__[obj]().__dict__[
-                method](**args).execute()
-            output = json.dumps(response, indent=2)
-        except apiclient_errors.HttpError, e:
-            response = {
-                'error': repr(e),
-                'response': response,
-            }
-            output = json.dumps(response, indent=2)
-            status_int = 403
-
-        self.response.headers['Content-Type'] = 'application/json'
-        self.response.status_int = status_int
-        self.response.write(output)
-
-
-class ComputeV1ProjectInstancesAggregatedHandler(ComputeV1Base):
-
-    @decorator.oauth_required
-    def get(self, project):
-        return self._get(
-            obj='instances', method='aggregatedList', args={'project': project})
-
-
-class ComputeV1ProjectZoneInstanceStartHandler(ComputeV1Base):
-
-    @decorator.oauth_required
-    def post(self, project, zone, instance):
-        return self._post(
-            obj='instances', method='start',
-            args={'project': project, 'zone': zone, 'instance': instance})
-
-
-class ComputeV1ProjectZoneInstanceStopHandler(ComputeV1Base):
-
-    @decorator.oauth_required
-    def post(self, project, zone, instance):
-        return self._post(
-            obj='instances', method='stop',
-            args={'project': project, 'zone': zone, 'instance': instance})
-
-
-class ComputeV1ProjectZoneInstanceDeleteHandler(ComputeV1Base):
-
-    @decorator.oauth_required
-    def post(self, project, zone, instance):
-        return self._post(
-            obj='instances', method='delete',
-            args={'project': project, 'zone': zone, 'instance': instance})
-
-
-class ComputeV1ProjectZoneInstanceSerialPortHandler(ComputeV1Base):
-
-    @decorator.oauth_required
-    def get(self, project, zone, instance):
-        return self._get(
-            obj='instances', method='getSerialPortOutput',
-            args={'project': project, 'zone': zone, 'instance': instance})
 
 
 app = webapp2.WSGIApplication(
@@ -206,23 +78,8 @@ app = webapp2.WSGIApplication(
             '/project/<project>/compute/instances',
             RedirectHandler),
 
-        # API handlers.
-        webapp2.Route(
-            '/compute/v1/projects/<project>/instances/aggregated',
-            ComputeV1ProjectInstancesAggregatedHandler),
-        webapp2.Route(
-            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/start',
-            ComputeV1ProjectZoneInstanceStartHandler),
-        webapp2.Route(
-            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/stop',
-            ComputeV1ProjectZoneInstanceStopHandler),
-        webapp2.Route(
-            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/delete',
-            ComputeV1ProjectZoneInstanceDeleteHandler),
-        webapp2.Route(
-            '/compute/v1/projects/<project>/zones/<zone>/instances/<instance>/serialPort',
-            ComputeV1ProjectZoneInstanceSerialPortHandler),
-
+    ] + compute_api_gen.routes +
+    [
         (decorator.callback_path, decorator.callback_handler()),
     ],
     debug=True)

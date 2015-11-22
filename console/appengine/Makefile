@@ -32,12 +32,21 @@ pip-install:
 	$(VERB) mkdir -p $(THIRD_PARTY_PYTHON)
 	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements.txt
 
+COMPUTE_API_PY = compute_api.py
+COMPUTE_API_YAML = compute_api.yaml
+COMPUTE_API_GEN_PY = compute_api_gen.py
+
+compute_api_gen: $(COMPUTE_API_GEN_PY)
+
+$(COMPUTE_API_GEN_PY): $(COMPUTE_API_PY) $(COMPUTE_API_YAML)
+	$(VERB) ./$(COMPUTE_API_PY) $(COMPUTE_API_YAML) > $@
+
 # See https://cloud.google.com/sdk/gcloud-app for more info.
-local:
+local: compute_api_gen
 	$(VERB) gcloud preview app run app.yaml
 
 # See https://cloud.google.com/sdk/gcloud-app for more info.
-deploy:
+deploy: compute_api_gen
 	$(VERB) gcloud --project=$(PROJECT) preview app deploy --version=$(VERSION) app.yaml
 
 # Provide libraries for testing.
@@ -46,4 +55,4 @@ pip-install-test:
 
 # Run tests.
 test:
-	$(VERB) python console_test.py
+	$(VERB) python -m unittest discover -p '*_test.py'
