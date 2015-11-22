@@ -54,5 +54,5 @@ pip-install-test:
 	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements-test.txt
 
 # Run tests.
-test:
+test: compute_api_gen
 	$(VERB) python -m unittest discover -p '*_test.py'
