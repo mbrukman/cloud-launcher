@@ -48,7 +48,6 @@ import appengine_config
 from google.appengine.ext import testbed
 
 # Local imports
-import compute_api_base
 import httpretty
 
 
@@ -63,6 +62,13 @@ class RequestHandlersTest(unittest.TestCase):
         # For more info, see: https://github.com/gabrielfalcao/HTTPretty
         httpretty.enable()
 
+        # If we import this module at the global scope before we stub out
+        # memcache, the code breaks because it runs immediately and the
+        # decorator isn't able to use memcache at load time due to the missing
+        # API stub. By loading it after stubbing out memcache, it works.
+        import compute_api_base
+        self.compute_api_base = compute_api_base
+
     def tearDown(self):
         httpretty.disable()
         httpretty.reset()
@@ -72,10 +78,10 @@ class RequestHandlersTest(unittest.TestCase):
         mockContent = 'This is some content'
         httpretty.register_uri(httpretty.GET, 'http://localhost:9000/',
                                body=mockContent)
-        http = compute_api_base.Http()
+        http = self.compute_api_base.Http()
         (resp_headers, content) = http.request("http://localhost:9000", "GET")
         self.assertEqual(httpretty.last_request().headers['user-agent'],
-                         compute_api_base.USER_AGENT)
+                         self.compute_api_base.USER_AGENT)
         self.assertEqual(content, mockContent)
 
 

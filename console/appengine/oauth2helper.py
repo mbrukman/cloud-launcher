@@ -36,4 +36,4 @@ decorator = appengine.OAuth2DecoratorFromClientSecrets(
     filename=os.path.join(os.path.dirname(__file__), CLIENT_SECRETS),
     scope=SCOPE,
     message='Missing %s file' % CLIENT_SECRETS,
-    cache=None)
+    cache=memcache)
