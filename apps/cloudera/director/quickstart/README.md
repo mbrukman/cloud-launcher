@@ -67,7 +67,7 @@ Manual installation
 
 To manually install Cloudera Director, you can follow the steps in the
 [director.sh](director.sh) script for a CentOS 6 base image, or see [these
-instructions](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-director/latest/topics/director_install_server.html)
+instructions](http://www.cloudera.com/content/www/en-us/documentation/director/latest.html)
 for other supported operating systems.
 
 If you modify `director.sh` script locally, e.g., to adapt it to another OS, you
