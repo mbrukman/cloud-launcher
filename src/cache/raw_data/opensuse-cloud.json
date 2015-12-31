@@ -141,26 +141,6 @@
       "status": "READY"
     },
     {
-      "archiveSizeBytes": "1252131249",
-      "creationTimestamp": "2015-03-15T09:13:10.778-07:00",
-      "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150511",
-        "state": "DEPRECATED"
-      },
-      "description": "openSUSE 13.2 with the latest security and bug fixes. Built on 2015-03-14",
-      "diskSizeGb": "8",
-      "id": "3296948784313405817",
-      "kind": "compute#image",
-      "name": "opensuse-13-2-v20150315",
-      "rawDisk": {
-        "containerType": "TAR",
-        "source": ""
-      },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150315",
-      "sourceType": "RAW",
-      "status": "READY"
-    },
-    {
       "archiveSizeBytes": "1251706890",
       "creationTimestamp": "2015-05-11T19:21:33.336-07:00",
       "description": "openSUSE, openSUSE, 13.2, x86_64 built on 2015-05-11",
@@ -173,6 +153,22 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-13-2-v20150511",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "2166314643",
+      "creationTimestamp": "2015-11-24T10:23:34.972-08:00",
+      "description": "openSUSE, openSUSE Leap 42.1, x86_64, built on 2015-11-24",
+      "diskSizeGb": "8",
+      "id": "8579822102389528009",
+      "kind": "compute#image",
+      "name": "opensuse-leap-42-1-v20151124",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/opensuse-cloud/global/images/opensuse-leap-42-1-v20151124",
       "sourceType": "RAW",
       "status": "READY"
     }
