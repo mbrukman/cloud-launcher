@@ -39,6 +39,10 @@ py_library(
     ],
 )
 
+# This test doesn't quite work yet because our dependency on the Google Cloud
+# SDK is implicit: it exists outside of this tree and is referenced via
+# "$HOME/google-cloud-sdk", which doesn't work well with Bazel, which wants
+# everything to be hermetic: even $HOME is not available there.
 py_test(
     name = "compute_api_base_test",
     srcs = ["compute_api_base_test.py"],
