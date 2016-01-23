@@ -41,6 +41,12 @@ with Cloud Launcher.
 * Now you can launch applications! Try one of the [examples](examples/README.md)
   or look at the [app catalog](apps/README.md).
 
+Discuss
+-------
+
+You can discuss Cloud Launcher with other users and developers via the mailing
+list [cloud-launcher (at) googlegroups.com](https://groups.google.com/group/cloud-launcher).
+
 License
 -------
 
