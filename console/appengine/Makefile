@@ -56,3 +56,9 @@ pip-install-test:
 # Run tests.
 test: compute_api_gen
 	$(VERB) python -m unittest discover -p '*_test.py'
+
+# Clean up directories of generated files as well as external libraries
+# installed via "make pip-install{,-test}".
+clean:
+	$(VERB) rm -f *.pyc
+	$(VERB) rm -rf $(THIRD_PARTY_PYTHON)
