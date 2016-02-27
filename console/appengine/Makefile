@@ -18,7 +18,7 @@ PROJECT = curious-lemmings-42
 VERSION = new-version
 
 VERB = @
-ifeq (VERBOSE, 1)
+ifeq ($(VERBOSE), 1)
 	VERB =
 endif
 
