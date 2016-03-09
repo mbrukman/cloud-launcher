@@ -30,6 +30,12 @@
       "centos-6-v20150915",
       "centos-6-v20150929",
       "centos-6-v20151104",
+      "centos-6-v20160119",
+      "centos-6-v20160126",
+      "centos-6-v20160211",
+      "centos-6-v20160216",
+      "centos-6-v20160219",
+      "centos-6-v20160301",
       "centos-7-v20140903",
       "centos-7-v20140924",
       "centos-7-v20140926",
@@ -50,33 +56,21 @@
       "centos-7-v20150818",
       "centos-7-v20150915",
       "centos-7-v20150929",
-      "centos-7-v20151104"
+      "centos-7-v20151104",
+      "centos-7-v20160119",
+      "centos-7-v20160126",
+      "centos-7-v20160211",
+      "centos-7-v20160216",
+      "centos-7-v20160219",
+      "centos-7-v20160301"
     ],
     "pseudo": {
-      "centos-6-latest": "centos-6-v20151104",
-      "centos-7-latest": "centos-7-v20151104"
+      "centos-6-latest": "centos-6-v20160301",
+      "centos-7-latest": "centos-7-v20160301"
     }
   },
   "coreos-cloud": {
     "images": [
-      "coreos-alpha-540-0-0-v20141223",
-      "coreos-alpha-547-0-0-v20141231",
-      "coreos-alpha-549-0-0-v20150102",
-      "coreos-alpha-550-0-0-v20150102",
-      "coreos-alpha-554-0-0-v20150107",
-      "coreos-alpha-557-0-0-v20150109",
-      "coreos-alpha-561-0-0-v20150114",
-      "coreos-alpha-571-0-0-v20150123",
-      "coreos-alpha-575-0-0-v20150128",
-      "coreos-alpha-584-0-0-v20150205",
-      "coreos-alpha-591-0-0-v20150212",
-      "coreos-alpha-592-0-0-v20150214",
-      "coreos-alpha-593-0-0-v20150214",
-      "coreos-alpha-598-0-0-v20150219",
-      "coreos-alpha-604-0-0-v20150226",
-      "coreos-alpha-607-0-0-v20150228",
-      "coreos-alpha-612-0-0-v20150305",
-      "coreos-alpha-612-1-0-v20150306",
       "coreos-alpha-618-0-0-v20150312",
       "coreos-alpha-626-0-0-v20150319",
       "coreos-alpha-633-1-0-v20150326",
@@ -118,12 +112,19 @@
       "coreos-alpha-884-0-0-v20151203",
       "coreos-alpha-891-0-0-v20151211",
       "coreos-alpha-899-1-0-v20151218",
-      "coreos-beta-557-0-0-v20150114",
-      "coreos-beta-557-1-0-v20150128",
-      "coreos-beta-557-2-0-v20150204",
-      "coreos-beta-584-0-0-v20150218",
-      "coreos-beta-607-0-0-v20150304",
-      "coreos-beta-612-1-0-v20150318",
+      "coreos-alpha-921-0-0-v20160112",
+      "coreos-alpha-926-0-0-v20160114",
+      "coreos-alpha-928-0-0-v20160115",
+      "coreos-alpha-933-0-0-v20160120",
+      "coreos-alpha-935-0-0-v20160122",
+      "coreos-alpha-942-0-0-v20160201",
+      "coreos-alpha-949-0-0-v20160208",
+      "coreos-alpha-955-0-0-v20160211",
+      "coreos-alpha-960-0-0-v20160217",
+      "coreos-alpha-962-0-0-v20160218",
+      "coreos-alpha-969-0-0-v20160226",
+      "coreos-alpha-970-1-0-v20160226",
+      "coreos-alpha-976-0-0-v20160304",
       "coreos-beta-633-1-0-v20150401",
       "coreos-beta-647-0-0-v20150415",
       "coreos-beta-668-3-0-v20150513",
@@ -142,9 +143,15 @@
       "coreos-beta-835-5-0-v20151118",
       "coreos-beta-835-7-0-v20151120",
       "coreos-beta-877-1-0-v20151202",
-      "coreos-stable-522-6-0-v20150128",
-      "coreos-stable-557-2-0-v20150210",
-      "coreos-stable-607-0-0-v20150317",
+      "coreos-beta-899-1-0-v20160113",
+      "coreos-beta-899-2-0-v20160114",
+      "coreos-beta-899-3-0-v20160115",
+      "coreos-beta-899-4-0-v20160121",
+      "coreos-beta-899-5-0-v20160122",
+      "coreos-beta-899-6-0-v20160202",
+      "coreos-beta-899-7-0-v20160218",
+      "coreos-beta-899-8-0-v20160224",
+      "coreos-beta-899-9-0-v20160229",
       "coreos-stable-633-1-0-v20150414",
       "coreos-stable-647-0-0-v20150512",
       "coreos-stable-647-2-0-v20150528",
@@ -157,12 +164,16 @@
       "coreos-stable-766-3-0-v20150908",
       "coreos-stable-766-4-0-v20150929",
       "coreos-stable-766-5-0-v20151105",
+      "coreos-stable-835-10-0-v20160120",
+      "coreos-stable-835-11-0-v20160122",
+      "coreos-stable-835-12-0-v20160202",
+      "coreos-stable-835-13-0-v20160218",
       "coreos-stable-835-8-0-v20151201",
       "coreos-stable-835-9-0-v20151208"
     ],
     "pseudo": {
-      "coreos-alpha-latest": "coreos-alpha-899-1-0-v20151218",
-      "coreos-beta-latest": "coreos-beta-877-1-0-v20151202",
+      "coreos-alpha-latest": "coreos-alpha-976-0-0-v20160304",
+      "coreos-beta-latest": "coreos-beta-899-9-0-v20160229",
       "coreos-stable-latest": "coreos-stable-835-9-0-v20151208"
     }
   },
@@ -204,6 +215,12 @@
       "backports-debian-7-wheezy-v20150915",
       "backports-debian-7-wheezy-v20150929",
       "backports-debian-7-wheezy-v20151104",
+      "backports-debian-7-wheezy-v20160119",
+      "backports-debian-7-wheezy-v20160126",
+      "backports-debian-7-wheezy-v20160211",
+      "backports-debian-7-wheezy-v20160216",
+      "backports-debian-7-wheezy-v20160219",
+      "backports-debian-7-wheezy-v20160301",
       "beta-accounts-backports-debian-7-wheezy-v20150930",
       "beta-accounts-debian-8-jessie-v20150930",
       "beta-debian-8-jessie-v20150710",
@@ -242,15 +259,30 @@
       "debian-7-wheezy-v20150915",
       "debian-7-wheezy-v20150929",
       "debian-7-wheezy-v20151104",
+      "debian-7-wheezy-v20160119",
+      "debian-7-wheezy-v20160126",
+      "debian-7-wheezy-v20160211",
+      "debian-7-wheezy-v20160216",
+      "debian-7-wheezy-v20160219",
+      "debian-7-wheezy-v20160301",
       "debian-8-jessie-v20150710",
       "debian-8-jessie-v20150818",
       "debian-8-jessie-v20150915",
       "debian-8-jessie-v20150929",
-      "debian-8-jessie-v20151104"
+      "debian-8-jessie-v20151104",
+      "debian-8-jessie-v20160119",
+      "debian-8-jessie-v20160126",
+      "debian-8-jessie-v20160211",
+      "debian-8-jessie-v20160216",
+      "debian-8-jessie-v20160219",
+      "debian-8-jessie-v20160301"
     ],
     "pseudo": {
+      "backports-debian-7-wheezy-latest": "backports-debian-7-wheezy-v20160301",
       "beta-accounts-backports-debian-7-wheezy-latest": "beta-accounts-backports-debian-7-wheezy-v20150930",
-      "debian-8-jessie-latest": "debian-8-jessie-v20151104"
+      "beta-accounts-debian-8-jessie-latest": "beta-accounts-debian-8-jessie-v20150930",
+      "debian-7-wheezy-latest": "debian-7-wheezy-v20160301",
+      "debian-8-jessie-latest": "debian-8-jessie-v20160301"
     }
   },
   "gce-nvme": {
@@ -267,6 +299,7 @@
   },
   "google-containers": {
     "images": [
+      "container-v1-2-v20160218",
       "container-vm-v20140522",
       "container-vm-v20140624",
       "container-vm-v20140710",
@@ -285,27 +318,32 @@
       "container-vm-v20150715",
       "container-vm-v20150806",
       "container-vm-v20151103",
-      "container-vm-v20151215"
+      "container-vm-v20151215",
+      "container-vm-v20160121",
+      "container-vm-v20160127",
+      "container-vm-v20160217"
     ],
     "pseudo": {
-      "container-vm-latest": "container-vm-v20151215"
+      "container-vm-latest": "container-vm-v20160217"
     }
   },
   "opensuse-cloud": {
     "images": [
-      "opensuse-13-1-v20140609",
-      "opensuse-13-1-v20140627",
-      "opensuse-13-1-v20140711",
-      "opensuse-13-1-v20141102",
-      "opensuse-13-1-v20150515",
       "opensuse-13-1-v20150822",
       "opensuse-13-2-v20141205",
       "opensuse-13-2-v20150511",
-      "opensuse-leap-42-1-v20151124"
+      "opensuse-13-2-v20160202",
+      "opensuse-13-2-v20160214",
+      "opensuse-13-2-v20160222",
+      "opensuse-leap-42-1-v20151124",
+      "opensuse-leap-42-1-v20160202",
+      "opensuse-leap-42-1-v20160214",
+      "opensuse-leap-42-1-v20160222",
+      "opensuse-leap-42-1-v20160302"
     ],
     "pseudo": {
       "opensuse-13-1-latest": "opensuse-13-1-v20150822",
-      "opensuse-13-2-latest": "opensuse-13-2-v20150511"
+      "opensuse-13-2-latest": "opensuse-13-2-v20160222"
     }
   },
   "rhel-cloud": {
@@ -338,6 +376,13 @@
       "rhel-6-v20150915",
       "rhel-6-v20150929",
       "rhel-6-v20151104",
+      "rhel-6-v20160119",
+      "rhel-6-v20160126",
+      "rhel-6-v20160211",
+      "rhel-6-v20160216",
+      "rhel-6-v20160219",
+      "rhel-6-v20160301",
+      "rhel-6-v20160303",
       "rhel-7-v20141001",
       "rhel-7-v20141007",
       "rhel-7-v20141020",
@@ -357,22 +402,32 @@
       "rhel-7-v20150818",
       "rhel-7-v20150915",
       "rhel-7-v20150929",
-      "rhel-7-v20151104"
+      "rhel-7-v20151104",
+      "rhel-7-v20160119",
+      "rhel-7-v20160126",
+      "rhel-7-v20160211",
+      "rhel-7-v20160216",
+      "rhel-7-v20160219",
+      "rhel-7-v20160301",
+      "rhel-7-v20160303"
     ],
     "pseudo": {
-      "rhel-6-latest": "rhel-6-v20151104",
-      "rhel-7-latest": "rhel-7-v20151104"
+      "rhel-6-latest": "rhel-6-v20160303",
+      "rhel-7-latest": "rhel-7-v20160303"
     }
   },
   "suse-cloud": {
     "images": [
-      "sles-11-sp3-v20150511",
       "sles-11-sp4-v20150714",
+      "sles-11-sp4-v20160222",
+      "sles-11-sp4-v20160301",
       "sles-12-sp1-v20151215",
+      "sles-12-sp1-v20160222",
+      "sles-12-sp1-v20160301",
       "sles-12-v20150511"
     ],
     "pseudo": {
-      "sles-11-sp4-latest": "sles-11-sp4-v20150714",
+      "sles-11-sp4-latest": "sles-11-sp4-v20160301",
       "sles-12-latest": "sles-12-v20150511"
     }
   },
@@ -388,6 +443,9 @@
       "ubuntu-1204-precise-v20150831c",
       "ubuntu-1204-precise-v20150910",
       "ubuntu-1204-precise-v20151119",
+      "ubuntu-1204-precise-v20160114",
+      "ubuntu-1204-precise-v20160217a",
+      "ubuntu-1204-precise-v20160222",
       "ubuntu-1404-trusty-v20141028",
       "ubuntu-1404-trusty-v20141031a",
       "ubuntu-1404-trusty-v20141212",
@@ -399,6 +457,10 @@
       "ubuntu-1404-trusty-v20150901a",
       "ubuntu-1404-trusty-v20150909a",
       "ubuntu-1404-trusty-v20151113",
+      "ubuntu-1404-trusty-v20160114e",
+      "ubuntu-1404-trusty-v20160217a",
+      "ubuntu-1404-trusty-v20160222",
+      "ubuntu-1404-trusty-v20160304",
       "ubuntu-1410-utopic-v20141029",
       "ubuntu-1410-utopic-v20141030a",
       "ubuntu-1410-utopic-v20141217",
@@ -413,16 +475,23 @@
       "ubuntu-1504-vivid-v20150902",
       "ubuntu-1504-vivid-v20150911",
       "ubuntu-1504-vivid-v20151120",
+      "ubuntu-1504-vivid-v20160114a",
       "ubuntu-1510-wily-v20151021",
       "ubuntu-1510-wily-v20151026",
-      "ubuntu-1510-wily-v20151114"
+      "ubuntu-1510-wily-v20151114",
+      "ubuntu-1510-wily-v20160114",
+      "ubuntu-1510-wily-v20160123",
+      "ubuntu-1510-wily-v20160217",
+      "ubuntu-1510-wily-v20160222",
+      "ubuntu-1510-wily-v20160226",
+      "ubuntu-1510-wily-v20160305"
     ],
     "pseudo": {
-      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20151119",
-      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20151113",
+      "ubuntu-1204-precise-latest": "ubuntu-1204-precise-v20160222",
+      "ubuntu-1404-trusty-latest": "ubuntu-1404-trusty-v20160304",
       "ubuntu-1410-utopic-latest": "ubuntu-1410-utopic-v20150625",
-      "ubuntu-1504-vivid-latest": "ubuntu-1504-vivid-v20151120",
-      "ubuntu-1510-wily-latest": "ubuntu-1510-wily-v20151114"
+      "ubuntu-1504-vivid-latest": "ubuntu-1504-vivid-v20160114a",
+      "ubuntu-1510-wily-latest": "ubuntu-1510-wily-v20160305"
     }
   }
 }

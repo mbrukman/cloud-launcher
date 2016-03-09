@@ -2,31 +2,13 @@
   "id": "projects/suse-cloud/global/images",
   "items": [
     {
-      "archiveSizeBytes": "1097012211",
-      "creationTimestamp": "2015-05-11T19:03:45.810-07:00",
-      "deprecated": {
-        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp4-v20150714",
-        "state": "DEPRECATED"
-      },
-      "description": "SUSE, SUSE Linux Enterprise Server, 11 SP3, x86_64 built on 2015-05-11",
-      "diskSizeGb": "8",
-      "id": "8160335399713825134",
-      "kind": "compute#image",
-      "licenses": [
-        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
-      ],
-      "name": "sles-11-sp3-v20150511",
-      "rawDisk": {
-        "containerType": "TAR",
-        "source": ""
-      },
-      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp3-v20150511",
-      "sourceType": "RAW",
-      "status": "READY"
-    },
-    {
       "archiveSizeBytes": "1121038950",
       "creationTimestamp": "2015-07-14T06:20:07.517-07:00",
+      "deprecated": {
+        "deleted": "2016-08-22T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp4-v20160222",
+        "state": "DEPRECATED"
+      },
       "description": "SLES, SUSE Linux Enterprise Server, 11 SP4, x86_64 built on 2015-07-14",
       "diskSizeGb": "8",
       "id": "8852516705692856936",
@@ -44,8 +26,56 @@
       "status": "READY"
     },
     {
+      "archiveSizeBytes": "1508751139",
+      "creationTimestamp": "2016-02-22T11:53:24.086-08:00",
+      "deprecated": {
+        "deleted": "2016-09-01T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp4-v20160301",
+        "state": "DEPRECATED"
+      },
+      "description": "SUSE, SUSE Linux Enterprise Server, 11 SP4, x86_64 built on 2016-02-22",
+      "diskSizeGb": "8",
+      "id": "2803533531020974555",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
+      ],
+      "name": "sles-11-sp4-v20160222",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp4-v20160222",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1508698311",
+      "creationTimestamp": "2016-03-01T11:59:01.896-08:00",
+      "description": "SUSE, SUSE Linux Enterprise Server, 11 SP4, x86_64 built on 2016-03-01",
+      "diskSizeGb": "8",
+      "id": "1089710278472911466",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-11"
+      ],
+      "name": "sles-11-sp4-v20160301",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-11-sp4-v20160301",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
       "archiveSizeBytes": "1923127787",
       "creationTimestamp": "2015-12-15T16:13:04.174-08:00",
+      "deprecated": {
+        "deleted": "2016-08-22T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-12-sp1-v20160222",
+        "state": "DEPRECATED"
+      },
       "description": "SUSE, SUSE Linux Enterprise Server 12 SP1, x86_64 built on 2015-12-15",
       "diskSizeGb": "8",
       "id": "8586612407027962495",
@@ -59,6 +89,49 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-12-sp1-v20151215",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1930394479",
+      "creationTimestamp": "2016-02-22T13:01:34.312-08:00",
+      "deprecated": {
+        "deleted": "2016-09-01T00:00:00Z",
+        "replacement": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-12-sp1-v20160301",
+        "state": "DEPRECATED"
+      },
+      "description": "SUSE, SUSE Linux Enterprise Server, 12 SP1, x86_64 built on 2016-02-22",
+      "diskSizeGb": "8",
+      "id": "9060530797951764929",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-12"
+      ],
+      "name": "sles-12-sp1-v20160222",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-12-sp1-v20160222",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1923975643",
+      "creationTimestamp": "2016-03-01T11:18:01.036-08:00",
+      "description": "SUSE, SUSE Linux Enterprise Server, 12 SP1, x86_64 built on 2016-03-01",
+      "diskSizeGb": "8",
+      "id": "764965653738705926",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/licenses/sles-12"
+      ],
+      "name": "sles-12-sp1-v20160301",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/suse-cloud/global/images/sles-12-sp1-v20160301",
       "sourceType": "RAW",
       "status": "READY"
     },

@@ -128,10 +128,12 @@ def UpdateVmImages(gce, flags):
                     image_sublist, '-[0-9]*-[0-9]-[0-9]-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'debian-cloud':
-            backports = filter(lambda image: 'backports' in image, images)
-            not_backports = filter(
-                lambda image: 'backports' not in image, images)
-            for image_sublist in (backports, not_backports):
+            for prefix in ('backports-debian-7-wheezy',
+                           'beta-accounts-backports-debian-7-wheezy',
+                           'beta-accounts-debian-8-jessie',
+                           'debian-7-wheezy',
+                           'debian-8-jessie'):
+                image_sublist = filter(lambda image: image.startswith(prefix), images)
                 src, dst = LatestImage(image_sublist)
                 pseudo[src] = dst
         elif project == 'opensuse-cloud':
