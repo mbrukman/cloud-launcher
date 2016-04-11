@@ -684,6 +684,10 @@
     {
       "archiveSizeBytes": "1571832323",
       "creationTimestamp": "2016-03-01T20:58:54.141-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20160329",
+        "state": "DEPRECATED"
+      },
       "description": "CentOS, CentOS, 6.7, x86_64 built on 2016-03-01",
       "diskSizeGb": "10",
       "id": "6926478801177923041",
@@ -694,6 +698,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20160301",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1572682611",
+      "creationTimestamp": "2016-03-30T10:22:05.153-07:00",
+      "description": "CentOS, CentOS, 6.7, x86_64 built on 2016-03-29",
+      "diskSizeGb": "10",
+      "id": "6108985974573872594",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-6"
+      ],
+      "name": "centos-6-v20160329",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-6-v20160329",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1220,6 +1243,10 @@
     {
       "archiveSizeBytes": "1645295467",
       "creationTimestamp": "2016-03-01T20:57:51.795-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20160329",
+        "state": "DEPRECATED"
+      },
       "description": "CentOS, CentOS, 7.2.1511, x86_64 built on 2016-03-01",
       "diskSizeGb": "10",
       "id": "3677031631651851296",
@@ -1230,6 +1257,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20160301",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1646339675",
+      "creationTimestamp": "2016-03-30T10:23:08.878-07:00",
+      "description": "CentOS, CentOS, 7.2.1511, x86_64 built on 2016-03-29",
+      "diskSizeGb": "10",
+      "id": "5059873404309583251",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7"
+      ],
+      "name": "centos-7-v20160329",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/centos-cloud/global/images/centos-7-v20160329",
       "sourceType": "RAW",
       "status": "READY"
     }

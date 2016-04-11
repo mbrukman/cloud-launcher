@@ -783,6 +783,10 @@
     {
       "archiveSizeBytes": "1560272631",
       "creationTimestamp": "2016-03-03T16:39:17.331-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-6-v20160329",
+        "state": "DEPRECATED"
+      },
       "description": "Red Hat, Red Hat Enterprise Linux, 6.7, x86_64 built on 2016-03-03",
       "diskSizeGb": "10",
       "id": "4700240794592045018",
@@ -796,6 +800,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-6-v20160303",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1561319479",
+      "creationTimestamp": "2016-03-30T10:19:59.238-07:00",
+      "description": "Red Hat, Red Hat Enterprise Linux, 6.7, x86_64 built on 2016-03-29",
+      "diskSizeGb": "10",
+      "id": "4550130085571703888",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-6-server"
+      ],
+      "name": "rhel-6-v20160329",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-6-v20160329",
       "sourceType": "RAW",
       "status": "READY"
     },
@@ -1397,6 +1420,10 @@
     {
       "archiveSizeBytes": "1624568119",
       "creationTimestamp": "2016-03-03T16:37:59.894-08:00",
+      "deprecated": {
+        "replacement": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20160329",
+        "state": "DEPRECATED"
+      },
       "description": "Red Hat, Red Hat Enterprise Linux, 7.2, x86_64 built on 2016-03-03",
       "diskSizeGb": "10",
       "id": "4729600469472994824",
@@ -1410,6 +1437,25 @@
         "source": ""
       },
       "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20160303",
+      "sourceType": "RAW",
+      "status": "READY"
+    },
+    {
+      "archiveSizeBytes": "1623701527",
+      "creationTimestamp": "2016-03-30T10:21:04.619-07:00",
+      "description": "Red Hat, Red Hat Enterprise Linux, 7.2, x86_64 built on 2016-03-29",
+      "diskSizeGb": "10",
+      "id": "2248381537400763887",
+      "kind": "compute#image",
+      "licenses": [
+        "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/licenses/rhel-7-server"
+      ],
+      "name": "rhel-7-v20160329",
+      "rawDisk": {
+        "containerType": "TAR",
+        "source": ""
+      },
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/rhel-cloud/global/images/rhel-7-v20160329",
       "sourceType": "RAW",
       "status": "READY"
     }
