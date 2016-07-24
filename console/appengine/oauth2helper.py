@@ -29,7 +29,6 @@ CLIENT_SECRETS = 'client_secrets.json'
 
 SCOPE = [
     'https://www.googleapis.com/auth/compute',
-    'https://www.googleapis.com/auth/devstorage.read_only',
 ]
 
 decorator = appengine.OAuth2DecoratorFromClientSecrets(
