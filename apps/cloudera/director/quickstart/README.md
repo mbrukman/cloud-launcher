@@ -13,7 +13,8 @@ Installing Cloudera Director on Google Compute Engine VM
       --zone {{ZONE}} \
       --machine-type n1-standard-1 \
       --scopes compute-rw \
-      --image centos-6 \
+      --image-project centos-cloud \
+      --image-family centos-6 \
       --metadata startup-script-url=https://git.io/cloudera-director-startup-script
   ```
 
@@ -79,7 +80,8 @@ gcloud compute instances create {{VM}} \
     --zone {{ZONE}} \
     --machine-type n1-standard-1 \
     --scopes compute-rw \
-    --image centos-6 \
+    --image-project centos-cloud \
+    --image-family centos-6 \
     --metadata-from-file startup-script=director.sh
 ```
 
