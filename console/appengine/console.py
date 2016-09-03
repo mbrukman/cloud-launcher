@@ -16,8 +16,8 @@
 #
 """A console for Google Cloud Platform, running on App Engine.
 
-Download the OAuth 2.0 client secrets via the Developer Console
-<https://console.developers.google.com/> and save them as 'client_secrets.json'
+Download the OAuth 2.0 client secrets via Google Cloud Console
+<https://console.cloud.google.com/> and save them as 'client_secrets.json'
 in this directory. See README.md for details.
 """
 

@@ -40,26 +40,26 @@
         </span>
       </td>
       <td>
-        <a href="https://console.developers.google.com/project/{{project}}/compute/instancesDetail/zones/{{ instance.zone() }}/instances/{{ instance.name() }}">{{ instance.name() }}</a>
+        <a href="https://console.cloud.google.com/project/{{project}}/compute/instancesDetail/zones/{{ instance.zone() }}/instances/{{ instance.name() }}">{{ instance.name() }}</a>
       </td>
       <td>{{ instance.zone() }}</td>
       <td ng-show="instance.numDisks() == 0">
         -
       </td>
       <td ng-show="instance.numDisks() == 1">
-        <a href="https://console.developers.google.com/project/{{project}}/compute/disksDetail/zones/{{ instance.zone() }}/disks/{{ instance.disk(0).name() }}">{{ instance.disk(0).name() }}</a>
+        <a href="https://console.cloud.google.com/project/{{project}}/compute/disksDetail/zones/{{ instance.zone() }}/disks/{{ instance.disk(0).name() }}">{{ instance.disk(0).name() }}</a>
       </td>
       <td ng-show="instance.numDisks() > 1">
         {{ instance.numDisks() }} disks
       </td>
       <td>
-        <a href="https://console.developers.google.com/project/{{project}}/networks/details/global/networks/{{ instance.networkName() }}">{{ instance.networkName() }}</a>
+        <a href="https://console.cloud.google.com/project/{{project}}/networks/details/global/networks/{{ instance.networkName() }}">{{ instance.networkName() }}</a>
       </td>
       <td>{{ instance.externalIP() }}</td>
       <!-- Connect -->
       <td>
         <a class="ssh"
-           href="https://cloudssh.developers.google.com/projects/{{project}}/zones/{{ instance.zone() }}/instances/{{ instance.name() }}?authuser=0"
+           href="https://cloudssh.console.google.com/projects/{{project}}/zones/{{ instance.zone() }}/instances/{{ instance.name() }}?authuser=0"
            ng-if="instance.isRunning()"
            target="_blank">
           <button>SSH</button>

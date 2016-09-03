@@ -216,7 +216,7 @@ VMInstance.prototype.isStatusOneOf = function(statuses) {
     return false;
   }
   // For more info on statuses, see the docs:
-  // https://developers.google.com/compute/docs/reference/latest/instances#resource
+  // https://cloud.google.com/compute/docs/reference/latest/instances#resource
   for (var i = 0; i < statuses.length; ++i) {
     if (this.json_.status == statuses[i]) {
       return true;

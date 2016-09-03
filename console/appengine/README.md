@@ -1,11 +1,11 @@
 # Overview
 
 This directory contains a Google App Engine app which provides a basic
-implementation of a Cloud Console, similar in spirit  to [Google Developers
-Console](https://console.developers.google.com).
+implementation of a cloud console, similar in spirit  to [Google Cloud
+Console](https://console.cloud.google.com).
 
 As this is a work-in-progress, much of the functionality is missing, so this app
-does not provide a full replacement for Google Developers Console.
+does not provide a full replacement for Google Cloud Console.
 
 Currently-implemented features:
 

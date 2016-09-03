@@ -23,7 +23,7 @@ gcloud components update app
 
 ## Download API credentials
 
-1. Visit the [Google Developers Console](https://console.developers.google.com)
+1. Visit the [Google Cloud Console](https://console.cloud.google.com)
 
 1. Select a project
 
