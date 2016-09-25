@@ -15,7 +15,7 @@
 ################################################################################
 
 VERB = @
-ifeq (VERBOSE,1)
+ifeq ($(VERBOSE),1)
 	VERB =
 endif
 
@@ -29,7 +29,7 @@ clean:
 	$(VERB) rm -f src/*.pyc
 
 test:
-	$(VERB) make -C tests test
+	$(VERB) make -s -C tests test
 
 # Requires having installed autopep8 first:
 # https://github.com/hhatto/autopep8
