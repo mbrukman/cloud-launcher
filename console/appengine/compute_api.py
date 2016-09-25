@@ -15,9 +15,13 @@
 # limitations under the License.
 #
 ################################################################################
+
 """Converts API definitions in compute_api.yaml into handlers and routes."""
 
 import sys
+
+sys.path.insert(1, 'third_party/python')
+
 import yaml
 
 BASE_CLASS = 'compute_api_base.ComputeV1Base'
