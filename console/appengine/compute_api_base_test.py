@@ -18,7 +18,6 @@
 
 # Standard library imports
 import unittest
-import webtest
 
 # Google imports
 import os
