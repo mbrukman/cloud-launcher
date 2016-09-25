@@ -49,6 +49,10 @@ local: compute_api_gen
 deploy: compute_api_gen
 	$(VERB) gcloud --project=$(PROJECT) preview app deploy --version=$(VERSION) app.yaml
 
+# Provide libraries for development.
+pip-install-dev:
+	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements-dev.txt
+
 # Provide libraries for testing.
 pip-install-test:
 	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements-test.txt
