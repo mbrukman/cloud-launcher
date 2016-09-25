@@ -1,15 +1,14 @@
-Cloud Launcher
-==============
+[![Build Status](https://travis-ci.org/mbrukman/cloud-launcher.svg?branch=master)](https://travis-ci.org/mbrukman/cloud-launcher)
+
+# Cloud Launcher
 
 Simplifying the process of launching applications on [Google Cloud Platform](https://cloud.google.com/).
 
-Global setup
-------------
+## Global setup
 
 Install the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/).
 
-Per-project setup
------------------
+## Per-project setup
 
 This is a one-time setup for each Google Cloud Platform project you want to use
 with Cloud Launcher.
@@ -41,19 +40,16 @@ with Cloud Launcher.
 * Now you can launch applications! Try one of the [examples](examples/README.md)
   or look at the [app catalog](apps/README.md).
 
-Discuss
--------
+## Discuss
 
 You can discuss Cloud Launcher with other users and developers via the mailing
 list [cloud-launcher (at) googlegroups.com](https://groups.google.com/group/cloud-launcher).
 
-License
--------
+## License
 
 Apache 2.0; see [LICENSE.txt](LICENSE.txt) for details.
 
-Disclaimer
-----------
+## Disclaimer
 
 This project is not an official Google project. It is not supported by Google
 and Google specifically disclaims all warranties as to its quality,
