@@ -1,34 +1,14 @@
-# See http://editorconfig.org for more info.
+# http://editorconfig.org
 
-# This is the root-level config file.
 root = true
 
-[*.css]
+[*]
+charset = utf-8
 indent_style = space
 indent_size = 2
+trim_trailing_whitespace = true
 
-[*.html]
-indent_style = space
-indent_size = 2
-
-[*.js]
-indent_style = space
-indent_size = 2
-
-[*.md]
-indent_style = space
-indent_size = 2
-
-[*.py]
-indent_style = space
-indent_size = 4
-
-[*.sh]
-indent_style = space
-indent_size = 2
-
-[BUILD]
-indent_style = space
+[BUILD,*.py]
 indent_size = 4
 
 [Makefile]
