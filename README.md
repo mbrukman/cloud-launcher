@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/mbrukman/cloud-launcher.svg?branch=master)](https://travis-ci.org/mbrukman/cloud-launcher)
-
 # Cloud Launcher
+
+[![Build Status](https://travis-ci.org/mbrukman/cloud-launcher.svg?branch=master)](https://travis-ci.org/mbrukman/cloud-launcher)
 
 Simplifying the process of launching applications on [Google Cloud Platform](https://cloud.google.com/).
 
