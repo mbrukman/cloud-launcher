@@ -11,8 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-################################################################################
 
 language: generic
 sudo: false
@@ -20,8 +18,37 @@ sudo: false
 matrix:
   include:
     - os: linux
-      dist: trusty
+      group: travis_latest
+      language: python
+      python: 2.7
+    - os: linux
+      group: travis_latest
+      language: python
+      python: 3.5
+    - os: linux
+      group: travis_latest
+      language: python
+      python: 3.6
     - os: osx
+      language: generic
+      env: PYTHON=2.7
+      before_install:
+        - brew update
+        - brew install python
+        - virtualenv env -p python2.7
+        - source env/bin/activate
+    - os: osx
+      language: generic
+      env: PYTHON=3
+      # Travis CI doesn't support Python builds on OSX according to:
+      # https://docs.travis-ci.com/user/languages/python/
+      # You can make it work as follows thanks to this helpful comment:
+      # https://github.com/travis-ci/travis-ci/issues/2312#issuecomment-289140791
+      before_install:
+        - brew update
+        - brew install python3
+        - virtualenv env -p python3
+        - source env/bin/activate
 
 before_script:
   - python --version
