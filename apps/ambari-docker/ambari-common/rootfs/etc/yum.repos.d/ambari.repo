@@ -1,0 +1,15 @@
+[AMBARI-1.x]
+name=Ambari 1.x
+baseurl=http://public-repo-1.hortonworks.com/AMBARI-1.x/repos/centos6
+gpgcheck=1
+gpgkey=http://public-repo-1.hortonworks.com/AMBARI-1.x/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+[HDP-UTILS-1.1.0.15]
+name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.15
+baseurl=http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.15/repos/centos6
+gpgcheck=0
+gpgkey=http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.15/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1

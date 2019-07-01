@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,16 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Adds the Cloudera CDH repos for easy package discovery and installation.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+add_cdh_repo \
+  http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo \
+  /etc/yum.repos.d/cloudera-manager.repo
+
+add_cdh_repo \
+  http://archive.cloudera.com/gplextras5/redhat/6/x86_64/gplextras/cloudera-gplextras5.repo \
+   /etc/yum.repos.d/cloudera-gplextras5.repo
+
+yum makecache

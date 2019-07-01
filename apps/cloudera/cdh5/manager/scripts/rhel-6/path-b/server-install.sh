@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,8 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Installs Cloudera Manager Server.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+yum -q -y install cloudera-manager-daemons cloudera-manager-server

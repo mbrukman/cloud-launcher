@@ -14,10 +14,19 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Build scripts for creating and running custom CentOS images.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+# CentOS 6 does not have automatic repartitioning on boot and hence needs to use
+# the fdisk(1) script to resize the boot disk to utilize its full capacity.
+ENABLE_FDISK = 1
+
+# CentOS reuses all scripts from RHEL.
+RHEL = ../../rhel-6/path-b
+INSTALL_JDK = $(RHEL)/install-jdk.sh
+REPO_INIT = $(RHEL)/repo-init.sh
+
+COMMON = ../../common
+
+include $(COMMON)/path-b/common.mk

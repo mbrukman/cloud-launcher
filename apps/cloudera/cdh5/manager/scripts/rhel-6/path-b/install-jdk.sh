@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,8 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Installs JDK compatible with Cloudera Manager.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+yum -q -y install oracle-j2sdk1.7

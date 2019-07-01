@@ -20,4 +20,4 @@
 
 # Google Compute Engine settings.
 PROJECT = encoded-source-539
-ZONE = us-central1-a
+ZONE = us-central1-f

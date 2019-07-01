@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,13 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Install Cloudera CDH via single package.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+declare -r CDH_REMOTE_RPM="http://archive.cloudera.com/cdh5/one-click-install/redhat/6/x86_64/cloudera-cdh-5-0.x86_64.rpm"
+declare -r CDH_LOCAL_RPM="/tmp/$(basename ${CDH_REMOTE_RPM})"
+
+curl "${CDH_REMOTE_RPM}" -o "${CDH_LOCAL_RPM}"
+yum -q -y install "${CDH_LOCAL_RPM}"
+rm -f "${CDH_LOCAL_RPM}"

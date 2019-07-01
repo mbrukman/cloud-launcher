@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,18 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Add the Cloudera repository to download CDH components.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+# Args:
+#   $1: source URL
+#   $2: destination file
+function add_cdh_repo() {
+  local url="$1"
+  local dest="$2"
+
+  if ! [ -e "${dest}" ]; then
+    curl -o "${dest}" -s "${url}"
+  fi
+}

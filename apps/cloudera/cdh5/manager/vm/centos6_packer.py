@@ -33,5 +33,9 @@ resources = manager_base.ClouderaCluster(
     numAgents=5,
     sourceImage='centos-6-v20141218-cloudera',
     agentInitScript='../scripts/centos-6/path-a/packer-agent-start.gen.sh',
+    agentMachineType='n1-standard-2',
+    agentDiskSizeGb=750,
     serverInitScript='../scripts/centos-6/path-a/packer-server-start.gen.sh',
+    serverMachineType='n1-standard-2',
+    serverDiskSizeGb=750,
 )

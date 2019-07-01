@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+#
 # Copyright 2015 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +16,9 @@
 #
 ################################################################################
 #
-# Settings for Packer.
+# Adds the Cloudera CDH repos for easy package discovery and installation.
 #
 ################################################################################
 
-# Google Compute Engine settings.
-PROJECT = encoded-source-539
-ZONE = us-central1-a
+zypper addrepo -f "http://archive.cloudera.com/cm5/sles/11/x86_64/cm/cloudera-manager.repo"
+zypper refresh
