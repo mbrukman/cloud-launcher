@@ -12,47 +12,100 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-language: generic
-sudo: false
+dist: bionic
 
-matrix:
+branches:
+  only:
+    - master
+
+# Explanation of `travis_latest`:
+# https://blog.travis-ci.com/2017-12-01-new-update-schedule-for-linux-build-images
+
+# On macOS, Python version and macOS version are tied to the Xcode version. For
+# more info, see these references:
+#
+# * https://docs.travis-ci.com/user/languages/objective-c#supported-xcode-versions
+# * https://docs.travis-ci.com/user/languages/python/
+
+jobs:
   include:
     - os: linux
       group: travis_latest
       language: python
       python: 2.7
+
     - os: linux
       group: travis_latest
       language: python
       python: 3.5
+
     - os: linux
       group: travis_latest
       language: python
       python: 3.6
+
+    - os: linux
+      group: travis_latest
+      language: python
+      python: 3.7
+
+    - os: linux
+      group: travis_latest
+      language: python
+      python: 3.8
+
     - os: osx
-      language: generic
-      env: PYTHON=2.7
-      before_install:
-        - brew update
-        - brew install python
-        - virtualenv env -p python2.7
-        - source env/bin/activate
+      osx_image: xcode9.2
+      language: shell
+      # This is the last version of macOS 10.12 available on Travis CI.
+      name: "Xcode 9.2 on macOS 12"
+
     - os: osx
-      language: generic
-      env: PYTHON=3
-      # Travis CI doesn't support Python builds on OSX according to:
-      # https://docs.travis-ci.com/user/languages/python/
-      # You can make it work as follows thanks to this helpful comment:
-      # https://github.com/travis-ci/travis-ci/issues/2312#issuecomment-289140791
-      before_install:
-        - brew update
-        - brew install python3
-        - virtualenv env -p python3
-        - source env/bin/activate
+      osx_image: xcode10.1
+      language: shell
+      # This is the last version of macOS 10.13 available on Travis CI.
+      name: "Xcode 10.1 on macOS 10.13"
+
+    - os: osx
+      osx_image: xcode10.3
+      language: shell
+      # This is the last version of Xcode 10.x available on Travis CI.
+      name: "Xcode 10.3 on macOS 10.13"
+
+    - os: osx
+      osx_image: xcode11
+      language: shell
+      name: "Xcode 11.0 on macOS 10.14"
+
+    - os: osx
+      osx_image: xcode11.1
+      language: shell
+      name: "Xcode 11.1 on macOS 10.14"
+
+    - os: osx
+      osx_image: xcode11.2
+      language: shell
+      name: "Xcode 11.2.1 on macOS 10.14"
+
+    - os: osx
+      osx_image: xcode11.3
+      language: shell
+      name: "Xcode 11.3.1 on macOS 10.14"
+
+  allow_failures:
+    - os: osx
+
+  fast_finish: true
 
 before_script:
   - python --version
+  - if [ -f /usr/bin/python3 ]; then
+      python3 --version;
+    fi
   - pip --version
+  - if [ -f /usr/bin/pip3 ]; then
+      pip3 --version;
+    fi
 
 script:
   - make test
