@@ -36,14 +36,14 @@ class ImageShortNameToUrlTest(unittest.TestCase):
         }
 
     def testDirectReferenceImages(self):
-        for project, data in vm_images.PROJECT_IMAGES.iteritems():
+        for (project, data) in vm_images.PROJECT_IMAGES.items():
             for image in data['images']:
                 self.assertEqual(
                     self.projectImageToUrl(project, image),
                     vm_images.ImageShortNameToUrl(image))
 
     def testPseudoImages(self):
-        for project, data in vm_images.PROJECT_IMAGES.iteritems():
+        for (project, data) in vm_images.PROJECT_IMAGES.items():
             if not 'pseudo' in data:
                 continue
             for pseudo in data['pseudo']:

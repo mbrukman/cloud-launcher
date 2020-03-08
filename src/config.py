@@ -43,7 +43,7 @@ def ProcessConfig(**kwargs):
     }
 
     filename = kwargs['file']
-    for ext, config in ext_to_config.iteritems():
+    for (ext, config) in ext_to_config.items():
         if filename.endswith(ext):
             return config(**kwargs).ExpandFile(filename)
 

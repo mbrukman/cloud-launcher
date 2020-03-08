@@ -23,9 +23,22 @@ echo "--------------------"
 echo "Running script tests"
 echo "--------------------"
 for test in *_test.*; do
-  echo -n "Testing ${test} ... "
   tempfile="$(mktemp "/tmp/$test.XXXXXX")"
-  env PYTHONPATH="${PYTHONPATH}" "./${test}" > "${tempfile}" 2>&1
+  if [[ $test =~ _test.py ]]; then
+    if [ -n "${PYTHON:-}" ]; then
+      echo -n "Testing ${test} (with ${PYTHON}) ... "
+    else
+      echo -n "Testing ${test} ... "
+    fi
+    # If the $PYTHON env var is set, it should point to the user-preferred
+    # version of the Python interpreter. If it's unset, we will use the default
+    # path to the Python interpreter, as specified at the top of each Python
+    # test file.
+    env PYTHONPATH="${PYTHONPATH}" ${PYTHON:-} "./${test}" > "${tempfile}" 2>&1
+  else
+    echo -n "Testing ${test} ... "
+    "./${test}" > "${tempfile}" 2>&1
+  fi
   if [ $? -eq 0 ]; then
     echo "PASSED"
     rm -f "${tempfile}"

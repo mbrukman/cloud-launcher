@@ -40,7 +40,7 @@ if PROJECT_IMAGES is None:
 def ImageShortNameToUrl(image):
     image_url_fmt = 'https://www.googleapis.com/compute/v1/projects/%(project)s/global/images/%(image)s'
 
-    for project, data in PROJECT_IMAGES.iteritems():
+    for (project, data) in PROJECT_IMAGES.items():
         if image in data['images']:
             return image_url_fmt % {
                 'project': project,

@@ -39,17 +39,17 @@ class ConfigExpanderTest(unittest.TestCase):
         equal = True
         for key in actual:
             if key not in expected:
-                print 'Not found in expected: %s' % key
+                print('Not found in expected: %s' % key)
                 equal = False
 
         for key in expected:
             if key not in actual:
-                print 'Not found in actual: %s' % key
+                print('Not found in actual: %s' % key)
                 equal = False
             elif expected[key] != actual[key]:
-                print ('Unequal for key: %s\n'
+                print(('Unequal for key: %s\n'
                        '       expected: %s\n'
-                       '         actual: %s\n') % (key, expected[key], actual[key])
+                       '         actual: %s\n') % (key, expected[key], actual[key]))
                 equal = False
 
         self.assertTrue(equal, 'Differences found')
