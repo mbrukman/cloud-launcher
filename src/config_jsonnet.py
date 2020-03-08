@@ -37,7 +37,7 @@ class ConfigExpander(object):
 
     def __init__(self, **kwargs):
         self.__kwargs = {}
-        for key, value in kwargs.iteritems():
+        for (key, value) in kwargs.items():
             self.__kwargs[key] = value
 
     def ExpandFile(self, file_name):

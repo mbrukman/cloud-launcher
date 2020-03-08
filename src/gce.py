@@ -78,7 +78,7 @@ class Util(object):
     @classmethod
     def updateResourceWithParams(cls, resource, params):
         resource = bunch.bunchify(resource)
-        for key, val in params.iteritems():
+        for (key, val) in params.items():
             if val is not None:
                 resource[key] = val
 
