@@ -1,4 +1,4 @@
 # See https://cloud.google.com/appengine/docs/python/tools/libraries27#pip_requirements
 google-api-python-client==1.2
-httplib2==0.9.1
+httplib2==0.18.0
 oauth2client==1.2
