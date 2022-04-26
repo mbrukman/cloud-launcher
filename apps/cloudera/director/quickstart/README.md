@@ -15,7 +15,7 @@ Installing Cloudera Director on Google Compute Engine VM
       --scopes compute-rw \
       --image-project centos-cloud \
       --image-family centos-6 \
-      --metadata startup-script-url=https://git.io/cloudera-director-startup-script
+      --metadata startup-script-url=https://raw.githubusercontent.com/mbrukman/cloud-launcher/cloudera-director/apps/cloudera/director/quickstart/director.sh
   ```
 
   where:
@@ -25,7 +25,8 @@ Installing Cloudera Director on Google Compute Engine VM
     [project id](https://cloud.google.com/storage/docs/projects?hl=en#projectid),
     e.g., `curious-lemming-42`
   * `{{ZONE}}` is a Google Compute Engine zone, e.g., `us-central1-f`
-  * the [URL for the startup script](https://git.io/cloudera-director-startup-script)
+  * the [URL for the startup
+    script](https://raw.githubusercontent.com/mbrukman/cloud-launcher/cloudera-director/apps/cloudera/director/quickstart/director.sh)
     points to the raw version of [`director.sh`](director.sh) in this directory
 
   You can monitor the console of your VM to see when the Cloudera Director is
