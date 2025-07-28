@@ -1,6 +1,15 @@
 # Cloud Launcher
 
-[![Build Status](https://travis-ci.org/mbrukman/cloud-launcher.svg?branch=master)](https://travis-ci.org/mbrukman/cloud-launcher)
+[![Tests status][tests-badge]][tests-url]
+[![Typecheck status][typecheck-badge]][typecheck-url]
+[![Lint checks][lint-badge]][lint-url]
+
+[tests-badge]: https://github.com/mbrukman/cloud-launcher/actions/workflows/tests.yaml/badge.svg?query=branch%3Amain
+[tests-url]: https://github.com/mbrukman/cloud-launcher/actions/workflows/tests.yaml?query=branch%3Amain
+[typecheck-badge]: https://github.com/mbrukman/cloud-launcher/actions/workflows/typecheck.yaml/badge.svg?query=branch%3Amain
+[typecheck-url]: https://github.com/mbrukman/cloud-launcher/actions/workflows/typecheck.yaml?query=branch%3Amain
+[lint-badge]: https://github.com/mbrukman/cloud-launcher/actions/workflows/lint.yaml/badge.svg?query=branch%3Amain
+[lint-url]: https://github.com/mbrukman/cloud-launcher/actions/workflows/lint.yaml?query=branch%3Amain
 
 Simplifying the process of launching applications on [Google Cloud Platform](https://cloud.google.com/).
 
