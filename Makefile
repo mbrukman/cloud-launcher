@@ -23,13 +23,21 @@ ECHO = /bin/echo
 
 
 default:
-	$(VERB) $(ECHO) "Valid targets: clean, test."
+	$(VERB) $(ECHO) "Valid targets: clean, mypy-test, pytype-test, test."
 
 clean:
 	$(VERB) rm -f `find . -name \*\.pyc`
 
+mypy-test:
+	$(VERB) env PYTHONPATH=$(PYTHONPATH):$(pwd)/third_party/bunch:$(pwd)/src \
+		python -m mypy --python-version=$(PYTHON_VERSION) examples src tests
+
+pytype-test:
+	$(VERB) env PYTHONPATH=$(PYTHONPATH):$(pwd)/third_party/bunch:$(pwd)/src \
+		python -m pytype --python-version=$(PYTHON_VERSION) -k examples src tests
+
 test:
-	$(VERB) make -s -C tests test
+	$(VERB) make -C tests test
 
 # Requires having installed autopep8 first:
 # https://github.com/hhatto/autopep8

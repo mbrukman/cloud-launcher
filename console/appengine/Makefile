@@ -24,7 +24,7 @@ endif
 
 # Catch the user running "make" without a target.
 .PHONY default:
-	$(VERB) echo "Valid actions: pip-install, local, deploy."
+	$(VERB) echo "Valid actions: pip-install, local, deploy, mypy-test, pytype-test, test."
 
 # Via https://cloud.google.com/appengine/docs/python/tools/libraries27#vendoring
 THIRD_PARTY_PYTHON = third_party/python
@@ -52,6 +52,12 @@ deploy: compute_api_gen
 # Provide libraries for testing.
 pip-install-test:
 	$(VERB) pip install -t $(THIRD_PARTY_PYTHON) -r requirements-test.txt
+
+mypy-test:
+	$(VERB) python -m mypy --python-version=$(PYTHON_VERSION) .
+
+pytype-test:
+	$(VERB) python -m pytype --python-version=$(PYTHON_VERSION) -k .
 
 # Run tests.
 test: compute_api_gen
