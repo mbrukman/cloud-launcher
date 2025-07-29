@@ -23,7 +23,7 @@ hello = Compute.instance(
     machineType='f1-micro',
     disks=[
         Disk.boot(
-            autoDelete=true,
+            autoDelete=True,
             initializeParams=Disk.initializeParams(
                 sourceImage='centos-6-latest',
             ),
