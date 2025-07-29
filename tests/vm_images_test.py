@@ -42,7 +42,7 @@ class ImageShortNameToUrlTest(unittest.TestCase):
 
     def testPseudoImages(self):
         for (project, data) in vm_images.PROJECT_IMAGES.items():
-            if not 'pseudo' in data:
+            if 'pseudo' not in data:
                 continue
             for pseudo in data['pseudo']:
                 self.assertEqual(
