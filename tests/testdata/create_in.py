@@ -18,7 +18,7 @@
 #
 # Sample use case of the constructors in resources.py .
 
-from gce import *
+from gce import GCE, Compute, Disk, Metadata
 
 GCE.setDefaults(
     project='curious-lemming-42',
