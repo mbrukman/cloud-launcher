@@ -18,8 +18,6 @@
 #
 # Tests handling of VM images (e.g., shortnames).
 
-import json
-import os
 import unittest
 
 # Local imports

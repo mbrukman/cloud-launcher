@@ -22,7 +22,6 @@ import json
 import sys
 
 # Local imports
-import common
 
 
 class Error(Exception):
