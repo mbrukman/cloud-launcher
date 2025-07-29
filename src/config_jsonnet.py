@@ -61,7 +61,7 @@ def main(argv):
 
     expander = ConfigExpander()
     config = expander.ExpandFile(argv[1])
-    print json.dumps(config, indent=2, separators=(',', ': '))
+    print(json.dumps(config, indent=2, separators=(',', ': ')))
 
 
 if __name__ == '__main__':

@@ -65,7 +65,7 @@ class GceService(object):
 
 
 def WriteJsonToFile(json_obj, filename):
-    print 'Updating %s ...' % filename
+    print('Updating %s ...' % filename)
     json_str = json.dumps(json_obj, indent=2,
                           separators=(',', ': '), sort_keys=True)
     with open(filename, 'w') as output:
@@ -200,7 +200,7 @@ def main(argv):
     UpdateVmImages(gce, flags)
     # TODO(mbrukman): enable zone list caching once we define concise format.
     # UpdateZones(gce, flags)
-    print 'Done.'
+    print('Done.')
 
 
 if __name__ == '__main__':

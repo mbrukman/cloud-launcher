@@ -80,7 +80,7 @@ class GceHandler(object):
 
     def List(self):
         for instance in self._ListInternal():
-            print instance['name']
+            print(instance['name'])
 
     def _ListInternal(self):
         if self.__flags.config:
@@ -118,7 +118,7 @@ class GceHandler(object):
 
     def _PrintJsonResponse(self, name, response):
         json_text = self._FormatJson(response)
-        print 'Done: [%s], response: %s' % (name, json_text)
+        print('Done: [%s], response: %s' % (name, json_text))
 
     def _ExecuteBatchRequest(self, requests):
         """Executes the given |requests| in batches.
@@ -131,7 +131,7 @@ class GceHandler(object):
         """
         def _BatchHttpRequestCallback(request_id, response, exception):
             if exception is not None:
-                print 'Error: %s' % exception
+                print('Error: %s' % exception)
             else:
                 self._PrintJsonResponse(request_id, response)
 
@@ -168,10 +168,10 @@ class GceHandler(object):
             instance_name = instance['name']
             if not self._InstanceInSelection(instance_name):
                 if self.__flags.debug:
-                    print 'Skipping instance %s [not in selection]' % instance_name
+                    print('Skipping instance %s [not in selection]' % instance_name)
                 continue
 
-            print 'Inserting instance: %s' % instance_name
+            print('Inserting instance: %s' % instance_name)
             if self.__flags.dry_run:
                 continue
             request = self.__gce_service.instances().insert(project=self.__flags.project,
@@ -181,7 +181,7 @@ class GceHandler(object):
             requests.append((instance_name, request))
 
         self._ExecuteBatchRequest(requests)
-        print 'Done'
+        print('Done')
 
     def Delete(self):
         """Deletes the list of GCE VM instances, either already existing or in a config.
@@ -193,10 +193,10 @@ class GceHandler(object):
             instance_name = instance['name']
             if not self._InstanceInSelection(instance_name):
                 if self.__flags.debug:
-                    print 'Skipping instance %s [not in selection]' % instance_name
+                    print('Skipping instance %s [not in selection]' % instance_name)
                 continue
 
-            print 'Deleting instance: %s' % instance_name
+            print('Deleting instance: %s' % instance_name)
             if self.__flags.dry_run:
                 continue
             request = self.__gce_service.instances().delete(project=self.__flags.project,
@@ -205,7 +205,7 @@ class GceHandler(object):
             requests.append((instance_name, request))
 
         self._ExecuteBatchRequest(requests)
-        print 'Done'
+        print('Done')
 
     def Print(self):
         if self.__flags.config is None:
@@ -218,10 +218,10 @@ class GceHandler(object):
             instance_name = instance['name']
             if not self._InstanceInSelection(instance_name):
                 if self.__flags.debug:
-                    print 'Skipping instance %s [not in selection]' % instance_name
+                    print('Skipping instance %s [not in selection]' % instance_name)
                 continue
 
-            print '[%s] instance: %s' % (instance_name, self._FormatJson(instance))
+            print('[%s] instance: %s' % (instance_name, self._FormatJson(instance)))
 
 
 def main(argv):

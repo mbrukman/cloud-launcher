@@ -50,29 +50,29 @@ def methodArgs(item):
     return '{%s}' % ', '.join(args)
 
 def main(argv):
-    print '# GENERATED FILE: DO NOT EDIT MANUALLY; WILL BE OVERWRITTEN'
-    print '# Regenerate via: %s %s' % (argv[0], argv[1])
-    print
-    print '# Libraries provided by App Engine.'
-    print 'import webapp2'
-    print
-    print '# Local imports.'
-    print 'from oauth2helper import decorator'
-    print 'import compute_api_base'
-    print
+    print('# GENERATED FILE: DO NOT EDIT MANUALLY; WILL BE OVERWRITTEN')
+    print('# Regenerate via: %s %s' % (argv[0], argv[1]))
+    print()
+    print('# Libraries provided by App Engine.')
+    print('import webapp2')
+    print()
+    print('# Local imports.')
+    print('from oauth2helper import decorator')
+    print('import compute_api_base')
+    print()
     with open(argv[1], 'r') as yaml_input:
         data = yaml.safe_load(yaml_input)
 
         # Output class definitions.
         for item in data:
-            print """\
+            print("""\
 class %(class)s(%(baseClass)s):
     @decorator.oauth_required
     def %(verb)s(self, %(verbArgs)s):
         return self._%(verb)s(
             obj='%(object)s', method='%(method)s',
             args=%(methodArgs)s)
-""" % {
+""") % {
           'class': className(item),
           'baseClass': BASE_CLASS,
           'verb': item['verb'].lower(),
@@ -83,14 +83,14 @@ class %(class)s(%(baseClass)s):
       }
 
         # Output routes.
-        print 'routes = ['
+        print('routes = [')
 
         for item in data:
-            print '    webapp2.Route('
-            print "        '%s'," % item['url']
-            print '        %s),' % className(item)
+            print('    webapp2.Route(')
+            print("        '%s'," % item['url'])
+            print('        %s),' % className(item))
 
-        print ']'
+        print(']')
 
 
 if __name__ == '__main__':

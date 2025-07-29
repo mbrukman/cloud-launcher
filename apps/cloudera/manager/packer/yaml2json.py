@@ -32,7 +32,7 @@ def main(argv):
 
     with open(argv[1]) as yaml_input:
         data = yaml.safe_load(yaml_input)
-        print json.dumps(data, indent=2)
+        print(json.dumps(data, indent=2))
 
 
 if __name__ == '__main__':
