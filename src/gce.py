@@ -28,9 +28,9 @@ import vm_images
 true = True
 
 
-class GCE(object):
+class GCE:
 
-    class Settings(object):
+    class Settings:
         project = None
         zone = None
 
@@ -73,7 +73,7 @@ class GCE(object):
             return cls.default.zone
 
 
-class Util(object):
+class Util:
 
     @classmethod
     def updateResourceWithParams(cls, resource, params):
@@ -85,7 +85,7 @@ class Util(object):
         return resource
 
 
-class Image(object):
+class Image:
 
     @classmethod
     def resolve(cls, image, project=None):
@@ -106,10 +106,10 @@ class Image(object):
         try:
             return vm_images.ImageShortNameToUrl(image)
         except:
-            return common.ImageToUrl(project, image)
+            return common.image_to_url(project, image)
 
 
-class Disk(object):
+class Disk:
 
     def __init__(self):
         assert False, 'Do not create a Disk via instance ctor; use static factory method instead'
@@ -126,8 +126,8 @@ class Disk(object):
         }
 
         # Ensure that the user specified this parameter correctly.
-        if (diskType is not None) and (not common.IsUrl(diskType)):
-            diskType = common.DiskTypeToUrl(
+        if (diskType is not None) and (not common.is_url(diskType)):
+            diskType = common.disk_type_to_url(
                 GCE.project(), GCE.zone(), diskType)
 
         params = {
@@ -174,12 +174,12 @@ class Disk(object):
         return cls.attachedDisk(**kwargs)
 
 
-class Network(object):
+class Network:
 
     @classmethod
     def externalNat(cls, name=None):
         resource = {
-            'network': common.NetworkToUrl(GCE.project(), 'default'),
+            'network': common.network_to_url(GCE.project(), 'default'),
             'accessConfigs': [
                 {
                     'type': 'ONE_TO_ONE_NAT',
@@ -188,8 +188,8 @@ class Network(object):
             ],
         }
 
-        if name is not None and not common.IsUrl(name):
-            name = common.NetworkToUrl(GCE.project(), name)
+        if name is not None and not common.is_url(name):
+            name = common.network_to_url(GCE.project(), name)
 
         params = {
             'network': name,
@@ -209,7 +209,7 @@ class Network(object):
         return Util.updateResourceWithParams(resource, params)
 
 
-class Metadata(object):
+class Metadata:
 
     @classmethod
     def create(cls, items=None):
@@ -242,14 +242,14 @@ class Metadata(object):
                 previous = filename
                 break
 
-        return common.ReadReferencedFileToString(previous, '%%file:%s' % path)
+        return common.read_referenced_file_to_string(previous, '%%file:%s' % path)
 
     @classmethod
     def startupScript(cls, path):
         return Metadata.item('startup-script', Metadata.fileToString(path))
 
 
-class Compute(object):
+class Compute:
 
     @classmethod
     def instance(
@@ -279,8 +279,8 @@ class Compute(object):
             ],
         }
 
-        if machineType is not None and not common.IsUrl(machineType):
-            machineType = common.MachineTypeToUrl(
+        if machineType is not None and not common.is_url(machineType):
+            machineType = common.machine_type_to_url(
                 GCE.project(), GCE.zone(), machineType)
 
         params = {

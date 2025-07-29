@@ -23,7 +23,7 @@ import os
 import sys
 
 
-class ConfigExpander(object):
+class ConfigExpander:
 
     def __init__(self, **kwargs):
         self.__kwargs = {}

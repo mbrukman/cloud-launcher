@@ -18,15 +18,17 @@
 #
 # Queries Google Compute Engine and updates the local cache of GCP info.
 
-# System imports
-import argparse
-import httplib2
+# Standard imports
 import json
 import logging
 import os
 import re
-import urlparse
 import sys
+
+# Additional Python ecosystem imports
+import argparse
+import httplib2
+import urlparse
 
 # Google Cloud API imports
 from googleapiclient.discovery import build
@@ -41,7 +43,7 @@ GCE_URL = 'https://www.googleapis.com/compute/%s/projects/' % (API_VERSION)
 GCE_SCOPE = 'https://www.googleapis.com/auth/compute'
 
 
-class GceService(object):
+class GceService:
 
     def __init__(self, flags):
         self.__flags = flags
@@ -61,7 +63,7 @@ class GceService(object):
         self.compute = build('compute', API_VERSION)
 
 
-def WriteJsonToFile(json_obj, filename):
+def write_json_to_file(json_obj, filename):
     print('Updating %s ...' % filename)
     json_str = json.dumps(json_obj, indent=2,
                           separators=(',', ': '), sort_keys=True)
@@ -69,7 +71,7 @@ def WriteJsonToFile(json_obj, filename):
         output.write('%s\n' % json_str)
 
 
-def UpdateVmImages(gce, flags):
+def update_vm_images(gce, flags):
     vm_images = {}
     vm_image_projects = sorted([
         'centos-cloud', 'coreos-cloud', 'debian-cloud', 'gce-nvme',
@@ -81,7 +83,7 @@ def UpdateVmImages(gce, flags):
     # from the saved responses on disk.
     for project in vm_image_projects:
         images = gce.compute.images().list(project=project).execute(http=gce.http)
-        WriteJsonToFile(images, 'raw_data/%s.json' % project)
+        write_json_to_file(images, 'raw_data/%s.json' % project)
 
     for project in vm_image_projects:
         with open('raw_data/%s.json' % project, 'r') as json_file:
@@ -97,7 +99,7 @@ def UpdateVmImages(gce, flags):
                 urlparse.urlparse(item['selfLink']).path)
             vm_images[project]['images'].append(shortname)
 
-    def LatestImage(images, date_pattern='-v[0-9]{8}$'):
+    def latest_image(images, date_pattern='-v[0-9]{8}$'):
         vm_image_latest_dst = images[-1]
         vm_image_latest_src = re.sub(
             date_pattern, '-latest', vm_image_latest_dst)
@@ -116,12 +118,12 @@ def UpdateVmImages(gce, flags):
             for centos in ('centos-6', 'centos-7'):
                 image_sublist = filter(
                     lambda image: image.startswith(centos), images)
-                src, dst = LatestImage(image_sublist)
+                src, dst = latest_image(image_sublist)
                 pseudo[src] = dst
         elif project == 'coreos-cloud':
             for substr in ('alpha', 'beta', 'stable'):
                 image_sublist = filter(lambda image: substr in image, images)
-                src, dst = LatestImage(
+                src, dst = latest_image(
                     image_sublist, '-[0-9]*-[0-9]-[0-9]-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'debian-cloud':
@@ -131,39 +133,39 @@ def UpdateVmImages(gce, flags):
                            'debian-7-wheezy',
                            'debian-8-jessie'):
                 image_sublist = filter(lambda image: image.startswith(prefix), images)
-                src, dst = LatestImage(image_sublist)
+                src, dst = latest_image(image_sublist)
                 pseudo[src] = dst
         elif project == 'opensuse-cloud':
             for release in ('opensuse-13-1', 'opensuse-13-2'):
                 image_sublist = filter(lambda image: release in image, images)
-                src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
+                src, dst = latest_image(image_sublist, '-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'rhel-cloud':
             for release in ('rhel-6', 'rhel-7'):
                 image_sublist = filter(lambda image: release in image, images)
-                src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
+                src, dst = latest_image(image_sublist, '-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'suse-cloud':
             for release in ('sles-11', 'sles-12'):
                 image_sublist = filter(lambda image: release in image, images)
-                src, dst = LatestImage(image_sublist, '-v[0-9]{8}$')
+                src, dst = latest_image(image_sublist, '-v[0-9]{8}$')
                 pseudo[src] = dst
         elif project == 'ubuntu-os-cloud':
             for release in ('precise', 'trusty', 'utopic', 'vivid', 'wily'):
                 image_sublist = filter(lambda image: release in image, images)
-                src, dst = LatestImage(image_sublist, '-v[0-9]{8}.*$')
+                src, dst = latest_image(image_sublist, '-v[0-9]{8}.*$')
                 pseudo[src] = dst
         else:
-            src, dst = LatestImage(images)
+            src, dst = latest_image(images)
             pseudo[src] = dst
 
-    WriteJsonToFile(vm_images, 'vm_images.json')
+    write_json_to_file(vm_images, 'vm_images.json')
 
 
-def UpdateZones(gce, flags):
+def update_zones(gce, flags):
     zones = gce.compute.zones().list(project=flags.project).execute(http=gce.http)
     # TODO(mbrukman): clean up the zones output.
-    WriteJsonToFile(zones, 'zones.json')
+    write_json_to_file(zones, 'zones.json')
 
 
 def main(argv):
@@ -185,18 +187,18 @@ def main(argv):
 
     flags = parser.parse_args(argv[1:])
 
-    LOGGING = {
+    log_levels = {
         '': None,
         'info': logging.INFO,
         'warning': logging.WARNING,
         'error': logging.ERROR,
     }
-    logging.basicConfig(level=LOGGING[flags.logging])
+    logging.basicConfig(level=log_levels[flags.logging])
 
     gce = GceService(flags)
-    UpdateVmImages(gce, flags)
+    update_vm_images(gce, flags)
     # TODO(mbrukman): enable zone list caching once we define concise format.
-    # UpdateZones(gce, flags)
+    # update_zones(gce, flags)
     print('Done.')
 
 
