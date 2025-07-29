@@ -14,11 +14,29 @@
 
 name: "Run tests"
 
+# GitHub Actions does not support anchors:
+# https://github.com/actions/runner/issues/1182
+# so we need to duplicate paths below and manually keep them in sync.
 on:
   push:
     branches: [ main ]
+    paths:
+        # Python files
+      - '**/*.py'
+        # Data files
+      - '**/*.json'
+        # Relevant CI configs
+      - '.github/workflows/tests.yaml' # this file
+
   pull_request:
     branches: [ main ]
+    paths:
+        # Python files
+      - '**/*.py'
+        # Data files
+      - '**/*.json'
+        # Relevant CI configs
+      - '.github/workflows/tests.yaml' # this file
 
 jobs:
 
