@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Copyright 2015 Google Inc.
 #
@@ -72,7 +72,7 @@ class %(class)s(%(baseClass)s):
         return self._%(verb)s(
             obj='%(object)s', method='%(method)s',
             args=%(methodArgs)s)
-""") % {
+""" % {
           'class': className(item),
           'baseClass': BASE_CLASS,
           'verb': item['verb'].lower(),
@@ -80,7 +80,7 @@ class %(class)s(%(baseClass)s):
           'object': item['object'],
           'method': item['method'],
           'methodArgs': methodArgs(item),
-      }
+      })
 
         # Output routes.
         print('routes = [')
