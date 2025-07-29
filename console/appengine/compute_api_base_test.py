@@ -43,7 +43,6 @@ sys.path.insert(1, _APPENGINE)
 sys.path.insert(1, '%s/lib/yaml/lib' % _APPENGINE)
 sys.path.insert(1, 'third_party/python')
 
-import appengine_config
 from google.appengine.ext import testbed
 
 # Local imports

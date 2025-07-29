@@ -21,13 +21,7 @@ Download the OAuth 2.0 client secrets via Google Cloud Console
 in this directory. See README.md for details.
 """
 
-# Standard Python libraries.
-import logging
 import os
-
-# Libraries we added to `third_party/python` via `requirements.txt`.
-from oauth2client import appengine
-import httplib2
 
 # Libraries provided by App Engine.
 import jinja2
@@ -36,7 +30,6 @@ import webapp2
 # Local imports.
 import compute_api_gen
 from oauth2helper import decorator
-import safe_memcache as memcache
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
