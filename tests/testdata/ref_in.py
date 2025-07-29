@@ -18,7 +18,7 @@
 #
 # Sample use case of references in a Python-style config.
 
-from gce import *
+from gce import GCE, Compute, Disk, Metadata
 
 GCE.setDefaults(
     project='curious-lemming-42',
