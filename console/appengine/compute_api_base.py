@@ -68,7 +68,7 @@ class ComputeV1Base(webapp2.RequestHandler):
                     method](**args).execute()
                 output = json.dumps(response, indent=2)
                 write_to_cache = True
-            except apiclient_errors.HttpError, e:
+            except apiclient_errors.HttpError as e:
                 response = {
                     'error': repr(e),
                     'response': response,
@@ -93,7 +93,7 @@ class ComputeV1Base(webapp2.RequestHandler):
             response = service.__dict__[obj]().__dict__[
                 method](**args).execute()
             output = json.dumps(response, indent=2)
-        except apiclient_errors.HttpError, e:
+        except apiclient_errors.HttpError as e:
             response = {
                 'error': repr(e),
                 'response': response,
