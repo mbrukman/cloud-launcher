@@ -27,7 +27,7 @@ import yaml
 BASE_CLASS = 'compute_api_base.ComputeV1Base'
 
 
-def className(item):
+def class_name(item):
     """Returns class name given the item dictionary.
 
     Args:
@@ -41,7 +41,7 @@ def className(item):
     return 'ComputeV1%s%sHandler' % (obj, method)
 
 
-def methodArgs(item):
+def method_args(item):
     """Returns a dictionary formatted as a string given the arguments in item.
 
     Args:
@@ -70,20 +70,20 @@ def main(argv):
         # Output class definitions.
         for item in data:
             print("""\
-class %(class)s(%(baseClass)s):
+class %(class)s(%(base_class)s):
     @decorator.oauth_required
-    def %(verb)s(self, %(verbArgs)s):
+    def %(verb)s(self, %(verb_args)s):
         return self._%(verb)s(
             obj='%(object)s', method='%(method)s',
-            args=%(methodArgs)s)
+            args=%(method_args)s)
 """ % {
-          'class': className(item),
-          'baseClass': BASE_CLASS,
+          'class': class_name(item),
+          'base_class': BASE_CLASS,
           'verb': item['verb'].lower(),
-          'verbArgs': ', '.join(item['args']),
+          'verb_args': ', '.join(item['args']),
           'object': item['object'],
           'method': item['method'],
-          'methodArgs': methodArgs(item),
+          'method_args': method_args(item),
       })
 
         # Output routes.
@@ -92,7 +92,7 @@ class %(class)s(%(baseClass)s):
         for item in data:
             print('    webapp2.Route(')
             print("        '%s'," % item['url'])
-            print('        %s),' % className(item))
+            print('        %s),' % class_name(item))
 
         print(']')
 

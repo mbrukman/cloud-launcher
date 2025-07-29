@@ -51,7 +51,7 @@ import httpretty
 
 class RequestHandlersTest(unittest.TestCase):
     def setUp(self):
-        super(RequestHandlersTest, self).setUp()
+        super().setUp()
         # For more info, see:
         # https://cloud.google.com/appengine/docs/python/tools/localunittesting
         self.testbed = testbed.Testbed()
@@ -72,15 +72,15 @@ class RequestHandlersTest(unittest.TestCase):
         httpretty.reset()
         self.testbed.deactivate()
 
-    def testUserAgent(self):
-        mockContent = 'This is some content'
+    def test_user_agent(self):
+        mock_content = 'This is some content'
         httpretty.register_uri(httpretty.GET, 'http://localhost:9000/',
-                               body=mockContent)
+                               body=mock_content)
         http = self.compute_api_base.Http()
-        (resp_headers, content) = http.request("http://localhost:9000", "GET")
+        _, content = http.request("http://localhost:9000", "GET")
         self.assertEqual(httpretty.last_request().headers['user-agent'],
                          self.compute_api_base.USER_AGENT)
-        self.assertEqual(content, mockContent)
+        self.assertEqual(content, mock_content)
 
 
 if __name__ == '__main__':

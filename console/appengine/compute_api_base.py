@@ -43,7 +43,7 @@ USER_AGENT = '%s/%s (github.com/mbrukman/cloud-launcher/tree/master/console)' % 
 MEMCACHE_TIMEOUT = 30
 
 
-def Http():
+def create_http():
     """Returns an instance of `httplib2.Http` with User-agent set."""
     http = httplib2.Http(memcache)
     return apiclient_http.set_user_agent(http, USER_AGENT)
@@ -61,7 +61,7 @@ class ComputeV1Base(webapp2.RequestHandler):
         if memcache_value:
             output = memcache_value
         else:
-            http = decorator.credentials.authorize(Http())
+            http = decorator.credentials.authorize(create_http())
             service = apiclient_discovery.build('compute', 'v1', http=http)
             try:
                 response = service.__dict__[obj]().__dict__[
@@ -87,7 +87,7 @@ class ComputeV1Base(webapp2.RequestHandler):
     def _post(self, obj, method, args):
         status_int = 200
         response = {}
-        http = decorator.credentials.authorize(Http())
+        http = decorator.credentials.authorize(create_http())
         service = apiclient_discovery.build('compute', 'v1', http=http)
         try:
             response = service.__dict__[obj]().__dict__[

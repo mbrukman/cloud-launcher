@@ -66,27 +66,27 @@ class GceHandler(object):
         self.__gce_service = build('compute', API_VERSION)
         self.__project_url = '%s%s' % (GCE_URL, flags.project)
 
-    def Run(self):
+    def run(self):
         if self.__flags.command == 'list':
-            self.List()
+            self.list()
         elif self.__flags.command == 'insert':
-            self.Insert()
+            self.insert()
         elif self.__flags.command == 'delete':
-            self.Delete()
+            self.delete()
         elif self.__flags.command == 'print':
-            self.Print()
+            self.print()
 
-    def List(self):
-        for instance in self._ListInternal():
+    def list(self):
+        for instance in self._list_internal():
             print(instance['name'])
 
-    def _ListInternal(self):
+    def _list_internal(self):
         if self.__flags.config:
-            return self._ListFromConfig()
+            return self._list_from_config()
         else:
-            return self._ListExisting()
+            return self._list_existing()
 
-    def _ListExisting(self):
+    def _list_existing(self):
         request = self.__gce_service.instances().list(project=self.__flags.project,
                                                       filter=None,
                                                       zone=self.__flags.zone)
@@ -95,12 +95,12 @@ class GceHandler(object):
             return response['items']
         return []
 
-    def _ListFromConfig(self):
+    def _list_from_config(self):
         return config.ProcessConfig(file=self.__flags.config,
                                     project=self.__flags.project,
                                     zone=self.__flags.zone)
 
-    def _InstanceInSelection(self, instance):
+    def _instance_in_selection(self, instance):
         # No explicit selection implies selecting everything, for simplicity.
         if self.__flags.instances is None:
             return True
@@ -108,17 +108,17 @@ class GceHandler(object):
         instances = self.__flags.instances.split(',')
         return instance in instances
 
-    def _FormatJson(self, obj):
+    def _format_json(self, obj):
         if self.__flags.json_format == 'compact':
             return '%s' % obj
         elif self.__flags.json_format == 'pretty':
             return json.dumps(obj, indent=2, separators=(',', ': '))
 
-    def _PrintJsonResponse(self, name, response):
-        json_text = self._FormatJson(response)
+    def _print_json_response(self, name, response):
+        json_text = self._format_json(response)
         print('Done: [%s], response: %s' % (name, json_text))
 
-    def _ExecuteBatchRequest(self, requests):
+    def _execute_batch_request(self, requests):
         """Executes the given |requests| in batches.
 
         Documentation:
@@ -131,11 +131,11 @@ class GceHandler(object):
             if exception is not None:
                 print('Error: %s' % exception)
             else:
-                self._PrintJsonResponse(request_id, response)
+                self._print_json_response(request_id, response)
 
         batch = None
         num_batch_requests = 0
-        MAX_BATCH_SIZE = 1000  # documented at the URL above
+        max_batch_size = 1000  # documented at the URL above
 
         for request_id, request in requests:
             if batch is None:
@@ -143,7 +143,7 @@ class GceHandler(object):
                     callback=_BatchHttpRequestCallback)
             batch.add(request, request_id=request_id)
             num_batch_requests += 1
-            if num_batch_requests == MAX_BATCH_SIZE:
+            if num_batch_requests == max_batch_size:
                 batch.execute(http=self.__auth_http)
                 batch = None
                 num_batch_requests = 0
@@ -153,18 +153,18 @@ class GceHandler(object):
             batch.execute(http=self.__auth_http)
             batch = None
 
-    def Insert(self):
+    def insert(self):
         if self.__flags.config is None:
             sys.stderr.write(
                 '--config must be specified pointing to a valid config file\n')
             sys.exit(1)
 
-        instances = self._ListFromConfig()
+        instances = self._list_from_config()
         requests = []
 
         for instance in instances:
             instance_name = instance['name']
-            if not self._InstanceInSelection(instance_name):
+            if not self._instance_in_selection(instance_name):
                 if self.__flags.debug:
                     print('Skipping instance %s [not in selection]' % instance_name)
                 continue
@@ -178,18 +178,18 @@ class GceHandler(object):
                                                             zone=self.__flags.zone)
             requests.append((instance_name, request))
 
-        self._ExecuteBatchRequest(requests)
+        self._execute_batch_request(requests)
         print('Done')
 
-    def Delete(self):
+    def delete(self):
         """Deletes the list of GCE VM instances, either already existing or in a config.
         """
-        instances = self._ListInternal()
+        instances = self._list_internal()
         requests = []
 
         for instance in instances:
             instance_name = instance['name']
-            if not self._InstanceInSelection(instance_name):
+            if not self._instance_in_selection(instance_name):
                 if self.__flags.debug:
                     print('Skipping instance %s [not in selection]' % instance_name)
                 continue
@@ -202,24 +202,24 @@ class GceHandler(object):
                                                             zone=self.__flags.zone)
             requests.append((instance_name, request))
 
-        self._ExecuteBatchRequest(requests)
+        self._execute_batch_request(requests)
         print('Done')
 
-    def Print(self):
+    def print(self):
         if self.__flags.config is None:
             sys.stderr.write(
                 '--config must be specified pointing to a valid config file\n')
             sys.exit(1)
 
-        instances = self._ListFromConfig()
+        instances = self._list_from_config()
         for instance in instances:
             instance_name = instance['name']
-            if not self._InstanceInSelection(instance_name):
+            if not self._instance_in_selection(instance_name):
                 if self.__flags.debug:
                     print('Skipping instance %s [not in selection]' % instance_name)
                 continue
 
-            print('[%s] instance: %s' % (instance_name, self._FormatJson(instance)))
+            print('[%s] instance: %s' % (instance_name, self._format_json(instance)))
 
 
 def main(argv):
@@ -270,7 +270,7 @@ def main(argv):
     logging.basicConfig(level=LOGGING[flags.logging])
 
     gce_handler = GceHandler(flags)
-    gce_handler.Run()
+    gce_handler.run()
 
 
 if __name__ == '__main__':

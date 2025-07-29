@@ -32,7 +32,7 @@ class JsonnetNotFoundError(Error):
     pass
 
 
-class ConfigExpander(object):
+class ConfigExpander:
 
     def __init__(self, **kwargs):
         self.__kwargs = {}

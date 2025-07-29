@@ -22,61 +22,61 @@ import os
 import sys
 
 
-def ProjectUrl(project):
+def project_url(project):
     return 'https://www.googleapis.com/compute/%(api_version)s/projects/%(project)s' % {
         'api_version': 'v1',
         'project': project,
     }
 
 
-def ProjectZoneUrl(project, zone):
+def project_zone_url(project, zone):
     return '%(project_url)s/zones/%(zone)s' % {
-        'project_url': ProjectUrl(project),
+        'project_url': project_url(project),
         'zone': zone,
     }
 
 
-def ProjectGlobalUrl(project):
+def project_global_url(project):
     return '%(project_url)s/global' % {
-        'project_url': ProjectUrl(project),
+        'project_url': project_url(project),
     }
 
 
-def DiskTypeToUrl(project, zone, diskType):
+def disk_type_to_url(project, zone, diskType):
     assert diskType in ('pd-standard', 'pd-ssd')
     return '%(zone_url)s/diskTypes/%(diskType)s' % {
-        'zone_url': ProjectZoneUrl(project, zone),
+        'zone_url': project_zone_url(project, zone),
         'diskType': diskType,
     }
 
 
-def ImageToUrl(project, image):
+def image_to_url(project, image):
     return '%(project_url)s/images/%(image)s' % {
-        'project_url': ProjectGlobalUrl(project),
+        'project_url': project_global_url(project),
         'image': image,
     }
 
 
-def MachineTypeToUrl(project, zone, machineType):
+def machine_type_to_url(project, zone, machineType):
     return '%(zone_url)s/machineTypes/%(machineType)s' % {
-        'zone_url': ProjectZoneUrl(project, zone),
+        'zone_url': project_zone_url(project, zone),
         'machineType': machineType,
     }
 
 
-def NetworkToUrl(project, network):
+def network_to_url(project, network):
     return '%(project_url)s/networks/%(network)s' % {
-        'project_url': ProjectGlobalUrl(project),
+        'project_url': project_global_url(project),
         'network': network,
     }
 
 
-def IsUrl(string):
+def is_url(string):
     return (string.startswith('http://') or
             string.startswith('https://'))
 
 
-def ReadReferencedFileToString(base_file, referenced_file):
+def read_referenced_file_to_string(base_file, referenced_file):
     """Given a string '%file:<path>'; returns the contents of file at <path>.
 
     Args:
