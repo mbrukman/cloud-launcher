@@ -44,7 +44,7 @@ def ProjectGlobalUrl(project):
 
 def DiskTypeToUrl(project, zone, diskType):
     assert diskType in ('pd-standard', 'pd-ssd')
-    return '%(zone_url)/diskTypes/%(diskType)s' % {
+    return '%(zone_url)s/diskTypes/%(diskType)s' % {
         'zone_url': ProjectZoneUrl(project, zone),
         'diskType': diskType,
     }
