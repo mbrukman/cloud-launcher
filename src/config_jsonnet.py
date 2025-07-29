@@ -43,9 +43,9 @@ class ConfigExpander(object):
         # Jsonnet interpreter, import only if needed to avoid dependency.
         try:
             import _jsonnet
-        except:
+        except ImportError:
             raise JsonnetNotFoundError(
-                'Module "_jsonnet" missing;  Is _jsonnet.so in your $PYTHONPATH?')
+                'Module "_jsonnet" missing; is _jsonnet.so in your $PYTHONPATH?')
         project = self.__kwargs['project']
         json_str = _jsonnet.evaluate_file(
             file_name, env={'GCP_PROJECT': project})
