@@ -30,7 +30,7 @@ resources = [
         name='vm-%d' % i,
         disks=[
             Disk.boot(
-                autoDelete=true,
+                autoDelete=True,
                 initializeParams=Disk.initializeParams(
                     sourceImage='centos-6-v20140415',
                 ),

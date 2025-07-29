@@ -16,6 +16,8 @@
 #
 # An example deployment.
 
+from gce import Compute, Disk, Metadata
+
 hello = Compute.instance(
     name='hello-world',
     machineType='f1-micro',
