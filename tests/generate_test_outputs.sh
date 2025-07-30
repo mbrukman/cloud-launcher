@@ -19,12 +19,13 @@
 declare -i EXIT_CODE=0
 declare -r SOURCE_PATH="../src"
 declare -r PYTHONPATH="${SOURCE_PATH}:../third_party/bunch"
+declare -r PYTHON="${PYTHON:-python}"
 
 for in_py in testdata/*_in.py; do
   out_json="$(echo "${in_py}" | sed 's/_in.py/_out.json/')"
   out_json_base="$(basename "${out_json}")"
   tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
-  env PYTHONPATH="${PYTHONPATH}" "${SOURCE_PATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
+  env PYTHONPATH="${PYTHONPATH}" "${PYTHON}" "${SOURCE_PATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
   if [ $? -eq 0 ]; then
     mv "${tempfile}" "${out_json}"
   else

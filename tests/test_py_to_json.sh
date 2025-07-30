@@ -17,6 +17,7 @@
 # Runs all Python -> JSON tests.
 
 declare -i STATUS=0
+declare -r PYTHON="${PYTHON:-python}"
 
 echo
 echo "------------------------"
@@ -28,7 +29,7 @@ for in_py in testdata/*_in.py; do
   out_json_base="$(basename "${out_json}")"
   echo -n "Testing ${in_py} -> ${out_json} ... "
   tempfile="$(mktemp "/tmp/${out_json_base}.XXXXXX")"
-  env PYTHONPATH="${PYTHONPATH}" "${SOURCE_PATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
+  env PYTHONPATH="${PYTHONPATH}" "${PYTHON}" "${SOURCE_PATH}/config_py.py" "${in_py}" > "${tempfile}" 2>&1
 
   if [ $? -ne 0 ]; then
     STATUS=1

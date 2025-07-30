@@ -18,7 +18,7 @@
 #
 # Config processing and expansion.
 
-import imp
+import importlib.util
 import json
 import os
 import sys
@@ -35,7 +35,16 @@ def ImportModule(module):
 def CompileAndEvalFile(path):
     orig_sys_path = sys.path
     sys.path.insert(0, os.path.dirname(path))
-    module = imp.load_source(os.path.splitext(path)[0], path)
+
+    filename = os.path.basename(path)
+    module_name = os.path.splitext(filename)[0]
+    loader = importlib.machinery.SourceFileLoader(module_name, path)
+    spec = importlib.util.spec_from_file_location(module_name, path, loader=loader)
+    if spec is None:
+        raise ImportError(f'Cannot find module spec for {path}')
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
 
     # Restore sys.path prior to returning.
     sys.path = orig_sys_path
