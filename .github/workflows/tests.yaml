@@ -64,7 +64,6 @@ jobs:
       - name: Run tests
         run: |
           make test VERBOSE=1
-        continue-on-error: true
 
   console:
     runs-on: ${{ matrix.os }}
